@@ -62,7 +62,7 @@ Conditions evaluate top-down, first match wins; missing `otherwise` → null for
 
 ## Level 2 — Null handling, properly
 
-Nulls follow SQL's [three-valued logic](../01_SQL/What_is_SQL.md) — every comparison with null is neither true nor false:
+Nulls follow SQL's [three-valued logic](../01_SQL/01_What_is_SQL.md) — every comparison with null is neither true nor false:
 
 ```python
 df.filter(F.col("dept").isNull())
@@ -95,7 +95,7 @@ Same engine, same plan — use whichever reads clearer; `expr` is also the escap
 
 ## Level 3 — Pro corner
 
-- **Sargability applies here too**: `F.year(F.col("d")) == 2026` defeats partition pruning/pushdown; `F.col("d").between("2026-01-01", "2026-12-31")` doesn't ([same rule as SQL](../01_SQL/SQL_DQL.md)).
+- **Sargability applies here too**: `F.year(F.col("d")) == 2026` defeats partition pruning/pushdown; `F.col("d").between("2026-01-01", "2026-12-31")` doesn't ([same rule as SQL](../01_SQL/06_SQL_DQL.md)).
 - **Chained `when` beats nested Python if-logic in a UDF by 10–100×** — before writing any custom function, spend five minutes in the [functions docs](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/functions.html); `F` almost certainly has it (`months_between`, `sequence`, `format_number`, `sha2`, `xxhash64`…).
 - **Deterministic cleanup pipeline**: standardize nulls first (`na.replace` sentinels → null), then trim/case-normalize strings, then cast, then validate — order matters; casting `" 42 "` fails where casting `"42"` succeeds.
 - **Date format strings are Java patterns** (`yyyy`, `MM`, `dd`, `HH`) — `mm` is minutes, not months: the classic silent bug. And parsing behavior changed in Spark 3 (`spark.sql.legacy.timeParserPolicy`) — pin formats explicitly.
@@ -107,9 +107,9 @@ string_cols = [c for c, t in df.dtypes if t == "string"]
 df.select(*[F.trim(F.col(c)).alias(c) if c in string_cols else F.col(c) for c in df.columns])
 ```
 
-This metaprogramming style is how [metadata-driven pipelines](../04_ETL_ELT/Azure_Data_Factory.md) apply per-table rules from config.
+This metaprogramming style is how [metadata-driven pipelines](../04_ETL_ELT/02_Azure_Data_Factory.md) apply per-table rules from config.
 
-- **Hashing for keys/dedupe/SCD change detection**: `F.sha2(F.concat_ws("||", *cols), 256)` — one column that fingerprints a row; the standard [SCD2](../01_SQL/SQL_Warehouse.md) "did anything change?" comparator.
+- **Hashing for keys/dedupe/SCD change detection**: `F.sha2(F.concat_ws("||", *cols), 256)` — one column that fingerprints a row; the standard [SCD2](../01_SQL/13_SQL_Warehouse.md) "did anything change?" comparator.
 
 ## Checkpoint
 

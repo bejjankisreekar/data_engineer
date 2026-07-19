@@ -9,7 +9,7 @@ Two separate questions, often confused:
 
 ## Part 1 — Why Spark?
 
-Context: by ~2012 everyone ran [Hadoop](../00_Fundamentals/Hadoop_Architecture.md), and everyone had the same complaints.
+Context: by ~2012 everyone ran [Hadoop](../00_Fundamentals/05_Hadoop_Architecture.md), and everyone had the same complaints.
 
 ### The MapReduce pain
 
@@ -30,7 +30,7 @@ Context: by ~2012 everyone ran [Hadoop](../00_Fundamentals/Hadoop_Architecture.m
 | Tool sprawl | **One engine**: batch + SQL + streaming + ML ([What_Is_Apache_Spark.md](What_Is_Apache_Spark.md)) |
 | Dumb execution | **Lazy evaluation + Catalyst optimizer** — plans the whole job before running ([Spark_Processing.md](Spark_Processing.md)) |
 
-Spark kept the good parts of Hadoop thinking — [scale-out on clusters](../00_Fundamentals/Distributed_Computing.md), fault tolerance, data locality — and fixed the speed and usability. By ~2016 it had effectively replaced MapReduce.
+Spark kept the good parts of Hadoop thinking — [scale-out on clusters](../00_Fundamentals/03_Distributed_Computing.md), fault tolerance, data locality — and fixed the speed and usability. By ~2016 it had effectively replaced MapReduce.
 
 **Interview one-liner:** *"Spark is preferred over MapReduce because it processes data in memory rather than writing to disk between stages, offers high-level APIs in Python/SQL, and unifies batch, streaming, and ML in one engine — making it typically 10–100× faster and far easier to develop with."*
 
@@ -42,7 +42,7 @@ Spark is free. So why pay?
 
 **Because running Spark yourself is an ops job, not a data job.** You'd need to: provision clusters, configure memory/cores, patch versions, secure it, monitor it, scale it up for the nightly load and *remember to scale it back down*, and give analysts some way to use it.
 
-**Databricks** — founded 2013 by Spark's original creators — sells exactly that: **Spark as a managed cloud platform** (a [PaaS/SaaS](../05_cloud/SaaS_PaaS_IaaS.md) running on Azure/AWS/GCP; on Azure it's the first-party service *Azure Databricks*).
+**Databricks** — founded 2013 by Spark's original creators — sells exactly that: **Spark as a managed cloud platform** (a [PaaS/SaaS](../05_cloud/02_SaaS_PaaS_IaaS.md) running on Azure/AWS/GCP; on Azure it's the first-party service *Azure Databricks*).
 
 ### What Databricks adds on top of open-source Spark
 
@@ -51,8 +51,8 @@ Spark is free. So why pay?
 | **Managed clusters** | Click → cluster in minutes; **auto-scaling** and **auto-terminate** (huge cost saver) |
 | **Optimized runtime** | Databricks' Spark build + Photon engine — faster than stock Spark |
 | **Notebooks** | Collaborative workspace; Python + SQL in one place; scheduling built in |
-| **Delta Lake** | ACID transactions, schema enforcement, time travel *on data lake files* → the **lakehouse** ([evolution timeline](../00_Fundamentals/Big_Data_Evolution_Timeline.md)) |
-| **Workflows** | Native job orchestration (often triggered from [Data Factory](../04_ETL_ELT/Azure_Data_Factory.md)) |
+| **Delta Lake** | ACID transactions, schema enforcement, time travel *on data lake files* → the **lakehouse** ([evolution timeline](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)) |
+| **Workflows** | Native job orchestration (often triggered from [Data Factory](../04_ETL_ELT/02_Azure_Data_Factory.md)) |
 | **Unity Catalog** | Central governance: permissions, lineage, data discovery |
 | **SQL Warehouses** | BI/analyst-friendly SQL endpoints on the same data |
 | **ML tooling** | MLflow, feature store, GPU clusters |
@@ -70,7 +70,7 @@ Spark is free. So why pay?
 | What it is | Open-source processing **engine** | Commercial **platform** built around Spark |
 | Cost | Free | Pay per compute (DBUs) + cloud VMs |
 | You manage | Everything (clusters, tuning, security) | Almost nothing — managed service |
-| Storage | None (reads external storage) | None either — your data stays in [ADLS](../03_Data_Storage/Azure_Data_Lake_Storage.md)/S3; Delta Lake adds the table layer |
+| Storage | None (reads external storage) | None either — your data stays in [ADLS](../03_Data_Storage/03_Azure_Data_Lake_Storage.md)/S3; Delta Lake adds the table layer |
 | Made by | Apache community | Company founded by Spark's creators |
 
 ---
@@ -108,7 +108,7 @@ Plain Parquet-on-a-lake fails in specific, painful ways; Delta's `_delta_log` (a
 | Upserts require rewrite-everything logic | **MERGE INTO** |
 | Millions of small files | `OPTIMIZE` + Z-ORDER ([processing notes](Spark_Processing.md)) |
 
-This is the "lakehouse" in one table: warehouse guarantees, lake economics ([evolution timeline](../00_Fundamentals/Big_Data_Evolution_Timeline.md)).
+This is the "lakehouse" in one table: warehouse guarantees, lake economics ([evolution timeline](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)).
 
 ---
 
@@ -128,8 +128,8 @@ This is the "lakehouse" in one table: warehouse guarantees, lake economics ([evo
 
 ## When Databricks is the wrong answer
 
-- Data < ~100 GB and batch-shaped → DuckDB/Polars on one VM, or just Azure SQL ([when not to distribute](../00_Fundamentals/Distributed_Computing.md)).
-- Pure EL copy with no transformation → [ADF](../04_ETL_ELT/Azure_Data_Factory.md) alone.
+- Data < ~100 GB and batch-shaped → DuckDB/Polars on one VM, or just Azure SQL ([when not to distribute](../00_Fundamentals/03_Distributed_Computing.md)).
+- Pure EL copy with no transformation → [ADF](../04_ETL_ELT/02_Azure_Data_Factory.md) alone.
 - One dashboard refresh per day → a serverless SQL query beats a cluster spin-up.
 - Teams with zero Python/Spark skills and no runway to learn — a tool nobody can operate is a liability, not an asset.
 

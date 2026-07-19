@@ -2,7 +2,7 @@
 
 > Prev: [Aggregations](06_Aggregations_and_Grouping.md) · Next: [Window Functions](08_Window_Functions.md)
 
-Join *logic* is identical to [SQL joins](../01_SQL/SQL_Keys_and_Joins.md) — grain, fan-out, null keys, all of it transfers. What PySpark adds: syntax details that cause duplicate-column pain, and the **distributed cost model** (broadcast vs shuffle) that decides whether your join takes seconds or hours.
+Join *logic* is identical to [SQL joins](../01_SQL/07_SQL_Keys_and_Joins.md) — grain, fan-out, null keys, all of it transfers. What PySpark adds: syntax details that cause duplicate-column pain, and the **distributed cost model** (broadcast vs shuffle) that decides whether your join takes seconds or hours.
 
 ```python
 emp  = spark.createDataFrame([(1,"Asha","IT"),(2,"Ravi","HR"),(3,"Meena",None)],
@@ -39,7 +39,7 @@ active_customers = customers.join(orders, "cust_id", "left_semi")     # has ≥1
 never_ordered    = customers.join(orders, "cust_id", "left_anti")     # has none
 ```
 
-Semi/anti never duplicate rows (no fan-out possible) and carry no right-side columns — prefer them over inner-join-then-distinct or [NOT IN traps](../01_SQL/SQL_Subqueries.md).
+Semi/anti never duplicate rows (no fan-out possible) and carry no right-side columns — prefer them over inner-join-then-distinct or [NOT IN traps](../01_SQL/09_SQL_Subqueries.md).
 
 ---
 
@@ -63,7 +63,7 @@ Habit that prevents it entirely: **alias/prefix columns before joining** — one
 
 ### 2. Null keys
 
-Rows with null join keys match *nothing* — even other nulls (`null == null` is not true; [three-valued logic](../01_SQL/What_is_SQL.md)). In a left join they survive with null right-side columns; in an inner join they vanish silently. Decide explicitly: filter them, default them (`coalesce(key, lit(-1))` to an Unknown member — [warehouse pattern](../01_SQL/SQL_Warehouse.md)), or `eqNullSafe` if null-matches-null is truly intended.
+Rows with null join keys match *nothing* — even other nulls (`null == null` is not true; [three-valued logic](../01_SQL/01_What_is_SQL.md)). In a left join they survive with null right-side columns; in an inner join they vanish silently. Decide explicitly: filter them, default them (`coalesce(key, lit(-1))` to an Unknown member — [warehouse pattern](../01_SQL/13_SQL_Warehouse.md)), or `eqNullSafe` if null-matches-null is truly intended.
 
 ### Grain check — the two-line insurance
 
@@ -73,7 +73,7 @@ after  = orders.join(dim, "key", "left").count()
 assert before == after, "join fanned out — dim has duplicate keys!"
 ```
 
-A left join that *grows* the left side means the right side wasn't unique on the key ([fan-out](../01_SQL/SQL_Keys_and_Joins.md)) — dedupe the dimension first ([window pattern](08_Window_Functions.md)).
+A left join that *grows* the left side means the right side wasn't unique on the key ([fan-out](../01_SQL/07_SQL_Keys_and_Joins.md)) — dedupe the dimension first ([window pattern](08_Window_Functions.md)).
 
 ---
 

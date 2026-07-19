@@ -91,7 +91,7 @@ That laziness is the single most important behavior to internalize: **transforma
 - **SparkSession vs SparkContext**: `SparkContext` (`spark.sparkContext`) is the older, lower-level entry point (RDDs); `SparkSession` wraps it plus SQL/catalog. New code touches SparkContext almost never.
 - **Spark Connect** (Spark 3.4+/Databricks serverless): your Python process becomes a thin client speaking gRPC to a remote driver — same API, but `sparkContext` and some RDD APIs are unavailable. If a notebook errors on `sparkContext`, you're probably on serverless.
 - **Configs have three timings**: cluster-startup configs (executor memory — can't change in session), session configs (`spark.conf.set` — shuffle partitions, timezone), and per-operation options. Setting a startup config from a notebook silently does nothing — a classic confusion.
-- **Set the timezone explicitly** (`spark.sql.session.timeZone`) in every production job — timestamp bugs from inherited cluster timezones are endemic ([why](../01_SQL/SQL_Data_Types.md)).
+- **Set the timezone explicitly** (`spark.sql.session.timeZone`) in every production job — timestamp bugs from inherited cluster timezones are endemic ([why](../01_SQL/03_SQL_Data_Types.md)).
 - Local `local[*]` uses threads, not processes — some cluster-only behaviors (serialization bugs, real shuffles across machines) won't reproduce locally. "Works on my laptop" is necessary, not sufficient ([testing](14_Performance_and_Best_Practices.md)).
 
 ## Checkpoint — you should now be able to

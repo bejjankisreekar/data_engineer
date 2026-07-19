@@ -2,7 +2,7 @@
 
 > Prev: [Window Functions](08_Window_Functions.md) · Next: [UDFs & Pandas](10_UDFs_and_Pandas_Integration.md)
 
-Real-world data is nested — API payloads, event streams, order-with-line-items documents ([JSON background](../02_File_formats/JSON.md)). PySpark handles nesting natively with three types: **struct** (named fields), **array** (ordered list), **map** (key→value).
+Real-world data is nested — API payloads, event streams, order-with-line-items documents ([JSON background](../02_File_formats/02_JSON.md)). PySpark handles nesting natively with three types: **struct** (named fields), **array** (ordered list), **map** (key→value).
 
 ```python
 order = spark.read.json(sc.parallelize(['''
@@ -113,11 +113,11 @@ These run at engine speed — reach for them before explode/collect and *long* b
 
 ### Flattening strategy for deep schemas
 
-For a 6-level-deep API payload, don't hand-write 40 selects — flatten programmatically (recursively walk `df.schema`, aliasing `a.b.c` → `a_b_c`), but **flatten to a declared depth, deliberately**: full auto-flattening of everything creates thousand-column tables nobody asked for ([gotcha](../02_File_formats/JSON.md)). Standard shape: promote the hot fields to columns, keep the remainder as one struct/variant column.
+For a 6-level-deep API payload, don't hand-write 40 selects — flatten programmatically (recursively walk `df.schema`, aliasing `a.b.c` → `a_b_c`), but **flatten to a declared depth, deliberately**: full auto-flattening of everything creates thousand-column tables nobody asked for ([gotcha](../02_File_formats/02_JSON.md)). Standard shape: promote the hot fields to columns, keep the remainder as one struct/variant column.
 
 ### VARIANT and schema drift
 
-Databricks' `VARIANT` type (DBR 15+) stores JSON semi-parsed with path access (`payload:device.os`) — the [hybrid pattern](../01_SQL/SQL_Data_Types.md): typed hot columns + variant long-tail, immune to producer drift. With files, Auto Loader's `schemaHints`/evolution handles additive drift at ingest ([reading file](04_Reading_and_Writing_Data.md)).
+Databricks' `VARIANT` type (DBR 15+) stores JSON semi-parsed with path access (`payload:device.os`) — the [hybrid pattern](../01_SQL/03_SQL_Data_Types.md): typed hot columns + variant long-tail, immune to producer drift. With files, Auto Loader's `schemaHints`/evolution handles additive drift at ingest ([reading file](04_Reading_and_Writing_Data.md)).
 
 ### Field-tested notes
 

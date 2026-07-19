@@ -2,7 +2,7 @@
 
 > Prev: [Column Operations](05_Column_Operations_and_Functions.md) · Next: [Joins](07_Joins.md)
 
-Same concepts as [SQL aggregation](../01_SQL/SQL_Aggregate_Functions.md) — `groupBy` = GROUP BY, and every SQL rule (null behavior, WHERE-vs-HAVING) carries over. What's new is the distributed cost model underneath.
+Same concepts as [SQL aggregation](../01_SQL/08_SQL_Aggregate_Functions.md) — `groupBy` = GROUP BY, and every SQL rule (null behavior, WHERE-vs-HAVING) carries over. What's new is the distributed cost model underneath.
 
 ---
 
@@ -42,7 +42,7 @@ F.sum(F.when(F.col("region")=="East", F.col("amount")).otherwise(0))   # conditi
 F.approx_count_distinct("user_id")   # HyperLogLog — big-data cardinality (~2% err)
 ```
 
-Nulls are ignored by aggregates exactly as in SQL — `F.count("col")` vs `F.count("*")` differ by the null count ([details](../01_SQL/SQL_Aggregate_Functions.md)).
+Nulls are ignored by aggregates exactly as in SQL — `F.count("col")` vs `F.count("*")` differ by the null count ([details](../01_SQL/08_SQL_Aggregate_Functions.md)).
 
 ---
 
@@ -66,7 +66,7 @@ sales.cube("region", "year").agg(F.sum("amount"))      # every combination
 .withColumn("is_total", F.grouping("store"))
 ```
 
-Same semantics as [SQL ROLLUP/CUBE](../01_SQL/SQL_Aggregate_Functions.md).
+Same semantics as [SQL ROLLUP/CUBE](../01_SQL/08_SQL_Aggregate_Functions.md).
 
 ### What actually happens: partial aggregation
 
@@ -76,12 +76,12 @@ Same semantics as [SQL ROLLUP/CUBE](../01_SQL/SQL_Aggregate_Functions.md).
 
 ## Level 3 — Pro corner
 
-- **Cost driver = number of distinct groups**, not table size: `groupBy("region")` (12 groups) is trivial at any scale; `groupBy("customer_id")` (500M groups) is a monster that may spill ([hash agg spills](../01_SQL/SQL_Aggregate_Functions.md)). Design metrics tables around group cardinality.
-- **countDistinct at scale**: exact distinct forces expensive shuffles and limits query shapes; `approx_count_distinct` for dashboards, exact only for reconciliation ([OLAP approximation](../00_Fundamentals/OLAP_Storage.md)).
+- **Cost driver = number of distinct groups**, not table size: `groupBy("region")` (12 groups) is trivial at any scale; `groupBy("customer_id")` (500M groups) is a monster that may spill ([hash agg spills](../01_SQL/08_SQL_Aggregate_Functions.md)). Design metrics tables around group cardinality.
+- **countDistinct at scale**: exact distinct forces expensive shuffles and limits query shapes; `approx_count_distinct` for dashboards, exact only for reconciliation ([OLAP approximation](../00_Fundamentals/02_OLAP_Storage.md)).
 - **`first()`/`last()` without ordering are nondeterministic across runs** — never build logic on them; use a [window + row_number](08_Window_Functions.md) for "latest per key."
 - **Skewed groups** (one key = 40% of rows) make one task the straggler — AQE mostly handles it; for extreme cases, two-phase salt-then-aggregate ([skew fixes](Spark_Processing.md)).
-- **Pre-aggregate before joins**: `orders.groupBy("cust").agg(...)` *then* join to customers ships far less than join-then-aggregate ([join grain](../01_SQL/SQL_Keys_and_Joins.md)) — the single most common query rewrite in tuning sessions.
-- **Aggregates as data-quality checks** — the [instrumentation habit](../01_SQL/SQL_Aggregate_Functions.md) in PySpark form:
+- **Pre-aggregate before joins**: `orders.groupBy("cust").agg(...)` *then* join to customers ships far less than join-then-aggregate ([join grain](../01_SQL/07_SQL_Keys_and_Joins.md)) — the single most common query rewrite in tuning sessions.
+- **Aggregates as data-quality checks** — the [instrumentation habit](../01_SQL/08_SQL_Aggregate_Functions.md) in PySpark form:
 
 ```python
 (df.groupBy("load_date").agg(
@@ -92,7 +92,7 @@ Same semantics as [SQL ROLLUP/CUBE](../01_SQL/SQL_Aggregate_Functions.md).
  ).show()
 ```
 
-- **Re-aggregatability**: store `SUM` and `COUNT` in summary tables, never `AVG` — averages of averages lie ([why](../01_SQL/SQL_Aggregate_Functions.md)).
+- **Re-aggregatability**: store `SUM` and `COUNT` in summary tables, never `AVG` — averages of averages lie ([why](../01_SQL/08_SQL_Aggregate_Functions.md)).
 
 ## Checkpoint
 

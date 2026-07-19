@@ -2,7 +2,7 @@
 
 > Prev: [Delta Lake](12_Delta_Lake_with_PySpark.md) · Next: [Performance & Best Practices](14_Performance_and_Best_Practices.md)
 
-Structured Streaming's core idea: **a stream is an unbounded table**, and your existing DataFrame code runs on it incrementally. Same API, same optimizer — `read` becomes `readStream`, `write` becomes `writeStream`, and Spark keeps processing new data forever ([why this unified batch and streaming](../00_Fundamentals/Big_Data_Evolution_Timeline.md)).
+Structured Streaming's core idea: **a stream is an unbounded table**, and your existing DataFrame code runs on it incrementally. Same API, same optimizer — `read` becomes `readStream`, `write` becomes `writeStream`, and Spark keeps processing new data forever ([why this unified batch and streaming](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)).
 
 ---
 
@@ -100,13 +100,13 @@ def upsert(batch_df, batch_id):
 
 ## Level 3 — Pro corner
 
-- **Exactly-once, spelled out**: replayable source (Kafka offsets / file lists) + checkpoint (what's been read) + transactional sink (Delta) = end-to-end exactly-once *for the default single-sink path*. Every deviation (foreachBatch to two places, non-transactional sinks) drops you to at-least-once — design [idempotent](../04_ETL_ELT/ETL_vs_ELT.md) anyway.
+- **Exactly-once, spelled out**: replayable source (Kafka offsets / file lists) + checkpoint (what's been read) + transactional sink (Delta) = end-to-end exactly-once *for the default single-sink path*. Every deviation (foreachBatch to two places, non-transactional sinks) drops you to at-least-once — design [idempotent](../04_ETL_ELT/01_ETL_vs_ELT.md) anyway.
 - **Checkpoints are married to the query's logic**: changing the aggregation/schema/key of a stateful query makes the old checkpoint unusable (or wrong). Plan "how do we evolve this stream" *before* production: usually new checkpoint + backfill, or foreachBatch with versioned logic.
 - **Monitoring**: `query.lastProgress` (per-batch JSON: input rows, duration, state size, watermark lag) — ship it to logs/metrics; the two alarms that matter are **backlog growth** (processing slower than arrival) and **state size growth** (watermark not dropping state — check event-time skew or a stuck source partition).
 - **Stateful skew**: `groupBy(user_id)` state with one bot user = one giant state partition — same [skew playbook](Spark_Processing.md), plus consider whether the key needs sub-bucketing.
 - **Stream-stream joins** exist (both sides watermarked, bounded buffers) but are the hardest feature to operate — prefer stream-static joins (stream × Delta dim, refreshed by its own pipeline) whenever the use case allows; it's also 90% of real needs.
 - **DLT / Lakeflow Declarative Pipelines**: Databricks' managed layer over all of this (declare tables + expectations; it owns checkpoints, retries, compaction). Worth adopting once hand-rolled streams multiply — concepts here transfer 1:1.
-- Small files: streaming's [signature failure mode](12_Delta_Lake_with_PySpark.md) — enable auto-compaction or scheduled OPTIMIZE from day one, and keep checkpoint folders out of lifecycle/tiering policies ([storage gotcha](../03_Data_Storage/Azure_Data_Lake_Storage.md)).
+- Small files: streaming's [signature failure mode](12_Delta_Lake_with_PySpark.md) — enable auto-compaction or scheduled OPTIMIZE from day one, and keep checkpoint folders out of lifecycle/tiering policies ([storage gotcha](../03_Data_Storage/03_Azure_Data_Lake_Storage.md)).
 
 ## Checkpoint
 

@@ -20,7 +20,7 @@ Jumping to step 5 ("just use a bigger cluster") without steps 1–2 is the defin
 
 ### The high-yield fixes, ranked by how often they're the answer
 
-1. **Read less**: filter early on partition/cluster columns, select only needed columns, [sargable predicates](../01_SQL/SQL_DQL.md) so [Parquet pushdown](../02_File_formats/Parquet.md) works.
+1. **Read less**: filter early on partition/cluster columns, select only needed columns, [sargable predicates](../01_SQL/06_SQL_DQL.md) so [Parquet pushdown](../02_File_formats/05_Parquet.md) works.
 2. **Broadcast the small side** of joins ([file 07](07_Joins.md)) — verify in the plan.
 3. **Fix skew** — AQE first, then salting/hot-key handling ([file 07](07_Joins.md), [Spark_Processing](Spark_Processing.md)).
 4. **Compact small files** — `OPTIMIZE`, sane writer partitioning ([files 04](04_Reading_and_Writing_Data.md), [12](12_Delta_Lake_with_PySpark.md)).
@@ -58,7 +58,7 @@ def test_clean_orders_drops_null_ids(spark):
     assert dict(out.dtypes)["amount"] == "decimal(18,4)"
 ```
 
-Unit-test transformations with tiny inline DataFrames; integration-test pipelines against sample files; data-quality-test *production data* with [expectations at the boundaries](../04_ETL_ELT/ETL_vs_ELT.md). `pyspark` installs from pip — CI runs all of this on a plain build agent.
+Unit-test transformations with tiny inline DataFrames; integration-test pipelines against sample files; data-quality-test *production data* with [expectations at the boundaries](../04_ETL_ELT/01_ETL_vs_ELT.md). `pyspark` installs from pip — CI runs all of this on a plain build agent.
 
 ### Parameterize environment, never hardcode it
 
@@ -67,7 +67,7 @@ Catalog/schema/paths come from job parameters or config (`dev` vs `prod` — [na
 ### Make every job idempotent — the checklist
 
 - Write with MERGE-by-key or `replaceWhere`-scoped overwrite, never blind append ([files 12](12_Delta_Lake_with_PySpark.md), [04](04_Reading_and_Writing_Data.md)).
-- Watermarks/state committed atomically with the data ([ETL gotchas](../04_ETL_ELT/ETL_vs_ELT.md)).
+- Watermarks/state committed atomically with the data ([ETL gotchas](../04_ETL_ELT/01_ETL_vs_ELT.md)).
 - Ask of every job: *"what happens if this runs twice?"* — if the answer is "duplicates," it's not done.
 
 ---
@@ -92,17 +92,17 @@ Catalog/schema/paths come from job parameters or config (`dev` vs `prod` — [na
 
 ### Cost habits (Databricks specifics)
 
-Job clusters + auto-terminate + spot workers as the default ([cost levers](Why_Spark_Why_Databricks.md)); Photon for SQL-shaped work, not UDF-heavy work; `availableNow` triggers instead of 24/7 streams unless latency pays for itself ([13](13_Structured_Streaming.md)); tag jobs and review the cost dashboard monthly — a data platform's bill is an engineering artifact, not an act of God ([FinOps](../05_cloud/Public_Private_Hybrid_Cloud.md)).
+Job clusters + auto-terminate + spot workers as the default ([cost levers](Why_Spark_Why_Databricks.md)); Photon for SQL-shaped work, not UDF-heavy work; `availableNow` triggers instead of 24/7 streams unless latency pays for itself ([13](13_Structured_Streaming.md)); tag jobs and review the cost dashboard monthly — a data platform's bill is an engineering artifact, not an act of God ([FinOps](../05_cloud/01_Public_Private_Hybrid_Cloud.md)).
 
 ### The senior checklist for any new pipeline
 
-1. Contract: schema declared, drift policy chosen, owner named ([03](03_Schemas_and_Data_Types.md), [JSON drift](../02_File_formats/JSON.md)).
+1. Contract: schema declared, drift policy chosen, owner named ([03](03_Schemas_and_Data_Types.md), [JSON drift](../02_File_formats/02_JSON.md)).
 2. Idempotent writes + retry-safe orchestration.
-3. Quality gates with quarantine + alert, not silent drops ([ETL](../04_ETL_ELT/ETL_vs_ELT.md)).
+3. Quality gates with quarantine + alert, not silent drops ([ETL](../04_ETL_ELT/01_ETL_vs_ELT.md)).
 4. Reconciliation counts logged every run ([06](06_Aggregations_and_Grouping.md)).
 5. OPTIMIZE/VACUUM/retention scheduled from day one ([12](12_Delta_Lake_with_PySpark.md)).
 6. Runbook: what to do when it fails at 3am — written by the person who built it.
-7. And the [pre-question](../00_Fundamentals/Distributed_Computing.md): does this workload need Spark at all?
+7. And the [pre-question](../00_Fundamentals/03_Distributed_Computing.md): does this workload need Spark at all?
 
 ## Checkpoint (series final)
 

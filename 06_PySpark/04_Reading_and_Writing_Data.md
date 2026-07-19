@@ -2,7 +2,7 @@
 
 > Prev: [Schemas & Data Types](03_Schemas_and_Data_Types.md) · Next: [Column Operations](05_Column_Operations_and_Functions.md)
 
-Spark computes; storage stores ([the division](What_Is_Apache_Spark.md)). This file is the bridge: `spark.read` in, `df.write` out — across every format in the [02_File_formats folder](../02_File_formats/File_Format_Comparison.md).
+Spark computes; storage stores ([the division](What_Is_Apache_Spark.md)). This file is the bridge: `spark.read` in, `df.write` out — across every format in the [02_File_formats folder](../02_File_formats/06_File_Format_Comparison.md).
 
 ---
 
@@ -19,7 +19,7 @@ df = spark.read.format("delta").load("path/delta_table/")              # Delta
 df = spark.read.table("catalog.schema.orders")                         # catalog table (Databricks)
 ```
 
-Paths can be a file, a **folder** (reads every file inside), or a glob (`"path/2026-07-*.csv"`). On Azure, paths look like `abfss://container@account.dfs.core.windows.net/folder/` ([ADLS](../03_Data_Storage/Azure_Data_Lake_Storage.md)).
+Paths can be a file, a **folder** (reads every file inside), or a glob (`"path/2026-07-*.csv"`). On Azure, paths look like `abfss://container@account.dfs.core.windows.net/folder/` ([ADLS](../03_Data_Storage/03_Azure_Data_Lake_Storage.md)).
 
 ### The options you'll actually use
 
@@ -34,7 +34,7 @@ Paths can be a file, a **folder** (reads every file inside), or a glob (`"path/2
    .load("abfss://raw@lake.dfs.core.windows.net/sales/"))
 ```
 
-The full CSV/JSON defense checklist lives in [CSV.md](../02_File_formats/CSV.md) / [JSON.md](../02_File_formats/JSON.md).
+The full CSV/JSON defense checklist lives in [01_CSV.md](../02_File_formats/01_CSV.md) / [02_JSON.md](../02_File_formats/02_JSON.md).
 
 ## Level 1 — Writing
 
@@ -65,7 +65,7 @@ Note: Spark writes a *folder* of part-files, never one file — that's the [para
 # → path/year=2026/month=07/part-....parquet
 ```
 
-Readers filtering on `year`/`month` skip whole folders. Only partition **low-cardinality** columns ([why](../00_Fundamentals/OLAP_Storage.md)) — date parts yes, customer_id never.
+Readers filtering on `year`/`month` skip whole folders. Only partition **low-cardinality** columns ([why](../00_Fundamentals/02_OLAP_Storage.md)) — date parts yes, customer_id never.
 
 ### Controlling output file count
 
@@ -90,7 +90,7 @@ jdbc_df = (spark.read.format("jdbc")
     .load())
 ```
 
-Without `partitionColumn/numPartitions`, JDBC reads are **single-threaded** — the most common "why is extraction slow" answer. Bound `numPartitions` respectfully ([don't DoS the source](../01_SQL/SQL_Database.md)).
+Without `partitionColumn/numPartitions`, JDBC reads are **single-threaded** — the most common "why is extraction slow" answer. Bound `numPartitions` respectfully ([don't DoS the source](../01_SQL/02_SQL_Database.md)).
 
 ### Incremental file ingestion (Databricks Auto Loader)
 
@@ -108,10 +108,10 @@ Processes only *new* files, tracks state, handles schema evolution — the produ
 ## Level 3 — Pro corner
 
 - **Plain `overwrite` to a path is not atomic** for readers on non-Delta formats — a reader mid-crash sees half a folder. Delta makes overwrite transactional; that alone justifies it as your default format ([12](12_Delta_Lake_with_PySpark.md)).
-- **Scoped overwrite** beats full overwrite for daily loads: `.option("replaceWhere", "date = '2026-07-19'")` (Delta) rewrites one partition atomically and is naturally [idempotent](../04_ETL_ELT/ETL_vs_ELT.md).
-- **Never hardcode credentials** — Databricks secret scopes / Key Vault (`dbutils.secrets.get`), or better, storage access via managed identity/UC so code has *no* secrets ([identity](../05_cloud/SaaS_PaaS_IaaS.md)).
-- **Reading fewer bytes beats every other optimization**: select columns early, filter on partition columns in the *same* expression form they're stored (`F.col("year") == 2026`, not a cast of it), and let [Parquet pushdown](../02_File_formats/Parquet.md) work.
-- `badRecordsPath` (Databricks) / `columnNameOfCorruptRecord` capture unparseable rows to a quarantine location instead of dropping them — wire the quarantine count to an alert ([boundary validation](../02_File_formats/File_Format_Comparison.md)).
+- **Scoped overwrite** beats full overwrite for daily loads: `.option("replaceWhere", "date = '2026-07-19'")` (Delta) rewrites one partition atomically and is naturally [idempotent](../04_ETL_ELT/01_ETL_vs_ELT.md).
+- **Never hardcode credentials** — Databricks secret scopes / Key Vault (`dbutils.secrets.get`), or better, storage access via managed identity/UC so code has *no* secrets ([identity](../05_cloud/02_SaaS_PaaS_IaaS.md)).
+- **Reading fewer bytes beats every other optimization**: select columns early, filter on partition columns in the *same* expression form they're stored (`F.col("year") == 2026`, not a cast of it), and let [Parquet pushdown](../02_File_formats/05_Parquet.md) work.
+- `badRecordsPath` (Databricks) / `columnNameOfCorruptRecord` capture unparseable rows to a quarantine location instead of dropping them — wire the quarantine count to an alert ([boundary validation](../02_File_formats/06_File_Format_Comparison.md)).
 - **Row-count reconciliation on every boundary write**: `written = df.count()` is a job of its own — prefer Delta's commit metrics (`DESCRIBE HISTORY` operationMetrics) or streaming query progress for free counts.
 
 ## Checkpoint

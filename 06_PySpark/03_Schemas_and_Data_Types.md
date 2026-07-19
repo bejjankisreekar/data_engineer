@@ -2,7 +2,7 @@
 
 > Prev: [DataFrame Basics](02_DataFrame_Basics.md) · Next: [Reading & Writing Data](04_Reading_and_Writing_Data.md)
 
-A schema is the DataFrame's contract: column names, types, and nullability. In production PySpark, **you declare schemas; you don't let Spark guess** ([why inference is dangerous](../02_File_formats/CSV.md)).
+A schema is the DataFrame's contract: column names, types, and nullability. In production PySpark, **you declare schemas; you don't let Spark guess** ([why inference is dangerous](../02_File_formats/01_CSV.md)).
 
 ---
 
@@ -25,7 +25,7 @@ The types you'll use constantly (from `pyspark.sql.types`):
 | `StringType()` | text | VARCHAR |
 | `IntegerType()` / `LongType()` | 32-bit / 64-bit ints | INT / BIGINT |
 | `DoubleType()` / `FloatType()` | floating point | FLOAT |
-| `DecimalType(10,2)` | exact decimals — **money** | DECIMAL ([why not float](../01_SQL/SQL_Data_Types.md)) |
+| `DecimalType(10,2)` | exact decimals — **money** | DECIMAL ([why not float](../01_SQL/03_SQL_Data_Types.md)) |
 | `BooleanType()` | True/False | BIT/BOOLEAN |
 | `DateType()` | date only | DATE |
 | `TimestampType()` | date+time (session-timezone-aware) | DATETIME2 |
@@ -109,7 +109,7 @@ bad        = typed.filter(F.col("amount").isNotNull() & F.col("amount_d").isNull
 
 ### Schema drift and evolution
 
-At ingestion boundaries, compare incoming vs expected schema and act deliberately ([drift policy](../02_File_formats/JSON.md)):
+At ingestion boundaries, compare incoming vs expected schema and act deliberately ([drift policy](../02_File_formats/02_JSON.md)):
 
 ```python
 expected = set(emp_schema.fieldNames())
@@ -123,7 +123,7 @@ Delta's `mergeSchema`/`overwriteSchema` and Auto Loader's schema evolution forma
 ### Field-tested notes
 
 - **Decimal precision math**: operations widen precision (`DECIMAL(10,2) * DECIMAL(10,2)` → bigger) and can overflow to null at the 38-digit cap — watch multi-step money math; round intermediates deliberately.
-- Long chains of Python ints default to `LongType`; JDBC targets expecting INT will need casts on write ([type mapping tax](../01_SQL/SQL_Data_Types.md)).
+- Long chains of Python ints default to `LongType`; JDBC targets expecting INT will need casts on write ([type mapping tax](../01_SQL/03_SQL_Data_Types.md)).
 - Reuse one schema definition module across jobs (`schemas.py`) — ten jobs each hand-typing the "same" schema *will* drift.
 
 ## Checkpoint

@@ -2,7 +2,7 @@
 
 ## The big picture
 
-A Spark application follows the classic [master–worker pattern](../00_Fundamentals/Master_Slave_Architecture.md):
+A Spark application follows the classic [master–worker pattern](../00_Fundamentals/04_Master_Slave_Architecture.md):
 
 ```
                     ┌───────────────────────┐
@@ -45,7 +45,7 @@ JVM processes on worker nodes. Each executor has a fixed number of **cores** and
 - Holds cached DataFrames in memory (`df.cache()`)
 - Reports status/heartbeats to the driver
 
-If an executor dies, the driver simply reruns its tasks elsewhere — [fault tolerance](../00_Fundamentals/Distributed_Computing.md) in action.
+If an executor dies, the driver simply reruns its tasks elsewhere — [fault tolerance](../00_Fundamentals/03_Distributed_Computing.md) in action.
 
 ### Cluster Manager
 
@@ -54,7 +54,7 @@ Decides which physical machines provide the executors. Options:
 | Cluster manager | Where you see it |
 |---|---|
 | **Standalone** | Simple built-in option |
-| **YARN** | [Hadoop clusters](../00_Fundamentals/Hadoop_Architecture.md) |
+| **YARN** | [Hadoop clusters](../00_Fundamentals/05_Hadoop_Architecture.md) |
 | **Kubernetes** | Modern container platforms |
 | **Databricks** | Manages all this for you — you just pick cluster size |
 
@@ -89,7 +89,7 @@ Input: a file that splits into **48 partitions**.
 - Stage runs 48 tasks; 12 run at a time → 4 "waves" of tasks.
 - Want it faster? More executors (more cores) → more tasks in parallel.
 
-This is [scale-out](../00_Fundamentals/Distributed_Computing.md) made concrete: performance is roughly `partitions processed in parallel = total executor cores`.
+This is [scale-out](../00_Fundamentals/03_Distributed_Computing.md) made concrete: performance is roughly `partitions processed in parallel = total executor cores`.
 
 ---
 
@@ -178,7 +178,7 @@ Pro reflex on any slow job: UI → find the dominant stage → look at its shuff
 
 - **Task fails** → retried (default 4×) on another executor; only then the stage fails.
 - **Executor dies** → its tasks rerun elsewhere; lost cached partitions recompute via lineage; lost *shuffle output* forces partial stage re-execution.
-- **Driver dies** → application over. The driver is the [master and SPOF](../00_Fundamentals/Master_Slave_Architecture.md); production HA = orchestrator retries + **idempotent jobs**, not driver resurrection.
+- **Driver dies** → application over. The driver is the [master and SPOF](../00_Fundamentals/04_Master_Slave_Architecture.md); production HA = orchestrator retries + **idempotent jobs**, not driver resurrection.
 - **`FetchFailedException`** in logs = an executor asked a dead peer for shuffle data — the visible symptom of executor churn (spot VM eviction, OOM kills).
 
 ## How Databricks maps onto this architecture
@@ -193,7 +193,7 @@ Pro reflex on any slow job: UI → find the dominant stage → look at its shuff
 - **Everything serialized between driver and executors must be picklable/serializable** — a lambda closing over a DB connection object fails at run time, on the cluster, not on your laptop.
 - Too-large broadcast (default threshold 10 MB, sometimes raised to GBs) can OOM *every* executor simultaneously — the failure looks like a cluster-wide crash.
 - One giant executor per node ≠ faster: GC pauses scale superlinearly with heap; several mid-size executors usually beat one 200 GB monster.
-- Logs for a dead executor live on that node — centralize (cluster log delivery to [ADLS](../03_Data_Storage/Azure_Data_Lake_Storage.md)) or the evidence disappears with the VM.
+- Logs for a dead executor live on that node — centralize (cluster log delivery to [ADLS](../03_Data_Storage/03_Azure_Data_Lake_Storage.md)) or the evidence disappears with the VM.
 
 ## Interview-grade Q&A
 

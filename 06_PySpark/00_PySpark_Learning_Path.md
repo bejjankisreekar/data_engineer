@@ -42,8 +42,8 @@ File 15 (RDDs) sits after the main series on purpose — it's the "under the hoo
 ## Prerequisites
 
 - Basic Python (variables, functions, lists/dicts, imports)
-- Basic SQL ([01_SQL folder](../01_SQL/What_is_SQL.md)) — PySpark constantly mirrors SQL concepts
-- The [OLTP](../00_Fundamentals/OLTP_Storage.md)/[OLAP](../00_Fundamentals/OLAP_Storage.md) distinction helps everything make sense
+- Basic SQL ([01_SQL folder](../01_SQL/01_What_is_SQL.md)) — PySpark constantly mirrors SQL concepts
+- The [OLTP](../00_Fundamentals/01_OLTP_Storage.md)/[OLAP](../00_Fundamentals/02_OLAP_Storage.md) distinction helps everything make sense
 
 ## The sample data used throughout
 

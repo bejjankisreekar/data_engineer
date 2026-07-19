@@ -2,7 +2,7 @@
 
 > Prev: [Joins](07_Joins.md) · Next: [Complex Types & JSON](09_Complex_Types_and_JSON.md)
 
-A window function computes a value for **every row** using a *window* of related rows — without collapsing them like [groupBy](06_Aggregations_and_Grouping.md) does. Ranking, "latest per key," running totals, and change-over-time all live here. (SQL theory: [window coverage in SQL_DQL](../01_SQL/SQL_DQL.md).)
+A window function computes a value for **every row** using a *window* of related rows — without collapsing them like [groupBy](06_Aggregations_and_Grouping.md) does. Ranking, "latest per key," running totals, and change-over-time all live here. (SQL theory: [window coverage in SQL_DQL](../01_SQL/06_SQL_DQL.md).)
 
 ```python
 from pyspark.sql import functions as F
@@ -80,7 +80,7 @@ w_30d = (Window.partitionBy("cust").orderBy(F.col("ts").cast("long"))
 
 ### The dedupe pattern (memorize this one)
 
-"Keep the latest version of each key" — the standard CDC/staging cleanup ([why it's needed](../04_ETL_ELT/ETL_vs_ELT.md)):
+"Keep the latest version of each key" — the standard CDC/staging cleanup ([why it's needed](../04_ETL_ELT/01_ETL_vs_ELT.md)):
 
 ```python
 w = Window.partitionBy("business_key").orderBy(F.desc("updated_at"), F.desc("_ingest_file"))
@@ -94,11 +94,11 @@ Note the **tiebreaker column** in orderBy — without it, two rows with the same
 
 ## Level 3 — Pro corner
 
-- **`partitionBy` is mandatory in spirit**: a window without it pulls the *entire dataset into one task* — the silent single-node bottleneck ([gotcha](../01_SQL/SQL_DQL.md)). If you truly need a global order (global row numbers), question the requirement first; `monotonically_increasing_id()` gives unique-but-not-sequential ids without the collapse.
+- **`partitionBy` is mandatory in spirit**: a window without it pulls the *entire dataset into one task* — the silent single-node bottleneck ([gotcha](../01_SQL/06_SQL_DQL.md)). If you truly need a global order (global row numbers), question the requirement first; `monotonically_increasing_id()` gives unique-but-not-sequential ids without the collapse.
 - **Windows are shuffles**: each distinct `partitionBy` spec = one shuffle by those keys. Multiple window columns *sharing the same window spec* reuse one shuffle — define `w` once and reuse it; five different specs = five shuffles.
 - **Windows vs groupBy+join**: "each row + its group average" via window beats aggregate-then-join-back (one shuffle vs two, no duplicate-column pain). Conversely, if you only need the collapsed result, `groupBy` is cheaper than window+distinct.
 - **Skew applies**: a hot partition key (one customer with 100M events) makes one window task huge — same diagnosis and fixes as [join skew](Spark_Processing.md).
-- **Sessionization** — the advanced interview classic (gaps-and-islands, [SQL version](../01_SQL/SQL_DQL.md)):
+- **Sessionization** — the advanced interview classic (gaps-and-islands, [SQL version](../01_SQL/06_SQL_DQL.md)):
 
 ```python
 w = Window.partitionBy("user").orderBy("ts")

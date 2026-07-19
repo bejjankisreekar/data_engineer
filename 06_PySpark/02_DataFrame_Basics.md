@@ -164,7 +164,7 @@ emp.withColumns({"annual": F.col("salary")*12, "tax": F.col("salary")*0.1})   # 
 - **`orderBy` on big data is expensive** (global sort = shuffle to one ordering). Sort at the end, on reduced data — or not at all if the consumer (BI tool, downstream table) doesn't need it.
 - **`distinct()` is a shuffle** of every selected column; `dropDuplicates(["id"])` on a key subset is usually what you actually mean — and a window-dedupe is more controllable still ([pattern](08_Window_Functions.md)).
 - **`limit(n)` then `collect()`** is the safe inspection pair; `show()` internally does `limit(20)` — that's why it's always fast even on huge tables.
-- Column name hygiene: spaces/dots in names (common from Excel [CSVs](../02_File_formats/CSV.md)) break attribute access and complicate everything — `withColumnRenamed` or a cleanup loop over `df.columns` first thing after ingest.
+- Column name hygiene: spaces/dots in names (common from Excel [CSVs](../02_File_formats/01_CSV.md)) break attribute access and complicate everything — `withColumnRenamed` or a cleanup loop over `df.columns` first thing after ingest.
 
 ## Checkpoint
 

@@ -5,8 +5,8 @@
 **Apache Spark is an open-source, distributed, in-memory data processing engine.** Unpack that word by word:
 
 - **Open-source** — free, maintained by the Apache Software Foundation, huge community.
-- **Distributed** — it splits work across a [cluster of machines](../00_Fundamentals/Distributed_Computing.md) so it can handle data far bigger than one machine.
-- **In-memory** — it keeps intermediate data in RAM instead of writing to disk between steps (the key speed advantage over [Hadoop MapReduce](../00_Fundamentals/Hadoop_Architecture.md)).
+- **Distributed** — it splits work across a [cluster of machines](../00_Fundamentals/03_Distributed_Computing.md) so it can handle data far bigger than one machine.
+- **In-memory** — it keeps intermediate data in RAM instead of writing to disk between steps (the key speed advantage over [Hadoop MapReduce](../00_Fundamentals/05_Hadoop_Architecture.md)).
 - **Processing engine** — it *computes*; it does **not store** data. Spark reads from storage (Azure Data Lake, S3, databases, Kafka), transforms the data, and writes results back out.
 
 Born at UC Berkeley's AMPLab in 2009, became a top-level Apache project in 2014, and is today the de facto standard engine for big data — the engine inside Databricks, Microsoft Fabric, AWS Glue, and more.
@@ -89,7 +89,7 @@ Data Lake (ADLS / S3 — storage)
 Warehouse / Delta tables / ML models / Dashboards
 ```
 
-For the history of how we got here, see [Big_Data_Evolution_Timeline.md](../00_Fundamentals/Big_Data_Evolution_Timeline.md).
+For the history of how we got here, see [06_Big_Data_Evolution_Timeline.md](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md).
 
 ---
 ---
@@ -139,7 +139,7 @@ agg = stream.groupBy(window("timestamp", "5 minutes"), "region").count()
     .outputMode("append").start())
 ```
 
-Micro-batches by default (~100ms+ latency), **checkpointing** for failure recovery, **watermarks** to bound late-data state. One mental model, batch and streaming — the reason Lambda architecture died ([evolution timeline](../00_Fundamentals/Big_Data_Evolution_Timeline.md)).
+Micro-batches by default (~100ms+ latency), **checkpointing** for failure recovery, **watermarks** to bound late-data state. One mental model, batch and streaming — the reason Lambda architecture died ([evolution timeline](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)).
 
 ---
 
@@ -159,7 +159,7 @@ Micro-batches by default (~100ms+ latency), **checkpointing** for failure recove
 | Data fits on one machine (< ~100 GB) | DuckDB / Polars / pandas — faster *and* ~free |
 | Sub-second query latency for apps | A database/warehouse endpoint, not a Spark job |
 | Millisecond event-at-a-time streaming | Flink (true per-event processing) |
-| Simple EL copy without transforms | [ADF](../04_ETL_ELT/Azure_Data_Factory.md) copy activity |
+| Simple EL copy without transforms | [ADF](../04_ETL_ELT/02_Azure_Data_Factory.md) copy activity |
 
 Cluster startup alone (minutes) can exceed the total runtime of a DuckDB solution. Senior engineers are distinguished less by Spark tricks than by **not reaching for Spark reflexively**.
 
@@ -176,7 +176,7 @@ The four things to scan for in a physical plan:
 
 - `.collect()` on big data = driver OOM. Use `.limit()`, write to a table, or aggregate first.
 - `df.count()` "just to check" triggers a full job — in production code, count once and reuse, or rely on written-output metrics.
-- **Schema inference on JSON/CSV reads the data twice** and guesses badly at scale — always pass an explicit schema in production ([CSV](../02_File_formats/CSV.md), [JSON](../02_File_formats/JSON.md)).
+- **Schema inference on JSON/CSV reads the data twice** and guesses badly at scale — always pass an explicit schema in production ([CSV](../02_File_formats/01_CSV.md), [JSON](../02_File_formats/02_JSON.md)).
 - Notebook state lies: a re-run cell may reference a stale cached DataFrame. Restarting a cluster "fixing" the bug usually means hidden state, not magic.
 
 ## Interview-grade Q&A

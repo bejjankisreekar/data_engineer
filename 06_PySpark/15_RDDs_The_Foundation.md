@@ -77,7 +77,7 @@ word_counts.collect()
 # [('the', 3), ('quick', 1), ('brown', 1), ('fox', 2), ('jumps', 1), ('dog', 1), ('sleeps', 1)]
 ```
 
-This exact three-line shape is literally what [MapReduce](../00_Fundamentals/Hadoop_Architecture.md) automated, and it's why Spark's RDD API has "map" and "reduce" baked into its vocabulary — RDDs were Spark's answer to MapReduce, kept in memory instead of round-tripping to disk every stage.
+This exact three-line shape is literally what [MapReduce](../00_Fundamentals/05_Hadoop_Architecture.md) automated, and it's why Spark's RDD API has "map" and "reduce" baked into its vocabulary — RDDs were Spark's answer to MapReduce, kept in memory instead of round-tripping to disk every stage.
 
 ---
 
@@ -167,7 +167,7 @@ rdd = spark.sparkContext.textFile("data.txt").map(parse).filter(is_valid)
 rdd.toDebugString()      # prints the lineage graph — every stage this RDD depends on
 ```
 
-This is the mechanical reason Spark needs no replication layer of its own the way [HDFS](../00_Fundamentals/Hadoop_Architecture.md) does — fault tolerance is *recomputation from a recipe*, not *duplication of the dish*. It's cheap until the lineage chain gets very long (hundreds of chained transformations before any action) — at which point recovery itself gets expensive, which is exactly why `checkpoint()` exists: it writes the RDD to reliable storage and **truncates the lineage**, so recovery never has to replay more than one step.
+This is the mechanical reason Spark needs no replication layer of its own the way [HDFS](../00_Fundamentals/05_Hadoop_Architecture.md) does — fault tolerance is *recomputation from a recipe*, not *duplication of the dish*. It's cheap until the lineage chain gets very long (hundreds of chained transformations before any action) — at which point recovery itself gets expensive, which is exactly why `checkpoint()` exists: it writes the RDD to reliable storage and **truncates the lineage**, so recovery never has to replay more than one step.
 
 ```python
 spark.sparkContext.setCheckpointDir("path/checkpoints/")

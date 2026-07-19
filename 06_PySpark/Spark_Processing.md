@@ -43,7 +43,7 @@ df3.show()                            # NOW the whole pipeline runs
 
 Spark waits until an action so it can see the **entire plan** and optimize it before running:
 
-- **Predicate pushdown** — if you filter after reading a [Parquet](../02_File_formats/Parquet.md) file, Spark pushes the filter *into the read* and skips whole files/row-groups.
+- **Predicate pushdown** — if you filter after reading a [Parquet](../02_File_formats/05_Parquet.md) file, Spark pushes the filter *into the read* and skips whole files/row-groups.
 - **Column pruning** — reads only the columns you actually use.
 - **Plan rewriting** — the **Catalyst optimizer** reorders/merges operations; the **Tungsten** engine generates efficient bytecode.
 
@@ -109,7 +109,7 @@ Execution: **1 job → 2 stages** (split at the groupBy shuffle) **→ one task 
 
 ## Quick answers for interviews
 
-- *Why is Spark fast?* In-memory processing + lazy evaluation with whole-plan optimization + massive parallelism. (vs [MapReduce](../00_Fundamentals/Hadoop_Architecture.md) writing to disk every stage.)
+- *Why is Spark fast?* In-memory processing + lazy evaluation with whole-plan optimization + massive parallelism. (vs [MapReduce](../00_Fundamentals/05_Hadoop_Architecture.md) writing to disk every stage.)
 - *What triggers execution?* Only actions.
 - *What's a shuffle and why care?* Network redistribution of data by key; the most expensive operation — it creates stage boundaries.
 - *Difference between `repartition` and `coalesce`?* repartition shuffles to any number of partitions; coalesce only merges down, avoiding a shuffle.
@@ -174,7 +174,7 @@ You still set an upper bound (`spark.sql.shuffle.partitions`) — AQE only merge
 ## Writing well — the output side of processing
 
 - **Files:** aim 100 MB–1 GB each. `df.repartition(n)` before write controls the count; `coalesce(1)` to "make one CSV" also makes *one task* write it — fine for samples, terrible for TBs.
-- **Partitioned writes:** `df.write.partitionBy("year","month")` = pruning for readers; never partition by high-cardinality columns ([OLAP physical design](../00_Fundamentals/OLAP_Storage.md)).
+- **Partitioned writes:** `df.write.partitionBy("year","month")` = pruning for readers; never partition by high-cardinality columns ([OLAP physical design](../00_Fundamentals/02_OLAP_Storage.md)).
 - **Save modes:** `append` / `overwrite` / `errorifexists`; with Delta, prefer `MERGE` for upserts and `replaceWhere` for partition-scoped overwrites.
 - Delta maintenance: `OPTIMIZE` (compact small files) + `ZORDER BY (high_cardinality_col)` (co-locate for data skipping), `VACUUM` (purge old versions).
 
@@ -215,7 +215,7 @@ Tasks retry; stages replay; jobs re-run on schedule. Every write path must toler
 - `dropDuplicates()` is a full shuffle of everything — dedupe within partitions or via window-rank on keys when possible.
 - Window functions without `PARTITION BY` pull the entire dataset into **one partition** — the silent single-task killer.
 - `count()` on a Delta table is metadata-fast, but `count()` mid-plan still materializes the plan — cache first if you must count *and* proceed.
-- Timezones: Spark session timezone silently rewrites timestamps on read/write — pin `spark.sql.session.timeZone` and store UTC ([data type pitfalls](../01_SQL/SQL_Data_Types.md)).
+- Timezones: Spark session timezone silently rewrites timestamps on read/write — pin `spark.sql.session.timeZone` and store UTC ([data type pitfalls](../01_SQL/03_SQL_Data_Types.md)).
 
 ## Interview-grade Q&A
 

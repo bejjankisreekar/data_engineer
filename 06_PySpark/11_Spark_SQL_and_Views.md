@@ -2,7 +2,7 @@
 
 > Prev: [UDFs & Pandas](10_UDFs_and_Pandas_Integration.md) · Next: [Delta Lake](12_Delta_Lake_with_PySpark.md)
 
-Everything in this series has a SQL spelling. `spark.sql("...")` and the DataFrame API compile to the **same plans** through the same optimizer ([Catalyst](What_Is_Apache_Spark.md)) — so the choice is readability and team skills, never performance. Your [entire 01_SQL folder](../01_SQL/What_is_SQL.md) applies verbatim here.
+Everything in this series has a SQL spelling. `spark.sql("...")` and the DataFrame API compile to the **same plans** through the same optimizer ([Catalyst](What_Is_Apache_Spark.md)) — so the choice is readability and team skills, never performance. Your [entire 01_SQL folder](../01_SQL/01_What_is_SQL.md) applies verbatim here.
 
 ---
 
@@ -24,9 +24,9 @@ result = spark.sql("""
 result.filter(F.col("avg_salary") > 60000).show()
 ```
 
-- **Temp view** — session-scoped name for a DataFrame; vanishes with the session; no data copied (it's a named [plan, like a SQL view](../01_SQL/SQL_Views.md)).
+- **Temp view** — session-scoped name for a DataFrame; vanishes with the session; no data copied (it's a named [plan, like a SQL view](../01_SQL/10_SQL_Views.md)).
 - `createOrReplaceGlobalTempView("x")` — visible across sessions on the cluster as `global_temp.x` (rarely needed).
-- Parameterized queries (Spark 3.4+): `spark.sql("SELECT * FROM emp WHERE dept = :d", args={"d": "IT"})` — prefer over f-strings ([injection](../01_SQL/What_is_SQL.md), even in notebooks).
+- Parameterized queries (Spark 3.4+): `spark.sql("SELECT * FROM emp WHERE dept = :d", args={"d": "IT"})` — prefer over f-strings ([injection](../01_SQL/01_What_is_SQL.md), even in notebooks).
 
 ## Level 1 — Tables vs views vs files
 
@@ -43,7 +43,7 @@ spark.sql("SELECT * FROM delta.`abfss://.../path`") # query a path directly, no 
 | Catalog table | Storage + metastore/Unity Catalog | Everyone, governed |
 | Path | Storage only | Whoever knows the path |
 
-Production data belongs in **catalog tables** — names, permissions ([UC grants](../01_SQL/SQL_DCL_TCL.md)), lineage; paths are for landing zones and plumbing.
+Production data belongs in **catalog tables** — names, permissions ([UC grants](../01_SQL/12_SQL_DCL_TCL.md)), lineage; paths are for landing zones and plumbing.
 
 ---
 
@@ -51,7 +51,7 @@ Production data belongs in **catalog tables** — names, permissions ([UC grants
 
 The pragmatic split most teams converge on:
 
-- **SQL shines**: multi-join business logic reviewed by SQL-fluent analysts, gold-layer transformations (this is dbt's whole thesis — [ELT's T](../04_ETL_ELT/ETL_vs_ELT.md)), ad-hoc exploration, anything a stakeholder must be able to read.
+- **SQL shines**: multi-join business logic reviewed by SQL-fluent analysts, gold-layer transformations (this is dbt's whole thesis — [ELT's T](../04_ETL_ELT/01_ETL_vs_ELT.md)), ad-hoc exploration, anything a stakeholder must be able to read.
 - **DataFrame API shines**: dynamic/parameterized logic (loops over configs — [metaprogramming](05_Column_Operations_and_Functions.md)), reusable tested functions, complex conditional pipelines, anything where Python's abstraction beats string concatenation.
 - **Mixing is normal and free**: SQL for the readable core, DataFrame steps before/after. A common production shape:
 
@@ -78,8 +78,8 @@ spark.sql("SHOW PARTITIONS silver.sales")
 ## Level 3 — Pro corner
 
 - **Three-level namespace** on Databricks: `catalog.schema.table` (Unity Catalog). Set defaults per session (`USE CATALOG dev; USE SCHEMA silver;`) and write code that takes catalog/schema as **parameters** — the same job must run against dev and prod namespaces unchanged ([environments](14_Performance_and_Best_Practices.md)).
-- **Temp views are lazy plans, not materialized results**: referencing one five times re-runs its plan five times (same as [CTEs](../01_SQL/SQL_Subqueries.md)). If an expensive intermediate is reused, `.cache()` the DataFrame or write a staging table — the view alone saves nothing.
-- **Persistent SQL views** (`CREATE VIEW silver.v AS ...`) live in the catalog over tables — same [contract-layer role](../01_SQL/SQL_Views.md) as warehouse views (gold views over silver Delta is the standard serving pattern), same discipline: explicit columns, no view-on-view lasagna.
+- **Temp views are lazy plans, not materialized results**: referencing one five times re-runs its plan five times (same as [CTEs](../01_SQL/09_SQL_Subqueries.md)). If an expensive intermediate is reused, `.cache()` the DataFrame or write a staging table — the view alone saves nothing.
+- **Persistent SQL views** (`CREATE VIEW silver.v AS ...`) live in the catalog over tables — same [contract-layer role](../01_SQL/10_SQL_Views.md) as warehouse views (gold views over silver Delta is the standard serving pattern), same discipline: explicit columns, no view-on-view lasagna.
 - **Spark SQL dialect notes** for people arriving from T-SQL: `LIMIT` not `TOP`; backticks not brackets for identifiers; `!=` and `<=>` (null-safe equals); rich extras — `QUALIFY`, `GROUP BY ALL`, lambda HOFs in SQL (`transform(items, x -> x.qty)`), `TABLESAMPLE`. And Delta extensions: `MERGE`, `TIME TRAVEL (VERSION AS OF)`, `OPTIMIZE` ([next file](12_Delta_Lake_with_PySpark.md)).
 - **`EXPLAIN` works in SQL too** (`EXPLAIN FORMATTED SELECT ...`) — same [plan-reading skill](What_Is_Apache_Spark.md), and the SQL tab of the Spark UI shows executed plans with real row counts.
 - **ANSI mode** (default Spark 4 / recent DBRs): overflow and bad casts *error* instead of silently nulling — old SQL that "worked" may start failing honestly; `try_cast`/`try_divide` are the intentional-leniency spellings ([casting discipline](03_Schemas_and_Data_Types.md)).
