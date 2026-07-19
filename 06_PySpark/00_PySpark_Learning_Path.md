@@ -29,12 +29,15 @@ This folder teaches **PySpark from zero to pro**. Files are numbered in reading 
 | 12 | [Delta_Lake_with_PySpark](12_Delta_Lake_with_PySpark.md) | MERGE, time travel, OPTIMIZE |
 | 13 | [Structured_Streaming](13_Structured_Streaming.md) | Real-time pipelines |
 | 14 | [Performance_and_Best_Practices](14_Performance_and_Best_Practices.md) | Tuning, testing, production habits |
+| 15 | [RDDs_The_Foundation](15_RDDs_The_Foundation.md) | The structure underneath DataFrames — map/reduce, lineage, when to still use RDDs |
 
 ## Suggested route by experience level
 
 - **Complete beginner**: read [What_Is_Apache_Spark](What_Is_Apache_Spark.md) Part 1, then files 01–08 in order, practicing each. That's a working data engineer's daily toolkit.
 - **Know pandas/SQL already**: skim 01–02, read 03–08 properly (the distributed differences hide there), then 09–14.
-- **Interview prep**: the concept track fully + files 07, 08, 12, 14 + every "Pro corner" section.
+- **Interview prep**: the concept track fully + files 07, 08, 12, 14, 15 + every "Pro corner" section.
+
+File 15 (RDDs) sits after the main series on purpose — it's the "under the hood" layer, and it lands much better once you've already seen what the DataFrame API abstracts away. If you truly want RDDs first (some courses/certifications teach it that way), it's self-contained and can be read any time after file 01.
 
 ## Prerequisites
 

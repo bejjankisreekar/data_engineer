@@ -95,6 +95,7 @@ Each `.md` file follows the same shape, in **three levels of depth** — read as
 - [12 — Delta Lake with PySpark](06_PySpark/12_Delta_Lake_with_PySpark.md) — MERGE, time travel, OPTIMIZE, the transaction log
 - [13 — Structured Streaming](06_PySpark/13_Structured_Streaming.md) — checkpoints, triggers, watermarks, foreachBatch
 - [14 — Performance & Best Practices](06_PySpark/14_Performance_and_Best_Practices.md) — the tuning workflow, testing, production habits
+- [15 — RDDs: The Foundation](06_PySpark/15_RDDs_The_Foundation.md) — map/reduce, lineage, shuffles, and why the DataFrame API replaced hand-written RDD code
 
 ---
 
