@@ -65,3 +65,80 @@ Azure SQL Database and Azure Synapse Analytics both support indexes, and Synapse
 ## Real World Example
 
 An airline's booking system runs thousands of lookups per second for `WHERE FlightNumber = ...`. An index on `FlightNumber` turns each of those lookups from "scan every booking ever made" into "jump almost directly to the matching rows" — the difference between a booking confirmation appearing instantly versus taking several seconds under heavy load.
+
+---
+---
+
+# Part 2 — Advanced
+
+## Clustered vs nonclustered — the fundamental split
+
+- **Clustered index** = the table itself, physically ordered by the key. One per table (the data can only be sorted one way). In SQL Server, the primary key is clustered by default; a heap (no clustered index) is the alternative.
+- **Nonclustered index** = a separate sorted structure of `(key columns) → pointer to the row`. Many per table.
+
+The hidden cost of nonclustered lookups: finding rows in the index, then fetching the rest of each row from the table = a **key lookup** per row. Cheap for 10 rows, worse than a scan for 100,000 — which is why the optimizer sometimes *ignores* your index for low-selectivity predicates (and it's right).
+
+## Composite indexes and the leftmost-prefix rule
+
+```sql
+CREATE INDEX idx_dept_hire ON Employee (Department, HireDate);
+```
+
+This index serves: `WHERE Department = 'IT'` ✅, `WHERE Department = 'IT' AND HireDate > '2025-01-01'` ✅ — but **not** `WHERE HireDate > '2025-01-01'` alone ❌ (like a phone book sorted by last-then-first name: useless for finding all "Priya"s). Column order rule of thumb: **equality columns first, range columns last**; the most selective equality first among equals.
+
+## Covering indexes — the report-query trick
+
+If the index contains *every* column a query touches, the table is never visited at all:
+
+```sql
+CREATE INDEX idx_cover
+ON Orders (CustomerID) INCLUDE (OrderDate, Amount);   -- T-SQL INCLUDE = in leaf, not in sort key
+SELECT OrderDate, Amount FROM Orders WHERE CustomerID = 42;  -- index-only: no key lookups
+```
+
+The single most effective targeted fix for a hot query — at the cost of a wider index to maintain on every write.
+
+## Columnstore — indexes for analytics
+
+Rowstore B-trees answer "find these few rows fast"; **columnstore indexes** (Synapse default, SQL Server option) store data [column-wise, compressed, batch-processed](../00_Fundamentals/OLAP_Storage.md) — built for "scan a billion rows, aggregate three columns." The two coexist: clustered columnstore for the big fact table + a few B-tree indexes for point lookups on it. In the lakehouse the same role is played by [Parquet](../02_File_formats/Parquet.md) + statistics + Z-ordering — "indexing" became file layout ([Spark_Processing.md](../06_PySpark/Spark_Processing.md)).
+
+---
+
+# Part 3 — Pro Level (what 10+ year engineers know)
+
+## Selectivity & statistics — why the optimizer ignores your index
+
+The optimizer estimates, from **statistics** (histograms of column values), how many rows a predicate returns:
+
+- `WHERE status = 'CANCELLED'` (0.1% of rows) → index seek, brilliant.
+- `WHERE status = 'COMPLETED'` (95% of rows) → seek + 95M key lookups would be madness → full scan, *correctly*.
+
+When statistics go stale (bulk loads without updating them), estimates go wrong, and plans flip from seeks to scans "randomly overnight" — the most common enterprise performance mystery. Pro toolkit: auto-update stats on, manual `UPDATE STATISTICS` after big loads, and reading estimated-vs-actual rows in [plans](SQL_DQL.md).
+
+## The write-side ledger
+
+Every index is a standing tax: extra pages per INSERT, potential **page splits** (a full index page splits in two — fragmentation + log churn) on out-of-order inserts, extra locks/latches, longer maintenance windows. Real-world numbers: an OLTP table with 12 indexes can spend more time maintaining indexes than inserting data. Discipline pros apply:
+
+- Review `sys.dm_db_index_usage_stats` (or equivalents) quarterly: **drop indexes with zero seeks and millions of updates**.
+- Consolidate near-duplicates (`(A)` is redundant if `(A,B)` exists).
+- **Filtered/partial indexes** for hot subsets: `CREATE INDEX ... WHERE status = 'PENDING'` — tiny, fast, cheap to maintain.
+- On staging tables: drop indexes, bulk load, rebuild — cheaper than maintaining them through the load ([bulk loading](SQL_DML.md)).
+
+## Fragmentation & maintenance (the honest modern take)
+
+Logical fragmentation mattered enormously on spinning disks; on SSDs and cloud storage it matters far less than received wisdom claims. What still matters: **page density** (half-empty pages waste buffer pool RAM) and statistics freshness. Modern guidance: rebuild/reorganize on evidence (density, not a fragmentation % ritual), and spend the saved effort on statistics and query design.
+
+## Field-tested gotchas
+
+- Non-sargable predicates make every index irrelevant — `WHERE YEAR(col)=2026` seeks nothing ([sargability](SQL_DQL.md)); fix the query before adding indexes.
+- **GUID clustered keys** = random insert points = perpetual page splits ([data types](SQL_Data_Types.md)); cluster on sequential keys.
+- An index on a column with skewed data can be great for the rare values and useless for the common one — parameter sniffing then caches the wrong plan for everyone (`OPTIMIZE FOR`/recompile hints are the escape hatches).
+- Missing-index DMV suggestions are hints, not orders — they suggest overlapping monsters; a human consolidates.
+- Foreign key columns are **not** auto-indexed in most engines — unindexed FKs make parent deletes and joins scan the child table ([keys](SQL_Keys_and_Joins.md)).
+
+## Interview-grade Q&A
+
+- *Clustered vs nonclustered?* Table-order-defining (one) vs separate pointer structures (many); nonclustered pay key-lookup costs unless covering.
+- *Why would the optimizer skip an index?* Low selectivity, stale stats, non-sargable predicate, or lookup cost exceeding a scan.
+- *Design an index for `WHERE a=? AND b>? ORDER BY b`?* Composite `(a, b)` — equality first, range second; add INCLUDE columns to cover the select list.
+- *Indexing strategy for a warehouse fact table?* Clustered columnstore (or Parquet/Delta + Z-order in the lake), partition alignment, minimal B-trees for point access.

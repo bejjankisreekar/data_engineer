@@ -106,3 +106,80 @@ Machine Learning
 ## Azure Usage
 
 Most Azure Data Engineering projects store data in Parquet format.
+
+---
+---
+
+# Part 2 — Advanced
+
+## Inside a Parquet file
+
+```
+┌─────────────────────────────────────────────┐
+│ Row group 1 (target ~128 MB)                 │
+│   Column chunk: EmployeeID                   │
+│     Page 1 (~1 MB): encoded + compressed     │
+│     Page 2 ...                               │
+│   Column chunk: Name                         │
+│   Column chunk: Salary                       │
+├─────────────────────────────────────────────┤
+│ Row group 2 ...                              │
+├─────────────────────────────────────────────┤
+│ FOOTER: schema, row group locations,         │
+│         min/max/null-count stats PER column  │
+│         chunk (and per page)                 │
+└─────────────────────────────────────────────┘
+```
+
+How a query uses this: read footer → **column pruning** (only requested columns' chunks) → **predicate pushdown** (skip row groups whose min/max exclude the filter) → decode only surviving pages. A `SELECT SUM(amount) WHERE date='2026-07-19'` on a 1 TB dataset may physically read a few GB.
+
+- **Encodings before compression**: dictionary (low-cardinality strings), RLE/bit-packing, delta — then snappy (default, fast) / zstd (smaller, modern choice) / gzip per page ([encoding theory](../00_Fundamentals/OLAP_Storage.md)).
+- **Nested data** works (unlike naive columnar): structs flatten to dotted columns; arrays/maps use repetition/definition levels (the Dremel model) — so [JSON-shaped data](JSON.md) stores columnar too.
+- Row-group size trades pruning granularity vs metadata overhead; the ~128 MB default aligns with one [Spark task](../06_PySpark/Spark_Processing.md) per row group.
+
+## Writing Parquet well (where pipelines go right or wrong)
+
+- **File size**: target 100 MB–1 GB; thousands of KB-size files = footer-reading overhead dominating scans (the [small files problem](../00_Fundamentals/Hadoop_Architecture.md) reborn).
+- **Sort/cluster before writing** on your dominant filter column — min/max skipping only excludes chunks if similar values are co-located; random order = useless statistics (why Delta `ZORDER`/liquid clustering exist).
+- **Dictionary + high cardinality**: a column of UUIDs makes dictionaries explode and fall back — expected, but don't dictionary-sort on it.
+- **Types**: write proper DECIMAL/timestamp logical types, not strings — "numbers as strings in Parquet" wastes the format ([type mapping tax](../01_SQL/SQL_Data_Types.md)).
+
+---
+
+# Part 3 — Pro Level (what 10+ year engineers know)
+
+## Parquet is the storage layer of everything now
+
+The quiet standardization: Delta Lake **is** Parquet files + a transaction log; Iceberg/Hudi wrap Parquet similarly; Snowflake/BigQuery export it; DuckDB/pandas/Polars read it natively; Power BI ingests it. Consequence: Parquet fluency is really *lakehouse* fluency — and "which table format" debates ([Delta vs Iceberg](../00_Fundamentals/Big_Data_Evolution_Timeline.md)) are about the metadata layer above identical Parquet bytes.
+
+## Schema evolution at the Parquet level
+
+Parquet files are immutable; "evolution" happens across files in a table: adding columns is safe (old files return nulls); renames are *new columns* physically (why Delta needs column-mapping mode to fake them); type changes require rewrites. The merge-on-read cost: a table of 10,000 files with drifted schemas makes every reader reconcile footers — periodic compaction/rewrite is schema hygiene, not just size hygiene.
+
+## Reading Parquet like an investigator
+
+When "the lake is slow," inspect the files, not just the query:
+
+```python
+import pyarrow.parquet as pq
+meta = pq.ParquetFile("part-0001.parquet").metadata
+meta.num_row_groups, meta.row_group(0).num_rows
+meta.row_group(0).column(3).statistics      # min/max/nulls — is skipping even possible?
+```
+
+Diagnostics this answers: are files tiny (compaction needed)? one giant row group (no pruning)? statistics missing (writer misconfigured)? column order/types drifted across files? Databricks' `DESCRIBE DETAIL` / `OPTIMIZE` metrics answer the same at table level.
+
+## Field-tested gotchas
+
+- **Overwriting a Parquet folder non-atomically** (plain `overwrite` to the same path without a table format) leaves readers a window of half-deleted files — this failure mode *is* the sales pitch for [Delta](../06_PySpark/Why_Spark_Why_Databricks.md).
+- Timestamp interop: INT96 legacy timestamps vs `timestamp-millis/micros`, plus session timezones, produce hour-shifted data between engines — pin conventions, test round-trips.
+- `coalesce(1)` to make "one nice Parquet file" serializes the write through one task and builds one giant row group — fine for samples, wrong for production ([write patterns](../06_PySpark/Spark_Processing.md)).
+- Column pruning dies through `SELECT *` views — the physical format can't save a logical habit ([views](../01_SQL/SQL_Views.md), [DQL](../01_SQL/SQL_DQL.md)).
+- Predicate pushdown works on plain columns, not expressions: `WHERE CAST(ts AS DATE) = X` reads everything ([sargability](../01_SQL/SQL_DQL.md) — the lake edition).
+
+## Interview-grade Q&A
+
+- *Walk through what happens when Spark reads Parquet with a filter.* Footer → prune columns → row-group stats vs predicate → skip groups → decode surviving pages → (with AQE) adapt downstream plan.
+- *Why are many small Parquet files slow?* Per-file open/footer costs and per-file tasks dominate; compaction restores scan efficiency.
+- *How does Parquet store nested JSON?* Dremel repetition/definition levels — arrays/structs become columnar streams, preserving pruning.
+- *Parquet vs Delta?* Format vs table: Delta adds a transaction log over Parquet for ACID, MERGE, time travel, schema enforcement.

@@ -70,3 +70,90 @@ Data Factory typically sits at the center of an Azure data platform, connecting:
 ## Real World Example
 
 A logistics company has package-tracking data sitting in an old on-premises database that only their internal warehouse staff can query. Every night, a Data Factory pipeline copies that day's tracking data into Azure Data Lake Storage, triggers a Databricks job to calculate on-time delivery rates, and loads the result into Synapse — so that by the time the operations team arrives in the morning, a Power BI dashboard already shows yesterday's performance, without anyone manually running a single query.
+
+---
+---
+
+# Part 2 — Advanced
+
+## Integration Runtimes — where ADF's work physically happens
+
+ADF itself is a control plane; an **Integration Runtime (IR)** is the compute that executes:
+
+| IR type | Runs | Use |
+|---|---|---|
+| **Azure IR** | Microsoft-managed, serverless | Cloud-to-cloud copies, data flows |
+| **Self-hosted IR (SHIR)** | An agent *you install* inside a private network | On-prem/VNet-locked sources — it dials **out**, so no inbound firewall holes ([hybrid connectivity](../05_cloud/Public_Private_Hybrid_Cloud.md)) |
+| **Azure-SSIS IR** | Managed SSIS cluster | Lift-and-shift of legacy SSIS packages |
+
+SHIR realities: install ≥2 nodes for HA, size for concurrent copy jobs, patch it like the server it is — it's the piece of "serverless" ADF that is very much a server.
+
+## Parameterization — one pipeline, not one per table
+
+Naive ADF estates have 300 near-identical pipelines. Pros build **metadata-driven** ones:
+
+```
+Control table: source_table | watermark_col | target_path | is_active ...
+Pipeline: Lookup (read control table)
+          → ForEach table:
+              Copy: @concat('SELECT * FROM ', item().source_table,
+                     ' WHERE ', item().watermark_col, ' > ''', variables('wm'), '''')
+              → Stored Proc: update watermark
+```
+
+Datasets and linked services take parameters too (one "any SQL table" dataset, one "any lake folder" dataset). Ten objects handle 500 tables — and adding a source becomes an INSERT into the control table, not a deployment ([incremental patterns](ETL_vs_ELT.md)).
+
+## Control-flow toolbox beyond Copy
+
+- **Lookup / Get Metadata** — read configs, check files exist.
+- **ForEach** (watch the parallelism setting), **If / Switch / Until**.
+- **Execute Pipeline** — compose parent/child; **Web/Webhook** — call APIs; **Stored Procedure** — push SQL work to the engine.
+- Activity-level **retry, timeout, and `@activity().output`** chaining; failure paths via the red dependency arrows — build the *unhappy* path explicitly (alert → quarantine → mark control row failed).
+- **Triggers**: schedule, tumbling-window (stateful, per-window backfillable — the right choice for incremental loads), and event-based (blob arrival).
+
+## The build-vs-buy line inside ADF
+
+Copy Activity: unbeatable for movement (parallelized, resumable, ~100 connectors). **Mapping Data Flows**: visual Spark — fine for simple joins/derivations, but complex logic in a GUI becomes untestable spaghetti. The widely-used enterprise pattern: **ADF for extract/orchestrate/load, Databricks notebooks (or dbt) for transform** — code where logic lives, boxes where plumbing lives ([why Databricks](../06_PySpark/Why_Spark_Why_Databricks.md)).
+
+---
+
+# Part 3 — Pro Level (what 10+ year engineers know)
+
+## ADF in production: CI/CD and environments
+
+The portal's "Publish" button doesn't scale past one developer. The grown-up setup:
+
+- Git-integrated workspace (feature branches → PR review of the pipeline *JSON*).
+- ARM/Bicep export (or the newer direct JSON deployment) promoted **dev → test → prod** by pipeline, with per-environment parameter files (linked service endpoints, Key Vault names).
+- **All secrets in Key Vault**, referenced by linked services; ADF's **managed identity** granted narrowly on storage/SQL ([identity as perimeter](../05_cloud/SaaS_PaaS_IaaS.md)) — connection strings pasted into linked services are a security-review finding.
+- Naming conventions + folders from day one; a 400-pipeline factory without them is unmaintainable archaeology.
+
+## Monitoring beyond the green ticks
+
+The monitor tab shows *runs*; production needs *outcomes*:
+
+- Ship diagnostics to **Log Analytics**; alert on failure *and* on **absence** ("nightly load hasn't succeeded by 6am" — silent-no-run is the worse failure).
+- Track **rows copied vs rows expected** per run in the control table ([reconciliation habit](../01_SQL/SQL_Warehouse.md)) — a green Copy that moved 0 rows is a data incident wearing a success icon.
+- Cost watch: Data Flows bill Spark cluster-minutes (cold-start included); high-frequency tumbling windows multiply activity-run charges; SHIR concurrency limits queue silently — all visible in run details if someone looks.
+
+## ADF vs the field (placement, honestly)
+
+- **ADF / Fabric Data Factory** — best-in-class managed connectors + hybrid movement; orchestration adequate; transforms weak. (Fabric's Data Factory is its successor generation — skills transfer nearly 1:1.)
+- **Databricks Workflows** — natural when everything is already notebooks/Delta; no SHIR equivalent for on-prem pulls.
+- **Airflow** — maximum control-flow expressiveness, code-first, you operate it.
+- The common enterprise answer is **ADF triggering Databricks**: ADF owns extraction (especially on-prem via SHIR) and scheduling; Databricks owns transformation. Choosing *one* tool for everything usually means using its weakest third.
+
+## Field-tested gotchas
+
+- ForEach default parallelism + a target database = accidental DoS on the source; set batch count deliberately ([connection limits](../01_SQL/SQL_Database.md)).
+- Tumbling-window triggers hold state — deleting/recreating one re-fires history unless you set the start date consciously; schedule triggers on a deleted-then-redeployed factory can double-fire against the old instance until cleaned up.
+- Copy Activity's implicit type mapping (`String` → everything) quietly forfeits [type fidelity](../01_SQL/SQL_Data_Types.md) — define explicit mappings or land to Parquet with a declared schema.
+- The `Set Variable`-in-ForEach race: variables are pipeline-scoped, parallel iterations overwrite each other — use item-scoped expressions instead.
+- SHIR credential storage is per-node — replacing a SHIR machine without exporting credentials strands every on-prem linked service.
+
+## Interview-grade Q&A
+
+- *How does ADF reach an on-prem SQL Server securely?* Self-hosted IR inside the network making outbound-only connections; credentials in Key Vault; managed identity everywhere cloud-side.
+- *Design ADF for 500 source tables.* Metadata-driven: control table + parameterized datasets/linked services + Lookup-ForEach-Copy + transactional watermark updates — ten reusable objects, not 500 pipelines.
+- *ADF or Databricks for transformation?* Movement and orchestration in ADF; non-trivial transforms as code in Databricks/dbt — testability and code review beat canvas boxes.
+- *A pipeline is "green" but the dashboard is stale — where do you look?* Trigger actually firing? Rows-copied metrics? Downstream activity skipped on a dependency condition? Absence-alerts exist precisely because green-but-empty happens.

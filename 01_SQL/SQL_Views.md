@@ -68,3 +68,101 @@ Views are commonly used in Azure SQL Database and Azure Synapse Analytics to giv
 ## Real World Example
 
 A hospital's IT team creates a view called `ActivePatients` that joins the Patients table with the Admissions table and filters out discharged patients. Doctors and nurses querying `ActivePatients` never need to know or write that underlying join and filter logic themselves — and if the hospital's definition of "active" ever changes, updating the one view definition fixes every report built on top of it at once.
+
+---
+---
+
+# Part 2 — Advanced
+
+## How views execute: inlining
+
+A view is not pre-run and cached — the optimizer **inlines** its definition into your query and optimizes the whole thing together:
+
+```sql
+SELECT * FROM ITEmployees WHERE Salary > 60000;
+-- optimizer actually plans:
+SELECT EmployeeID, Name, Salary FROM Employee
+WHERE Department = 'IT' AND Salary > 60000;   -- your filter merged in!
+```
+
+Consequences worth internalizing: filtering a view *can* use the base table's indexes (predicates push through), views add **zero performance overhead by themselves** — but **views stacked on views** compound into query text the optimizer struggles with. A five-layer view lasagna where each layer joins "just one more table" is the most common cause of mysteriously slow reports in mature warehouses. Flatten or materialize when nesting exceeds ~2 levels.
+
+## Materialized / indexed views — trading freshness for speed
+
+When the underlying query is expensive and asked constantly, store the result:
+
+| Engine | Feature | Refresh model |
+|---|---|---|
+| SQL Server | **Indexed view** | Maintained *synchronously* with every base-table write (adds write cost!) |
+| PostgreSQL | `MATERIALIZED VIEW` | Manual/scheduled `REFRESH` |
+| Snowflake/BigQuery | Materialized views | Auto-refresh, engine picks them transparently |
+| Databricks | **Materialized views** (DLT-backed) | Managed incremental refresh |
+
+The design question is always: *how stale is acceptable?* Dashboards tolerating 15-minute lag → materialize; regulatory "as-of-now" queries → don't. A materialized view is conceptually just a **precomputed aggregate table with a maintenance contract** — see also [OLAP summary tables](../00_Fundamentals/OLAP_Storage.md).
+
+## Updatable views & guard rails
+
+A simple single-table view is writable — `UPDATE ITEmployees SET ...` modifies `Employee`. Two sharp edges:
+
+- You can update a row *out of* the view (set Department='HR' — it vanishes from ITEmployees but the write succeeded). `WITH CHECK OPTION` forbids writes that would escape the view's WHERE — the correct setting for security-scoped views.
+- Multi-table/aggregated views are not (sensibly) updatable — treat views as read interfaces and route writes through the base tables or procedures.
+
+## Views as security surfaces
+
+The classic pattern: revoke SELECT on the base table entirely, grant it on views that expose only permitted columns/rows ([DCL](SQL_DCL_TCL.md)):
+
+```sql
+CREATE VIEW hr.EmployeeDirectory AS
+SELECT EmployeeID, Name, Department          -- no Salary column
+FROM dbo.Employee WHERE is_deleted = 0;
+GRANT SELECT ON hr.EmployeeDirectory TO analyst_role;
+```
+
+Modern engines add **row-level security** (policy functions filtering per user) and **dynamic data masking** — but the humble column-hiding view remains the most portable access-control tool in SQL.
+
+---
+
+# Part 3 — Pro Level (what 10+ year engineers know)
+
+## Views as the API of the warehouse
+
+The strongest architectural use of views: a **semantic/contract layer** between physical tables and consumers. Physical star schema tables stay engineering territory; analysts and BI touch only `mart.*` views. Benefits pros exploit:
+
+- **Refactoring freedom** — repartition, split, or rename base tables; the view keeps the old contract alive (expand–contract pattern, [SQL_DDL.md](SQL_DDL.md)).
+- **One definition of truth** — "active customer," "net revenue" defined once; ten dashboards can't drift apart.
+- **Soft-delete hygiene** — `WHERE is_deleted = 0` lives in the view, never forgotten in a report ([soft deletes](SQL_DML.md)).
+
+In Databricks this pattern is first-class: gold-layer **views in Unity Catalog** over silver Delta tables, with grants at the view level.
+
+## SELECT * inside a view — the schema-drift bomb
+
+`CREATE VIEW v AS SELECT * FROM t` captures the column list *at creation time* in some engines (SQL Server): add a column to `t` and the view doesn't show it; drop one and the view breaks at query time with a binding error. Rules seniors enforce in review:
+
+- **Explicit column lists in every view definition.**
+- `WITH SCHEMABINDING` (SQL Server) where you want the engine to *prevent* base-table changes that would break the view — required for indexed views anyway.
+- After base-table DDL, refresh dependent view metadata (`sp_refreshview`) or, better, recreate views from source control — views belong in [migrations](SQL_DDL.md) like every other schema object.
+
+## Views vs CTEs vs tables — the placement decision
+
+| Logic used by | Belongs in |
+|---|---|
+| One query | [CTE](SQL_Subqueries.md) |
+| Several queries, always fresh, cheap enough | View |
+| Several queries, expensive, staleness OK | Materialized view / scheduled summary table |
+| Cross-team contract with SLAs | Physical table built by pipeline (dbt model, Delta table) |
+
+The dbt world blurs this deliberately: every model is *written* as a SELECT, and a config flag decides view vs table vs incremental — the decision above, made declarative.
+
+## Field-tested gotchas
+
+- A view referencing a dropped/renamed column fails at **query time**, not deploy time — dependency-check before dropping anything (`sys.dm_sql_referencing_entities`, Unity Catalog lineage).
+- `ORDER BY` inside a view is ignored (or requires TOP hacks) — ordering belongs to the consuming query.
+- Nested views can hide **repeated scans** of the same base table; flattening often halves the I/O.
+- Granting on a view while the underlying schema changes owners can break **ownership chaining** (suddenly everyone needs base-table rights) — keep view + tables in the same schema/owner or use explicit grants.
+
+## Interview-grade Q&A
+
+- *Do views make queries faster?* No — they're inlined text. Materialized/indexed views do, at a freshness or write cost.
+- *How do you expose data to analysts without giving table access?* Column-limited, row-filtered views (+ CHECK OPTION), grants on views only.
+- *View vs materialized view?* Live query each time vs stored result needing refresh — choose by staleness tolerance and query cost.
+- *Why did the view break after an ALTER TABLE?* Stale binding (SELECT * capture or dropped column) — explicit columns, schemabinding, and views-in-source-control prevent it.

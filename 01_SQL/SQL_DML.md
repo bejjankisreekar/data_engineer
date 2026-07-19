@@ -89,3 +89,108 @@ Azure SQL Database, Synapse Analytics, and Databricks (via Spark SQL) all suppor
 ## Real World Example
 
 An e-commerce site runs an `INSERT` every time a customer places an order, an `UPDATE` every time an order's status changes from "Processing" to "Shipped," and a `DELETE` when a customer cancels an order before it ships — three DML commands covering the entire lifecycle of a single order.
+
+---
+---
+
+# Part 2 — Advanced
+
+## MERGE — the upsert, the data engineer's daily verb
+
+Loading a day's changes means "update rows that exist, insert those that don't." One statement does both:
+
+```sql
+MERGE INTO Employee AS target
+USING Staging_Employee AS source
+  ON target.EmployeeID = source.EmployeeID
+WHEN MATCHED AND source.is_deleted = 1 THEN DELETE
+WHEN MATCHED THEN
+  UPDATE SET Salary = source.Salary, Department = source.Department
+WHEN NOT MATCHED THEN
+  INSERT (EmployeeID, Name, Department, Salary)
+  VALUES (source.EmployeeID, source.Name, source.Department, source.Salary);
+```
+
+This exact shape — `MERGE INTO delta_table USING updates ON keys` — is also how Delta Lake upserts work in Databricks, making it arguably the most-typed statement in modern pipelines. Two cautions: the source must have **unique keys** (duplicate source keys = "attempt to update the same row twice" errors), and MERGE is a join under the hood — all join performance rules apply.
+
+## Writing changes based on other tables
+
+```sql
+-- UPDATE from a join (T-SQL flavor)
+UPDATE e
+SET e.Salary = e.Salary * 1.10
+FROM Employee e
+JOIN Promotions p ON p.EmployeeID = e.EmployeeID
+WHERE p.Year = 2026;
+
+-- INSERT from a query (how warehouses are actually loaded)
+INSERT INTO Sales_Fact (order_id, region_key, amount)
+SELECT o.order_id, r.region_key, o.amount
+FROM Staging_Orders o
+JOIN Dim_Region r ON r.region_code = o.region_code;
+
+-- Capture what changed (T-SQL OUTPUT / Postgres RETURNING)
+DELETE FROM Employee
+OUTPUT DELETED.EmployeeID, DELETED.Name INTO Employee_Archive
+WHERE TerminationDate < '2020-01-01';
+```
+
+## Bulk loading — why pipelines don't INSERT row by row
+
+A million single INSERTs = a million round-trips + a million log records. Bulk paths batch, minimally log, and bypass per-row overhead:
+
+| Engine | Bulk path |
+|---|---|
+| SQL Server / Azure SQL | `BULK INSERT`, `bcp`, ADF Copy with bulk options |
+| PostgreSQL | `COPY` |
+| Synapse | `COPY INTO`, PolyBase |
+| Databricks/Delta | `COPY INTO`, Auto Loader, `df.write` |
+
+Rule of thumb: row-by-row is for applications; **set-based and bulk** is for pipelines — a 100× speed difference is normal.
+
+---
+
+# Part 3 — Pro Level (what 10+ year engineers know)
+
+## Idempotent DML — the property that saves your weekend
+
+Orchestrators retry failed jobs. If the job half-ran before failing, a blind re-run must not double the data. Idempotent patterns, in order of preference:
+
+1. **MERGE on business keys** — re-running converges to the same state.
+2. **Delete-then-insert scoped to the batch** — `DELETE WHERE load_date = '2026-07-19'` then insert that day (atomic inside a [transaction](SQL_DCL_TCL.md)).
+3. **Staging + atomic swap** — load into a staging table, validate, then swap/rename.
+4. Blind `INSERT ... VALUES` append — **not idempotent**; acceptable only with dedup downstream.
+
+Interviewers phrase this as: *"your nightly job failed at 60% and re-ran — what does the table look like?"* The right answer describes one of the patterns above.
+
+## Big DML on big tables — batching
+
+A single `DELETE` of 50 million rows = one giant transaction: log file explosion, lock escalation to a full table lock, replication lag. Pros chunk it:
+
+```sql
+WHILE 1 = 1
+BEGIN
+    DELETE TOP (100000) FROM Events WHERE event_date < '2024-01-01';
+    IF @@ROWCOUNT = 0 BREAK;
+END
+```
+
+(Plus a pause between batches on busy systems.) Better still: design so mass deletes become **partition drops/switches** ([DDL](SQL_DDL.md)) or Delta `replaceWhere` — metadata operations instead of row carnage.
+
+## Soft deletes and the audit trail
+
+Many systems never physically DELETE: an `is_deleted BIT + deleted_at` flag preserves history, keeps foreign keys intact, and — critically for data engineering — makes deletes **visible to incremental extracts** (a hard-deleted row simply vanishes from a watermark query; see [OLTP extraction](../00_Fundamentals/OLTP_Storage.md)). Costs: every query needs `WHERE is_deleted = 0` (hide it in a [view](SQL_Views.md)), unique constraints need filtering, and GDPR "right to erasure" still requires a real purge path.
+
+## Field-tested gotchas
+
+- `UPDATE` with a join that matches multiple source rows picks one **nondeterministically** (T-SQL) or errors (Postgres) — dedupe the source first.
+- Triggers fire on your DML — an innocent bulk UPDATE can cascade into row-by-row trigger logic 100× slower than the statement itself.
+- `@@ROWCOUNT`/`ROW_COUNT()` is the cheapest data-quality check there is: log "rows affected" on every pipeline DML and alert when today ≠ yesterday's order of magnitude.
+- On Delta, many small MERGEs = many small files + version bloat: batch micro-changes, then `OPTIMIZE` ([Spark_Processing.md](../06_PySpark/Spark_Processing.md)).
+
+## Interview-grade Q&A
+
+- *What is an upsert and how do you write one?* Insert-or-update by key: `MERGE` (or `INSERT ... ON CONFLICT` in Postgres).
+- *How do you delete 100M old rows from a live table?* Batched deletes with log/lock breathing room — or partition-based removal if the design allows.
+- *How do you make a load safe to re-run?* Idempotency: MERGE by key or scoped delete-and-reload inside a transaction.
+- *Why is row-by-row slow?* Per-statement round-trip, logging, and lock overhead; set-based DML amortizes all three.

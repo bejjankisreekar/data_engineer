@@ -97,3 +97,93 @@ An insurance company keeps:
 - A **Claims** table (one row per claim, referencing a Policyholder via a foreign key)
 
 A claims officer never re-types a policyholder's full details onto every claim. They just reference the Policyholder ID, and a join pulls the full policyholder details back in whenever a report is generated. This is the same pattern behind almost every business system: banking, healthcare, retail, and HR.
+
+---
+---
+
+# Part 2 — Advanced
+
+## Join grain — the concept that prevents most join bugs
+
+Every table has a **grain**: what one row represents (one customer / one order / one order *line*). Joins multiply rows when grains mismatch:
+
+- one-to-one → row counts unchanged
+- one-to-many (Customer→Orders) → customer data *repeats* per order — `SUM(customer.credit_limit)` is now wrong (fan-out double counting!)
+- many-to-many → row explosion
+
+Pro reflexes: state each table's grain before writing the join; check `COUNT(*)` before vs after; **pre-aggregate the many side to the join grain** when you need one row per key:
+
+```sql
+SELECT c.CustomerID, c.Name, o.total_amount
+FROM Customer c
+LEFT JOIN (SELECT CustomerID, SUM(Amount) AS total_amount
+           FROM Orders GROUP BY CustomerID) o
+  ON o.CustomerID = c.CustomerID;
+```
+
+## LEFT JOIN subtleties everyone hits
+
+```sql
+-- BUG: WHERE on the right table turns LEFT JOIN back into INNER JOIN
+SELECT c.Name, o.Amount
+FROM Customer c
+LEFT JOIN Orders o ON o.CustomerID = c.CustomerID
+WHERE o.Status = 'Shipped';          -- customers with no orders vanish (o.Status IS NULL fails the filter)
+
+-- FIX: put right-table conditions in the ON clause
+LEFT JOIN Orders o ON o.CustomerID = c.CustomerID AND o.Status = 'Shipped';
+```
+
+Also in the family: **anti-join** ("customers with NO orders") — `LEFT JOIN ... WHERE o.CustomerID IS NULL`, or better `NOT EXISTS`; **semi-join** ("customers who have at least one order, without duplicating them") — `EXISTS`. Prefer EXISTS over `IN (subquery)`: same intent, no [NULL trap](SQL_Subqueries.md), often better plans.
+
+## Join algorithms — what the engine actually runs
+
+| Algorithm | How | Best when |
+|---|---|---|
+| **Nested loops** | For each outer row, seek the inner table | Small outer + indexed inner (OLTP point queries) |
+| **Hash join** | Build hash table on smaller input, probe with larger | Large unsorted inputs (analytics default) |
+| **Merge join** | Both inputs sorted on key, zip together | Pre-sorted/indexed inputs |
+
+You don't pick these directly — but you *cause* them: bad statistics that underestimate rows send a million-row input into nested loops (the "query that ran fine yesterday" classic). Distributed engines add a location dimension: **broadcast vs shuffle joins** ([Spark join strategies](../06_PySpark/Spark_Processing.md)).
+
+---
+
+# Part 3 — Pro Level (what 10+ year engineers know)
+
+## Natural vs surrogate keys — the design decision
+
+| | Natural key (email, national ID, order no.) | Surrogate key (IDENTITY/sequence int) |
+|---|---|---|
+| Meaningful? | Yes — but meanings *change* (emails change, IDs get re-issued) | No — and that's the point |
+| Stability | Fragile | Permanent |
+| Join cost | Often wide strings | Narrow ints |
+
+Mature designs: **surrogate primary key + unique constraint on the natural/business key**. In [warehouses](SQL_Warehouse.md) surrogates are mandatory — they're what makes SCD Type 2 history possible (same customer, multiple dimension rows, distinct surrogate keys — [OLAP dimensional modeling](../00_Fundamentals/OLAP_Storage.md)).
+
+## Referential integrity: enforce, or trust the pipeline?
+
+- OLTP: **enforce with FK constraints** — the database is the last line of defense against orphaned rows. (Note: FKs need supporting indexes; an unindexed FK makes parent deletes table-scan the child.)
+- Warehouses/lakehouse: FKs are typically **declared but unenforced** (Synapse, Delta) — checking them on billion-row bulk loads would be ruinous. Integrity moves into the pipeline: load dimensions before facts, resolve unknown keys to a `-1 / 'Unknown'` dimension row, and **test** orphan counts (dbt tests, Delta constraints) instead of constraint-enforcing them.
+- `ON DELETE CASCADE` is powerful and dangerous — one parent delete silently mowing down children is a favorite root cause; most teams prefer RESTRICT + explicit deletes.
+
+## Normalization vs denormalization — the pendulum, honestly
+
+- **3NF** for OLTP: one fact, one place; updates stay cheap and consistent ([normal forms](../00_Fundamentals/OLTP_Storage.md)).
+- **Star schema** for analytics: intentional, *controlled* denormalization — dimensions repeat text so queries need one join, not seven.
+- **One Big Table (OBT)** — fully pre-joined wide tables — increasingly common as the final BI layer on columnar engines (storage is cheap, joins aren't free); fed *from* a governed star, not instead of one.
+
+The senior answer to "should we normalize?" is always: *for which workload, at which layer?*
+
+## Field-tested gotchas
+
+- Joining on NULLable columns: `NULL = NULL` is never true — rows with NULL keys silently drop from INNER JOINs (and match nothing in LEFT JOINs' right side).
+- Mixed collations/types on join keys force conversions that kill index seeks ([implicit conversion](SQL_Data_Types.md)).
+- Accidental cross join via a missed ON condition in old-style comma joins — one reason explicit `JOIN ... ON` syntax won.
+- Chained LEFT JOINs where a middle join is INNER quietly re-filters everything to its left — audit join types when a "complete" list comes back short.
+
+## Interview-grade Q&A
+
+- *A report's totals doubled after adding a join — why?* Fan-out: joined a one-to-many at the wrong grain; pre-aggregate or fix the key.
+- *LEFT JOIN + WHERE right.col = X returns fewer rows than expected — why?* The WHERE filters out the NULL (unmatched) rows; move the condition into ON.
+- *Natural vs surrogate keys?* Surrogates for stability/joins, natural keys as unique constraints; surrogates required for dimension history.
+- *How does a warehouse guarantee integrity without enforced FKs?* Load order, default 'Unknown' members, and automated orphan tests in the pipeline.

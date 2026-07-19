@@ -98,3 +98,97 @@ Azure SQL Database and Azure Synapse Analytics both support standard DCL and TCL
 ## Real World Example
 
 A bank's transfer feature wraps the "subtract from Account A, add to Account B" pair of updates inside a single transaction. If a network failure interrupts the process after the first update but before `COMMIT`, the entire transaction rolls back automatically, and the money never appears to vanish. Separately, the bank's DCL rules ensure a customer-facing app can `INSERT` new transactions but can never `DROP` the Account table itself.
+
+---
+---
+
+# Part 2 — Advanced
+
+## DCL done properly: roles, least privilege, and layers
+
+Granting to individual users doesn't scale past ten people. The professional structure:
+
+```sql
+CREATE ROLE reporting_reader;
+GRANT SELECT ON SCHEMA::mart TO reporting_reader;   -- grant at schema level, not per table
+ALTER ROLE reporting_reader ADD MEMBER [aad_group_Analysts];  -- membership via AD group
+```
+
+Principles that survive audits:
+
+- **Least privilege** — start from nothing; add narrowly. No human gets `db_owner` "temporarily."
+- **Roles ↔ job functions, groups ↔ people** — joiners/leavers are handled in Entra ID, not in SQL.
+- **Schema-level grants** — new tables in `mart` are automatically covered; per-table grant sprawl is unauditable.
+- **`DENY` (T-SQL) trumps GRANT** — useful for carve-outs ("everything except Salary"), dangerous when forgotten.
+- Finer tools when columns/rows matter: column-limited [views](SQL_Views.md), **Row-Level Security** policies, **Dynamic Data Masking** — and in the lakehouse, Unity Catalog's `GRANT SELECT ON catalog.schema.table` plus row filters/column masks: same DCL concepts, new engine.
+
+## Isolation levels — what your transaction sees of others
+
+TCL guarantees *your* changes commit atomically; **isolation levels** decide how much of *other* concurrent transactions you observe ([anomaly table](../00_Fundamentals/OLTP_Storage.md)):
+
+```sql
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;  -- typical default
+```
+
+- The pragmatic modern choice in SQL Server: **Read Committed Snapshot (RCSI)** — readers get a version-based snapshot, so readers and writers stop blocking each other (Azure SQL DB has it on by default).
+- `NOLOCK` hint = read uncommitted: can read rows that are later rolled back, *and* can skip/double-read rows during page splits. In a financial report this is a career-limiting hint — use snapshot isolation instead.
+- Higher isolation (Repeatable Read/Serializable) buys correctness with locks/aborts; reserve for genuinely invariant-critical sections (inventory decrement, ledger close).
+
+## Transactions in practice: keep them short and handle the exits
+
+```sql
+BEGIN TRY
+    BEGIN TRANSACTION;
+    UPDATE Account SET Balance = Balance - 500 WHERE AccountID = 1;
+    UPDATE Account SET Balance = Balance + 500 WHERE AccountID = 2;
+    COMMIT;
+END TRY
+BEGIN CATCH
+    IF @@TRANCOUNT > 0 ROLLBACK;
+    THROW;    -- never swallow — the caller must know it failed
+END CATCH;
+```
+
+The cardinal sins: user interaction inside an open transaction, network calls inside a transaction, and the **forgotten open transaction** — one uncommitted session can block a table (and hold the [transaction log](SQL_Database.md)) for hours. Monitoring open long transactions is standard ops hygiene.
+
+---
+
+# Part 3 — Pro Level (what 10+ year engineers know)
+
+## Deadlocks — anatomy and the standard defenses
+
+Transaction A locks row 1 then wants row 2; B locks row 2 then wants row 1 → the engine kills one (error 1205, "deadlock victim"). Professional defenses, in order:
+
+1. **Touch tables/rows in a consistent order** across all code paths (alphabetical, by key ascending — pick one, enforce it).
+2. Keep transactions short and indexed (lock fewer rows for less time — [unindexed FKs](SQL_Indexes.md) are deadlock factories).
+3. RCSI/snapshot isolation removes reader-writer deadlocks entirely.
+4. **Retry logic** for the survivors: deadlocks are transient by definition; a 1205 should trigger an automatic retry with backoff, not a page to on-call.
+
+## Transactions in the lakehouse — same ACID, different mechanics
+
+Delta Lake gives ACID per table via an [optimistic-concurrency transaction log](../06_PySpark/Why_Spark_Why_Databricks.md): writers prepare files, then attempt to commit a new log version; a conflicting concurrent commit fails one writer (`ConcurrentAppendException`) who must retry. Key differences from a database engine:
+
+- **No multi-table transactions** — you cannot atomically commit across two Delta tables; design so each table's write is independently idempotent ([idempotent DML](SQL_DML.md)).
+- **No locks** — long "transactions" don't block anyone; conflicts surface at commit time instead.
+- Isolation ≈ snapshot: readers always see the last committed version (time travel is reading *older* snapshots).
+
+Distributed transactions across systems (DB + queue + lake) are avoided rather than solved: the **outbox pattern**, idempotent consumers, and sagas replaced two-phase commit in modern architecture — worth knowing by name for design interviews.
+
+## Auditing & compliance — DCL's grown-up sibling
+
+Who *can* access is DCL; who *did* access is auditing. Enterprise reality: SQL Audit / Purview / Unity Catalog audit logs shipped to a SIEM, periodic **access reviews** ("does this leaver's group still have PII read?"), and separation of duties (the person granting rights isn't the person using them). GDPR/SOX turn these from best practices into legal requirements — data engineers get pulled into "prove who could see this column" conversations regularly.
+
+## Field-tested gotchas
+
+- `GRANT ... WITH GRANT OPTION` lets the grantee re-grant — permission trees sprout in the dark; avoid, and audit for it.
+- Revoking a role's permission doesn't kill **active sessions** using it — force reconnection for immediate effect.
+- In migrations, DDL is transactional in Postgres (rollback-able!) but only partially in MySQL/Oracle — a failed half-migration behaves totally differently per engine ([migrations](SQL_DDL.md)).
+- `SAVEPOINT`s don't release locks — "partial rollback" keeps everything acquired since BEGIN locked until the final COMMIT/ROLLBACK.
+- Service accounts with `db_owner` because "the pipeline needed it once" are the #1 finding in real security reviews — pipelines need exactly INSERT/UPDATE/DELETE/SELECT on their targets, nothing more.
+
+## Interview-grade Q&A
+
+- *How do you structure permissions for a 200-person analytics org?* AD-group-backed roles, schema-level grants on curated schemas, views/RLS for row-column limits, zero direct user grants, quarterly access review.
+- *A report shows a row that "never existed" — how?* Dirty read via NOLOCK/read-uncommitted caught a later-rolled-back insert; move to RCSI.
+- *Deadlock strategy?* Consistent access order + short indexed transactions + snapshot isolation + automatic retry on 1205.
+- *Do Delta tables have transactions?* Yes — single-table ACID via optimistic commits on the transaction log; cross-table atomicity must be designed, not assumed.

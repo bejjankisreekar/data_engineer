@@ -119,4 +119,64 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ---
 
+## Distributed systems and Spark
+
+**Cluster / Node** — a group of machines working together as one system; each machine is a node. See [Distributed Computing](00_Fundamentals/Distributed_Computing.md).
+
+**Scale up vs scale out** — buying a bigger machine vs adding more machines. Big data tooling is built around scaling out.
+
+**Partition** — one chunk of a dataset, small enough for one worker/core to process; the unit of parallelism in Spark and the unit of pruning in storage.
+
+**Shuffle** — redistributing data across the cluster by key (for GROUP BY, JOIN) — the most expensive operation in distributed processing. See [Spark Processing](06_PySpark/Spark_Processing.md).
+
+**Data skew** — when one key/partition holds far more data than the rest, so one worker becomes the bottleneck ("the job is 99% done for an hour").
+
+**Driver / Executor** — Spark's master and workers: the driver plans and schedules; executors run tasks and hold cached data. See [Spark Architecture](06_PySpark/Spark_Architecture.md).
+
+**Lazy evaluation** — Spark records transformations without running them, then optimizes and executes the whole plan when an action (count, write) triggers it.
+
+**DAG (Directed Acyclic Graph)** — the dependency graph of operations an engine builds from your code before executing it.
+
+**Broadcast join** — shipping a small table to every worker so a join needs no shuffle of the big table.
+
+**Idempotent** — safe to run twice: re-running produces the same result instead of duplicating data. The core property of production pipelines.
+
+**Exactly-once / at-least-once** — delivery guarantees: whether a record can be processed twice on retry. "At-least-once + idempotent writes" is how pipelines fake exactly-once.
+
+**CDC (Change Data Capture)** — streaming inserts/updates/deletes out of a database by reading its transaction log, instead of repeatedly querying tables.
+
+**Watermark** — the saved "high-water mark" (e.g. max `modified_at`) an incremental load uses to fetch only new/changed rows next run.
+
+**Medallion (bronze/silver/gold)** — lakehouse layering: raw as-arrived → cleaned/typed → business-ready aggregates. See [ETL vs ELT](04_ETL_ELT/ETL_vs_ELT.md).
+
+**Lakehouse** — data-lake storage + a table format (Delta/Iceberg) giving warehouse behavior (ACID, schema, time travel) on one copy of data.
+
+**Star schema / Fact / Dimension** — warehouse modeling: a central numeric fact table joined to descriptive dimension tables. See [SQL Warehouse](01_SQL/SQL_Warehouse.md).
+
+**SCD (Slowly Changing Dimension)** — how to store history when a dimension attribute changes; Type 2 (new row with validity dates) is the default.
+
+**Surrogate key** — a meaningless generated ID used to join facts to dimensions, insulating the model from source-system key changes.
+
+---
+
+## Cloud terms
+
+**Region / Availability Zone** — a metro-area group of datacenters / one independent facility within it. See [Public, Private & Hybrid Cloud](05_cloud/Public_Private_Hybrid_Cloud.md).
+
+**IaaS / PaaS / SaaS** — how much of the stack you rent: raw VMs / a managed platform for your code and data / finished software. See [SaaS, PaaS, IaaS](05_cloud/SaaS_PaaS_IaaS.md).
+
+**Serverless** — compute that scales to zero and bills per use; you never size or manage instances.
+
+**Managed identity** — an Azure service's own Entra ID identity, letting it access storage/databases with no stored password.
+
+**RBAC (Role-Based Access Control)** — granting permissions via roles scoped to resources ("this factory may read this container").
+
+**Egress** — data leaving a cloud region/provider — the direction that costs money and shapes architectures.
+
+**DBU (Databricks Unit)** — Databricks' normalized billing unit for compute consumption, charged on top of VM cost.
+
+**RPO / RTO** — how much data you may lose / how long recovery takes, in a failover. The two numbers behind every disaster-recovery design.
+
+---
+
 *This glossary grows as new topic files are added. If you hit an unfamiliar term in a topic note that isn't listed here, that's a gap worth filling.*
