@@ -1,5 +1,7 @@
 # SQL Warehouse (Data Warehouse)
 
+> This file focuses on the SQL/dimensional-modeling side of a warehouse — star schema, SCD, MPP distribution. For the architecture side (warehouse layers, Inmon vs Kimball, data marts, data mesh, data fabric), see the [Data Warehousing folder](../07_Data_Warehousing/01_Data_Warehouse_Fundamentals.md).
+
 ## What is a SQL Warehouse?
 
 A SQL Warehouse stores huge amounts of historical business data for reporting and analytics.

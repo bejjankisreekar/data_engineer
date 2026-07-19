@@ -133,7 +133,7 @@ Pros use this lens to evaluate new tech: *"which coupling does this remove, and 
 
 - **Governance as the product** — Unity Catalog / Purview: lineage, fine-grained permissions, discovery. The hard problem is no longer processing terabytes; it's knowing what you have and who may see it.
 - **Streaming-first CDC** — the default enterprise pattern is becoming: OLTP → log-based CDC → Kafka/Event Hubs → Delta, with batch as a special case of streaming.
-- **Data mesh** (organizational, not technical) — domain teams own their data as *products* with contracts, instead of one central team owning one giant platform. Works at org scale; overkill for small teams.
+- **Data mesh** (organizational, not technical) — domain teams own their data as *products* with contracts, instead of one central team owning one giant platform. Works at org scale; overkill for small teams. Full treatment: [Data Mesh](../07_Data_Warehousing/03_Data_Mesh.md).
 - **AI workloads converge onto the lakehouse** — feature engineering, vector search, and LLM fine-tuning read the same governed tables; single-node engines (**DuckDB, Polars**) simultaneously ate the low end, shrinking "big data" to the truly big.
 - **Small data counter-revolution** — a pro's most valuable 2026 skill: recognizing the 90% of workloads that *don't* need distributed anything ([when NOT to distribute](03_Distributed_Computing.md)).
 

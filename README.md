@@ -70,6 +70,7 @@ Each `.md` file follows the same shape, in **three levels of depth** — read as
 ### 04. ETL / ELT — moving and transforming data
 - [ETL vs ELT](04_ETL_ELT/01_ETL_vs_ELT.md) — the two common patterns for getting data from source to destination
 - [Azure Data Factory](04_ETL_ELT/02_Azure_Data_Factory.md) — Azure's drag-and-drop data pipeline tool
+- [Data Pipelines](04_ETL_ELT/03_Data_Pipelines.md) — the tool-agnostic architecture: components, batch vs streaming, DAGs, idempotency, orchestration tools, failure handling
 - **[Interview Questions & Answers](04_ETL_ELT/Interview_Questions_and_Answers.md)** — 16 Q&A going deep on both notes
 
 ### 05. Cloud — where all of this runs
@@ -105,6 +106,12 @@ Each `.md` file follows the same shape, in **three levels of depth** — read as
 
 **[Interview Questions & Answers](06_PySpark/Interview_Questions_and_Answers.md)** — 78 Q&A, the largest in the series, covering all 19 files above with real PySpark code in every practical answer
 
+### 07. Data Warehousing — architectures beyond a single central warehouse
+- [Data Warehouse Fundamentals](07_Data_Warehousing/01_Data_Warehouse_Fundamentals.md) — Inmon's four properties, warehouse layers (staging/ODS/marts), single/two/three-tier architecture, Inmon vs Kimball
+- [Data Mart](07_Data_Warehousing/02_Data_Mart.md) — dependent vs independent vs hybrid marts, star schema per mart, the "spreadmart" failure mode
+- [Data Mesh](07_Data_Warehousing/03_Data_Mesh.md) — the four principles (domain ownership, data as a product, self-serve platform, federated governance), when it's the right call vs overkill
+- [Data Fabric & Architecture Comparison](07_Data_Warehousing/04_Data_Fabric_and_Architecture_Comparison.md) — data fabric vs data mesh, the Microsoft Fabric naming collision, a five-pattern decision framework
+
 ---
 
 ## Certificates & Exams
@@ -133,12 +140,10 @@ A separate self-contained track outside the main learning path, for certificatio
 These modules are planned next, following the typical Azure Data Engineer learning path (roughly aligned with the Microsoft DP-203 certification):
 
 - 06. PySpark (continued) — Databricks hands-on, Delta Lake, DataFrame API in depth
-- 07. Azure — platform-wide concepts (resource groups, subscriptions, identities)
-- 08. Data Factory — pipelines, triggers, integration runtimes in depth
-- 09. Modern Data Warehousing — Azure Synapse Analytics, Microsoft Fabric
-- 10. Streaming Data — Event Hubs, Stream Analytics, batch vs. real-time
-- 11. Security & Governance — access control, Microsoft Purview, data classification
-- 12. Monitoring & Orchestration — pipeline monitoring, alerting, cost management
-- 13. Reporting — Power BI basics for data engineers
+- 08. Azure — platform-wide concepts (resource groups, subscriptions, identities)
+- 09. Streaming Data — Event Hubs, Stream Analytics, batch vs. real-time
+- 10. Security & Governance — access control, Microsoft Purview, data classification
+- 11. Monitoring & Orchestration — pipeline monitoring, alerting, cost management
+- 12. Reporting — Power BI basics for data engineers
 
 Folders are numbered in the order they're meant to be read, since later topics build on earlier ones.

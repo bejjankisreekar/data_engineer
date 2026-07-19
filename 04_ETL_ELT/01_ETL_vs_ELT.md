@@ -1,5 +1,7 @@
 # ETL vs ELT
 
+> This file covers the ETL/ELT *pattern* specifically. For the tool-agnostic architecture underneath any pipeline (components, batch vs streaming, DAGs, orchestration tools, failure handling), see [Data Pipelines](03_Data_Pipelines.md).
+
 ## What problem are we solving?
 
 Data rarely starts out where it needs to end up, or in the shape it needs to be in. A sales system might record amounts in cents, in five different regional formats, across three different databases — but a business report needs one clean, consistent "Total Sales" number. Getting from messy source data to a clean, usable result requires three steps, always in this order of *concept*, if not always execution:
