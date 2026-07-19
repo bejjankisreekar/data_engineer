@@ -112,6 +112,19 @@ Each `.md` file follows the same shape, in **three levels of depth** — read as
 - [Data Mesh](07_Data_Warehousing/03_Data_Mesh.md) — the four principles (domain ownership, data as a product, self-serve platform, federated governance), when it's the right call vs overkill
 - [Data Fabric & Architecture Comparison](07_Data_Warehousing/04_Data_Fabric_and_Architecture_Comparison.md) — data fabric vs data mesh, the Microsoft Fabric naming collision, a five-pattern decision framework
 
+### 08. Git & GitHub — version control from zero to production-ready
+- [00 — Learning Path](08_Git_GitHub/00_Git_GitHub_Learning_Path.md) — the map of the series, Git vs GitHub in one sentence
+- [01 — Introduction to Version Control](08_Git_GitHub/01_Introduction_to_Version_Control.md) — why Git exists, installation, config, `git init`, core terminology
+- [02 — Core Workflow: Add, Commit, Status, Log](08_Git_GitHub/02_Core_Workflow_Add_Commit_Status_Log.md) — the daily loop, `.gitignore`, commit message conventions
+- [03 — Branching & Merging](08_Git_GitHub/03_Branching_and_Merging.md) — branches, fast-forward vs three-way merges, a full hands-on merge conflict walkthrough
+- [04 — Remotes: Push, Pull, Fetch, Clone](08_Git_GitHub/04_Remotes_Push_Pull_Fetch_Clone.md) — tracking branches, SSH vs HTTPS auth, `origin`/`upstream`, force push dangers
+- [05 — GitHub Essentials](08_Git_GitHub/05_GitHub_Essentials.md) — Issues, Pull Requests end to end, forking, merge strategies
+- [06 — Rebase, Cherry-Pick, Reset & Revert](08_Git_GitHub/06_Rebase_Cherry_Pick_Reset_Revert.md) — rewriting history safely, interactive rebase, reflog recovery
+- [07 — Stash, Tags & Other Commands](08_Git_GitHub/07_Stash_Tags_and_Other_Commands.md) — `stash`, `tag`, `blame`, `bisect`, worktrees
+- [08 — Branching Strategies & Collaboration](08_Git_GitHub/08_Branching_Strategies_and_Collaboration.md) — Git Flow vs GitHub Flow vs trunk-based, branch protection, CODEOWNERS
+- [09 — Production Best Practices & CI/CD](08_Git_GitHub/09_Production_Best_Practices_and_CICD.md) — Conventional Commits, hooks, GitHub Actions, secrets, Git LFS, signed commits
+- [10 — Troubleshooting & Real-World Scenarios](08_Git_GitHub/10_Troubleshooting_and_Real_World_Scenarios.md) — symptom-indexed fixes for every common Git disaster
+
 ---
 
 ## Certificates & Exams
@@ -140,10 +153,10 @@ A separate self-contained track outside the main learning path, for certificatio
 These modules are planned next, following the typical Azure Data Engineer learning path (roughly aligned with the Microsoft DP-203 certification):
 
 - 06. PySpark (continued) — Databricks hands-on, Delta Lake, DataFrame API in depth
-- 08. Azure — platform-wide concepts (resource groups, subscriptions, identities)
-- 09. Streaming Data — Event Hubs, Stream Analytics, batch vs. real-time
-- 10. Security & Governance — access control, Microsoft Purview, data classification
-- 11. Monitoring & Orchestration — pipeline monitoring, alerting, cost management
-- 12. Reporting — Power BI basics for data engineers
+- 09. Azure — platform-wide concepts (resource groups, subscriptions, identities)
+- 10. Streaming Data — Event Hubs, Stream Analytics, batch vs. real-time
+- 11. Security & Governance — access control, Microsoft Purview, data classification
+- 12. Monitoring & Orchestration — pipeline monitoring, alerting, cost management
+- 13. Reporting — Power BI basics for data engineers
 
 Folders are numbered in the order they're meant to be read, since later topics build on earlier ones.
