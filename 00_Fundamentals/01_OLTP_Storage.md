@@ -84,7 +84,7 @@ Users → Application → OLTP Database (live transactions)
                       Data Lake / Warehouse (OLAP, for analysis)
 ```
 
-OLTP systems are usually the **source** of a data engineer's pipelines: the business runs on them, and we copy their data out for analytics — see [01_Data_Lake_vs_Warehouse_vs_Database.md](../03_Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
+OLTP systems are usually the **source** of a data engineer's pipelines: the business runs on them, and we copy their data out for analytics — see [01_Data_Lake_vs_Warehouse_vs_Database.md](../04_Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
 
 ---
 ---

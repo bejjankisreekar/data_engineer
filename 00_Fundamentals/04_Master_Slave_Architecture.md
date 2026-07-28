@@ -39,7 +39,7 @@ One supervisor can coordinate a huge crew — but if the supervisor disappears a
 |---|---|---|
 | HDFS ([Hadoop storage](05_Hadoop_Architecture.md)) | NameNode | DataNodes |
 | YARN (Hadoop compute) | ResourceManager | NodeManagers |
-| [Apache Spark](../06_PySpark/Spark_Architecture.md) | Driver | Executors |
+| [Apache Spark](../07_PySpark/Spark_Architecture.md) | Driver | Executors |
 | Kafka | Controller broker | Brokers |
 | Databases (replication) | Primary | Replicas |
 

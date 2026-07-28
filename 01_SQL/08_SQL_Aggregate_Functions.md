@@ -160,7 +160,7 @@ FROM Employee;   -- impossible with plain GROUP BY without a self-join
 ## How engines execute GROUP BY (why some are slow)
 
 - **Hash aggregation** — build a hash table of groups in memory (the analytics default). Too many distinct groups → **spill to disk** → slow. `GROUP BY customer_id` over 500M customers is a monster; `GROUP BY region` (12 groups) is trivial — *cardinality of the grouping key is the cost driver*.
-- **Distributed engines add partial aggregation**: each node pre-aggregates locally, then shuffles only the compact partials — why `groupBy().sum()` in Spark ships tiny data but `groupByKey()`/collect-style patterns ship everything ([shuffle mechanics](../06_PySpark/Spark_Processing.md)).
+- **Distributed engines add partial aggregation**: each node pre-aggregates locally, then shuffles only the compact partials — why `groupBy().sum()` in Spark ships tiny data but `groupByKey()`/collect-style patterns ship everything ([shuffle mechanics](../07_PySpark/Spark_Processing.md)).
 - Pre-aggregated **summary tables / materialized views** exist precisely to pay a big GROUP BY once instead of per dashboard refresh.
 
 ## Aggregates as data-quality instrumentation

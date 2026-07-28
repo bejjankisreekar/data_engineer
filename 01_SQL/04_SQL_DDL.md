@@ -107,7 +107,7 @@ Analogy: emptying every paper out of a drawer, but keeping the (now-empty) drawe
 
 ## Azure Usage
 
-Azure SQL Database and Azure Synapse Analytics both run standard T-SQL DDL. In a data warehouse specifically, DDL is used less often day-to-day than DML/DQL — tables are usually designed once (following a schema like the star schema mentioned in [13_SQL_Warehouse.md](13_SQL_Warehouse.md)) and then loaded repeatedly via pipelines like [Azure Data Factory](../04_ETL_ELT/02_Azure_Data_Factory.md).
+Azure SQL Database and Azure Synapse Analytics both run standard T-SQL DDL. In a data warehouse specifically, DDL is used less often day-to-day than DML/DQL — tables are usually designed once (following a schema like the star schema mentioned in [13_SQL_Warehouse.md](13_SQL_Warehouse.md)) and then loaded repeatedly via pipelines like [Azure Data Factory](../05_ETL_ELT/02_Azure_Data_Factory.md).
 
 ---
 
@@ -195,7 +195,7 @@ The same pattern governs breaking changes to lakehouse tables consumed by other 
 - `WITH NOCHECK` foreign keys/checks don't validate existing rows *and* are ignored by the optimizer — untrusted constraints are documentation, not protection.
 - Dropping a column doesn't always reclaim space (metadata-hidden until rebuild) — and in Delta, `DROP COLUMN` behavior depends on column-mapping mode.
 - Every DDL statement takes a **schema lock**: an innocent ALTER can queue behind a long transaction and then *block every query* behind itself — always deploy DDL with a lock timeout and off-peak.
-- `DROP TABLE` in the lake deletes metadata; whether *files* die depends on managed vs external tables ([ADLS](../03_Data_Storage/03_Azure_Data_Lake_Storage.md)) — know which you have before "cleaning up."
+- `DROP TABLE` in the lake deletes metadata; whether *files* die depends on managed vs external tables ([ADLS](../04_Data_Storage/03_Azure_Data_Lake_Storage.md)) — know which you have before "cleaning up."
 
 ## Interview-grade Q&A
 

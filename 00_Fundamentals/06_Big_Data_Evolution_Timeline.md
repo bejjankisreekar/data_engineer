@@ -42,15 +42,15 @@ Every modern tool (Spark, Databricks, Snowflake, Azure Data Lake) exists to fix 
 
 ## Era 4 — Spark (2009–2015)
 
-- **[Apache Spark](../06_PySpark/What_Is_Apache_Spark.md)** (UC Berkeley, 2009; Apache top-level 2014) kept distributed processing but moved it **in-memory** — 10–100× faster than MapReduce.
+- **[Apache Spark](../07_PySpark/What_Is_Apache_Spark.md)** (UC Berkeley, 2009; Apache top-level 2014) kept distributed processing but moved it **in-memory** — 10–100× faster than MapReduce.
 - One engine for batch, SQL, streaming, and ML; friendly APIs in Python/Scala/SQL.
-- Spark replaced MapReduce as the de facto processing engine (details: [Why_Spark_Why_Databricks.md](../06_PySpark/Why_Spark_Why_Databricks.md)).
+- Spark replaced MapReduce as the de facto processing engine (details: [Why_Spark_Why_Databricks.md](../07_PySpark/Why_Spark_Why_Databricks.md)).
 - **Breaking point:** running your *own* Spark/Hadoop cluster was still heavy ops work.
 
 ## Era 5 — Cloud (2013–2020)
 
-- Storage and compute moved to the [cloud](../05_cloud/01_Public_Private_Hybrid_Cloud.md): S3 / [Azure Data Lake](../03_Data_Storage/03_Azure_Data_Lake_Storage.md) replaced HDFS; managed services replaced hand-run clusters.
-- **Databricks** (founded 2013 by Spark's creators) offered Spark as a managed [SaaS/PaaS](../05_cloud/02_SaaS_PaaS_IaaS.md) platform.
+- Storage and compute moved to the [cloud](../03_Cloud/01_Public_Private_Hybrid_Cloud.md): S3 / [Azure Data Lake](../04_Data_Storage/03_Azure_Data_Lake_Storage.md) replaced HDFS; managed services replaced hand-run clusters.
+- **Databricks** (founded 2013 by Spark's creators) offered Spark as a managed [SaaS/PaaS](../03_Cloud/02_SaaS_PaaS_IaaS.md) platform.
 - Cloud warehouses (Snowflake, BigQuery, Synapse) separated **storage from compute** — pay for each independently, scale instantly.
 - **Breaking point:** companies now ran *two* copies of data — a lake (cheap, messy) and a warehouse (clean, expensive) — with pipelines constantly syncing them.
 
@@ -112,7 +112,7 @@ All three give: **ACID commits, schema evolution, time travel, hidden partitioni
 |---|---|
 | "Schema-on-read" | Hadoop era: dump raw now, impose structure at query time — the data lake's founding principle (and the source of "data swamps" when governance was skipped) |
 | "Data gravity" | Data is heavy; compute moves to it — why every vendor wants to host your storage |
-| "Medallion (bronze/silver/gold)" | Databricks' codification of raw → cleaned → business-ready layers in a lake ([ETL_vs_ELT](../04_ETL_ELT/01_ETL_vs_ELT.md)) |
+| "Medallion (bronze/silver/gold)" | Databricks' codification of raw → cleaned → business-ready layers in a lake ([ETL_vs_ELT](../05_ETL_ELT/01_ETL_vs_ELT.md)) |
 | "ELT beat ETL" | Cheap elastic warehouse compute made "load raw, transform in SQL (dbt)" the default over pre-transforming in tools |
 
 ---
@@ -133,13 +133,13 @@ Pros use this lens to evaluate new tech: *"which coupling does this remove, and 
 
 - **Governance as the product** — Unity Catalog / Purview: lineage, fine-grained permissions, discovery. The hard problem is no longer processing terabytes; it's knowing what you have and who may see it.
 - **Streaming-first CDC** — the default enterprise pattern is becoming: OLTP → log-based CDC → Kafka/Event Hubs → Delta, with batch as a special case of streaming.
-- **Data mesh** (organizational, not technical) — domain teams own their data as *products* with contracts, instead of one central team owning one giant platform. Works at org scale; overkill for small teams. Full treatment: [Data Mesh](../07_Data_Warehousing/03_Data_Mesh.md).
+- **Data mesh** (organizational, not technical) — domain teams own their data as *products* with contracts, instead of one central team owning one giant platform. Works at org scale; overkill for small teams. Full treatment: [Data Mesh](../08_Data_Warehousing/03_Data_Mesh.md).
 - **AI workloads converge onto the lakehouse** — feature engineering, vector search, and LLM fine-tuning read the same governed tables; single-node engines (**DuckDB, Polars**) simultaneously ate the low end, shrinking "big data" to the truly big.
 - **Small data counter-revolution** — a pro's most valuable 2026 skill: recognizing the 90% of workloads that *don't* need distributed anything ([when NOT to distribute](03_Distributed_Computing.md)).
 
 ## How to use history in interviews & design reviews
 
-- *"Why does Databricks exist?"* → trace era 4→5: Spark solved speed, Databricks solved operations ([Why_Spark_Why_Databricks](../06_PySpark/Why_Spark_Why_Databricks.md)).
+- *"Why does Databricks exist?"* → trace era 4→5: Spark solved speed, Databricks solved operations ([Why_Spark_Why_Databricks](../07_PySpark/Why_Spark_Why_Databricks.md)).
 - *"Lake or warehouse?"* → era 6 answer: one lakehouse, unless the org already runs a mature warehouse and the migration cost outweighs duplication cost.
 - *"Should we adopt X?"* → ask which era's problem X solves; adopting a solution to a problem you don't have is how teams end up running Kafka for 100 rows/day.
 - Architecture reviews respect scars: name the *breaking point* a proposal inherits (e.g. "this re-couples storage and compute — we know how that movie ends").

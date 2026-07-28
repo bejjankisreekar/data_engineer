@@ -224,7 +224,7 @@ The patterns you'll use weekly:
 3. **The fattest arrow** — most plans have one dominant data movement; optimize that, ignore the rest.
 4. Warnings: implicit conversions, spills to tempdb.
 
-In Spark, same skill: `df.explain()` + the SQL tab ([Spark UI](../06_PySpark/Spark_Architecture.md)).
+In Spark, same skill: `df.explain()` + the SQL tab ([Spark UI](../07_PySpark/Spark_Architecture.md)).
 
 ## Field-tested gotchas
 

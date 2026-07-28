@@ -1,6 +1,6 @@
 # SQL Warehouse (Data Warehouse)
 
-> This file focuses on the SQL/dimensional-modeling side of a warehouse — star schema, SCD, MPP distribution. For the architecture side (warehouse layers, Inmon vs Kimball, data marts, data mesh, data fabric), see the [Data Warehousing folder](../07_Data_Warehousing/01_Data_Warehouse_Fundamentals.md).
+> This file focuses on the SQL/dimensional-modeling side of a warehouse — star schema, SCD, MPP distribution. For the architecture side (warehouse layers, Inmon vs Kimball, data marts, data mesh, data fabric), see the [Data Warehousing folder](../08_Data_Warehousing/01_Data_Warehouse_Fundamentals.md).
 
 ## What is a SQL Warehouse?
 
@@ -122,7 +122,7 @@ GROUP BY Month;
 
 ## Where does this data come from?
 
-A warehouse doesn't collect its own data — it's filled by pipelines that pull data in from elsewhere. See [ETL vs ELT](../04_ETL_ELT/01_ETL_vs_ELT.md) for the two common ways this data-loading happens, and [Data Lake vs Warehouse vs Database](../03_Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how a warehouse fits alongside raw storage.
+A warehouse doesn't collect its own data — it's filled by pipelines that pull data in from elsewhere. See [ETL vs ELT](../05_ETL_ELT/01_ETL_vs_ELT.md) for the two common ways this data-loading happens, and [Data Lake vs Warehouse vs Database](../04_Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how a warehouse fits alongside raw storage.
 
 ## SQL Database vs Warehouse
 
@@ -204,7 +204,7 @@ An MPP warehouse spreads each table across many compute nodes ([distributed comp
 | **ROUND_ROBIN** | Even spray, no key | Staging/loading tables |
 | **REPLICATE** | Full copy on every node | Small dimensions (< ~2 GB) — kills data movement |
 
-The performance killer is **data movement**: joining two large tables hash-distributed on *different* keys forces a network re-shuffle per query (the same shuffle economics as [Spark](../06_PySpark/Spark_Processing.md)). Fact hashed on `order_key` + replicated dimensions = star joins with near-zero movement.
+The performance killer is **data movement**: joining two large tables hash-distributed on *different* keys forces a network re-shuffle per query (the same shuffle economics as [Spark](../07_PySpark/Spark_Processing.md)). Fact hashed on `order_key` + replicated dimensions = star joins with near-zero movement.
 
 ---
 

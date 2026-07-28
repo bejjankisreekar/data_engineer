@@ -83,9 +83,9 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Compression** — shrinking file size by removing repetition, similar to summarizing a long report so it takes up less space, without losing the information.
 
-**Data Lake** — a large storage area that holds raw data of any kind (structured, semi-structured, unstructured), before it's been cleaned or organized. Think of it as a big warehouse room where boxes arrive as-is, unsorted. See [Data Lake vs Warehouse vs Database](03_Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
+**Data Lake** — a large storage area that holds raw data of any kind (structured, semi-structured, unstructured), before it's been cleaned or organized. Think of it as a big warehouse room where boxes arrive as-is, unsorted. See [Data Lake vs Warehouse vs Database](04_Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
 
-**Blob** — Azure's term for "a file stored in the cloud" (Binary Large OBject). See [Azure Blob Storage](03_Data_Storage/02_Azure_Blob_Storage.md).
+**Blob** — Azure's term for "a file stored in the cloud" (Binary Large OBject). See [Azure Blob Storage](04_Data_Storage/02_Azure_Blob_Storage.md).
 
 ---
 
@@ -93,7 +93,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Pipeline** — an automated sequence of steps that moves data from one place to another, similar to an assembly line: extract from the source, transform it, load it into the destination.
 
-**ETL (Extract, Transform, Load)** — extract data from a source, clean/reshape it *before* loading it into its destination. See [ETL vs ELT](04_ETL_ELT/01_ETL_vs_ELT.md).
+**ETL (Extract, Transform, Load)** — extract data from a source, clean/reshape it *before* loading it into its destination. See [ETL vs ELT](05_ETL_ELT/01_ETL_vs_ELT.md).
 
 **ELT (Extract, Load, Transform)** — extract data, load it into the destination first, and transform it there afterward. Common with modern cloud warehouses that have plenty of processing power.
 
@@ -107,9 +107,9 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Azure-specific terms
 
-**Azure Data Factory (ADF)** — Azure's tool for building and scheduling data pipelines, largely through a drag-and-drop interface. See [Azure Data Factory](04_ETL_ELT/02_Azure_Data_Factory.md).
+**Azure Data Factory (ADF)** — Azure's tool for building and scheduling data pipelines, largely through a drag-and-drop interface. See [Azure Data Factory](05_ETL_ELT/02_Azure_Data_Factory.md).
 
-**Azure Data Lake Storage (ADLS)** — Azure Blob Storage with extra features (folder structure, fine-grained permissions) tuned for big-data analytics. See [Azure Data Lake Storage](03_Data_Storage/03_Azure_Data_Lake_Storage.md).
+**Azure Data Lake Storage (ADLS)** — Azure Blob Storage with extra features (folder structure, fine-grained permissions) tuned for big-data analytics. See [Azure Data Lake Storage](04_Data_Storage/03_Azure_Data_Lake_Storage.md).
 
 **Azure Synapse Analytics** — Microsoft's cloud data warehouse and analytics service (successor to Azure SQL Data Warehouse).
 
@@ -127,11 +127,11 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Partition** — one chunk of a dataset, small enough for one worker/core to process; the unit of parallelism in Spark and the unit of pruning in storage.
 
-**Shuffle** — redistributing data across the cluster by key (for GROUP BY, JOIN) — the most expensive operation in distributed processing. See [Spark Processing](06_PySpark/Spark_Processing.md).
+**Shuffle** — redistributing data across the cluster by key (for GROUP BY, JOIN) — the most expensive operation in distributed processing. See [Spark Processing](07_PySpark/Spark_Processing.md).
 
 **Data skew** — when one key/partition holds far more data than the rest, so one worker becomes the bottleneck ("the job is 99% done for an hour").
 
-**Driver / Executor** — Spark's master and workers: the driver plans and schedules; executors run tasks and hold cached data. See [Spark Architecture](06_PySpark/Spark_Architecture.md).
+**Driver / Executor** — Spark's master and workers: the driver plans and schedules; executors run tasks and hold cached data. See [Spark Architecture](07_PySpark/Spark_Architecture.md).
 
 **Lazy evaluation** — Spark records transformations without running them, then optimizes and executes the whole plan when an action (count, write) triggers it.
 
@@ -147,7 +147,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Watermark** — the saved "high-water mark" (e.g. max `modified_at`) an incremental load uses to fetch only new/changed rows next run.
 
-**Medallion (bronze/silver/gold)** — lakehouse layering: raw as-arrived → cleaned/typed → business-ready aggregates. See [ETL vs ELT](04_ETL_ELT/01_ETL_vs_ELT.md).
+**Medallion (bronze/silver/gold)** — lakehouse layering: raw as-arrived → cleaned/typed → business-ready aggregates. See [ETL vs ELT](05_ETL_ELT/01_ETL_vs_ELT.md).
 
 **Lakehouse** — data-lake storage + a table format (Delta/Iceberg) giving warehouse behavior (ACID, schema, time travel) on one copy of data.
 
@@ -161,9 +161,9 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Cloud terms
 
-**Region / Availability Zone** — a metro-area group of datacenters / one independent facility within it. See [Public, Private & Hybrid Cloud](05_cloud/01_Public_Private_Hybrid_Cloud.md).
+**Region / Availability Zone** — a metro-area group of datacenters / one independent facility within it. See [Public, Private & Hybrid Cloud](03_Cloud/01_Public_Private_Hybrid_Cloud.md).
 
-**IaaS / PaaS / SaaS** — how much of the stack you rent: raw VMs / a managed platform for your code and data / finished software. See [SaaS, PaaS, IaaS](05_cloud/02_SaaS_PaaS_IaaS.md).
+**IaaS / PaaS / SaaS** — how much of the stack you rent: raw VMs / a managed platform for your code and data / finished software. See [SaaS, PaaS, IaaS](03_Cloud/02_SaaS_PaaS_IaaS.md).
 
 **Serverless** — compute that scales to zero and bills per use; you never size or manage instances.
 

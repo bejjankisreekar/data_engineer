@@ -61,7 +61,7 @@ How a 1 GB file is stored:
 - **ResourceManager** (master) — receives job requests, allocates resources.
 - **NodeManager** (one per worker) — launches and monitors **containers** (boxes of CPU + RAM) on its machine.
 
-YARN made Hadoop a general platform: MapReduce, [Spark](../06_PySpark/Spark_Architecture.md), Hive and others can all run on the same cluster, sharing resources.
+YARN made Hadoop a general platform: MapReduce, [Spark](../07_PySpark/Spark_Architecture.md), Hive and others can all run on the same cluster, sharing resources.
 
 ---
 
@@ -84,7 +84,7 @@ Input blocks     MAP phase              SHUFFLE           REDUCE phase
 - **Shuffle** — pairs with the same key are moved to the same node (the expensive network step).
 - **Reduce** — each node aggregates the values for its keys.
 
-**The catch:** MapReduce writes results **to disk after every stage**. A multi-step job = read disk, process, write disk, repeat. Reliable, but *slow* — this weakness is exactly what Spark fixed (see [Why_Spark_Why_Databricks.md](../06_PySpark/Why_Spark_Why_Databricks.md)).
+**The catch:** MapReduce writes results **to disk after every stage**. A multi-step job = read disk, process, write disk, repeat. Reliable, but *slow* — this weakness is exactly what Spark fixed (see [Why_Spark_Why_Databricks.md](../07_PySpark/Why_Spark_Why_Databricks.md)).
 
 ---
 
@@ -105,8 +105,8 @@ Input blocks     MAP phase              SHUFFLE           REDUCE phase
 
 On-prem Hadoop clusters are fading, but the ideas live on everywhere:
 
-- HDFS → cloud data lakes ([Azure Data Lake Storage](../03_Data_Storage/03_Azure_Data_Lake_Storage.md), S3)
-- MapReduce → [Spark](../06_PySpark/What_Is_Apache_Spark.md)
+- HDFS → cloud data lakes ([Azure Data Lake Storage](../04_Data_Storage/03_Azure_Data_Lake_Storage.md), S3)
+- MapReduce → [Spark](../07_PySpark/What_Is_Apache_Spark.md)
 - YARN → Kubernetes / managed cloud clusters (Databricks)
 - Hive → Databricks SQL, Synapse, Snowflake
 
@@ -183,10 +183,10 @@ Hive's lasting gift isn't its engine; it's the **metastore**: a central map of "
 
 | On-prem piece | Azure landing zone |
 |---|---|
-| HDFS data | [ADLS Gen2](../03_Data_Storage/03_Azure_Data_Lake_Storage.md) (distcp/ADF copy) |
+| HDFS data | [ADLS Gen2](../04_Data_Storage/03_Azure_Data_Lake_Storage.md) (distcp/ADF copy) |
 | Hive tables | Delta tables + Unity Catalog |
-| MapReduce/Hive jobs | Spark on [Databricks](../06_PySpark/Why_Spark_Why_Databricks.md) (Hive SQL ports ~90% cleanly to Spark SQL) |
-| Oozie workflows | [Data Factory](../04_ETL_ELT/02_Azure_Data_Factory.md) / Databricks Workflows |
+| MapReduce/Hive jobs | Spark on [Databricks](../07_PySpark/Why_Spark_Why_Databricks.md) (Hive SQL ports ~90% cleanly to Spark SQL) |
+| Oozie workflows | [Data Factory](../05_ETL_ELT/02_Azure_Data_Factory.md) / Databricks Workflows |
 | HBase | Cosmos DB / HBase on VMs |
 
 Pro tip: migrate *data first, engines second, pipelines last* — and run old + new in parallel with reconciliation checks (row counts, checksums per partition) before cutover.

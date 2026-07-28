@@ -135,7 +135,7 @@ How a query uses this: read footer → **column pruning** (only requested column
 
 - **Encodings before compression**: dictionary (low-cardinality strings), RLE/bit-packing, delta — then snappy (default, fast) / zstd (smaller, modern choice) / gzip per page ([encoding theory](../00_Fundamentals/02_OLAP_Storage.md)).
 - **Nested data** works (unlike naive columnar): structs flatten to dotted columns; arrays/maps use repetition/definition levels (the Dremel model) — so [JSON-shaped data](02_JSON.md) stores columnar too.
-- Row-group size trades pruning granularity vs metadata overhead; the ~128 MB default aligns with one [Spark task](../06_PySpark/Spark_Processing.md) per row group.
+- Row-group size trades pruning granularity vs metadata overhead; the ~128 MB default aligns with one [Spark task](../07_PySpark/Spark_Processing.md) per row group.
 
 ## Writing Parquet well (where pipelines go right or wrong)
 
@@ -171,9 +171,9 @@ Diagnostics this answers: are files tiny (compaction needed)? one giant row grou
 
 ## Field-tested gotchas
 
-- **Overwriting a Parquet folder non-atomically** (plain `overwrite` to the same path without a table format) leaves readers a window of half-deleted files — this failure mode *is* the sales pitch for [Delta](../06_PySpark/Why_Spark_Why_Databricks.md).
+- **Overwriting a Parquet folder non-atomically** (plain `overwrite` to the same path without a table format) leaves readers a window of half-deleted files — this failure mode *is* the sales pitch for [Delta](../07_PySpark/Why_Spark_Why_Databricks.md).
 - Timestamp interop: INT96 legacy timestamps vs `timestamp-millis/micros`, plus session timezones, produce hour-shifted data between engines — pin conventions, test round-trips.
-- `coalesce(1)` to make "one nice Parquet file" serializes the write through one task and builds one giant row group — fine for samples, wrong for production ([write patterns](../06_PySpark/Spark_Processing.md)).
+- `coalesce(1)` to make "one nice Parquet file" serializes the write through one task and builds one giant row group — fine for samples, wrong for production ([write patterns](../07_PySpark/Spark_Processing.md)).
 - Column pruning dies through `SELECT *` views — the physical format can't save a logical habit ([views](../01_SQL/10_SQL_Views.md), [DQL](../01_SQL/06_SQL_DQL.md)).
 - Predicate pushdown works on plain columns, not expressions: `WHERE CAST(ts AS DATE) = X` reads everything ([sargability](../01_SQL/06_SQL_DQL.md) — the lake edition).
 

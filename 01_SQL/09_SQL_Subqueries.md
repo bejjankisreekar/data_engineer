@@ -187,7 +187,7 @@ WHERE Salary > dept_avg;
 In Spark SQL / Synapse, every subquery is a plan subtree — the concerns shift to data movement:
 
 - An uncorrelated scalar subquery becomes a tiny job whose result is **broadcast** — cheap.
-- `IN (subquery)` / `EXISTS` become **semi-joins**; NOT EXISTS an **anti-join** — all subject to [broadcast vs shuffle decisions](../06_PySpark/Spark_Processing.md).
+- `IN (subquery)` / `EXISTS` become **semi-joins**; NOT EXISTS an **anti-join** — all subject to [broadcast vs shuffle decisions](../07_PySpark/Spark_Processing.md).
 - Correlated scalar subqueries must be decorrelatable or Spark rejects/struggles — another reason the window-function rewrite is the lakehouse idiom.
 
 ## Field-tested gotchas

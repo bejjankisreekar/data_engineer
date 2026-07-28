@@ -100,7 +100,7 @@ The single most effective targeted fix for a hot query — at the cost of a wide
 
 ## Columnstore — indexes for analytics
 
-Rowstore B-trees answer "find these few rows fast"; **columnstore indexes** (Synapse default, SQL Server option) store data [column-wise, compressed, batch-processed](../00_Fundamentals/02_OLAP_Storage.md) — built for "scan a billion rows, aggregate three columns." The two coexist: clustered columnstore for the big fact table + a few B-tree indexes for point lookups on it. In the lakehouse the same role is played by [Parquet](../02_File_formats/05_Parquet.md) + statistics + Z-ordering — "indexing" became file layout ([Spark_Processing.md](../06_PySpark/Spark_Processing.md)).
+Rowstore B-trees answer "find these few rows fast"; **columnstore indexes** (Synapse default, SQL Server option) store data [column-wise, compressed, batch-processed](../00_Fundamentals/02_OLAP_Storage.md) — built for "scan a billion rows, aggregate three columns." The two coexist: clustered columnstore for the big fact table + a few B-tree indexes for point lookups on it. In the lakehouse the same role is played by [Parquet](../02_File_formats/05_Parquet.md) + statistics + Z-ordering — "indexing" became file layout ([Spark_Processing.md](../07_PySpark/Spark_Processing.md)).
 
 ---
 

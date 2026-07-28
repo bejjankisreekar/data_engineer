@@ -102,7 +102,7 @@ Three levels of statistics — file, stripe, and **row group (every 10,000 rows)
 
 ## ORC ACID — the feature that previewed the lakehouse
 
-Hive built full **transactional tables** on ORC years before Delta/Iceberg went mainstream: base files + **delta files** (insert/update/delete records) merged at read time, compacted in the background — conceptually the same mechanics Delta Lake later popularized ([evolution timeline](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)). If you inherit a Hive estate, know that "transactional ORC tables" cannot be read as plain ORC folders — they need Hive-aware readers or a migration step, a classic trap when lifting Hive data into [ADLS](../03_Data_Storage/03_Azure_Data_Lake_Storage.md).
+Hive built full **transactional tables** on ORC years before Delta/Iceberg went mainstream: base files + **delta files** (insert/update/delete records) merged at read time, compacted in the background — conceptually the same mechanics Delta Lake later popularized ([evolution timeline](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)). If you inherit a Hive estate, know that "transactional ORC tables" cannot be read as plain ORC folders — they need Hive-aware readers or a migration step, a classic trap when lifting Hive data into [ADLS](../04_Data_Storage/03_Azure_Data_Lake_Storage.md).
 
 ---
 
@@ -122,7 +122,7 @@ Pro guidance: new work → Parquet/Delta, no debate. ORC expertise is **migratio
 
 - Non-transactional ORC: Spark reads it natively — `spark.read.orc(...)` → write Delta; done in bulk with schema checks.
 - Transactional Hive ORC: export via Hive (major compaction first) or Hive-ACID-aware readers; don't point Spark at the raw folders.
-- Preserve partition layouts (`year=2026/...`) during conversion so downstream pruning survives; revisit [file sizing](../06_PySpark/Spark_Processing.md) — Hive-era small files should be compacted in the same pass.
+- Preserve partition layouts (`year=2026/...`) during conversion so downstream pruning survives; revisit [file sizing](../07_PySpark/Spark_Processing.md) — Hive-era small files should be compacted in the same pass.
 - Validate with row counts + column checksums per partition ([reconciliation habit](../01_SQL/13_SQL_Warehouse.md)).
 
 ## Field-tested gotchas
@@ -130,7 +130,7 @@ Pro guidance: new work → Parquet/Delta, no debate. ORC expertise is **migratio
 - ORC's schema evolution is positional in older Hive versions — column *renames* via metadata could silently misalign data; verify by content, not just schema, after migrations.
 - Mixed ORC versions in one folder (years of Hive writers) can break vectorized readers — fall back to non-vectorized to diagnose, then compact/rewrite.
 - Bloom filters inflate file size and write time — add them for measured point-lookup patterns, not "just in case."
-- Stats-based skipping only works if data is **sorted/clustered** on the filtered column within files — random layout = min/max ranges that never exclude anything (same reason [Z-ordering](../06_PySpark/Spark_Processing.md) exists for Parquet/Delta).
+- Stats-based skipping only works if data is **sorted/clustered** on the filtered column within files — random layout = min/max ranges that never exclude anything (same reason [Z-ordering](../07_PySpark/Spark_Processing.md) exists for Parquet/Delta).
 
 ## Interview-grade Q&A
 

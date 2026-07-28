@@ -18,7 +18,7 @@ Imagine counting 10 million paper votes.
 - One person counting alone = a single machine. Accurate but takes weeks.
 - 1,000 people each counting one box, then reporting subtotals to a supervisor who adds them up = a cluster. Same result, hours instead of weeks.
 
-That "split the work, do it in parallel, combine the results" pattern is the heart of every distributed system, including [Hadoop](05_Hadoop_Architecture.md) and [Spark](../06_PySpark/Spark_Architecture.md).
+That "split the work, do it in parallel, combine the results" pattern is the heart of every distributed system, including [Hadoop](05_Hadoop_Architecture.md) and [Spark](../07_PySpark/Spark_Architecture.md).
 
 ---
 
@@ -102,7 +102,7 @@ If 10% of a job is inherently serial (a final merge, a driver-side step), then e
 
 Split 1 TB by `customer_id` and one mega-customer owns 40% of rows → one worker gets 400 GB while others get 2 GB. The job is "99% done" for hours.
 
-Fixes pros reach for: **salting** keys (append a random suffix to split the hot key, aggregate in two steps), broadcast the small side of a join, or pre-aggregate before shuffling. (Concrete Spark techniques: [Spark_Processing.md](../06_PySpark/Spark_Processing.md).)
+Fixes pros reach for: **salting** keys (append a random suffix to split the hot key, aggregate in two steps), broadcast the small side of a join, or pre-aggregate before shuffling. (Concrete Spark techniques: [Spark_Processing.md](../07_PySpark/Spark_Processing.md).)
 
 ## Coordination and consensus
 
@@ -121,7 +121,7 @@ During a network **P**artition, a system must choose between **C**onsistency (ev
 | **CP** | Reject requests rather than serve stale data | HDFS NameNode, ZooKeeper, Spanner-style DBs |
 | **AP** | Keep answering, reconcile later ("eventual consistency") | Cassandra, DynamoDB (tunable), DNS |
 
-Cloud object stores (S3, [ADLS](../03_Data_Storage/03_Azure_Data_Lake_Storage.md)) are now **strongly consistent** for reads-after-write — a real change from early S3 that used to break pipelines.
+Cloud object stores (S3, [ADLS](../04_Data_Storage/03_Azure_Data_Lake_Storage.md)) are now **strongly consistent** for reads-after-write — a real change from early S3 that used to break pipelines.
 
 ---
 
@@ -140,7 +140,7 @@ Pro reflex: assume at-least-once everywhere and make every pipeline **idempotent
 ## MPP vs MapReduce-style engines
 
 - **MPP warehouses** (Synapse Dedicated, Teradata, Redshift): long-lived tightly-coupled nodes, pipelined execution, brilliant for SQL, historically fragile if a node dies mid-query.
-- **DAG engines** ([Spark](../06_PySpark/Spark_Architecture.md)): stage-by-stage with recoverable intermediate state — slower per-query than ideal MPP, but resilient and general-purpose. Modern systems blur the line (Photon, AQE).
+- **DAG engines** ([Spark](../07_PySpark/Spark_Architecture.md)): stage-by-stage with recoverable intermediate state — slower per-query than ideal MPP, but resilient and general-purpose. Modern systems blur the line (Photon, AQE).
 
 ## When NOT to distribute
 

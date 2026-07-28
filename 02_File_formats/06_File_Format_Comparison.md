@@ -80,7 +80,7 @@ Note what's *not* a criterion: loyalty. The same dataset legitimately changes fo
 
 ## The missing row: table formats
 
-This folder compares *file* formats; production lakes wrap the columnar ones in a **table format** — Delta Lake / Iceberg / Hudi — adding the transaction log, ACID commits, schema enforcement, and time travel that raw folders of files lack ([why that matters](../06_PySpark/Why_Spark_Why_Databricks.md), [format war](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)). Interview one-liner: *"Parquet is how bytes are laid out; Delta is how a set of Parquet files behaves like a database table."*
+This folder compares *file* formats; production lakes wrap the columnar ones in a **table format** — Delta Lake / Iceberg / Hudi — adding the transaction log, ACID commits, schema enforcement, and time travel that raw folders of files lack ([why that matters](../07_PySpark/Why_Spark_Why_Databricks.md), [format war](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)). Interview one-liner: *"Parquet is how bytes are laid out; Delta is how a set of Parquet files behaves like a database table."*
 
 ---
 
@@ -96,7 +96,7 @@ Every format hop is where corruption either gets caught or gets laundered into "
 
 - **Reconcile counts and checksums** across the boundary (rows in = rows out + quarantined; [SQL instrumentation](../01_SQL/08_SQL_Aggregate_Functions.md)).
 - **Resolve types explicitly** — CSV/JSON's stringly-typed values become real DECIMAL/TIMESTAMP here, per declared schema, never by inference ([type mapping tax](../01_SQL/03_SQL_Data_Types.md)).
-- **Keep the raw** — bronze retains the original bytes; conversions are re-runnable, so parser bugs are recoverable ([medallion](../04_ETL_ELT/01_ETL_vs_ELT.md)).
+- **Keep the raw** — bronze retains the original bytes; conversions are re-runnable, so parser bugs are recoverable ([medallion](../05_ETL_ELT/01_ETL_vs_ELT.md)).
 - Make the conversion [idempotent](../01_SQL/05_SQL_DML.md) — the same input file re-processed must not double its rows.
 
 ## Choosing when requirements conflict (the senior tiebreakers)
@@ -108,7 +108,7 @@ Every format hop is where corruption either gets caught or gets laundered into "
 
 ## Field-tested gotchas
 
-- The pipeline example above says "a single Parquet file" — at real scale that's an anti-pattern; write *appropriately sized multiple* files per partition ([file sizing](../06_PySpark/Spark_Processing.md)).
+- The pipeline example above says "a single Parquet file" — at real scale that's an anti-pattern; write *appropriately sized multiple* files per partition ([file sizing](../07_PySpark/Spark_Processing.md)).
 - Compressed text (`.csv.gz`, `.json.gz`) silently serializes reads to one task per file — the most common "why is my 8-node cluster idle" answer.
 - Format conversions can silently lose precision (JSON floats → double, INT96 timestamps, CSV leading zeros) — round-trip tests on edge values belong in CI.
 - "Human readable" stops being true at a million rows — past exploration size, *tooling* (DuckDB, `parquet-tools`) reads binary formats more faithfully than eyes read text.

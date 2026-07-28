@@ -99,7 +99,7 @@ df = (spark.read.format("csv")
 
 ## Compression and splittability
 
-Plain CSV compresses ~80–90% with gzip — but a `.csv.gz` file is **not splittable**: one 10 GB gzip = one Spark task reading it alone ([parallelism](../06_PySpark/Spark_Processing.md) gone). Options:
+Plain CSV compresses ~80–90% with gzip — but a `.csv.gz` file is **not splittable**: one 10 GB gzip = one Spark task reading it alone ([parallelism](../07_PySpark/Spark_Processing.md) gone). Options:
 
 - **bzip2/zstd(seekable)** — splittable but slower/rarer.
 - Many medium gzip files (~100–250 MB) — parallelism via file count, the pragmatic landing-zone pattern.
@@ -115,7 +115,7 @@ CSV is where *other people's* systems meet your pipeline, so defend accordingly:
 
 1. **Validate structure before load** — column count and header names against the contract; quarantine files that differ, don't "best-effort" them.
 2. **Permissive-with-capture parsing** — Spark's `mode=PERMISSIVE` + `columnNameOfCorruptRecord` lands broken rows in a `_corrupt_record` column: load the good, quarantine the bad, alert on the ratio.
-3. **Keep the raw file immutable** in the bronze/landing zone — you *will* need to re-parse with fixed options ([medallion](../04_ETL_ELT/01_ETL_vs_ELT.md)).
+3. **Keep the raw file immutable** in the bronze/landing zone — you *will* need to re-parse with fixed options ([medallion](../05_ETL_ELT/01_ETL_vs_ELT.md)).
 4. **Row-count reconciliation** — lines in file (minus header) vs rows loaded, every file, automated ([aggregates as instrumentation](../01_SQL/08_SQL_Aggregate_Functions.md)).
 5. Convert to Parquet/Delta immediately; CSV's job ends at the door.
 

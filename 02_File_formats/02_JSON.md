@@ -109,7 +109,7 @@ Two different things share the name:
 {"id":2,"event":"view"}
 ```
 
-Big data tooling wants **JSON Lines**: each line parses independently, so files split across [Spark tasks](../06_PySpark/Spark_Processing.md) and a corrupt record kills one line, not the file. Spark's reader assumes JSON Lines by default (`multiLine=True` switches to whole-file parsing — and, like CSV, makes files non-splittable). Kafka events, app logs, and API export dumps are JSON Lines almost universally.
+Big data tooling wants **JSON Lines**: each line parses independently, so files split across [Spark tasks](../07_PySpark/Spark_Processing.md) and a corrupt record kills one line, not the file. Spark's reader assumes JSON Lines by default (`multiLine=True` switches to whole-file parsing — and, like CSV, makes files non-splittable). Kafka events, app logs, and API export dumps are JSON Lines almost universally.
 
 ## Working with nested JSON in Spark — the daily verbs
 
@@ -164,7 +164,7 @@ The organizational fix outranks the technical one: a **data contract** with the 
 
 ## Performance reality
 
-JSON is the most expensive mainstream format to read at scale: text parsing per record, keys repeated in every record (`"EmployeeID":` 50 million times), no column pruning, ~2–5× Parquet's size even gzipped. Numbers to carry in your head: parsing JSON is commonly **10× the CPU** of reading the same data as Parquet. Hence the invariant pipeline shape: `API/Kafka (JSON) → bronze (raw JSON, immutable) → silver (typed Parquet/Delta)` — JSON at the edges, columnar in the middle ([medallion](../04_ETL_ELT/01_ETL_vs_ELT.md)).
+JSON is the most expensive mainstream format to read at scale: text parsing per record, keys repeated in every record (`"EmployeeID":` 50 million times), no column pruning, ~2–5× Parquet's size even gzipped. Numbers to carry in your head: parsing JSON is commonly **10× the CPU** of reading the same data as Parquet. Hence the invariant pipeline shape: `API/Kafka (JSON) → bronze (raw JSON, immutable) → silver (typed Parquet/Delta)` — JSON at the edges, columnar in the middle ([medallion](../05_ETL_ELT/01_ETL_vs_ELT.md)).
 
 ## Field-tested gotchas
 

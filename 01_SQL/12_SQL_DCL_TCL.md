@@ -166,7 +166,7 @@ Transaction A locks row 1 then wants row 2; B locks row 2 then wants row 1 → t
 
 ## Transactions in the lakehouse — same ACID, different mechanics
 
-Delta Lake gives ACID per table via an [optimistic-concurrency transaction log](../06_PySpark/Why_Spark_Why_Databricks.md): writers prepare files, then attempt to commit a new log version; a conflicting concurrent commit fails one writer (`ConcurrentAppendException`) who must retry. Key differences from a database engine:
+Delta Lake gives ACID per table via an [optimistic-concurrency transaction log](../07_PySpark/Why_Spark_Why_Databricks.md): writers prepare files, then attempt to commit a new log version; a conflicting concurrent commit fails one writer (`ConcurrentAppendException`) who must retry. Key differences from a database engine:
 
 - **No multi-table transactions** — you cannot atomically commit across two Delta tables; design so each table's write is independently idempotent ([idempotent DML](05_SQL_DML.md)).
 - **No locks** — long "transactions" don't block anyone; conflicts surface at commit time instead.

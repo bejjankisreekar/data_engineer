@@ -95,7 +95,7 @@ Analogy — pizza: **On-premises** = you cook everything from scratch at home (b
 
 **Exam Tip:** *Hybrid* = public + private *connected*. *Multi-cloud* = two or more *public* clouds. These are commonly swapped in wrong-answer options — don't confuse "multiple clouds" (multi-cloud) with "cloud + on-prem" (hybrid).
 
-More detail on this exact topic, including Azure's specific hybrid tools (Azure Arc, ExpressRoute, Azure Stack), lives in the main repo's [Public, Private & Hybrid Cloud](../../05_cloud/01_Public_Private_Hybrid_Cloud.md) note if you want engineering-level depth beyond what AZ-900 requires.
+More detail on this exact topic, including Azure's specific hybrid tools (Azure Arc, ExpressRoute, Azure Stack), lives in the main repo's [Public, Private & Hybrid Cloud](../../03_Cloud/01_Public_Private_Hybrid_Cloud.md) note if you want engineering-level depth beyond what AZ-900 requires.
 
 ---
 
