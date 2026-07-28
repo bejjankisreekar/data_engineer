@@ -141,3 +141,15 @@ The traps: **Cool/Archive have per-GB *read* and early-deletion charges** — a 
 - *Why can't you edit a file in place in object storage?* Immutable object contract — the foundation table formats build versioned commits on.
 - *How should a Databricks job authenticate to storage?* Managed identity/service principal with scoped RBAC — never account keys in code.
 - *Archive tier looks 10× cheaper — why be careful?* Retrieval latency (hours), rehydration + read charges, early-deletion fees — cheap to hold, expensive to touch.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Azure Blob Storage overview: https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction
+- Blob access tiers: https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview
+- Storage redundancy: https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy
+
+**Videos**
+- Azure Blob Storage tutorial: https://www.youtube.com/results?search_query=azure+blob+storage+tutorial

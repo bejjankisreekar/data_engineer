@@ -68,4 +68,22 @@ A desktop and app virtualization service running in the cloud — lets users rem
 - **Azure Functions** = serverless, event-triggered, pay-per-execution, scales to zero.
 - Compute choice comes down to: how much control do you need vs. how little management overhead do you want?
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Azure compute services overview: https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/compute-decision-tree
+- Azure Virtual Machines: https://learn.microsoft.com/en-us/azure/virtual-machines/overview
+- Azure App Service: https://learn.microsoft.com/en-us/azure/app-service/overview
+- Azure Functions (serverless): https://learn.microsoft.com/en-us/azure/azure-functions/functions-overview
+- Containers — ACI & AKS: https://learn.microsoft.com/en-us/azure/aks/what-is-aks
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Azure compute options explained: https://www.youtube.com/results?search_query=azure+compute+services+vm+app+service+functions+aks
+- VMs vs Containers vs Serverless: https://www.youtube.com/results?search_query=azure+vm+vs+containers+vs+serverless
+
+---
+
 Next: [04 — Azure Networking Services](04_Azure_Networking_Services.md)

@@ -119,3 +119,15 @@ Every format hop is where corruption either gets caught or gets laundered into "
 - *One dataset, four formats — why?* Each hop optimizes a different bottleneck: producer ergonomics, wire efficiency + evolution, audit/rawness, scan performance.
 - *What does a table format add over Parquet?* Transactions, concurrent-writer safety, schema enforcement/evolution, time travel, MERGE — database semantics over files.
 - *How do you justify a format migration to management?* Scan-cost and storage numbers before/after, plus incident classes eliminated (partial writes, schema drift) — money and risk, not elegance.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Choosing a file format (Databricks glossary): https://www.databricks.com/glossary/what-is-parquet
+- Row vs columnar formats (Azure): https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/
+
+**Videos**
+- CSV vs JSON vs Avro vs ORC vs Parquet: https://www.youtube.com/results?search_query=csv+vs+json+vs+avro+vs+orc+vs+parquet
+- Big data file formats compared: https://www.youtube.com/results?search_query=big+data+file+formats+comparison

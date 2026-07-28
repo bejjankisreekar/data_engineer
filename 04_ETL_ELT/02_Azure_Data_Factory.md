@@ -157,3 +157,16 @@ The monitor tab shows *runs*; production needs *outcomes*:
 - *Design ADF for 500 source tables.* Metadata-driven: control table + parameterized datasets/linked services + Lookup-ForEach-Copy + transactional watermark updates — ten reusable objects, not 500 pipelines.
 - *ADF or Databricks for transformation?* Movement and orchestration in ADF; non-trivial transforms as code in Databricks/dbt — testability and code review beat canvas boxes.
 - *A pipeline is "green" but the dashboard is stale — where do you look?* Trigger actually firing? Rows-copied metrics? Downstream activity skipped on a dependency condition? Absence-alerts exist precisely because green-but-empty happens.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Azure Data Factory overview: https://learn.microsoft.com/en-us/azure/data-factory/introduction
+- ADF pipelines & activities: https://learn.microsoft.com/en-us/azure/data-factory/concepts-pipelines-activities
+- Mapping data flows: https://learn.microsoft.com/en-us/azure/data-factory/concepts-data-flow-overview
+
+**Videos**
+- Azure Data Factory tutorial for beginners: https://www.youtube.com/results?search_query=azure+data+factory+tutorial+for+beginners
+- ADF end-to-end pipeline: https://www.youtube.com/results?search_query=azure+data+factory+end+to+end+pipeline

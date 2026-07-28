@@ -159,3 +159,16 @@ Distribution buys scale and pays in coordination overhead, shuffles, and operati
 - *What is a quorum?* A majority of nodes that must agree before an operation counts — lets the system make progress despite minority failures.
 - *How do you handle a straggler task?* Speculative execution; if it's skew-driven, fix the partitioning/salting instead.
 - *CAP in one line?* Under a network partition you can't have both perfect consistency and full availability — pick per use case.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is distributed computing? (IBM): https://www.ibm.com/think/topics/distributed-computing
+- Distributed systems concepts (AWS): https://aws.amazon.com/what-is/distributed-computing/
+- CAP theorem explained: https://www.ibm.com/think/topics/cap-theorem
+
+**Videos**
+- Distributed computing explained: https://www.youtube.com/results?search_query=distributed+computing+explained+for+data+engineers
+- CAP theorem in 10 minutes: https://www.youtube.com/results?search_query=cap+theorem+explained

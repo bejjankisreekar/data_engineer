@@ -169,3 +169,16 @@ Everything in this file — hooks, CI workflows, branch protection as code (some
 4. When would a monorepo's coordination advantage outweigh its tooling complexity?
 
 Next: fixing it when something goes wrong → [10 — Troubleshooting & Real-World Scenarios](10_Troubleshooting_and_Real_World_Scenarios.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- GitHub Actions (CI/CD): https://docs.github.com/en/actions
+- CI/CD concepts (GitLab): https://docs.gitlab.com/ee/ci/
+- Git best practices (Atlassian): https://www.atlassian.com/git/tutorials/comparing-workflows
+
+**Videos**
+- CI/CD with GitHub Actions: https://www.youtube.com/results?search_query=github+actions+ci+cd+tutorial
+- Git best practices for teams: https://www.youtube.com/results?search_query=git+best+practices+for+teams

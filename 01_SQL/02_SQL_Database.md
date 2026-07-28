@@ -213,3 +213,14 @@ The honest summary a senior gives: NoSQL trades ACID/joins for horizontal scale 
 - *How would you extract a 500 GB table nightly without hurting the app?* Read replica + incremental watermark/CDC + partitioned parallel reads + off-peak window.
 - *SQL vs NoSQL in one line?* ACID + joins + fixed schema vs horizontal scale + flexible schema + eventual consistency — pick per workload, not per fashion.
 - *What is PITR and why does it matter?* Point-in-time restore from continuous backups — the recovery story for "we corrupted the table at 14:32."
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Relational database concepts (Oracle): https://www.oracle.com/database/what-is-a-relational-database/
+- Database design basics: https://www.postgresql.org/docs/current/ddl.html
+
+**Videos**
+- Relational databases explained: https://www.youtube.com/results?search_query=relational+database+explained
+- Database design for beginners: https://www.youtube.com/results?search_query=database+design+course+for+beginners

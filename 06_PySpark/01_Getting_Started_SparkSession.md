@@ -101,3 +101,14 @@ That laziness is the single most important behavior to internalize: **transforma
 3. Create a small DataFrame from a Python list and show it.
 
 Next: the operations you'll use every single day → [02 — DataFrame Basics](02_DataFrame_Basics.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SparkSession API: https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.SparkSession.html
+- PySpark quickstart: https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_df.html
+
+**Videos**
+- SparkSession explained: https://www.youtube.com/results?search_query=pyspark+sparksession+explained

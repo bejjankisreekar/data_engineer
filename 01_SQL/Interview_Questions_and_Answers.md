@@ -353,3 +353,15 @@ Both `UPDATE` statements together represent "transfer 500." `COMMIT` makes both 
 - Q: What's the safe habit before running a bulk UPDATE/DELETE? — A: Run the equivalent SELECT with the same WHERE first.
 
 Back to the folder: [01_SQL notes](.) · Related: [00_Fundamentals Interview Q&A](../00_Fundamentals/Interview_Questions_and_Answers.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SQL practice (LeetCode Database): https://leetcode.com/studyplan/top-sql-50/
+- SQL interview questions (DataCamp): https://www.datacamp.com/blog/sql-interview-questions
+
+**Videos**
+- SQL interview questions & answers: https://www.youtube.com/results?search_query=sql+interview+questions+and+answers+data+engineer
+- SQL query interview problems: https://www.youtube.com/results?search_query=sql+query+interview+questions+solved

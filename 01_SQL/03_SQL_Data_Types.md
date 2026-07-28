@@ -143,3 +143,14 @@ Modern engines let a typed table carry an untyped column: SQL Server/Postgres `J
 - *What's an implicit conversion and why is it slow?* Auto-CAST applied to the column side of a predicate defeats index seeks → scans.
 - *How do you handle time zones in a global pipeline?* Store UTC (offset-aware types at edges), convert at presentation, pin session timezones in every engine.
 - *NVARCHAR always, to be safe?* No — it doubles storage for known-ASCII codes/keys; choose per column's real domain.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SQL data types (W3Schools): https://www.w3schools.com/sql/sql_datatypes.asp
+- PostgreSQL data types: https://www.postgresql.org/docs/current/datatype.html
+
+**Videos**
+- SQL data types explained: https://www.youtube.com/results?search_query=sql+data+types+explained

@@ -125,3 +125,14 @@ This three-stage flow — edit, stage, commit — is the single most important m
 4. Name the three stages a change passes through, in order, before it's permanent history.
 
 Next: the daily loop of actually recording changes → [02 — Core Workflow: Add, Commit, Status, Log](02_Core_Workflow_Add_Commit_Status_Log.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- About version control (Pro Git): https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control
+- What is version control? (Atlassian): https://www.atlassian.com/git/tutorials/what-is-version-control
+
+**Videos**
+- Version control explained: https://www.youtube.com/results?search_query=version+control+explained+git

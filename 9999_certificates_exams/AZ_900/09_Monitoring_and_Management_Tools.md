@@ -57,4 +57,22 @@ If a question mentions an outage affecting your specific deployed resources → 
 - **ARM templates** (JSON) and **Bicep** (concise DSL that compiles to ARM JSON) are both **declarative** infrastructure-as-code — describe the end state, not the steps.
 - **Azure Status** = public global health dashboard. **Service Health** = personalized health/incidents for your resources. **Advisor** = personalized best-practice recommendations. **Azure Monitor** = telemetry/metrics/logs/alerts on your resources. **Log Analytics** = the KQL query workspace inside Azure Monitor.
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Azure management tools (Portal, CLI, PowerShell, Cloud Shell): https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/considerations/development-strategy-development-environment
+- ARM templates & Bicep (infrastructure as code): https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview
+- Azure Monitor: https://learn.microsoft.com/en-us/azure/azure-monitor/overview
+- Azure Service Health vs Azure Status: https://learn.microsoft.com/en-us/azure/service-health/overview
+- Azure Advisor: https://learn.microsoft.com/en-us/azure/advisor/advisor-overview
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Azure management tools overview: https://www.youtube.com/results?search_query=azure+portal+cli+powershell+cloud+shell+az-900
+- Azure Monitor, Service Health, Advisor: https://www.youtube.com/results?search_query=azure+monitor+service+health+advisor+az-900
+
+---
+
 You've now covered every topic file. Next: **[10 — Practice Questions by Domain](10_Practice_Questions_by_Domain.md)** to test yourself.

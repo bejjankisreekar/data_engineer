@@ -167,3 +167,15 @@ The cloud's elasticity cuts both ways; mature teams treat cost like a performanc
 - *Why is hybrid still common?* Compliance/residency, latency to on-prem systems, migration inertia, and sunk datacenter cost.
 - *How does ADF reach an on-prem database securely?* Self-hosted Integration Runtime making outbound connections — no inbound firewall rules.
 - *Biggest cloud cost levers for a data platform?* Turn off idle compute, right-size/partition data to scan less, commitment pricing, spot for stateless batch.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Cloud deployment models (Azure): https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/
+- Public vs private vs hybrid cloud (IBM): https://www.ibm.com/topics/hybrid-cloud
+- What is hybrid cloud? (AWS): https://aws.amazon.com/what-is/hybrid-cloud/
+
+**Videos**
+- Public vs private vs hybrid cloud explained: https://www.youtube.com/results?search_query=public+vs+private+vs+hybrid+cloud+explained

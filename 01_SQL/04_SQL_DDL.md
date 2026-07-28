@@ -203,3 +203,14 @@ The same pattern governs breaking changes to lakehouse tables consumed by other 
 - *DELETE vs TRUNCATE vs DROP?* Row-by-row logged DML with WHERE / instant deallocation keeping structure (resets identity, FK-blocked) / removes the object itself.
 - *How do schema changes reach production in your team?* Versioned migrations in git through CI, expand–contract for breaking changes — never manual ALTERs.
 - *Do Delta tables have foreign keys?* Declarable-but-unenforced (informational) at best; referential integrity is enforced by pipeline tests/MERGE logic instead.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SQL CREATE/ALTER/DROP (W3Schools): https://www.w3schools.com/sql/sql_create_table.asp
+- DDL statements (PostgreSQL): https://www.postgresql.org/docs/current/ddl.html
+
+**Videos**
+- SQL DDL commands explained: https://www.youtube.com/results?search_query=sql+ddl+create+alter+drop+truncate

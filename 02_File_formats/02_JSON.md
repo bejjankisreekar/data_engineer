@@ -180,3 +180,14 @@ JSON is the most expensive mainstream format to read at scale: text parsing per 
 - *How do you handle a payload whose schema changes weekly?* Bronze raw retention + typed promotion of hot fields + additive auto-evolution + drift alerts + a producer contract.
 - *Why do JSON numeric IDs arrive corrupted?* JS producers round beyond 2^53 — contract them as strings.
 - *Why not store analytics tables as JSON?* Per-record parsing, repeated keys, no pruning/pushdown — 10× the cost of columnar for every query, forever.
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- JSON official spec: https://www.json.org/json-en.html
+- Reading JSON in Spark: https://spark.apache.org/docs/latest/sql-data-sources-json.html
+- Newline-delimited JSON (NDJSON): https://github.com/ndjson/ndjson-spec
+
+**Videos**
+- JSON explained for data engineers: https://www.youtube.com/results?search_query=json+file+format+explained+data+engineering

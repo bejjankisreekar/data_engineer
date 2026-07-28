@@ -58,4 +58,22 @@ A basic **firewall** for a VNet or subnet — a set of allow/deny rules based on
 - **Azure DNS** hosts DNS domains. **CDN** caches static content at edge locations close to users.
 - **NSG** = basic allow/deny firewall rules at the network level.
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Azure Virtual Network (VNet): https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview
+- VNet peering: https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview
+- VPN Gateway vs ExpressRoute: https://learn.microsoft.com/en-us/azure/expressroute/expressroute-introduction
+- Load balancing options (LB / App Gateway / Front Door / Traffic Manager): https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/load-balancing-overview
+- Network Security Groups (NSG): https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Azure networking fundamentals: https://www.youtube.com/results?search_query=azure+networking+fundamentals+vnet+az-900
+- Load Balancer vs App Gateway vs Front Door vs Traffic Manager: https://www.youtube.com/results?search_query=azure+load+balancer+vs+application+gateway+vs+front+door+vs+traffic+manager
+
+---
+
 Next: [05 — Azure Storage Services](05_Azure_Storage_Services.md)

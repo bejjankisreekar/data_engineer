@@ -138,3 +138,15 @@ Pro guidance: new work → Parquet/Delta, no debate. ORC expertise is **migratio
 - *Why did Parquet win despite ORC's strong design?* Ecosystem gravity: Spark/Delta/warehouse vendors standardized on Parquet; table formats sealed it.
 - *You inherit 200 TB of Hive ORC — plan?* Classify transactional vs plain, compact, bulk-convert to Delta preserving partitions, checksum-reconcile, then repoint consumers.
 - *When would you still choose ORC today?* Staying on a Hive/Trino-centric platform where it's the native optimized path.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Apache ORC official site: https://orc.apache.org/
+- ORC specification: https://orc.apache.org/specification/
+- Spark ORC data source: https://spark.apache.org/docs/latest/sql-data-sources-orc.html
+
+**Videos**
+- Apache ORC file format explained: https://www.youtube.com/results?search_query=apache+orc+file+format+explained

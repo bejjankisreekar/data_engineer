@@ -204,3 +204,17 @@ Pro tip: migrate *data first, engines second, pipelines last* — and run old + 
 - *What happens when a DataNode dies?* Missed heartbeats (~10 min) → NameNode marks it dead → re-replicates its blocks from surviving copies to restore replication factor.
 - *Small files problem?* Metadata bloat on the NameNode + one task per file overhead; fix by compaction/containers.
 - *Is Hadoop dead?* The distribution model is; the architecture lives on renamed — object storage + Spark + a catalog *is* Hadoop's design, cloud-corrected.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Apache Hadoop official site: https://hadoop.apache.org/
+- HDFS architecture guide: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html
+- YARN architecture: https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/YARN.html
+- MapReduce tutorial: https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html
+
+**Videos**
+- Hadoop architecture explained (HDFS/YARN/MapReduce): https://www.youtube.com/results?search_query=hadoop+architecture+hdfs+yarn+mapreduce+explained
+- Hadoop in 10 minutes: https://www.youtube.com/results?search_query=hadoop+explained+for+beginners

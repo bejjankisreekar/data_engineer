@@ -193,3 +193,14 @@ Trend these per load and alert on deviations — this five-line query catches mo
 - *WHERE vs HAVING?* Row filter before grouping vs group filter after aggregation ([processing order](01_What_is_SQL.md)).
 - *Average salary next to each employee — GROUP BY or window?* Window: you need annotation, not collapse.
 - *Why is `COUNT(DISTINCT)` expensive and what's the mitigation at scale?* Global uniqueness tracking across nodes; approximate (HLL) counts or pre-deduplicated summary tables.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SQL aggregate functions (W3Schools): https://www.w3schools.com/sql/sql_count_avg_sum.asp
+- GROUP BY / HAVING (PostgreSQL): https://www.postgresql.org/docs/current/functions-aggregate.html
+
+**Videos**
+- SQL aggregate functions & GROUP BY: https://www.youtube.com/results?search_query=sql+aggregate+functions+group+by+having

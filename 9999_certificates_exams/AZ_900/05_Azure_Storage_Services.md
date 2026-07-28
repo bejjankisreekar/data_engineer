@@ -76,4 +76,21 @@ Azure automatically replicates your data for durability. The options trade cost 
 - Redundancy: **LRS** (one datacenter) → **ZRS** (zones in one region) → **GRS** (+ paired region, async) → **RA-GRS** (+ readable secondary) → **GZRS**/**RA-GZRS** (zones + region combined).
 - **AzCopy** (CLI), **Storage Explorer** (GUI), **Azure Migrate** (assess & migrate), **Data Box** (physical offline transfer for huge datasets).
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Azure Storage account overview: https://learn.microsoft.com/en-us/azure/storage/common/storage-account-overview
+- Blob storage & access tiers (Hot/Cool/Archive): https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview
+- Storage redundancy (LRS/ZRS/GRS/GZRS): https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy
+- Data migration options (AzCopy, Data Box, Migrate): https://learn.microsoft.com/en-us/azure/storage/common/storage-choose-data-transfer-solution
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Azure storage services explained: https://www.youtube.com/results?search_query=azure+storage+blob+file+queue+table+az-900
+- Blob access tiers & redundancy: https://www.youtube.com/results?search_query=azure+storage+redundancy+lrs+zrs+grs+access+tiers
+
+---
+
 Next: [06 — Identity, Access & Security](06_Identity_Access_Security.md)

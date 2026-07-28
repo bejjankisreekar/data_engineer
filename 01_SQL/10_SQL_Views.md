@@ -166,3 +166,14 @@ The dbt world blurs this deliberately: every model is *written* as a SELECT, and
 - *How do you expose data to analysts without giving table access?* Column-limited, row-filtered views (+ CHECK OPTION), grants on views only.
 - *View vs materialized view?* Live query each time vs stored result needing refresh — choose by staleness tolerance and query cost.
 - *Why did the view break after an ALTER TABLE?* Stale binding (SELECT * capture or dropped column) — explicit columns, schemabinding, and views-in-source-control prevent it.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SQL views (W3Schools): https://www.w3schools.com/sql/sql_view.asp
+- CREATE VIEW / materialized views (PostgreSQL): https://www.postgresql.org/docs/current/sql-createview.html
+
+**Videos**
+- SQL views explained: https://www.youtube.com/results?search_query=sql+views+explained+materialized+view

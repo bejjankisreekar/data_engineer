@@ -118,3 +118,14 @@ This metaprogramming style is how [metadata-driven pipelines](../04_ETL_ELT/02_A
 3. Compute each employee's tenure in whole months.
 
 Next: collapsing rows into answers → [06 — Aggregations & Grouping](06_Aggregations_and_Grouping.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- pyspark.sql.functions: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/functions.html
+- Column API: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/column.html
+
+**Videos**
+- PySpark column functions (withColumn, when, expr): https://www.youtube.com/results?search_query=pyspark+withcolumn+select+functions+tutorial

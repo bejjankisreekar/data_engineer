@@ -111,3 +111,15 @@ Job clusters + auto-terminate + spot workers as the default ([cost levers](Why_S
 3. Your team wants to "add a bigger cluster" as the fix for a slow job. What do you check first, and what evidence would justify the bigger cluster?
 
 **You've reached the end of the series.** From here: practice on real datasets, read the [concept track](00_PySpark_Learning_Path.md) files if you skipped them, and revisit each file's Pro corner before interviews — they're written to be the answers.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Spark performance tuning: https://spark.apache.org/docs/latest/sql-performance-tuning.html
+- Adaptive Query Execution (AQE): https://spark.apache.org/docs/latest/sql-performance-tuning.html#adaptive-query-execution
+- Databricks optimization guide: https://docs.databricks.com/en/optimizations/index.html
+
+**Videos**
+- PySpark performance tuning (partitioning, caching, AQE, skew): https://www.youtube.com/results?search_query=pyspark+performance+tuning+partitioning+shuffle+skew

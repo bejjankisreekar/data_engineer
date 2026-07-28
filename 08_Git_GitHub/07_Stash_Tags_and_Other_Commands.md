@@ -140,3 +140,14 @@ git worktree add ../bakery-orders-hotfix hotfix-branch
 4. Explain, in your own words, why `bisect` is faster than manually checking commits one at a time to find a bug's origin.
 
 Next: how teams organize branches at scale → [08 — Branching Strategies & Collaboration](08_Branching_Strategies_and_Collaboration.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- git stash (Atlassian): https://www.atlassian.com/git/tutorials/saving-changes/git-stash
+- Tagging (Pro Git): https://git-scm.com/book/en/v2/Git-Basics-Tagging
+
+**Videos**
+- Git stash and tags explained: https://www.youtube.com/results?search_query=git+stash+and+tags+explained

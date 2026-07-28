@@ -194,3 +194,14 @@ Many systems never physically DELETE: an `is_deleted BIT + deleted_at` flag pres
 - *How do you delete 100M old rows from a live table?* Batched deletes with log/lock breathing room — or partition-based removal if the design allows.
 - *How do you make a load safe to re-run?* Idempotency: MERGE by key or scoped delete-and-reload inside a transaction.
 - *Why is row-by-row slow?* Per-statement round-trip, logging, and lock overhead; set-based DML amortizes all three.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- INSERT/UPDATE/DELETE (W3Schools): https://www.w3schools.com/sql/sql_insert.asp
+- Data manipulation (PostgreSQL): https://www.postgresql.org/docs/current/dml.html
+
+**Videos**
+- SQL DML commands explained: https://www.youtube.com/results?search_query=sql+dml+insert+update+delete

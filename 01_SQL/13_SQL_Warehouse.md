@@ -243,3 +243,13 @@ The warehouse's last mile is *definitions*, not tables: "revenue" (gross? net of
 - *Why surrogate keys in dimensions?* Stable joins independent of source keys, enable SCD2 history, compact fact rows.
 - *Fact table types?* Transaction, periodic snapshot, accumulating snapshot — chosen by the question pattern (events vs levels vs process durations).
 - *How do you distribute tables in an MPP warehouse?* Hash big facts on the dominant join key, replicate small dims, round-robin staging — minimizing per-query data movement.
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Data warehouse concepts (Azure): https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/data-warehousing
+- Star vs snowflake schema: https://www.databricks.com/glossary/star-schema
+
+**Videos**
+- SQL data warehouse & dimensional modeling: https://www.youtube.com/results?search_query=data+warehouse+star+schema+snowflake+schema

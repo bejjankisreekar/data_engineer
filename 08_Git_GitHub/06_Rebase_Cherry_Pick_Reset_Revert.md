@@ -210,3 +210,15 @@ This is the single most valuable "I broke something" escape hatch in Git — ful
 4. You just ran `git reset --hard` and realized you needed those commits. What command do you run first to find them again?
 
 Next: the supporting commands every engineer eventually needs → [07 — Stash, Tags & Other Commands](07_Stash_Tags_and_Other_Commands.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Rewriting history / rebase (Pro Git): https://git-scm.com/book/en/v2/Git-Branching-Rebasing
+- Reset demystified: https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified
+- git revert vs reset (Atlassian): https://www.atlassian.com/git/tutorials/undoing-changes
+
+**Videos**
+- Git rebase, cherry-pick, reset, revert: https://www.youtube.com/results?search_query=git+rebase+cherry+pick+reset+revert+explained

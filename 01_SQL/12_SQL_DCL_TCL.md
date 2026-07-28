@@ -192,3 +192,14 @@ Who *can* access is DCL; who *did* access is auditing. Enterprise reality: SQL A
 - *A report shows a row that "never existed" — how?* Dirty read via NOLOCK/read-uncommitted caught a later-rolled-back insert; move to RCSI.
 - *Deadlock strategy?* Consistent access order + short indexed transactions + snapshot isolation + automatic retry on 1205.
 - *Do Delta tables have transactions?* Yes — single-table ACID via optimistic commits on the transaction log; cross-table atomicity must be designed, not assumed.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- GRANT/REVOKE (PostgreSQL): https://www.postgresql.org/docs/current/sql-grant.html
+- Transactions COMMIT/ROLLBACK (PostgreSQL): https://www.postgresql.org/docs/current/tutorial-transactions.html
+
+**Videos**
+- SQL DCL & TCL (GRANT, COMMIT, ROLLBACK): https://www.youtube.com/results?search_query=sql+dcl+tcl+grant+revoke+commit+rollback

@@ -119,3 +119,16 @@ Mature teams treat pipeline definitions the same as application code: version-co
 - *What's the difference between a pipeline succeeding and a pipeline being correct?* Success is a run-status flag; correctness requires row-count reconciliation, freshness monitoring, and data-quality assertions — a "green" pipeline can still have moved zero rows or skipped a downstream step.
 
 Back to the folder: [ETL vs ELT](01_ETL_vs_ELT.md) · [Azure Data Factory](02_Azure_Data_Factory.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is a data pipeline? (Databricks): https://www.databricks.com/glossary/data-pipelines
+- Pipeline orchestration patterns (Azure): https://learn.microsoft.com/en-us/azure/architecture/data-guide/
+- Batch vs streaming pipelines: https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/batch-processing
+
+**Videos**
+- Data pipelines explained: https://www.youtube.com/results?search_query=data+pipeline+explained+data+engineering
+- Batch vs streaming data pipelines: https://www.youtube.com/results?search_query=batch+vs+streaming+data+pipeline

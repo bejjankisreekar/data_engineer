@@ -158,3 +158,16 @@ Both work with schema registries; teams usually inherit whichever their platform
 - *How does a consumer decode a message written with an older schema?* Schema resolution: reader schema + writer schema (fetched by id) reconciled via defaults/promotions.
 - *What makes a schema change "safe"?* Compatible under the topic's registry mode — e.g. BACKWARD: only additions-with-defaults and removals-of-defaulted fields.
 - *Where does schema enforcement belong in streaming?* At produce time via the registry — reject bad schemas before they enter the pipe, not after consumers crash.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Apache Avro official docs: https://avro.apache.org/docs/
+- Avro specification: https://avro.apache.org/docs/current/specification/
+- Spark Avro data source: https://spark.apache.org/docs/latest/sql-data-sources-avro.html
+
+**Videos**
+- Apache Avro explained (row-based, schema evolution): https://www.youtube.com/results?search_query=apache+avro+explained+schema+evolution
+- Avro vs Parquet vs ORC: https://www.youtube.com/results?search_query=avro+vs+parquet+vs+orc

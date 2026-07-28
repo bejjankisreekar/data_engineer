@@ -143,3 +143,16 @@ SQL (1974, standardized 1986) has outlived every "SQL killer": object databases 
 - *Declarative vs imperative?* SQL declares the result; the optimizer chooses the algorithm. You tune by shaping the plan, not writing loops.
 - *Difference between `COUNT(*)`, `COUNT(col)`, `COUNT(DISTINCT col)`?* All rows; non-NULL values of col; unique non-NULL values.
 - *How do you prevent SQL injection?* Parameterized queries / prepared statements everywhere — including f-strings in Spark notebooks.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is SQL? (W3Schools): https://www.w3schools.com/sql/sql_intro.asp
+- SQL overview (Mode SQL Tutorial): https://mode.com/sql-tutorial/introduction-to-sql/
+- ANSI SQL standard (PostgreSQL docs): https://www.postgresql.org/docs/current/sql.html
+
+**Videos**
+- SQL explained for beginners: https://www.youtube.com/results?search_query=what+is+sql+explained+for+beginners
+- SQL full course: https://www.youtube.com/results?search_query=sql+full+course+freecodecamp

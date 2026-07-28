@@ -185,3 +185,16 @@ The four things to scan for in a physical plan:
 - *Is PySpark slower than Scala Spark?* Not for DataFrame/SQL work — both emit the same JVM plan. Only Python UDFs pay a Python tax.
 - *How does Spark recover lost data without replication?* Lineage: recompute lost partitions from the recorded transformation graph.
 - *What does AQE do?* Uses runtime stats between stages to fix the three classic pains automatically: too many shuffle partitions, missed broadcast joins, skew.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Apache Spark official site: https://spark.apache.org/
+- Spark overview: https://spark.apache.org/docs/latest/
+- What is Apache Spark? (Databricks): https://www.databricks.com/glossary/what-is-apache-spark
+
+**Videos**
+- Apache Spark explained for beginners: https://www.youtube.com/results?search_query=what+is+apache+spark+explained
+- Spark full course: https://www.youtube.com/results?search_query=apache+spark+full+course

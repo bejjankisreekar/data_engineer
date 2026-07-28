@@ -93,3 +93,16 @@ Interviewers ask "warehouse vs lake vs mesh vs fabric" questions specifically to
 - *When would you recommend data fabric over consolidating everything into one lakehouse?* When disparate systems (legacy on-prem, multiple clouds, SaaS) can't or shouldn't be migrated in a big-bang effort, and federated discovery/governance is needed sooner than a full consolidation could deliver.
 
 Back to the folder: [Data Warehouse Fundamentals](01_Data_Warehouse_Fundamentals.md) · Related: [Big Data Evolution Timeline](../00_Fundamentals/06_Big_Data_Evolution_Timeline.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is data fabric? (IBM): https://www.ibm.com/think/topics/data-fabric
+- Microsoft Fabric overview: https://learn.microsoft.com/en-us/fabric/get-started/microsoft-fabric-overview
+- Data fabric vs data mesh: https://www.ibm.com/think/topics/data-fabric-vs-data-mesh
+
+**Videos**
+- Data fabric vs data mesh explained: https://www.youtube.com/results?search_query=data+fabric+vs+data+mesh+explained
+- Microsoft Fabric overview: https://www.youtube.com/results?search_query=microsoft+fabric+explained

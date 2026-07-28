@@ -133,3 +133,14 @@ Delta's `mergeSchema`/`overwriteSchema` and Auto Loader's schema evolution forma
 3. Why doesn't `nullable=False` protect you?
 
 Next: getting real data in and out → [04 — Reading & Writing Data](04_Reading_and_Writing_Data.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- PySpark data types: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/data_types.html
+- Spark SQL data types reference: https://spark.apache.org/docs/latest/sql-ref-datatypes.html
+
+**Videos**
+- PySpark schema and StructType explained: https://www.youtube.com/results?search_query=pyspark+schema+structtype+explained

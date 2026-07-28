@@ -240,3 +240,14 @@ In Spark, same skill: `df.explain()` + the SQL tab ([Spark UI](../06_PySpark/Spa
 - *Why did the query slow down after wrapping the date in a function?* Non-sargable predicate → index seek became a scan.
 - *`UNION` vs `UNION ALL`?* UNION dedupes (extra sort/hash cost); UNION ALL concatenates — default to ALL unless dedup is the intent.
 - *A query returns duplicates after adding a join — instinct?* The join hit a one-to-many; fix grain (pre-aggregate or dedupe the many-side), don't mask with DISTINCT.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SELECT statement (W3Schools): https://www.w3schools.com/sql/sql_select.asp
+- Queries (PostgreSQL): https://www.postgresql.org/docs/current/queries.html
+
+**Videos**
+- SQL SELECT / WHERE / ORDER BY: https://www.youtube.com/results?search_query=sql+select+where+order+by+group+by

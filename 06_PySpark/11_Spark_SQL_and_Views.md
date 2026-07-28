@@ -91,3 +91,14 @@ spark.sql("SHOW PARTITIONS silver.sales")
 3. Why doesn't a temp view make anything faster?
 
 Next: the table format everything runs on → [12 — Delta Lake with PySpark](12_Delta_Lake_with_PySpark.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Spark SQL guide: https://spark.apache.org/docs/latest/sql-programming-guide.html
+- Getting started with Spark SQL: https://spark.apache.org/docs/latest/sql-getting-started.html
+
+**Videos**
+- Spark SQL and temp views explained: https://www.youtube.com/results?search_query=spark+sql+temp+view+global+temp+view

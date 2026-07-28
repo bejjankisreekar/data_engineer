@@ -89,4 +89,22 @@ Every topic file (01–09) follows the same shape:
 
 The main [data engineering course](../../README.md) in this repo goes Basic → Advanced → Pro because real engineering work needs internals knowledge. AZ-900 does **not** test internals — it tests recognition and comparison ("what is X," "X vs Y," "which service fits scenario Z"). This course is written at the right altitude for that: thorough on every fact the exam can ask, without engineering-depth tangents the exam will never touch. If you want the *engineering* depth behind any Azure service mentioned here (storage, networking, Databricks, Data Factory), the main repo's folders are cross-linked throughout.
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official Microsoft resources**
+- AZ-900 exam page (register, skills outline): https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/
+- Official free learning path (Microsoft Learn): https://learn.microsoft.com/en-us/training/courses/az-900t00
+- Exam skills measured (study guide PDF): https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900
+- Microsoft Learn practice assessment (free official mock): https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/practice/assessment
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Full AZ-900 course (freeCodeCamp): https://www.youtube.com/results?search_query=az-900+full+course+freecodecamp
+- AZ-900 exam cram / crash course: https://www.youtube.com/results?search_query=az-900+exam+cram+john+savill
+- John Savill's Azure Fundamentals playlist: https://www.youtube.com/results?search_query=john+savill+az-900+study+cram
+
+---
+
 Start here: **[01 — Cloud Concepts](01_Cloud_Concepts.md)**.

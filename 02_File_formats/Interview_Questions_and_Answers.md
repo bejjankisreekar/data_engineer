@@ -180,3 +180,14 @@ This is correct because struct fields are accessed with dot-notation directly in
 - Q: Why does `coalesce(1)` hurt a large production Parquet write? — A: Serializes the write to one task and builds one oversized, unpruneable row group.
 
 Back to the folder: [02_File_formats notes](.) · Related: [01_SQL Interview Q&A](../01_SQL/Interview_Questions_and_Answers.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- File format comparison (Databricks): https://www.databricks.com/glossary/what-is-parquet
+- When to use which format (Azure): https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/
+
+**Videos**
+- File format interview questions (Parquet/Avro/ORC): https://www.youtube.com/results?search_query=parquet+avro+orc+interview+questions

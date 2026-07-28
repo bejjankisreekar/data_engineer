@@ -167,3 +167,16 @@ Result: updates touch one place; no risk of two rows disagreeing about a custome
 - *Why not run reports on the OLTP DB?* Lock contention + cache pollution + row storage reads all columns → slows both the report and the app.
 - *How would you extract 1 TB from OLTP without hurting it?* Replica + incremental watermark or log-based CDC + off-peak batches + partitioned reads.
 - *What's the difference between ACID and BASE?* ACID = strict transactional guarantees (OLTP). BASE (Basically Available, Soft state, Eventually consistent) = the looser model many distributed NoSQL stores use for availability at scale.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is OLTP? (IBM): https://www.ibm.com/topics/oltp
+- OLTP overview (Azure Architecture Center): https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-transaction-processing
+- Row-oriented vs column-oriented storage: https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/
+
+**Videos**
+- OLTP vs OLAP explained: https://www.youtube.com/results?search_query=oltp+vs+olap+explained
+- What is OLTP (transactional systems): https://www.youtube.com/results?search_query=what+is+oltp+database

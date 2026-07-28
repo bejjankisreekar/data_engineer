@@ -89,3 +89,14 @@ In a modern medallion architecture, "data mart" often isn't a separate physical 
 - *How does a data mart look different in a lakehouse vs a classic warehouse?* Often just a set of permissioned gold-layer views over shared Delta tables, rather than a physically separate copied database.
 
 Next: the organizational answer to mart sprawl at enterprise scale → [Data Mesh](03_Data_Mesh.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is a data mart? (AWS): https://aws.amazon.com/what-is/data-mart/
+- Data mart vs data warehouse (IBM): https://www.ibm.com/think/topics/data-mart
+
+**Videos**
+- Data mart vs data warehouse explained: https://www.youtube.com/results?search_query=data+mart+vs+data+warehouse+explained

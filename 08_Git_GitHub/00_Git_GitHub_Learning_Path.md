@@ -43,3 +43,16 @@ None — this folder assumes zero prior Git knowledge. Basic command-line comfor
 Most files build on one running example: a small project called `bakery-orders` that you'll `git init` in file 01 and carry forward — creating files, committing, branching, breaking things, and fixing them — so each command is demonstrated in a continuous, realistic context rather than a disconnected snippet.
 
 Start here: **[01 — Introduction to Version Control](01_Introduction_to_Version_Control.md)**
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Official Git documentation: https://git-scm.com/doc
+- Pro Git book (free): https://git-scm.com/book/en/v2
+- GitHub docs: https://docs.github.com/en/get-started
+
+**Videos**
+- Git & GitHub full course: https://www.youtube.com/results?search_query=git+and+github+full+course+for+beginners
+- Git tutorial for data engineers: https://www.youtube.com/results?search_query=git+tutorial+for+data+engineers

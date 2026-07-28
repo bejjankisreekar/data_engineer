@@ -137,3 +137,14 @@ Half of enterprise CSVs are born or edited in Excel; know its fingerprints: UTF-
 - *A CSV load's row count doesn't match the source — first suspects?* Unescaped quotes/newlines splitting or merging rows, header/ragged-row handling, encoding mangling.
 - *How do you make CSV ingestion robust?* Explicit schema + dialect options, permissive-with-quarantine parsing, structural validation, raw retention, immediate conversion.
 - *gzip CSV vs Parquet for a 10 GB daily feed?* gzip CSV: one reader task, no pruning. Parquet: splittable, columnar, typed — convert on arrival.
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- RFC 4180 — CSV format spec: https://www.rfc-editor.org/rfc/rfc4180
+- Reading CSV in Spark: https://spark.apache.org/docs/latest/sql-data-sources-csv.html
+- Pandas read_csv: https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html
+
+**Videos**
+- CSV file format explained: https://www.youtube.com/results?search_query=csv+file+format+explained+data+engineering

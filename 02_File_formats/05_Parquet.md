@@ -183,3 +183,15 @@ Diagnostics this answers: are files tiny (compaction needed)? one giant row grou
 - *Why are many small Parquet files slow?* Per-file open/footer costs and per-file tasks dominate; compaction restores scan efficiency.
 - *How does Parquet store nested JSON?* Dremel repetition/definition levels — arrays/structs become columnar streams, preserving pruning.
 - *Parquet vs Delta?* Format vs table: Delta adds a transaction log over Parquet for ACID, MERGE, time travel, schema enforcement.
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Apache Parquet official site: https://parquet.apache.org/
+- Parquet file format docs: https://parquet.apache.org/docs/
+- Spark Parquet data source: https://spark.apache.org/docs/latest/sql-data-sources-parquet.html
+
+**Videos**
+- Apache Parquet explained (columnar storage): https://www.youtube.com/results?search_query=apache+parquet+explained+columnar+storage
+- Why Parquet is fast: https://www.youtube.com/results?search_query=why+parquet+is+faster+than+csv

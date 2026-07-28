@@ -140,4 +140,21 @@ These aren't verbatim exam questions (which would violate Microsoft's NDA), but 
 
 ---
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation (the commonly-confused pairs)**
+- Azure Advisor vs Service Health vs Azure Status: https://learn.microsoft.com/en-us/azure/service-health/overview
+- RBAC vs Azure Policy: https://learn.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes
+- Pricing Calculator vs TCO Calculator: https://azure.microsoft.com/en-us/pricing/
+- Availability zones vs region pairs: https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- AZ-900 tricky/most-confused topics: https://www.youtube.com/results?search_query=az-900+most+confused+topics+exam+tips
+- AZ-900 exam tips & traps: https://www.youtube.com/results?search_query=az-900+exam+tips+tricks+traps
+
+---
+
 Next: put it all together under real time pressure — **[12 — Final Mock Exam](12_Final_Mock_Exam.md)**.

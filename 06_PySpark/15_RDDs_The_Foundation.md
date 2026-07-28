@@ -248,3 +248,14 @@ For everything else — which is nearly everything a data engineer does day to d
 4. You're maintaining an old RDD pipeline with a 200-step transformation chain that keeps failing on executor loss. What single technique would you reach for, and why?
 
 Back to the series: [00 — Learning Path](00_PySpark_Learning_Path.md) · Deeper theory: [What_Is_Apache_Spark.md](What_Is_Apache_Spark.md), [Spark_Architecture.md](Spark_Architecture.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- RDD programming guide: https://spark.apache.org/docs/latest/rdd-programming-guide.html
+- RDD API (PySpark): https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.RDD.html
+
+**Videos**
+- Spark RDDs explained (transformations and actions): https://www.youtube.com/results?search_query=spark+rdd+explained+transformations+actions

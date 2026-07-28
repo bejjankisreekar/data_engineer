@@ -48,3 +48,16 @@ File 15 (RDDs) sits after the main series on purpose — it's the "under the hoo
 ## The sample data used throughout
 
 Most examples in this series use a small `employees` / `departments` / `sales` dataset so you can focus on the operations, not the data. Each file's first code block creates what it needs — every example is copy-paste runnable on a local PySpark or a free Databricks Community / Fabric notebook.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- PySpark documentation: https://spark.apache.org/docs/latest/api/python/index.html
+- PySpark getting started: https://spark.apache.org/docs/latest/api/python/getting_started/index.html
+- Databricks PySpark guide: https://docs.databricks.com/en/pyspark/index.html
+
+**Videos**
+- PySpark full course for beginners: https://www.youtube.com/results?search_query=pyspark+full+course+for+beginners
+- PySpark tutorial for data engineers: https://www.youtube.com/results?search_query=pyspark+tutorial+data+engineering

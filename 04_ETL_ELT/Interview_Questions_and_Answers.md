@@ -111,3 +111,14 @@ This folder has only two notes, so this file goes deep rather than wide — theo
 - Q: Where does dbt fit in ETL/ELT? — A: It's the industrialized "T" of ELT — versioned, tested SQL transformation models running on the destination's own compute.
 
 Back to the folder: [04_ETL_ELT notes](.) · Related: [03_Data_Storage Interview Q&A](../03_Data_Storage/Interview_Questions_and_Answers.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- ETL/ELT concepts (Databricks): https://www.databricks.com/glossary/elt
+- ADF documentation: https://learn.microsoft.com/en-us/azure/data-factory/
+
+**Videos**
+- ETL/ELT & ADF interview questions: https://www.youtube.com/results?search_query=etl+elt+azure+data+factory+interview+questions

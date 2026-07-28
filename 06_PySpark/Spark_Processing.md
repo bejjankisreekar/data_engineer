@@ -223,3 +223,15 @@ Tasks retry; stages replay; jobs re-run on schedule. Every write path must toler
 - *Your job is slow — walk me through diagnosis.* UI → dominant stage → skew/spill/shuffle → plan via explain → targeted fix; resources last.
 - *How do you get exactly-once from an at-least-once world?* Transactional sinks (Delta) + idempotent writes (MERGE / deterministic overwrite) + streaming checkpoints.
 - *Why is a Python UDF slow and what's the escalation path?* Row serialization to Python workers + optimizer opacity; built-ins → pandas UDF → row UDF.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Spark job / stage / task execution: https://spark.apache.org/docs/latest/cluster-overview.html
+- Transformations and actions: https://spark.apache.org/docs/latest/rdd-programming-guide.html#transformations
+- Catalyst optimizer: https://www.databricks.com/glossary/catalyst-optimizer
+
+**Videos**
+- How Spark processes data (jobs, stages, tasks, shuffle): https://www.youtube.com/results?search_query=spark+jobs+stages+tasks+shuffle+explained

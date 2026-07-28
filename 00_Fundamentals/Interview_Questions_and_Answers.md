@@ -246,3 +246,15 @@ Untagged questions sit in between — solid mid-level material everyone should b
 - Q: What replaced Lambda architecture's dual-pipeline problem in most modern stacks? — A: Unified batch/streaming pipelines (e.g. Spark Structured Streaming over Delta) running the same code both ways.
 
 Back to the notes: [00_Fundamentals folder](.) · Continue the series: [01_SQL Interview Questions](../01_SQL/Interview_Questions_and_Answers.md) (if created)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Data engineering fundamentals (Azure Architecture Center): https://learn.microsoft.com/en-us/azure/architecture/data-guide/
+- Data engineering interview prep (concepts): https://www.datacamp.com/blog/data-engineering-interview-questions
+
+**Videos**
+- Data engineering fundamentals interview questions: https://www.youtube.com/results?search_query=data+engineering+fundamentals+interview+questions
+- OLTP OLAP Hadoop interview questions: https://www.youtube.com/results?search_query=oltp+olap+hadoop+interview+questions

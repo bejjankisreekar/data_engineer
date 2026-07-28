@@ -160,3 +160,14 @@ Git push/pull/fetch are efficient — they transfer only the **objects** (commit
 4. In a fork workflow, what do `origin` and `upstream` each conventionally point to?
 
 Next: the GitHub-specific layer on top of everything so far → [05 — GitHub Essentials](05_GitHub_Essentials.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Working with remotes (Pro Git): https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
+- git fetch vs pull (Atlassian): https://www.atlassian.com/git/tutorials/syncing
+
+**Videos**
+- Git push, pull, fetch, clone explained: https://www.youtube.com/results?search_query=git+push+pull+fetch+clone+explained

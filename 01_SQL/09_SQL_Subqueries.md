@@ -203,3 +203,14 @@ In Spark SQL / Synapse, every subquery is a plan subtree — the concerns shift 
 - *Correlated vs uncorrelated?* References outer query (conceptually per-row) vs independent (runs once); optimizers often decorrelate — verify in the plan.
 - *When choose a CTE over a subquery?* Multi-step logic, reuse within the query, readability/testability; recursive traversals require it.
 - *Top 3 orders per customer — three ways?* Window `ROW_NUMBER` filter, `CROSS APPLY` with TOP, or a rank-filtered self-join; window is the distributed-engine default.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SQL subqueries (W3Schools): https://www.w3schools.com/sql/sql_subqueries.asp
+- Subquery expressions (PostgreSQL): https://www.postgresql.org/docs/current/functions-subquery.html
+
+**Videos**
+- SQL subqueries & CTEs explained: https://www.youtube.com/results?search_query=sql+subqueries+and+cte+explained

@@ -142,3 +142,15 @@ Logical fragmentation mattered enormously on spinning disks; on SSDs and cloud s
 - *Why would the optimizer skip an index?* Low selectivity, stale stats, non-sargable predicate, or lookup cost exceeding a scan.
 - *Design an index for `WHERE a=? AND b>? ORDER BY b`?* Composite `(a, b)` — equality first, range second; add INCLUDE columns to cover the select list.
 - *Indexing strategy for a warehouse fact table?* Clustered columnstore (or Parquet/Delta + Z-order in the lake), partition alignment, minimal B-trees for point access.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SQL indexes (W3Schools): https://www.w3schools.com/sql/sql_create_index.asp
+- Indexes (PostgreSQL): https://www.postgresql.org/docs/current/indexes.html
+- Use the Index, Luke (deep dive): https://use-the-index-luke.com/
+
+**Videos**
+- SQL indexes explained (B-tree, performance): https://www.youtube.com/results?search_query=sql+index+explained+btree+performance

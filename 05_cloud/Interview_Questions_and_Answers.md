@@ -120,3 +120,14 @@ This folder has two notes covering cloud deployment models and service models �
 - Q: What makes strategic (not accidental) multi-cloud often more expensive than the lock-in it avoids? — A: Forfeiting best-of-breed services per cloud, plus paying egress costs twice.
 
 Back to the folder: [05_cloud notes](.) · Related: [03_Data_Storage Interview Q&A](../03_Data_Storage/Interview_Questions_and_Answers.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Cloud computing fundamentals (Azure): https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/
+- Cloud models (IBM): https://www.ibm.com/topics/cloud-computing
+
+**Videos**
+- Cloud computing interview questions: https://www.youtube.com/results?search_query=cloud+computing+interview+questions+iaas+paas+saas

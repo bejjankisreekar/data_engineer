@@ -134,3 +134,16 @@ Everything hard about lakes traces to one fact: **storage doesn't know about tab
 - *Design the folder/security layout for a multi-team lake.* Zone containers, domain directories, group-based default ACLs + scoped RBAC, Delta everywhere past bronze, UC grants for tables.
 - *Why is renaming a directory cheap in ADLS but expensive in plain blob?* HNS makes it one metadata op vs N copy+deletes — and Spark's atomic commit relies on it.
 - *Your lake queries got slow over six months — hypotheses?* Small-file accumulation (no OPTIMIZE), partition explosion, listing overhead growth, stats/clustering drift — all measurable, all fixable.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Azure Data Lake Storage Gen2 overview: https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction
+- ADLS Gen2 hierarchical namespace: https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-namespace
+- Best practices for ADLS Gen2: https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-best-practices
+
+**Videos**
+- Azure Data Lake Storage Gen2 explained: https://www.youtube.com/results?search_query=azure+data+lake+storage+gen2+explained
+- ADLS vs Blob Storage: https://www.youtube.com/results?search_query=azure+data+lake+vs+blob+storage

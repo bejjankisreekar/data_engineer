@@ -121,3 +121,17 @@ Everything Inmon and Kimball described (staging, integration, conformed dimensio
 - *How does the medallion architecture relate to classic warehouse theory?* It's the same staging → integration → consumption layering Inmon described, implemented on lake storage instead of a relational engine.
 
 Next: the department-facing consumption layer → [Data Mart](02_Data_Mart.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Data warehousing (Azure Architecture Center): https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/data-warehousing
+- What is a data warehouse? (Databricks): https://www.databricks.com/glossary/data-warehouse
+- Star vs snowflake schema: https://www.databricks.com/glossary/star-schema
+- Kimball dimensional modeling: https://www.kimballgroup.com/data-warehouse-business-intelligence-resources/kimball-techniques/dimensional-modeling-techniques/
+
+**Videos**
+- Data warehouse concepts & dimensional modeling: https://www.youtube.com/results?search_query=data+warehouse+dimensional+modeling+star+snowflake+schema
+- Fact vs dimension tables: https://www.youtube.com/results?search_query=fact+table+vs+dimension+table+explained

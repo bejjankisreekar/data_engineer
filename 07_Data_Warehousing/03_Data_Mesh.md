@@ -107,3 +107,15 @@ This is the single most important distinction to hold onto: **data mesh is not a
 - *When would you advise against adopting data mesh?* Smaller organizations without a genuine central-team bottleneck or the domain-level engineering capacity to own data products responsibly — the governance overhead outweighs the benefit at that scale.
 
 Next: how data mesh's technology-agnostic model compares to the more tech-centric "data fabric" pattern → [Data Fabric & Architecture Comparison](04_Data_Fabric_and_Architecture_Comparison.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is data mesh? (Databricks): https://www.databricks.com/glossary/data-mesh
+- Data mesh principles (martinfowler.com): https://martinfowler.com/articles/data-mesh-principles.html
+- Data mesh on Azure: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/scenarios/cloud-scale-analytics/architectures/what-is-data-mesh
+
+**Videos**
+- Data mesh explained: https://www.youtube.com/results?search_query=data+mesh+explained+zhamak+dehghani

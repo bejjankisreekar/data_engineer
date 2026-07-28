@@ -134,3 +134,14 @@ Databricks' `VARIANT` type (DBR 15+) stores JSON semi-parsed with path access (`
 3. Parse a Kafka `value` JSON string into typed columns and count unparseable rows.
 
 Next: when built-ins genuinely run out → [10 — UDFs & Pandas Integration](10_UDFs_and_Pandas_Integration.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Complex types (array/map/struct): https://spark.apache.org/docs/latest/sql-ref-datatypes.html
+- explode / from_json functions: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/functions.html
+
+**Videos**
+- PySpark explode, struct, from_json: https://www.youtube.com/results?search_query=pyspark+explode+struct+from_json+nested+data

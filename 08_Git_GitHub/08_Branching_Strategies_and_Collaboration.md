@@ -126,3 +126,15 @@ At high PR volume, two PRs can each pass CI individually but **break when combin
 4. What problem do feature flags solve for trunk-based development specifically?
 
 Next: the habits that make Git production-ready, not just functional → [09 — Production Best Practices & CI/CD](09_Production_Best_Practices_and_CICD.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Git branching workflows (Atlassian): https://www.atlassian.com/git/tutorials/comparing-workflows
+- Gitflow workflow: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+- Trunk-based development: https://trunkbaseddevelopment.com/
+
+**Videos**
+- Git branching strategies (Gitflow, trunk-based): https://www.youtube.com/results?search_query=git+branching+strategies+gitflow+trunk+based

@@ -109,4 +109,21 @@ More detail on this exact topic, including Azure's specific hybrid tools (Azure 
 - Serverless = a PaaS subset where you never manage or provision servers at all; billed per execution.
 - Public = shared provider infrastructure. Private = dedicated to one org. Hybrid = public + private connected. Multi-cloud = 2+ public providers.
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Describe cloud computing (MS Learn module): https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/
+- Benefits of cloud computing: https://learn.microsoft.com/en-us/training/modules/describe-benefits-use-cloud-services/
+- Cloud service types (IaaS/PaaS/SaaS): https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/
+- Cloud deployment models: https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Cloud concepts (IaaS vs PaaS vs SaaS): https://www.youtube.com/results?search_query=iaas+paas+saas+explained+azure
+- CapEx vs OpEx / scaling explained: https://www.youtube.com/results?search_query=az-900+cloud+concepts+capex+opex+scaling
+
+---
+
 Next: [02 — Azure Architecture Fundamentals](02_Azure_Architecture_Fundamentals.md)

@@ -187,3 +187,16 @@ The senior answer to "should we normalize?" is always: *for which workload, at w
 - *LEFT JOIN + WHERE right.col = X returns fewer rows than expected — why?* The WHERE filters out the NULL (unmatched) rows; move the condition into ON.
 - *Natural vs surrogate keys?* Surrogates for stability/joins, natural keys as unique constraints; surrogates required for dimension history.
 - *How does a warehouse guarantee integrity without enforced FKs?* Load order, default 'Unknown' members, and automated orphan tests in the pipeline.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- SQL joins (W3Schools): https://www.w3schools.com/sql/sql_join.asp
+- Primary/foreign keys (PostgreSQL): https://www.postgresql.org/docs/current/ddl-constraints.html
+- Visual guide to SQL joins: https://www.atlassian.com/data/sql/sql-join-types-explained-visually
+
+**Videos**
+- SQL joins explained (INNER/LEFT/RIGHT/FULL): https://www.youtube.com/results?search_query=sql+joins+explained+inner+left+right+full
+- Primary key vs foreign key: https://www.youtube.com/results?search_query=primary+key+vs+foreign+key+sql

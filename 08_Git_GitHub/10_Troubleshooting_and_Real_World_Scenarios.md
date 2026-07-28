@@ -215,3 +215,16 @@ The PR updates automatically, CI reruns, and once green and approved, it's merge
 4. Explain, from memory, the difference between `reset --hard`, `revert`, and `rebase` — specifically when each one is the *wrong* choice.
 
 **You've reached the end of the series.** From here: use these commands daily on real work — Git fluency comes from repetition, not re-reading. Revisit any file's Pro corner before a technical interview; they're written to double as interview prep.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Undoing things (Pro Git): https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things
+- Oh Sh*t, Git!?! (common fixes): https://ohshitgit.com/
+- git reflog (recovering lost commits): https://git-scm.com/docs/git-reflog
+
+**Videos**
+- Fixing common Git mistakes: https://www.youtube.com/results?search_query=how+to+fix+common+git+mistakes
+- Git troubleshooting scenarios: https://www.youtube.com/results?search_query=git+troubleshooting+real+world+scenarios

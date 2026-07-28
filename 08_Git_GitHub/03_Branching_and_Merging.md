@@ -211,3 +211,14 @@ git branch -D feature-order-totals    # force delete — deletes regardless, use
 4. Why do frequent small merges usually cause fewer conflict headaches than one big merge at the end?
 
 Next: sharing your work and collaborating with others → [04 — Remotes: Push, Pull, Fetch, Clone](04_Remotes_Push_Pull_Fetch_Clone.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Git branching (Pro Git): https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+- Merging vs rebasing (Atlassian): https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+
+**Videos**
+- Git branching and merging explained: https://www.youtube.com/results?search_query=git+branching+and+merging+explained

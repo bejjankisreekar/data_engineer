@@ -123,4 +123,21 @@ A **Microsoft Entra ID tenant** is a dedicated, isolated instance of Entra ID (A
 - **ARM** is the single consistent deployment/management layer behind every Azure tool (Portal, CLI, PowerShell); it enables declarative templates, dependency ordering, RBAC, and tagging.
 - A **tenant** is one organization's dedicated Entra ID instance; it can contain multiple subscriptions.
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Azure regions, availability zones, region pairs: https://learn.microsoft.com/en-us/azure/reliability/availability-zones-overview
+- Management groups, subscriptions, resource groups, resources: https://learn.microsoft.com/en-us/azure/governance/management-groups/overview
+- Azure Resource Manager (ARM) overview: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/overview
+- Core architectural components module: https://learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Regions & availability zones explained: https://www.youtube.com/results?search_query=azure+regions+availability+zones+explained
+- Management group / subscription / resource group hierarchy: https://www.youtube.com/results?search_query=azure+management+group+subscription+resource+group+hierarchy
+
+---
+
 Next: [03 — Azure Compute Services](03_Azure_Compute_Services.md)

@@ -180,3 +180,14 @@ git add -p orders.txt
 4. Write a properly formatted commit message (imperative mood, correct length) for "I fixed the bug where negative order quantities were accepted."
 
 Next: working with multiple lines of development at once → [03 — Branching & Merging](03_Branching_and_Merging.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Recording changes (Pro Git): https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+- git add / commit / status / log: https://git-scm.com/docs
+
+**Videos**
+- Git add, commit, status, log explained: https://www.youtube.com/results?search_query=git+add+commit+status+log+tutorial

@@ -120,3 +120,14 @@ sessions = (events
 3. Why is `Window.orderBy("ts")` without partitionBy dangerous on a billion rows?
 
 Next: nested data — arrays, structs, JSON → [09 — Complex Types & JSON](09_Complex_Types_and_JSON.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Window functions (Spark SQL): https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-window.html
+- pyspark.sql.Window: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/window.html
+
+**Videos**
+- PySpark window functions (row_number, rank, lag, lead): https://www.youtube.com/results?search_query=pyspark+window+functions+row_number+rank+lag+lead

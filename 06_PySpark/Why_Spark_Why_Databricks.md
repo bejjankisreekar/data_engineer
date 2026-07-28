@@ -154,3 +154,16 @@ This is the "lakehouse" in one table: warehouse guarantees, lake economics ([evo
 - *Spark is free — what exactly are we buying?* Operations (managed clusters), performance (Photon/optimized runtime), collaboration (notebooks/workflows), and governance (Unity Catalog) — the four things raw Spark ships without.
 - *Delta vs Parquet in one line?* Parquet is a file format; Delta is Parquet **plus a transaction log** — ACID, MERGE, time travel, schema control.
 - *How do you keep Databricks costs sane?* Policies enforcing job clusters/auto-terminate/spot, Photon for SQL-shaped load, right-sized autoscale bounds, and cost tags reviewed monthly.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Why Databricks (Lakehouse): https://www.databricks.com/product/data-intelligence-platform
+- Spark vs Hadoop MapReduce: https://www.databricks.com/glossary/hadoop-vs-spark
+- Databricks documentation: https://docs.databricks.com/en/introduction/index.html
+
+**Videos**
+- Why Spark and Databricks: https://www.youtube.com/results?search_query=why+apache+spark+and+databricks
+- Spark vs Hadoop: https://www.youtube.com/results?search_query=spark+vs+hadoop+mapreduce

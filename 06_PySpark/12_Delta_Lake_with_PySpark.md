@@ -122,3 +122,16 @@ spark.sql("ALTER TABLE silver.employees ALTER COLUMN id SET NOT NULL")
 3. Storage for a streaming target tripled in a month — the two likeliest causes and their fixes?
 
 Next: continuous pipelines → [13 — Structured Streaming](13_Structured_Streaming.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Delta Lake docs: https://docs.delta.io/latest/index.html
+- Delta Lake quickstart: https://docs.delta.io/latest/quick-start.html
+- Databricks Delta Lake: https://docs.databricks.com/en/delta/index.html
+
+**Videos**
+- Delta Lake with PySpark tutorial: https://www.youtube.com/results?search_query=delta+lake+pyspark+tutorial
+- Delta Lake time travel and merge: https://www.youtube.com/results?search_query=delta+lake+time+travel+merge+pyspark

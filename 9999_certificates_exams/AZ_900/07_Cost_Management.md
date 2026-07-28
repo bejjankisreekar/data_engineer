@@ -69,4 +69,22 @@ The built-in tool for **monitoring, allocating, and optimizing** cloud spend aft
 - **Azure Advisor** = free recommendations across Cost, Reliability, Security, Operational Excellence, Performance.
 - **Reserved Instances** = commit 1–3 years for up to ~70% savings. **Spot VMs** = spare capacity, up to ~90% savings, can be evicted anytime. **Azure Hybrid Benefit** = reuse existing on-prem licenses.
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Azure Cost Management + Billing: https://learn.microsoft.com/en-us/azure/cost-management-billing/cost-management-billing-overview
+- Pricing Calculator: https://azure.microsoft.com/en-us/pricing/calculator/
+- Total Cost of Ownership (TCO) Calculator: https://azure.microsoft.com/en-us/pricing/tco/calculator/
+- Azure Advisor: https://learn.microsoft.com/en-us/azure/advisor/advisor-overview
+- Reservations, Spot VMs, Hybrid Benefit: https://learn.microsoft.com/en-us/azure/cost-management-billing/reservations/save-compute-costs-reservations
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Azure cost management explained: https://www.youtube.com/results?search_query=azure+cost+management+pricing+calculator+tco+az-900
+- Reserved Instances vs Spot vs Hybrid Benefit: https://www.youtube.com/results?search_query=azure+reserved+instances+spot+vm+hybrid+benefit
+
+---
+
 Next: [08 — Governance & Compliance](08_Governance_and_Compliance.md)

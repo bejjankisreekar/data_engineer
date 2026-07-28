@@ -254,3 +254,18 @@ The real exam's 700/1000 scaled passing score does **not** map 1:1 to "70% of qu
 **If you passed this mock comfortably:** book the real exam. Confidence decays if you over-study past the point of diminishing returns — once you're reliably scoring well on fresh questions across all three domains, you're ready.
 
 **Good luck.**
+
+---
+
+## Further Learning — Docs & Videos
+
+**Official resources — final prep & booking**
+- Book the AZ-900 exam (Pearson VUE via Microsoft): https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/
+- Free official practice assessment (take right before booking): https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/practice/assessment
+- Online proctored exam — what to expect: https://learn.microsoft.com/en-us/credentials/certifications/online-exams
+- Exam sandbox (try the exam interface): https://aka.ms/examdemo
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- AZ-900 full practice exam (timed): https://www.youtube.com/results?search_query=az-900+full+practice+exam+timed
+- AZ-900 last-minute revision / exam cram: https://www.youtube.com/results?search_query=az-900+last+minute+revision+exam+cram

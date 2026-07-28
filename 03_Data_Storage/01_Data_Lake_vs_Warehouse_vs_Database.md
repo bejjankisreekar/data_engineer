@@ -152,3 +152,16 @@ Rules of thumb that survive contact with CFOs:
 ## Real World Example
 
 A hospital's patient-monitoring devices constantly stream raw sensor readings into a **data lake** — heart rate, oxygen level, timestamps, in whatever format the devices produce. Overnight, a pipeline cleans and aggregates that raw data — flagging abnormal readings, calculating daily averages — and loads the results into a **data warehouse** for doctors and administrators to review in dashboards. Meanwhile, the hospital's patient records **database** keeps handling day-to-day tasks: registering a new patient, booking an appointment, updating a chart, all in real time.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Data lake vs data warehouse (Azure): https://learn.microsoft.com/en-us/azure/architecture/data-guide/
+- What is a data lakehouse? (Databricks): https://www.databricks.com/glossary/data-lakehouse
+- Database vs data warehouse vs data lake (AWS): https://aws.amazon.com/compare/the-difference-between-a-data-warehouse-data-lake-and-data-mart/
+
+**Videos**
+- Database vs data warehouse vs data lake: https://www.youtube.com/results?search_query=database+vs+data+warehouse+vs+data+lake+explained
+- Data lakehouse explained: https://www.youtube.com/results?search_query=data+lakehouse+explained

@@ -143,3 +143,16 @@ Pros use this lens to evaluate new tech: *"which coupling does this remove, and 
 - *"Lake or warehouse?"* → era 6 answer: one lakehouse, unless the org already runs a mature warehouse and the migration cost outweighs duplication cost.
 - *"Should we adopt X?"* → ask which era's problem X solves; adopting a solution to a problem you don't have is how teams end up running Kafka for 100 rows/day.
 - Architecture reviews respect scars: name the *breaking point* a proposal inherits (e.g. "this re-couples storage and compute — we know how that movie ends").
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is big data? (Oracle): https://www.oracle.com/big-data/what-is-big-data/
+- The 5 Vs of big data (IBM): https://www.ibm.com/think/topics/big-data-analytics
+- Modern data stack evolution: https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/
+
+**Videos**
+- History & evolution of big data: https://www.youtube.com/results?search_query=evolution+of+big+data+hadoop+to+spark+to+lakehouse
+- Big data explained (5 Vs): https://www.youtube.com/results?search_query=big+data+5+vs+explained

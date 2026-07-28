@@ -114,3 +114,14 @@ One hot key (one mega-customer, or millions of null-key rows) → one straggler 
 3. Your fact-to-dim join takes 40 min; the dim is 200 MB after filtering to current rows. What do you try first, and how do you verify it worked?
 
 Next: aggregates that don't collapse rows → [08 — Window Functions](08_Window_Functions.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- DataFrame join API: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.join.html
+- Join strategies and broadcast joins: https://spark.apache.org/docs/latest/sql-performance-tuning.html#join-strategy-hints-for-sql-queries
+
+**Videos**
+- PySpark joins explained (broadcast, shuffle): https://www.youtube.com/results?search_query=pyspark+joins+broadcast+shuffle+explained

@@ -173,3 +173,14 @@ emp.withColumns({"annual": F.col("salary")*12, "tax": F.col("salary")*0.1})   # 
 3. Explain when `collect()` is safe.
 
 Next: controlling types and structure → [03 — Schemas & Data Types](03_Schemas_and_Data_Types.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- PySpark DataFrame API: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/dataframe.html
+- DataFrame quickstart: https://spark.apache.org/docs/latest/api/python/getting_started/quickstart_df.html
+
+**Videos**
+- PySpark DataFrame basics: https://www.youtube.com/results?search_query=pyspark+dataframe+basics+tutorial

@@ -115,3 +115,14 @@ def upsert(batch_df, batch_id):
 3. Why can't you just fix a bug in a stateful stream and restart on the same checkpoint?
 
 Next, the capstone: making it all fast and production-worthy → [14 — Performance & Best Practices](14_Performance_and_Best_Practices.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Structured Streaming programming guide: https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html
+- Databricks Structured Streaming: https://docs.databricks.com/en/structured-streaming/index.html
+
+**Videos**
+- Spark Structured Streaming tutorial: https://www.youtube.com/results?search_query=spark+structured+streaming+pyspark+tutorial

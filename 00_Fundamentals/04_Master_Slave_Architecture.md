@@ -160,3 +160,15 @@ Trade-off vs master-based: no single bottleneck or SPOF, but no single source of
 - *Sync vs async replication?* Sync = no data loss, slower writes; async = fast writes, possible loss on failover. Choose per RPO.
 - *Is the Spark driver a SPOF?* Yes, per application — mitigated by cluster-mode supervision/retries and idempotent job design, not by driver HA.
 - *When would you choose a masterless design?* Write-heavy, always-on, globally distributed workloads where availability beats single-source-of-truth simplicity.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Primary/replica (master-slave) architecture: https://www.ibm.com/think/topics/database-replication
+- Leader-follower pattern: https://learn.microsoft.com/en-us/azure/architecture/patterns/leader-election
+
+**Videos**
+- Master-slave / primary-replica architecture: https://www.youtube.com/results?search_query=master+slave+architecture+distributed+systems
+- Database replication explained: https://www.youtube.com/results?search_query=database+replication+master+slave+explained

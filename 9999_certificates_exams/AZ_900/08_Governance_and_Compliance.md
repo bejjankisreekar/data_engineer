@@ -74,4 +74,22 @@ A unified **data governance** service that helps organizations **discover, class
 - **Microsoft Purview** = data governance — discover, classify, and track lineage of data across the estate.
 - **Trust Center** / **Service Trust Portal** = where to find Microsoft's compliance certifications and audit reports.
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Azure Policy overview: https://learn.microsoft.com/en-us/azure/governance/policy/overview
+- Resource locks: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/lock-resources
+- Azure Blueprints: https://learn.microsoft.com/en-us/azure/governance/blueprints/overview
+- Microsoft Purview (data governance): https://learn.microsoft.com/en-us/purview/purview
+- Service Trust Portal / Trust Center: https://learn.microsoft.com/en-us/compliance/regulatory/offering-home
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Azure Policy vs RBAC vs Locks: https://www.youtube.com/results?search_query=azure+policy+vs+rbac+vs+resource+locks
+- Governance & compliance for AZ-900: https://www.youtube.com/results?search_query=az-900+governance+compliance+azure+policy+blueprints
+
+---
+
 Next: [09 — Monitoring & Management Tools](09_Monitoring_and_Management_Tools.md)

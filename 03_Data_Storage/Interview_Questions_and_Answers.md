@@ -194,3 +194,14 @@ Set **default ACLs** on each domain directory (e.g. `finance/`) before any data 
 - Q: What does OLAP stand for, and what is it optimized for? — A: Online Analytical Processing; large, complex queries over historical data.
 - Q: What table format gives a data lake ACID transactions? — A: Delta Lake (or Iceberg).
 - Q: What's the recommended target file size on ADLS/Delta to avoid the small-files problem? — A: Roughly 100 MB-1 GB.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Storage decision guide (Azure): https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/data-store-decision-tree
+- Data lake vs warehouse (Databricks): https://www.databricks.com/glossary/data-lakehouse
+
+**Videos**
+- Azure storage interview questions: https://www.youtube.com/results?search_query=azure+data+lake+storage+interview+questions

@@ -414,4 +414,22 @@ A. Azure Mobile App B. Azure Data Box C. Azure Migrate D. Resource locks
 
 ---
 
-Total: 78 practice questions across the three domains. Next, work through the specific comparisons that trip people up most often: **[11 — Most Asked & Tricky Exam Questions](11_Most_Asked_and_Tricky_Exam_Questions.md)**.
+Total: 78 practice questions across the three domains.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Official practice resources**
+- Microsoft Learn free practice assessment (official): https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/practice/assessment
+- AZ-900 study guide (skills measured): https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900
+- Microsoft Q&A (ask exam/topic questions): https://learn.microsoft.com/en-us/answers/tags/133/azure
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- AZ-900 practice questions walkthrough: https://www.youtube.com/results?search_query=az-900+practice+questions+with+answers
+- AZ-900 exam questions explained: https://www.youtube.com/results?search_query=az-900+exam+questions+explained+2024
+
+---
+
+Next, work through the specific comparisons that trip people up most often: **[11 — Most Asked & Tricky Exam Questions](11_Most_Asked_and_Tricky_Exam_Questions.md)**.

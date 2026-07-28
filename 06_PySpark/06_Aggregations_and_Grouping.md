@@ -101,3 +101,14 @@ Same semantics as [SQL ROLLUP/CUBE](../01_SQL/08_SQL_Aggregate_Functions.md).
 3. Why is `collect_list` more expensive than `sum` on the same groups?
 
 Next: combining tables → [07 — Joins](07_Joins.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- GroupBy and aggregation: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.groupBy.html
+- Aggregate functions: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/functions.html
+
+**Videos**
+- PySpark groupBy and aggregations: https://www.youtube.com/results?search_query=pyspark+groupby+aggregation+tutorial

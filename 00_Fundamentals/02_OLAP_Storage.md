@@ -164,3 +164,16 @@ OLAP writes are **bulk, append-mostly**: nightly/hourly batch loads, micro-batch
 - *Star vs snowflake schema?* Star denormalizes dimensions for fewer joins; snowflake normalizes them. Star is the default for BI.
 - *How do you store customer history when attributes change?* SCD Type 2 with surrogate keys and validity ranges.
 - *Why are single-row updates bad in a warehouse?* Immutable columnar files → each update rewrites a file; batch `MERGE` instead.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- What is OLAP? (IBM): https://www.ibm.com/topics/olap
+- OLAP overview (Azure Architecture Center): https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/online-analytical-processing
+- Columnar storage concepts: https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index
+
+**Videos**
+- OLAP explained (analytical processing): https://www.youtube.com/results?search_query=what+is+olap+explained
+- Columnar vs row storage: https://www.youtube.com/results?search_query=columnar+vs+row+storage+explained

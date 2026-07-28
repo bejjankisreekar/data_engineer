@@ -113,3 +113,14 @@ back = spark.createDataFrame(small_pdf)
 3. Score 2B rows with a sklearn model — sketch the mapInPandas solution and its memory contract.
 
 Next: mixing SQL with DataFrames → [11 — Spark SQL & Views](11_Spark_SQL_and_Views.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- PySpark UDFs: https://spark.apache.org/docs/latest/api/python/user_guide/sql/udf.html
+- Pandas UDFs (vectorized): https://spark.apache.org/docs/latest/api/python/user_guide/sql/arrow_pandas.html
+
+**Videos**
+- PySpark UDF vs Pandas UDF explained: https://www.youtube.com/results?search_query=pyspark+udf+vs+pandas+udf+explained

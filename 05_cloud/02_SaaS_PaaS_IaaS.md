@@ -168,3 +168,16 @@ Each step right increases switching cost. The mature stance is *managed* lock-in
 - *Why is Azure SQL DB "PaaS" if there's still a server name?* The "server" is a logical namespace; OS, patching, HA are Microsoft's. Responsibility, not terminology, defines the model.
 - *When is IaaS the right answer in 2026?* Legacy/lift-and-shift, unsupported dependencies, specialized licensing/appliances — a shrinking but real list.
 - *Managed identity vs connection string?* Managed identity: no secret to store, rotate, or leak; RBAC-scoped. Connection strings persist only where managed identity isn't supported.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Cloud service types IaaS/PaaS/SaaS (Azure): https://learn.microsoft.com/en-us/training/modules/describe-cloud-service-types/
+- IaaS vs PaaS vs SaaS (Red Hat): https://www.redhat.com/en/topics/cloud-computing/iaas-vs-paas-vs-saas
+- Shared responsibility model: https://learn.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility
+
+**Videos**
+- IaaS vs PaaS vs SaaS explained: https://www.youtube.com/results?search_query=iaas+vs+paas+vs+saas+explained
+- Shared responsibility model in cloud: https://www.youtube.com/results?search_query=cloud+shared+responsibility+model+explained

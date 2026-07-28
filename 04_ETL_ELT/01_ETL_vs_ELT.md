@@ -152,3 +152,15 @@ ELT won as the default (cheap elastic compute at the destination, raw retention,
 - *Design an incremental load for a 2 TB orders table.* Log-based CDC (or indexed watermark) → bronze append → MERGE to silver by key with dedupe-window → tested gold aggregates; transactional watermark; late-data MERGE into old partitions.
 - *What makes a pipeline production-grade?* Idempotent steps, quality gates, lineage/state tracking, alerting tied to contracts, backfill story — not just "it ran."
 - *Where does dbt fit?* The T of ELT: versioned, tested SQL models inside the warehouse/lakehouse, replacing hand-managed transformation scripts.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- ETL vs ELT (Azure): https://learn.microsoft.com/en-us/azure/architecture/data-guide/relational-data/etl
+- What is ELT? (Databricks): https://www.databricks.com/glossary/elt
+- ETL vs ELT (AWS): https://aws.amazon.com/compare/the-difference-between-etl-and-elt/
+
+**Videos**
+- ETL vs ELT explained: https://www.youtube.com/results?search_query=etl+vs+elt+explained+data+engineering

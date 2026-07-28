@@ -121,3 +121,14 @@ Processes only *new* files, tracks state, handles schema evolution — the produ
 3. Why is a naive JDBC read slow, and what's the fix?
 
 Next: shaping the data itself → [05 — Column Operations & Functions](05_Column_Operations_and_Functions.md).
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Spark data sources: https://spark.apache.org/docs/latest/sql-data-sources.html
+- DataFrameReader / DataFrameWriter: https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/io.html
+
+**Videos**
+- PySpark read and write (CSV/JSON/Parquet): https://www.youtube.com/results?search_query=pyspark+read+write+csv+json+parquet

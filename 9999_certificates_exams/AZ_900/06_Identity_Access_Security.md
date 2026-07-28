@@ -108,4 +108,22 @@ Each layer adds a barrier: physical datacenter security, identity/MFA, perimeter
 - **Defense in depth** = layered security (physical → identity → perimeter → network → compute → application → data).
 - **Defender for Cloud** = posture/secure score. **Sentinel** = SIEM/SOAR, active threat detection and response. **Key Vault** = secrets/keys/certificates storage.
 
+---
+
+## Further Learning — Docs & Videos
+
+**Official documentation**
+- Microsoft Entra ID (formerly Azure AD): https://learn.microsoft.com/en-us/entra/fundamentals/whatis
+- Authentication vs authorization: https://learn.microsoft.com/en-us/entra/identity-platform/authentication-vs-authorization
+- Azure RBAC overview: https://learn.microsoft.com/en-us/azure/role-based-access-control/overview
+- Zero Trust model: https://learn.microsoft.com/en-us/security/zero-trust/zero-trust-overview
+- Defender for Cloud / Sentinel / Key Vault: https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction
+
+**Videos**
+- Microsoft Azure official YouTube channel: https://www.youtube.com/@MicrosoftAzure
+- Identity, MFA, Conditional Access, SSO: https://www.youtube.com/results?search_query=azure+entra+id+mfa+conditional+access+sso+az-900
+- RBAC vs Azure Policy explained: https://www.youtube.com/results?search_query=azure+rbac+vs+policy+explained
+
+---
+
 Next: [07 — Cost Management](07_Cost_Management.md)

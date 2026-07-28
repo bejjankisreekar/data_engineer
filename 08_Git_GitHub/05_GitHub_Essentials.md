@@ -116,3 +116,15 @@ gh pr merge --squash
 4. What does referencing `Fixes #42` in a commit message do, once that commit reaches the default branch?
 
 Next: the commands that let you rewrite and replay history deliberately → [06 — Rebase, Cherry-Pick, Reset & Revert](06_Rebase_Cherry_Pick_Reset_Revert.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- GitHub quickstart: https://docs.github.com/en/get-started/quickstart
+- Pull requests: https://docs.github.com/en/pull-requests
+- GitHub flow: https://docs.github.com/en/get-started/using-github/github-flow
+
+**Videos**
+- GitHub tutorial (PRs, issues, forks): https://www.youtube.com/results?search_query=github+tutorial+pull+requests+issues

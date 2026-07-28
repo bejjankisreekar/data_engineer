@@ -201,3 +201,15 @@ Pro reflex on any slow job: UI → find the dominant stage → look at its shuff
 - *An executor keeps OOM-ing — first three suspects?* Skewed partition, under-partitioned shuffle (too much per task), oversized broadcast. RAM increase is the fourth resort.
 - *What exactly does the cluster manager NOT do?* Task scheduling — that's the driver. The manager only leases containers/VMs (resource arbitration).
 - *Why are job clusters preferred in production?* Clean known state per run, right-sized per workload, auto-terminate — no shared-state bugs or idle burn.
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Spark cluster mode overview: https://spark.apache.org/docs/latest/cluster-overview.html
+- Driver, executors, and cluster manager: https://spark.apache.org/docs/latest/cluster-overview.html#components
+- Databricks architecture: https://docs.databricks.com/en/getting-started/overview.html
+
+**Videos**
+- Spark architecture explained (driver, executors, DAG): https://www.youtube.com/results?search_query=spark+architecture+driver+executor+dag+explained

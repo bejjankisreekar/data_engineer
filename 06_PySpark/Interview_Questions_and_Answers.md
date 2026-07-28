@@ -715,3 +715,15 @@ long_chain_rdd.checkpoint()
 - Q: In the performance tuning workflow, what should you fix last, not first? — A: Resources (partitions/memory/cluster size).
 
 Back to the folder: [06_PySpark notes](.) · Related: [01_SQL Interview Q&A](../01_SQL/Interview_Questions_and_Answers.md)
+
+---
+
+## Further Learning — Docs & Videos
+
+**Documentation**
+- Spark SQL performance tuning: https://spark.apache.org/docs/latest/sql-performance-tuning.html
+- PySpark API reference: https://spark.apache.org/docs/latest/api/python/index.html
+
+**Videos**
+- PySpark and Spark interview questions and answers: https://www.youtube.com/results?search_query=pyspark+spark+interview+questions+and+answers
+- Spark architecture interview questions: https://www.youtube.com/results?search_query=spark+architecture+interview+questions
