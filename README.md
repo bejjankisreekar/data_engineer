@@ -4,7 +4,7 @@ This repository is a personal learning log for Azure Data Engineering, written a
 
 **No coding background required.** Every note is written so that someone from a non-technical background (commerce, law, operations, etc.) can follow along. Technical words are explained the first time they appear, and most topics include a real-world analogy before the technical explanation.
 
-If you are new here, start with the [Glossary](GLOSSARY.md) — it explains recurring jargon (schema, ACID, ETL, OLTP/OLAP, and so on) in one place so the topic notes don't have to repeat themselves.
+**New here? Start with the [ROADMAP](ROADMAP.md)** — a zero-to-job-ready path (9 phases, with milestones) that tells you *what to learn, in what order, and why*, linking every note in this repo. Then use the [Glossary](GLOSSARY.md) — it explains recurring jargon (schema, ACID, ETL, OLTP/OLAP, and so on) in one place so the topic notes don't have to repeat themselves.
 
 ---
 
@@ -34,10 +34,11 @@ Topics are grouped into **category folders** so related material lives together:
 | **01_Foundations** | Fundamentals (OLTP/OLAP, distributed computing, Hadoop) |
 | **02_Databases** | SQL · Data Modeling · Data Warehousing |
 | **03_Cloud** | Cloud Concepts (deployment & service models) |
-| **04_Storage_and_Formats** | File Formats · Data Storage |
+| **04_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse) |
 | **05_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
 | **06_Programming** | Python · PySpark |
 | **07_DevOps** | Git & GitHub |
+| **08_Databricks** | Databricks platform · Clusters · Notebooks/Jobs · Unity Catalog · DLT · Auto Loader |
 | **Certifications** | AZ-900 · Databricks Data Engineer Associate |
 | **Job Interviews** | 31 interview-prep topic folders |
 
@@ -96,6 +97,12 @@ Topics are grouped into **category folders** so related material lives together:
 - [Azure Blob Storage](04_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md) — general-purpose cloud file storage
 - [Azure Data Lake Storage](04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) — Blob Storage built for large-scale analytics
 - **[Interview Questions & Answers](04_Storage_and_Formats/Data_Storage/Interview_Questions_and_Answers.md)** — 26 Q&A covering all three notes
+
+### 04_Storage_and_Formats › Lakehouse — the modern table format and architecture
+- [01 — Delta Lake](04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) — the open storage layer that adds ACID, updates/deletes, and time travel to Parquet via a transaction log
+- [02 — Delta Table](04_Storage_and_Formats/Lakehouse/02_Delta_Table.md) — the table itself: managed vs external, MERGE/upsert, OPTIMIZE, VACUUM, Change Data Feed
+- [03 — Lakehouse Architecture](04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — one copy of data for BI + ML, and the Bronze/Silver/Gold medallion
+- **[Interview Questions & Answers](04_Storage_and_Formats/Lakehouse/Interview_Questions_and_Answers.md)** — 25 Q&A across Delta Lake, Delta tables, and the lakehouse
 
 ### 05_Data_Engineering › ETL / ELT — moving and transforming data
 - [ETL vs ELT](05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) — the two common patterns for getting data from source to destination
@@ -179,6 +186,16 @@ Topics are grouped into **category folders** so related material lives together:
 - [08 — Branching Strategies & Collaboration](07_DevOps/Git_GitHub/08_Branching_Strategies_and_Collaboration.md) — Git Flow vs GitHub Flow vs trunk-based, branch protection, CODEOWNERS
 - [09 — Production Best Practices & CI/CD](07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md) — Conventional Commits, hooks, GitHub Actions, secrets, Git LFS, signed commits
 - [10 — Troubleshooting & Real-World Scenarios](07_DevOps/Git_GitHub/10_Troubleshooting_and_Real_World_Scenarios.md) — symptom-indexed fixes for every common Git disaster
+
+### 08_Databricks — the managed lakehouse platform (where modern Azure DE happens)
+- [00 — Learning Path](08_Databricks/00_Databricks_Learning_Path.md) — the map of the module, prerequisites, and how it differs from the cert track
+- [01 — What is Databricks?](08_Databricks/01_What_is_Databricks.md) — the platform, **control plane vs data plane**, workspace, runtime, why it exists
+- [02 — Clusters & Compute](08_Databricks/02_Clusters_and_Compute.md) — all-purpose vs job clusters, pools, autoscaling, Photon, SQL warehouses, DBUs & cost
+- [03 — Notebooks, Repos & Jobs](08_Databricks/03_Notebooks_Repos_and_Jobs.md) — notebooks, `dbutils`, widgets, Git Repos, Workflows/Jobs orchestration, secrets
+- [04 — Unity Catalog](08_Databricks/04_Unity_Catalog.md) — governance: the three-level namespace, access control, masking/row filters, lineage
+- [05 — Delta Live Tables (DLT)](08_Databricks/05_Delta_Live_Tables.md) — declarative pipelines, quality expectations, streaming tables vs materialized views, CDC
+- [06 — Auto Loader & Ingestion](08_Databricks/06_Auto_Loader_and_Ingestion.md) — incremental file ingestion, schema evolution, file notification, `COPY INTO`
+- **[Interview Questions & Answers](08_Databricks/Interview_Questions_and_Answers.md)** — 30 Q&A across the whole module
 
 ---
 
