@@ -68,7 +68,7 @@ You rent a **finished application** through a browser. Nothing to build or manag
 | "My Spark clusters are managed by Databricks" | Azure Databricks | PaaS (with SaaS-like workspace) |
 | "Analysts view dashboards in Power BI service" | Power BI | SaaS |
 
-A typical Azure data platform is **almost entirely PaaS** — that's the sweet spot: you focus on pipelines and data, Microsoft runs the machinery. (It's also the Databricks pitch in [Why_Spark_Why_Databricks.md](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md): Spark-on-IaaS-you-manage vs Spark-as-a-platform.)
+A typical Azure data platform is **almost entirely PaaS** — that's the sweet spot: you focus on pipelines and data, Microsoft runs the machinery. (It's also the Databricks pitch in [Why_Spark_Why_Databricks.md](../../08_Databricks/02_Why_Spark_Why_Databricks.md): Spark-on-IaaS-you-manage vs Spark-as-a-platform.)
 
 ---
 

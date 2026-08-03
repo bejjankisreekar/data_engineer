@@ -44,7 +44,7 @@ Every modern tool (Spark, Databricks, Snowflake, Azure Data Lake) exists to fix 
 
 - **[Apache Spark](../../03_Programming/PySpark/What_Is_Apache_Spark.md)** (UC Berkeley, 2009; Apache top-level 2014) kept distributed processing but moved it **in-memory** — 10–100× faster than MapReduce.
 - One engine for batch, SQL, streaming, and ML; friendly APIs in Python/Scala/SQL.
-- Spark replaced MapReduce as the de facto processing engine (details: [Why_Spark_Why_Databricks.md](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md)).
+- Spark replaced MapReduce as the de facto processing engine (details: [Why_Spark_Why_Databricks.md](../../08_Databricks/02_Why_Spark_Why_Databricks.md)).
 - **Breaking point:** running your *own* Spark/Hadoop cluster was still heavy ops work.
 
 ## Era 5 — Cloud (2013–2020)
@@ -139,7 +139,7 @@ Pros use this lens to evaluate new tech: *"which coupling does this remove, and 
 
 ## How to use history in interviews & design reviews
 
-- *"Why does Databricks exist?"* → trace era 4→5: Spark solved speed, Databricks solved operations ([Why_Spark_Why_Databricks](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md)).
+- *"Why does Databricks exist?"* → trace era 4→5: Spark solved speed, Databricks solved operations ([Why_Spark_Why_Databricks](../../08_Databricks/02_Why_Spark_Why_Databricks.md)).
 - *"Lake or warehouse?"* → era 6 answer: one lakehouse, unless the org already runs a mature warehouse and the migration cost outweighs duplication cost.
 - *"Should we adopt X?"* → ask which era's problem X solves; adopting a solution to a problem you don't have is how teams end up running Kafka for 100 rows/day.
 - Architecture reviews respect scars: name the *breaking point* a proposal inherits (e.g. "this re-couples storage and compute — we know how that movie ends").

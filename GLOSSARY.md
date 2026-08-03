@@ -223,17 +223,25 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Control plane vs data plane** — Databricks' split: the control plane (Databricks' account — UI, job scheduling, metadata) manages things; the data plane (your cloud subscription — clusters, storage) is where your data and compute actually live. See [What is Databricks](08_Databricks/01_What_is_Databricks.md).
 
-**Unity Catalog** — Databricks' central governance layer: a three-level `catalog.schema.table` namespace with access control, lineage, and masking across workspaces. See [Unity Catalog](08_Databricks/04_Unity_Catalog.md).
+**Unity Catalog** — Databricks' central governance layer: a three-level `catalog.schema.table` namespace with access control, lineage, and masking across workspaces. See [Unity Catalog](08_Databricks/06_Unity_Catalog.md).
 
-**Delta Live Tables (DLT)** — a declarative framework where you define the tables you want and their quality *expectations*, and Databricks manages the pipeline, dependencies, and infrastructure. See [Delta Live Tables](08_Databricks/05_Delta_Live_Tables.md).
+**Delta Live Tables (DLT)** — a declarative framework where you define the tables you want and their quality *expectations*, and Databricks manages the pipeline, dependencies, and infrastructure. See [Delta Live Tables](08_Databricks/08_Delta_Live_Tables.md).
 
-**Auto Loader** — Databricks' tool for incrementally and reliably ingesting new files as they land in cloud storage, with automatic schema inference and evolution. See [Auto Loader & Ingestion](08_Databricks/06_Auto_Loader_and_Ingestion.md).
+**Auto Loader** — Databricks' tool for incrementally and reliably ingesting new files as they land in cloud storage, with automatic schema inference and evolution. See [Auto Loader & Ingestion](08_Databricks/09_Auto_Loader_and_Ingestion.md).
 
 **Photon** — Databricks' vectorized, C++ query engine that speeds up SQL/DataFrame workloads without code changes.
 
-**Job cluster vs all-purpose cluster** — a job cluster spins up for one automated job and terminates after (cheaper); an all-purpose cluster is shared and interactive (for notebooks/exploration). See [Clusters & Compute](08_Databricks/02_Clusters_and_Compute.md).
+**Job cluster vs all-purpose cluster** — a job cluster spins up for one automated job and terminates after (cheaper); an all-purpose cluster is shared and interactive (for notebooks/exploration). See [Clusters & Compute](08_Databricks/03_Clusters_and_Compute.md).
 
 **Asset Bundles (DABs)** — Databricks' way to define jobs, notebooks, DLT pipelines, and cluster config as code in a `databricks.yml`, deployed per environment via `databricks bundle deploy` — the modern basis for Databricks CI/CD. See [CI/CD for ADF & Databricks](14_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md).
+
+**ABFSS** — the secure ADLS Gen2 URI scheme Spark uses to address cloud storage: `abfss://container@account.dfs.core.windows.net/path` (note the **dfs** endpoint and TLS). See [Storage Access: ABFSS & Volumes](08_Databricks/07_Storage_Access_ABFSS_and_Volumes.md).
+
+**Volume (Unity Catalog)** — a UC-governed object for **non-tabular files** (CSVs, images, model artifacts), addressed at `/Volumes/catalog/schema/volume/…`; managed (UC storage) or external (a path in an External Location). The modern replacement for mounts.
+
+**External Location / Storage Credential** — the Unity Catalog objects that authorize `abfss://` access: a **Storage Credential** wraps an Azure managed identity (Access Connector); an **External Location** binds that credential to a storage path and is what you grant access on. Replaces cluster-level keys and `/mnt` mounts.
+
+**DBFS (Databricks File System)** — the workspace's built-in filesystem abstraction (`dbfs:/`, `/dbfs/…`); its root is for scratch/plumbing (`/FileStore`, sample data), **not** production data, which belongs in governed ADLS.
 
 ---
 
@@ -337,7 +345,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Small-file problem** — thousands of tiny files that cripple read performance (huge listing/opening overhead); fixed by compaction (`OPTIMIZE`) and sensible partitioning.
 
-**Predicate pushdown / partition pruning** — skipping data that a query's filters can't possibly match — pushing the filter down to the file/partition level so less data is read. See [Performance Optimization](15_Cost_and_Performance/04_Performance_Optimization.md).
+**Predicate pushdown / partition pruning** — skipping data that a query's filters can't possibly match — pushing the filter down to the file/partition level so less data is read. See [Performance Optimization](15_Cost_and_Performance/03_Performance_Optimization.md).
 
 ---
 

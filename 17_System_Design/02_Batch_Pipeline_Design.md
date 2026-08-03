@@ -39,7 +39,7 @@ The design decisions layered on top are what an interviewer probes.
 Design so a **rerun or backfill is safe** — MERGE/upsert on business keys, partition overwrite keyed by run date ([reliability](../12_Monitoring_and_Observability/03_Pipeline_Reliability.md)). Batch jobs fail and get rerun; non-idempotent ones corrupt data.
 
 ### 3. Partitioning & file layout
-Partition Gold by the column reports filter on (usually **date**), keep files well-sized (`OPTIMIZE`), so serving scans little ([cost](../15_Cost_and_Performance/03_Storage_and_Query_Cost.md)).
+Partition Gold by the column reports filter on (usually **date**), keep files well-sized (`OPTIMIZE`), so serving scans little ([cost](../15_Cost_and_Performance/02_Storage_and_Query_Cost.md)).
 
 ### 4. Orchestration & dependencies
 Dims before facts; aggregate after both; retries and failure alerts ([orchestration](../11_Orchestration/00_Orchestration_Learning_Path.md)).

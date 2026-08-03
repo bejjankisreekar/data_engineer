@@ -45,7 +45,7 @@ flowchart TD
 ```
 
 - Most cases → **Import** with a scheduled refresh after the Gold load.
-- Real-time / too-big-to-import → **DirectQuery** (then *your source* performance and [cost](../15_Cost_and_Performance/03_Storage_and_Query_Cost.md) matter, because every visual queries it live).
+- Real-time / too-big-to-import → **DirectQuery** (then *your source* performance and [cost](../15_Cost_and_Performance/02_Storage_and_Query_Cost.md) matter, because every visual queries it live).
 - Fabric lakehouse → **Direct Lake**.
 
 ---

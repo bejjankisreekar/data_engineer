@@ -144,7 +144,7 @@ Spot (preemptible) workers cut cost sharply but can be reclaimed. The field patt
 
 ## Related Notes
 
-- **Prev:** [What is Databricks?](01_What_is_Databricks.md) · **Next:** [Notebooks, Repos & Jobs](03_Notebooks_Repos_and_Jobs.md)
+- **Prev:** [What is Databricks?](01_What_is_Databricks.md) · **Next:** [Notebooks, Repos & Jobs](04_Notebooks_Repos_and_Jobs.md)
 - **Spark internals:** [Spark Architecture](../03_Programming/PySpark/Spark_Architecture.md) · [Performance & Best Practices](../03_Programming/PySpark/14_Performance_and_Best_Practices.md)
 - **Interview:** [Databricks Performance Optimization](../Job%20Interviews/Azure%20Databricks/Performance%20Optimization.md)
 

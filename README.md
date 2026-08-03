@@ -38,7 +38,7 @@ Topics are grouped into **category folders** so related material lives together:
 | **05_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse, Medallion) |
 | **06_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
 | **07_DevOps** | Git & GitHub (version control, branching, remotes, CI/CD, troubleshooting) — Docker · Kubernetes · Terraform · ARM covered in Job Interviews |
-| **08_Databricks** | Databricks platform · Clusters · Notebooks/Jobs · Unity Catalog · DLT · Auto Loader |
+| **08_Databricks** | Platform · Why Spark · Clusters · Notebooks/Jobs · Workflows · Unity Catalog · ABFSS/Volumes · DLT · Auto Loader · Cost |
 | **09_Streaming** | Streaming fundamentals · Event Hubs · Kafka · Stream Analytics |
 | **10_Synapse_and_Fabric** | Synapse Analytics · Dedicated/Serverless SQL pools (MPP) · Microsoft Fabric · platform decision guide |
 | **11_Orchestration** | DAGs · ADF triggers · Databricks Workflows · Apache Airflow |
@@ -172,7 +172,7 @@ Topics are grouped into **category folders** so related material lives together:
 - [What is Apache Spark?](03_Programming/PySpark/What_Is_Apache_Spark.md) — the distributed, in-memory processing engine, explained from scratch
 - [Spark Architecture](03_Programming/PySpark/Spark_Architecture.md) — driver, executors, cluster manager, jobs, stages, and tasks
 - [Spark Processing](03_Programming/PySpark/Spark_Processing.md) — partitions, lazy evaluation, transformations vs actions, shuffles, caching
-- [Why Spark? Why Databricks?](03_Programming/PySpark/Why_Spark_Why_Databricks.md) — why Spark replaced MapReduce, and what Databricks adds on top
+- *(["Why Spark? Why Databricks?"](08_Databricks/02_Why_Spark_Why_Databricks.md) now lives in the [08_Databricks](08_Databricks/00_Databricks_Learning_Path.md) module)*
 
 **Coding track** (zero-to-pro series — start at 00 and read in order):
 - [00 — PySpark Learning Path](03_Programming/PySpark/00_PySpark_Learning_Path.md) — the map of the whole series and suggested routes
@@ -216,11 +216,15 @@ Topics are grouped into **category folders** so related material lives together:
 ### 08_Databricks — the managed lakehouse platform (where modern Azure DE happens)
 - [00 — Learning Path](08_Databricks/00_Databricks_Learning_Path.md) — the map of the module, prerequisites, and how it differs from the cert track
 - [01 — What is Databricks?](08_Databricks/01_What_is_Databricks.md) — the platform, **control plane vs data plane**, workspace, runtime, why it exists
-- [02 — Clusters & Compute](08_Databricks/02_Clusters_and_Compute.md) — all-purpose vs job clusters, pools, autoscaling, Photon, SQL warehouses, DBUs & cost
-- [03 — Notebooks, Repos & Jobs](08_Databricks/03_Notebooks_Repos_and_Jobs.md) — notebooks, `dbutils`, widgets, Git Repos, Workflows/Jobs orchestration, secrets
-- [04 — Unity Catalog](08_Databricks/04_Unity_Catalog.md) — governance: the three-level namespace, access control, masking/row filters, lineage
-- [05 — Delta Live Tables (DLT)](08_Databricks/05_Delta_Live_Tables.md) — declarative pipelines, quality expectations, streaming tables vs materialized views, CDC
-- [06 — Auto Loader & Ingestion](08_Databricks/06_Auto_Loader_and_Ingestion.md) — incremental file ingestion, schema evolution, file notification, `COPY INTO`
+- [02 — Why Spark? Why Databricks?](08_Databricks/02_Why_Spark_Why_Databricks.md) — why Spark replaced MapReduce, and what Databricks adds on top
+- [03 — Clusters & Compute](08_Databricks/03_Clusters_and_Compute.md) — all-purpose vs job clusters, pools, autoscaling, Photon, SQL warehouses, DBUs & cost
+- [04 — Notebooks, Repos & Jobs](08_Databricks/04_Notebooks_Repos_and_Jobs.md) — notebooks, `dbutils`, widgets, Git Repos, secrets
+- [05 — Databricks Workflows](08_Databricks/05_Databricks_Workflows.md) — Jobs, task graphs, job clusters, scheduling, DLT pipelines
+- [06 — Unity Catalog](08_Databricks/06_Unity_Catalog.md) — governance: the three-level namespace, access control, masking/row filters, lineage
+- [07 — Storage Access: ABFSS & Volumes](08_Databricks/07_Storage_Access_ABFSS_and_Volumes.md) — `abfss://` paths, Unity Catalog **Volumes**, External Locations & Storage Credentials, DBFS, legacy mounts
+- [08 — Delta Live Tables (DLT)](08_Databricks/08_Delta_Live_Tables.md) — declarative pipelines, quality expectations, streaming tables vs materialized views, CDC
+- [09 — Auto Loader & Ingestion](08_Databricks/09_Auto_Loader_and_Ingestion.md) — incremental file ingestion, schema evolution, file notification, `COPY INTO`
+- [10 — Databricks & Spark Cost Optimization](08_Databricks/10_Databricks_Cost_Optimization.md) — DBUs, cluster sizing, autoscaling, spot, Photon, job vs all-purpose
 - **[Interview Questions & Answers](08_Databricks/Interview_Questions_and_Answers.md)** — 30 Q&A across the whole module
 
 ### 09_Streaming — processing data in real time (Event Hubs, Kafka, Stream Analytics)
@@ -250,7 +254,7 @@ Topics are grouped into **category folders** so related material lives together:
 
 ### 11_Orchestration — scheduling & coordinating pipelines
 - [00 — Learning Path](11_Orchestration/00_Orchestration_Learning_Path.md) · [01 — Fundamentals (DAGs, idempotency, backfill)](11_Orchestration/01_Orchestration_Fundamentals.md)
-- [02 — ADF Orchestration (triggers, metadata-driven)](11_Orchestration/02_ADF_Orchestration.md) · [03 — Databricks Workflows](11_Orchestration/03_Databricks_Workflows.md) · [04 — Apache Airflow](11_Orchestration/04_Apache_Airflow.md)
+- [02 — ADF Orchestration (triggers, metadata-driven)](11_Orchestration/02_ADF_Orchestration.md) · [03 — Apache Airflow](11_Orchestration/03_Apache_Airflow.md) · [Databricks Workflows](08_Databricks/05_Databricks_Workflows.md) *(in the Databricks module)*
 - **[Interview Questions & Answers](11_Orchestration/Interview_Questions_and_Answers.md)**
 
 ### 12_Monitoring_and_Observability — knowing your pipelines (and data) are healthy
@@ -271,7 +275,7 @@ Topics are grouped into **category folders** so related material lives together:
 
 ### 15_Cost_and_Performance — FinOps and making pipelines fast & cheap
 - [00 — Learning Path](15_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md) · [01 — Cost Fundamentals (FinOps)](15_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md)
-- [02 — Databricks/Spark Cost](15_Cost_and_Performance/02_Databricks_Cost_Optimization.md) · [03 — Storage & Query Cost](15_Cost_and_Performance/03_Storage_and_Query_Cost.md) · [04 — Performance Optimization (shuffle/skew)](15_Cost_and_Performance/04_Performance_Optimization.md)
+- [02 — Storage & Query Cost](15_Cost_and_Performance/02_Storage_and_Query_Cost.md) · [03 — Performance Optimization (shuffle/skew)](15_Cost_and_Performance/03_Performance_Optimization.md) · [Databricks/Spark Cost](08_Databricks/10_Databricks_Cost_Optimization.md) *(in the Databricks module)*
 - **[Interview Questions & Answers](15_Cost_and_Performance/Interview_Questions_and_Answers.md)**
 
 ### 16_Power_BI_for_Engineers — serving the Gold layer to the business

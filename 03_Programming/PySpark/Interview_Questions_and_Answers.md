@@ -124,7 +124,7 @@ This forces a **broadcast hash join**: the small table is copied in full to ever
 
 ## A4. Why Spark? Why Databricks?
 
-*(full notes: [Why_Spark_Why_Databricks.md](Why_Spark_Why_Databricks.md))*
+*(full notes: [Why_Spark_Why_Databricks.md](../../08_Databricks/02_Why_Spark_Why_Databricks.md))*
 
 #### Q18. Spark is free and open-source — what exactly are you paying for with Databricks? **[Frequently Asked]**
 *Why interviewers ask this:* A very common question testing whether the candidate understands the platform vs. engine distinction.

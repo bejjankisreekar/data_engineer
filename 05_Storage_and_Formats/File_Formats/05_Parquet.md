@@ -171,7 +171,7 @@ Diagnostics this answers: are files tiny (compaction needed)? one giant row grou
 
 ## Field-tested gotchas
 
-- **Overwriting a Parquet folder non-atomically** (plain `overwrite` to the same path without a table format) leaves readers a window of half-deleted files — this failure mode *is* the sales pitch for [Delta](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md).
+- **Overwriting a Parquet folder non-atomically** (plain `overwrite` to the same path without a table format) leaves readers a window of half-deleted files — this failure mode *is* the sales pitch for [Delta](../../08_Databricks/02_Why_Spark_Why_Databricks.md).
 - Timestamp interop: INT96 legacy timestamps vs `timestamp-millis/micros`, plus session timezones, produce hour-shifted data between engines — pin conventions, test round-trips.
 - `coalesce(1)` to make "one nice Parquet file" serializes the write through one task and builds one giant row group — fine for samples, wrong for production ([write patterns](../../03_Programming/PySpark/Spark_Processing.md)).
 - Column pruning dies through `SELECT *` views — the physical format can't save a logical habit ([views](../../02_Databases/SQL/10_SQL_Views.md), [DQL](../../02_Databases/SQL/06_SQL_DQL.md)).

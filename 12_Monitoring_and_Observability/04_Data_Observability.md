@@ -65,7 +65,7 @@ Failing (or better, **alerting**) on these turns silent corruption into a visibl
 |---|---|
 | **Great Expectations / Soda** | Declarative data quality/expectation tests in pipelines ([Testing](../14_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)) |
 | **dbt tests** | Built-in `not_null`, `unique`, `relationships`, custom tests ([dbt](../13_dbt/03_Tests_and_Documentation.md)) |
-| **Delta Live Tables expectations** | `@dlt.expect` quality gates inside the pipeline ([DLT](../08_Databricks/05_Delta_Live_Tables.md)) |
+| **Delta Live Tables expectations** | `@dlt.expect` quality gates inside the pipeline ([DLT](../08_Databricks/08_Delta_Live_Tables.md)) |
 | **Monte Carlo / Bigeye / Anomalo** | ML-based anomaly detection across all five pillars, automatically |
 | **Microsoft Purview** | Lineage + cataloging across Azure ([Governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)) |
 

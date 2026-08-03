@@ -2,7 +2,7 @@
 
 Anyone can make a query *run*. A data engineer makes it run **fast and cheap**. Cloud bills are metered by the second, and a careless pipeline can cost 10× what a careful one does for the *same result*. **Cost and performance optimization** is a core, promotable skill — and a Phase 7 🔜 gap the [ROADMAP](../ROADMAP.md) flagged.
 
-Builds on [PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md), [Storage](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md), and [Databricks](../08_Databricks/02_Clusters_and_Compute.md).
+Builds on [PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md), [Storage](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md), and [Databricks](../08_Databricks/03_Clusters_and_Compute.md).
 
 ---
 
@@ -25,10 +25,11 @@ Builds on [PySpark Performance](../03_Programming/PySpark/14_Performance_and_Bes
 | # | File | What you'll learn |
 |---|------|-------------------|
 | 01 | [Cost Fundamentals (FinOps)](01_Cost_Fundamentals_FinOps.md) | How cloud billing works, the cost levers, budgets & alerts |
-| 02 | [Databricks & Spark Cost Optimization](02_Databricks_Cost_Optimization.md) | DBUs, cluster sizing, autoscaling, spot, Photon, job vs all-purpose |
-| 03 | [Storage & Query Cost](03_Storage_and_Query_Cost.md) | ADLS tiers, partitioning/pruning, Synapse DWU, Cosmos RU, file sizing |
-| 04 | [Performance Optimization](04_Performance_Optimization.md) | Shuffle, skew, caching, broadcast, Z-order — the speed levers |
+| 02 | [Storage & Query Cost](02_Storage_and_Query_Cost.md) | ADLS tiers, partitioning/pruning, Synapse DWU, Cosmos RU, file sizing |
+| 03 | [Performance Optimization](03_Performance_Optimization.md) | Shuffle, skew, caching, broadcast, Z-order — the speed levers |
 | — | [Interview Questions & Answers](Interview_Questions_and_Answers.md) | Test yourself across the module |
+
+> **Databricks & Spark cost optimization** (DBUs, cluster sizing, spot, Photon) now lives in the [Databricks module (08)](../08_Databricks/10_Databricks_Cost_Optimization.md), with the rest of the platform. It's the biggest single lever on most Azure DE bills — read it alongside this module.
 
 ---
 

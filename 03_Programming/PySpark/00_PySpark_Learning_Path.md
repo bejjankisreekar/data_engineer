@@ -9,7 +9,7 @@ This folder teaches **PySpark from zero to pro**. Files are numbered in reading 
 - [What_Is_Apache_Spark.md](What_Is_Apache_Spark.md) — what Spark is, why it exists
 - [Spark_Architecture.md](Spark_Architecture.md) — driver, executors, jobs/stages/tasks
 - [Spark_Processing.md](Spark_Processing.md) — partitions, lazy evaluation, shuffles
-- [Why_Spark_Why_Databricks.md](Why_Spark_Why_Databricks.md) — the business case
+- [Why Spark? Why Databricks?](../../08_Databricks/02_Why_Spark_Why_Databricks.md) — the business case *(now in the [Databricks module](../../08_Databricks/00_Databricks_Learning_Path.md))*
 
 **Coding track** (the *how to actually write it*) — the numbered series:
 

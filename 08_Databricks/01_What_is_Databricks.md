@@ -63,11 +63,11 @@ This is the single most important thing to understand about Databricks — and a
 | Piece | What it is |
 |---|---|
 | **Workspace** | Your Databricks environment — the UI, folders, notebooks, users |
-| **Cluster / compute** | The Spark VMs that run your code — see [02](02_Clusters_and_Compute.md) |
-| **Notebook** | Interactive multi-language document (Python/SQL/Scala/R) — see [03](03_Notebooks_Repos_and_Jobs.md) |
-| **Job / Workflow** | A scheduled, orchestrated pipeline — see [03](03_Notebooks_Repos_and_Jobs.md) |
+| **Cluster / compute** | The Spark VMs that run your code — see [02](03_Clusters_and_Compute.md) |
+| **Notebook** | Interactive multi-language document (Python/SQL/Scala/R) — see [03](04_Notebooks_Repos_and_Jobs.md) |
+| **Job / Workflow** | A scheduled, orchestrated pipeline — see [03](04_Notebooks_Repos_and_Jobs.md) |
 | **Delta Lake** | The default table format — see [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) |
-| **Unity Catalog** | Central governance & metadata — see [04](04_Unity_Catalog.md) |
+| **Unity Catalog** | Central governance & metadata — see [04](06_Unity_Catalog.md) |
 | **DBFS / mounts** | A file-path abstraction over your cloud storage |
 | **Runtime (DBR)** | The pre-packaged Spark + libraries version your cluster runs |
 
@@ -171,8 +171,8 @@ In a real org you don't let everyone spin up any cluster — **cluster policies*
 
 ## Related Notes
 
-- **Next:** [Clusters & Compute](02_Clusters_and_Compute.md)
-- **Foundations:** [Why Spark? Why Databricks?](../03_Programming/PySpark/Why_Spark_Why_Databricks.md) · [Spark Architecture](../03_Programming/PySpark/Spark_Architecture.md)
+- **Next:** [Clusters & Compute](03_Clusters_and_Compute.md)
+- **Foundations:** [Why Spark? Why Databricks?](../08_Databricks/02_Why_Spark_Why_Databricks.md) · [Spark Architecture](../03_Programming/PySpark/Spark_Architecture.md)
 - **Storage:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)
 - **Cert:** [Databricks Associate — Lakehouse Platform](../Certifications/Databricks_Data_Engineer_Associate/01_Lakehouse_Platform_Fundamentals.md)
 

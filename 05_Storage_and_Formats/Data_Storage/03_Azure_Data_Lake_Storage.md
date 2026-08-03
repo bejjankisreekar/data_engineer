@@ -103,7 +103,7 @@ Conventions that pay off: separate *containers* per zone (clean ACL + lifecycle 
 
 ## The lake is a filesystem; the lakehouse is a database on it
 
-Everything hard about lakes traces to one fact: **storage doesn't know about tables**. Raw ADLS gives you no transactions, no schema enforcement, no discovery — folders of files. The stack that fixes it: Delta's transaction log (table semantics — [why Delta](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md)) + Unity Catalog (names, permissions, lineage) + zones (quality contracts). A "data swamp" is precisely a lake run without those three ([schema-on-read's dark side](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)). When someone proposes "just drop files in the lake," the pro question is: *which table, which contract, which owner?*
+Everything hard about lakes traces to one fact: **storage doesn't know about tables**. Raw ADLS gives you no transactions, no schema enforcement, no discovery — folders of files. The stack that fixes it: Delta's transaction log (table semantics — [why Delta](../../08_Databricks/02_Why_Spark_Why_Databricks.md)) + Unity Catalog (names, permissions, lineage) + zones (quality contracts). A "data swamp" is precisely a lake run without those three ([schema-on-read's dark side](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)). When someone proposes "just drop files in the lake," the pro question is: *which table, which contract, which owner?*
 
 ## Performance engineering on ADLS
 

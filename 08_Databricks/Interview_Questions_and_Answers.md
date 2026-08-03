@@ -1,6 +1,6 @@
 # Azure Databricks — Interview Questions & Answers
 
-Covers the whole module: [Platform](01_What_is_Databricks.md), [Clusters](02_Clusters_and_Compute.md), [Notebooks/Repos/Jobs](03_Notebooks_Repos_and_Jobs.md), [Unity Catalog](04_Unity_Catalog.md), [DLT](05_Delta_Live_Tables.md), [Auto Loader](06_Auto_Loader_and_Ingestion.md). Tagged **[Theory]** / **[Scenario]**, ⭐ = very frequently asked. See also the [Databricks interview folder](../Job%20Interviews/Azure%20Databricks/Databricks%20Interview%20Questions.md) and [Performance Optimization](../Job%20Interviews/Azure%20Databricks/Performance%20Optimization.md).
+Covers the whole module: [Platform](01_What_is_Databricks.md), [Clusters](03_Clusters_and_Compute.md), [Notebooks/Repos/Jobs](04_Notebooks_Repos_and_Jobs.md), [Unity Catalog](06_Unity_Catalog.md), [DLT](08_Delta_Live_Tables.md), [Auto Loader](09_Auto_Loader_and_Ingestion.md). Tagged **[Theory]** / **[Scenario]**, ⭐ = very frequently asked. See also the [Databricks interview folder](../Job%20Interviews/Azure%20Databricks/Databricks%20Interview%20Questions.md) and [Performance Optimization](../Job%20Interviews/Azure%20Databricks/Performance%20Optimization.md).
 
 ---
 
@@ -120,6 +120,6 @@ Auto Loader (`availableNow` triggered, hourly) ingests new files into a DLT Bron
 
 ## Related Notes
 
-- Module: [00 Learning Path](00_Databricks_Learning_Path.md) → [01](01_What_is_Databricks.md) · [02](02_Clusters_and_Compute.md) · [03](03_Notebooks_Repos_and_Jobs.md) · [04](04_Unity_Catalog.md) · [05](05_Delta_Live_Tables.md) · [06](06_Auto_Loader_and_Ingestion.md)
+- Module: [00 Learning Path](00_Databricks_Learning_Path.md) → [01](01_What_is_Databricks.md) · [02](03_Clusters_and_Compute.md) · [03](04_Notebooks_Repos_and_Jobs.md) · [04](06_Unity_Catalog.md) · [05](08_Delta_Live_Tables.md) · [06](09_Auto_Loader_and_Ingestion.md)
 - [Lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) · [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md)
 - Cert track: [Databricks Data Engineer Associate](../Certifications/Databricks_Data_Engineer_Associate/00_Study_Guide_Overview.md)

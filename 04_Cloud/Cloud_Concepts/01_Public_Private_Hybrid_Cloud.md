@@ -80,7 +80,7 @@ Azure's hybrid tooling: Azure Arc, ExpressRoute (private network link), Azure St
 
 ## Why data engineers care
 
-Modern data platforms are overwhelmingly **public cloud**: ADLS, [Databricks](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md), Data Factory, Synapse are all public-cloud services. But large enterprises (banks, healthcare, insurance) are often **hybrid** — expect pipelines that pull from on-prem SQL Servers (via self-hosted integration runtimes) into the cloud lake.
+Modern data platforms are overwhelmingly **public cloud**: ADLS, [Databricks](../../08_Databricks/02_Why_Spark_Why_Databricks.md), Data Factory, Synapse are all public-cloud services. But large enterprises (banks, healthcare, insurance) are often **hybrid** — expect pipelines that pull from on-prem SQL Servers (via self-hosted integration runtimes) into the cloud lake.
 
 Next: *how much of the stack you rent* — [02_SaaS_PaaS_IaaS.md](02_SaaS_PaaS_IaaS.md).
 

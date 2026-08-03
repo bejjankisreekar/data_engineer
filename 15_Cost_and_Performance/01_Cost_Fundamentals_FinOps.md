@@ -25,9 +25,9 @@ The headline: **compute dominates**, and compute cost = **how big × how long**.
 
 1. **Right-size compute** — don't run a 20-node cluster for a 2 GB job.
 2. **Turn it off** — auto-terminate idle clusters; the #1 waste is compute running with nobody using it.
-3. **Scan less data** — partition pruning, column pruning, file skipping; the less data touched, the less compute and time ([storage cost](03_Storage_and_Query_Cost.md)).
+3. **Scan less data** — partition pruning, column pruning, file skipping; the less data touched, the less compute and time ([storage cost](02_Storage_and_Query_Cost.md)).
 4. **Don't recompute needlessly** — incremental processing over full rebuilds; cache/reuse intermediate results.
-5. **Pick the right compute type** — spot/serverless/job clusters where appropriate ([Databricks cost](02_Databricks_Cost_Optimization.md)).
+5. **Pick the right compute type** — spot/serverless/job clusters where appropriate ([Databricks cost](../08_Databricks/10_Databricks_Cost_Optimization.md)).
 6. **Keep data and compute co-located** — cross-region data movement adds egress cost and latency.
 
 Almost every specific tip in this module is an instance of one of these six.

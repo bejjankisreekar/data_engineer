@@ -14,7 +14,7 @@ In one line: **DLT = declarative pipelines — you define the tables and quality
 
 ## Analogy: GPS vs turn-by-turn memorization
 
-Building a pipeline the manual way ([Jobs](03_Notebooks_Repos_and_Jobs.md)) is like **memorizing every turn** of a route — you specify each step, its order, its retries, its dependencies. If a road changes, you re-memorize.
+Building a pipeline the manual way ([Jobs](04_Notebooks_Repos_and_Jobs.md)) is like **memorizing every turn** of a route — you specify each step, its order, its retries, its dependencies. If a road changes, you re-memorize.
 
 DLT is a **GPS**: you say "get me to the Gold table," declare the waypoints (Bronze, Silver), and the system computes the route (dependency graph), reroutes around problems (retries/recovery), and tells you if you're going the wrong way (data-quality expectations). You describe the destination; it drives.
 
@@ -84,8 +84,8 @@ Violations are tracked as metrics you can monitor over time — turning [data qu
 
 ## Azure Usage
 
-- Runs as a **pipeline** in the Databricks workspace, often triggered as a task inside a [Job](03_Notebooks_Repos_and_Jobs.md) or by **Auto Loader** file arrival ([next note](06_Auto_Loader_and_Ingestion.md)).
-- Writes governed Delta tables under **Unity Catalog** ([04](04_Unity_Catalog.md)).
+- Runs as a **pipeline** in the Databricks workspace, often triggered as a task inside a [Job](04_Notebooks_Repos_and_Jobs.md) or by **Auto Loader** file arrival ([next note](09_Auto_Loader_and_Ingestion.md)).
+- Writes governed Delta tables under **Unity Catalog** ([04](06_Unity_Catalog.md)).
 - Common shape: ADF or Auto Loader lands files → DLT builds Bronze/Silver/Gold with expectations → Power BI reads Gold.
 
 ---
@@ -156,7 +156,7 @@ A DLT streaming table processes each input **once** — reprocessing history or 
 
 ## Related Notes
 
-- **Prev:** [Unity Catalog](04_Unity_Catalog.md) · **Next:** [Auto Loader & Ingestion](06_Auto_Loader_and_Ingestion.md)
+- **Prev:** [Unity Catalog](06_Unity_Catalog.md) · **Next:** [Auto Loader & Ingestion](09_Auto_Loader_and_Ingestion.md)
 - **Medallion:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · **Quality:** [Data Quality Fundamentals](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · **CDC:** [Change Data Capture](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)
 - **Cert:** [Delta Live Tables](../Certifications/Databricks_Data_Engineer_Associate/08_Delta_Live_Tables.md)
 

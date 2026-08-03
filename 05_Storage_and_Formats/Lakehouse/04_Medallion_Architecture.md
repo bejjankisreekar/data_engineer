@@ -131,7 +131,7 @@ Pointing a dashboard at **Silver** "just for now" silently breaks the Gold contr
 
 ## One pipeline, two speeds (batch *and* streaming)
 
-Because a Delta table is **both a stream sink and a stream source**, the *same* medallion shape runs in batch or streaming with little change: Bronze as a streaming ingest ([Auto Loader](../../08_Databricks/06_Auto_Loader_and_Ingestion.md)), Silver as a streaming transform, Gold as a micro-batch aggregate ([Structured Streaming](../../03_Programming/PySpark/13_Structured_Streaming.md)). [Delta Live Tables](../../08_Databricks/05_Delta_Live_Tables.md) expresses the whole multi-hop declaratively with built-in quality expectations.
+Because a Delta table is **both a stream sink and a stream source**, the *same* medallion shape runs in batch or streaming with little change: Bronze as a streaming ingest ([Auto Loader](../../08_Databricks/09_Auto_Loader_and_Ingestion.md)), Silver as a streaming transform, Gold as a micro-batch aggregate ([Structured Streaming](../../03_Programming/PySpark/13_Structured_Streaming.md)). [Delta Live Tables](../../08_Databricks/08_Delta_Live_Tables.md) expresses the whole multi-hop declaratively with built-in quality expectations.
 
 ---
 

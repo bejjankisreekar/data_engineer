@@ -113,7 +113,7 @@ Datasets and linked services take parameters too (one "any SQL table" dataset, o
 
 ## The build-vs-buy line inside ADF
 
-Copy Activity: unbeatable for movement (parallelized, resumable, ~100 connectors). **Mapping Data Flows**: visual Spark — fine for simple joins/derivations, but complex logic in a GUI becomes untestable spaghetti. The widely-used enterprise pattern: **ADF for extract/orchestrate/load, Databricks notebooks (or dbt) for transform** — code where logic lives, boxes where plumbing lives ([why Databricks](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md)).
+Copy Activity: unbeatable for movement (parallelized, resumable, ~100 connectors). **Mapping Data Flows**: visual Spark — fine for simple joins/derivations, but complex logic in a GUI becomes untestable spaghetti. The widely-used enterprise pattern: **ADF for extract/orchestrate/load, Databricks notebooks (or dbt) for transform** — code where logic lives, boxes where plumbing lives ([why Databricks](../../08_Databricks/02_Why_Spark_Why_Databricks.md)).
 
 ---
 

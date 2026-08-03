@@ -67,7 +67,7 @@ In Spark/Databricks you can assert inline or use **Delta Live Tables expectation
 @dlt.expect_or_fail("has_key", "order_id IS NOT NULL") # fail the pipeline on violation
 ```
 
-See [DLT](../08_Databricks/05_Delta_Live_Tables.md).
+See [DLT](../08_Databricks/08_Delta_Live_Tables.md).
 
 ---
 

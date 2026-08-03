@@ -6,7 +6,7 @@ A Databricks bill has **two stacked layers**:
 1. **Cloud VM cost** — the Azure virtual machines in your cluster (paid to Azure).
 2. **DBUs (Databricks Units)** — Databricks' own usage charge, a normalized measure of processing per second, varying by workload tier and cluster type.
 
-So **cost ≈ (VM price + DBU rate) × cluster size × runtime**. Every optimization below shrinks one of those factors. This builds on [Clusters & Compute](../08_Databricks/02_Clusters_and_Compute.md).
+So **cost ≈ (VM price + DBU rate) × cluster size × runtime**. Every optimization below shrinks one of those factors. This builds on [Clusters & Compute](../08_Databricks/03_Clusters_and_Compute.md).
 
 ---
 
@@ -19,7 +19,7 @@ So **cost ≈ (VM price + DBU rate) × cluster size × runtime**. Every optimiza
 | **Serverless** | Pay per use, instant start, no idle | Bursty/ad-hoc SQL & jobs; no cluster management |
 | **SQL Warehouse** | For BI/SQL; can auto-stop | Serving Power BI / dbt |
 
-**The single biggest Databricks waste:** running scheduled jobs on an always-on all-purpose cluster. Move them to **job clusters**. ([Workflows](../11_Orchestration/03_Databricks_Workflows.md))
+**The single biggest Databricks waste:** running scheduled jobs on an always-on all-purpose cluster. Move them to **job clusters**. ([Workflows](../08_Databricks/05_Databricks_Workflows.md))
 
 ---
 
@@ -52,13 +52,13 @@ A common cost win: spot workers + on-demand driver on nightly batch. This ties t
 
 - Match cluster size to the **data volume and job**, not "big to be safe." A 2 GB job doesn't need 20 nodes.
 - Fewer, larger nodes vs many small — depends on the workload; test.
-- Watch the **Spark UI**: if most executors are idle, you over-provisioned; if there's heavy spill/GC, you under-provisioned. ([Performance](04_Performance_Optimization.md))
+- Watch the **Spark UI**: if most executors are idle, you over-provisioned; if there's heavy spill/GC, you under-provisioned. ([Performance](../15_Cost_and_Performance/03_Performance_Optimization.md))
 
 ---
 
 ## Lever 6 — Scan and shuffle less (cost = work)
 
-Every performance optimization in [file 04](04_Performance_Optimization.md) is *also* a cost optimization, because less work = less compute-time:
+Every performance optimization in [file 04](../15_Cost_and_Performance/03_Performance_Optimization.md) is *also* a cost optimization, because less work = less compute-time:
 
 - **Partition pruning / file skipping** so queries read only relevant data.
 - **Avoid wide shuffles** and skew that make jobs drag.

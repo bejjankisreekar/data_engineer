@@ -59,7 +59,7 @@ Tools make this concrete: dbt **targets**, Databricks **workspaces/catalogs per 
 
 Everything a data platform needs should be **reproducible from Git**, not clicked together by hand:
 
-- **Notebooks / Spark jobs** → Databricks Repos + Asset Bundles ([Workflows](../11_Orchestration/03_Databricks_Workflows.md)).
+- **Notebooks / Spark jobs** → Databricks Repos + Asset Bundles ([Workflows](../08_Databricks/05_Databricks_Workflows.md)).
 - **dbt project** → deployed via CI or dbt Cloud.
 - **ADF pipelines** → ARM templates promoted through a release pipeline.
 - **Infrastructure** → [Terraform](../Job%20Interviews/Terraform/Terraform%20Interview%20Questions.md) (storage, clusters, permissions).

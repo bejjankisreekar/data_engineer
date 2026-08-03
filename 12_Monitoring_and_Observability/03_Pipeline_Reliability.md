@@ -64,7 +64,7 @@ You lose nothing (bad rows are stored, not dropped), the pipeline stays up, and 
 
 Failures are inevitable, so optimize **recovery**:
 
-- **Rerun from the point of failure** — orchestrators support repair/rerun-from-failed-task ([Workflows](../11_Orchestration/03_Databricks_Workflows.md)); design tasks so a partial run + rerun = a correct full run.
+- **Rerun from the point of failure** — orchestrators support repair/rerun-from-failed-task ([Workflows](../08_Databricks/05_Databricks_Workflows.md)); design tasks so a partial run + rerun = a correct full run.
 - **Small, restartable units** — many small idempotent tasks recover better than one giant monolith.
 - **Separate ingest from transform** — raw Bronze is your safety net: if Silver/Gold logic is wrong, reprocess from Bronze without re-hitting the source.
 - **Deterministic partitions per run** (by date/window) so a rerun cleanly replaces its own output.

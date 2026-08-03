@@ -94,7 +94,7 @@ Each step down costs performance and optimizer visibility; each step up costs ex
 - **Expensive setup goes outside the per-row path**: initialize models/regex/compiled objects once per partition (mapInPandas generator pattern above, or `functools.lru_cache`), never per call.
 - **Everything the closure captures ships to workers** — a UDF referencing a 2 GB dict pickles it into every task; broadcast big lookup structures instead: `bc = spark.sparkContext.broadcast(big_dict)`, then `bc.value` inside.
 - **Nondeterministic UDFs** (random, time, API calls) can run more than once per row (retries, speculative execution) — mark `.asNondeterministic()` and design [idempotently](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).
-- Photon does **not** accelerate Python UDFs — UDF-heavy jobs on Photon clusters pay premium DBUs for nothing ([cost note](Why_Spark_Why_Databricks.md)).
+- Photon does **not** accelerate Python UDFs — UDF-heavy jobs on Photon clusters pay premium DBUs for nothing ([cost note](../../08_Databricks/02_Why_Spark_Why_Databricks.md)).
 
 ### toPandas / createDataFrame — the other pandas bridge
 

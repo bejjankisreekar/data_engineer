@@ -29,7 +29,7 @@ Your models are (mostly) **portable** across these — the same `SELECT` logic, 
 `dbt-databricks` runs your models against a **Databricks SQL Warehouse** (or cluster), materializing them as **Delta tables** in Unity Catalog. This gives you:
 - dbt's testing/docs/lineage **plus** Delta's ACID, time travel, and `MERGE` ([Delta](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)).
 - Incremental models compiled to Delta `MERGE` under the hood.
-- Governance via [Unity Catalog](../08_Databricks/04_Unity_Catalog.md).
+- Governance via [Unity Catalog](../08_Databricks/06_Unity_Catalog.md).
 
 A very common real architecture: **Auto Loader / ADF loads Bronze & Silver → dbt builds the Gold marts (tested & documented) → Power BI**. dbt owns the "business logic" layer; Databricks owns ingestion and compute.
 
@@ -42,9 +42,9 @@ A very common real architecture: **Auto Loader / ADF loads Bronze & Silver → d
 | Orchestrator | How |
 |---|---|
 | **dbt Cloud** | Built-in scheduler + CI (the easy path) |
-| **Airflow** | `BashOperator`/`DbtCloudRunJobOperator`/**Cosmos** — dbt as tasks in a DAG ([Airflow](../11_Orchestration/04_Apache_Airflow.md)) |
+| **Airflow** | `BashOperator`/`DbtCloudRunJobOperator`/**Cosmos** — dbt as tasks in a DAG ([Airflow](../11_Orchestration/03_Apache_Airflow.md)) |
 | **ADF** | Run dbt in a container/Batch or trigger dbt Cloud via its API ([ADF](../11_Orchestration/02_ADF_Orchestration.md)) |
-| **Databricks Workflows** | A native **dbt task** type runs your project as a job task ([Workflows](../11_Orchestration/03_Databricks_Workflows.md)) |
+| **Databricks Workflows** | A native **dbt task** type runs your project as a job task ([Workflows](../08_Databricks/05_Databricks_Workflows.md)) |
 
 The clean mental model from [Orchestration](../11_Orchestration/01_Orchestration_Fundamentals.md) holds: the orchestrator **schedules**, dbt **transforms**.
 

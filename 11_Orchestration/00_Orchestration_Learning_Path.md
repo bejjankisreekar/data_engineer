@@ -21,9 +21,10 @@ This module fills a gap the [ROADMAP](../ROADMAP.md) explicitly flagged (Phase 7
 |---|------|-------------------|
 | 01 | [Orchestration Fundamentals](01_Orchestration_Fundamentals.md) | DAGs, dependencies, idempotency, retries, backfill, scheduling concepts |
 | 02 | [ADF Orchestration](02_ADF_Orchestration.md) | Triggers (schedule/tumbling/event), dependencies, metadata-driven pipelines |
-| 03 | [Databricks Workflows](03_Databricks_Workflows.md) | Jobs, task graphs, job clusters, DLT pipelines |
-| 04 | [Apache Airflow](04_Apache_Airflow.md) | DAGs, operators, sensors, scheduling — the open-source standard |
+| 03 | [Apache Airflow](03_Apache_Airflow.md) | DAGs, operators, sensors, scheduling — the open-source standard |
 | — | [Interview Questions & Answers](Interview_Questions_and_Answers.md) | Test yourself across the module |
+
+> **Databricks Workflows** — the Databricks-native orchestrator — now lives in the [Databricks module (08)](../08_Databricks/05_Databricks_Workflows.md) alongside the rest of the platform. It's a key orchestration option; read it as part of this module.
 
 ---
 

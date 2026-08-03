@@ -43,7 +43,7 @@ df = (spark.readStream
    .toTable("bronze.orders"))
 ```
 
-Run it hourly and it ingests only the files that arrived since last run — no manual tracking. Inside [DLT](05_Delta_Live_Tables.md), the same source powers a streaming Bronze table.
+Run it hourly and it ingests only the files that arrived since last run — no manual tracking. Inside [DLT](08_Delta_Live_Tables.md), the same source powers a streaming Bronze table.
 
 ---
 
@@ -94,7 +94,7 @@ This means a new upstream field doesn't crash the pipeline *or* vanish unnoticed
 - **Source:** files in **ADLS Gen2** (the landing/Bronze zone).
 - **File notification:** uses **Azure Event Grid** + **Storage Queue** to get notified on blob-created events.
 - **`COPY INTO`** — a simpler **SQL** alternative for *smaller, less frequent* batch loads (idempotent, retriable). Rule of thumb: `COPY INTO` for thousands of files or occasional loads; **Auto Loader** for millions of files or continuous ingestion.
-- Frequently wrapped inside a **[DLT](05_Delta_Live_Tables.md)** streaming table for the Bronze layer.
+- Frequently wrapped inside a **[DLT](08_Delta_Live_Tables.md)** streaming table for the Bronze layer.
 
 ---
 
@@ -162,7 +162,7 @@ At millions of files, notification mode is the right call — but it introduces 
 
 ## Related Notes
 
-- **Prev:** [Delta Live Tables](05_Delta_Live_Tables.md) · **Module start:** [Learning Path](00_Databricks_Learning_Path.md)
+- **Prev:** [Delta Live Tables](08_Delta_Live_Tables.md) · **Module start:** [Learning Path](00_Databricks_Learning_Path.md)
 - **Streaming:** [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md) · **Bronze layer:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)
 - **Integration patterns:** [Integration Patterns](../06_Data_Engineering/Data_Integration/02_Integration_Patterns.md)
 - **Cert:** [Auto Loader & Multi-Hop](../Certifications/Databricks_Data_Engineer_Associate/07_Auto_Loader_and_Multi_Hop.md)

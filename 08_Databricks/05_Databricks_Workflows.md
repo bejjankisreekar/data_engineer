@@ -4,7 +4,7 @@
 
 Databricks Workflows (a.k.a. **Jobs**) is the **built-in orchestrator inside Databricks** — it lets you chain notebooks, Python scripts, SQL, dbt, and DLT pipelines into a **task DAG**, schedule it, retry it, and monitor it, all on Databricks compute, without a separate tool.
 
-Analogy: if [ADF](02_ADF_Orchestration.md) is an external air-traffic control tower over all of Azure, Databricks Workflows is the **control room inside the Databricks factory** — perfect when everything you're coordinating already lives in Databricks.
+Analogy: if [ADF](../11_Orchestration/02_ADF_Orchestration.md) is an external air-traffic control tower over all of Azure, Databricks Workflows is the **control room inside the Databricks factory** — perfect when everything you're coordinating already lives in Databricks.
 
 ---
 
@@ -83,7 +83,7 @@ def silver_orders():
     return dlt.read_stream("bronze_orders").where(col("amount").isNotNull())
 ```
 
-DLT covered in the [Databricks module](../08_Databricks/05_Delta_Live_Tables.md). Use plain **Workflows** to orchestrate arbitrary tasks; use **DLT** when you want declarative, quality-gated table pipelines.
+DLT covered in the [Databricks module](../08_Databricks/08_Delta_Live_Tables.md). Use plain **Workflows** to orchestrate arbitrary tasks; use **DLT** when you want declarative, quality-gated table pipelines.
 
 ---
 

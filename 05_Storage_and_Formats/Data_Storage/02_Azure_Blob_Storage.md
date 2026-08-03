@@ -81,7 +81,7 @@ Pro notes: geo-replication is **asynchronous** — regional failover can lose th
 ## Blob types & the object-storage contract
 
 - **Block blobs** (files, up to ~190 TB) — your world; **append blobs** (log-style appends); **page blobs** (VM disks, random writes).
-- The contract that shapes everything: objects are **immutable-per-write** — no in-place edits, no appends to block blobs, "rename" = copy+delete. This is *why* [Parquet files are immutable](../File_Formats/05_Parquet.md) and why table formats do versioned-file commits rather than updates ([Delta](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md)).
+- The contract that shapes everything: objects are **immutable-per-write** — no in-place edits, no appends to block blobs, "rename" = copy+delete. This is *why* [Parquet files are immutable](../File_Formats/05_Parquet.md) and why table formats do versioned-file commits rather than updates ([Delta](../../08_Databricks/02_Why_Spark_Why_Databricks.md)).
 - Consistency is **strong** (read-after-write) — modern object stores fixed the eventual-consistency traps of early S3 ([CAP note](../../01_Foundations/Fundamentals/03_Distributed_Computing.md)).
 - Throughput scales with *parallelism across blobs/prefixes*, not per-connection speed — the design reason engines write many files at once.
 

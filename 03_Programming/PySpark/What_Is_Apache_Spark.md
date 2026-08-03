@@ -73,7 +73,7 @@ These are covered in depth in [Spark_Processing.md](Spark_Processing.md), and th
 - ❌ Not a database — no storage of its own
 - ❌ Not a data warehouse — though it can power one (lakehouse)
 - ❌ Not for small data — spinning up a cluster to process 10 MB is overkill; use pandas
-- ❌ Not the same thing as Databricks — Databricks is a commercial *platform built around* Spark (see [Why_Spark_Why_Databricks.md](Why_Spark_Why_Databricks.md))
+- ❌ Not the same thing as Databricks — Databricks is a commercial *platform built around* Spark (see [Why_Spark_Why_Databricks.md](../../08_Databricks/02_Why_Spark_Why_Databricks.md))
 
 ---
 

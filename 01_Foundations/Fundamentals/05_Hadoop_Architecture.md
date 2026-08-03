@@ -84,7 +84,7 @@ Input blocks     MAP phase              SHUFFLE           REDUCE phase
 - **Shuffle** — pairs with the same key are moved to the same node (the expensive network step).
 - **Reduce** — each node aggregates the values for its keys.
 
-**The catch:** MapReduce writes results **to disk after every stage**. A multi-step job = read disk, process, write disk, repeat. Reliable, but *slow* — this weakness is exactly what Spark fixed (see [Why_Spark_Why_Databricks.md](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md)).
+**The catch:** MapReduce writes results **to disk after every stage**. A multi-step job = read disk, process, write disk, repeat. Reliable, but *slow* — this weakness is exactly what Spark fixed (see [Why_Spark_Why_Databricks.md](../../08_Databricks/02_Why_Spark_Why_Databricks.md)).
 
 ---
 
@@ -185,7 +185,7 @@ Hive's lasting gift isn't its engine; it's the **metastore**: a central map of "
 |---|---|
 | HDFS data | [ADLS Gen2](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) (distcp/ADF copy) |
 | Hive tables | Delta tables + Unity Catalog |
-| MapReduce/Hive jobs | Spark on [Databricks](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md) (Hive SQL ports ~90% cleanly to Spark SQL) |
+| MapReduce/Hive jobs | Spark on [Databricks](../../08_Databricks/02_Why_Spark_Why_Databricks.md) (Hive SQL ports ~90% cleanly to Spark SQL) |
 | Oozie workflows | [Data Factory](../../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) / Databricks Workflows |
 | HBase | Cosmos DB / HBase on VMs |
 

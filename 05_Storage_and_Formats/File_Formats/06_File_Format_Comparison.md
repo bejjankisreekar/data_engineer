@@ -80,7 +80,7 @@ Note what's *not* a criterion: loyalty. The same dataset legitimately changes fo
 
 ## The missing row: table formats
 
-This folder compares *file* formats; production lakes wrap the columnar ones in a **table format** — Delta Lake / Iceberg / Hudi — adding the transaction log, ACID commits, schema enforcement, and time travel that raw folders of files lack ([why that matters](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md), [format war](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)). Interview one-liner: *"Parquet is how bytes are laid out; Delta is how a set of Parquet files behaves like a database table."*
+This folder compares *file* formats; production lakes wrap the columnar ones in a **table format** — Delta Lake / Iceberg / Hudi — adding the transaction log, ACID commits, schema enforcement, and time travel that raw folders of files lack ([why that matters](../../08_Databricks/02_Why_Spark_Why_Databricks.md), [format war](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)). Interview one-liner: *"Parquet is how bytes are laid out; Delta is how a set of Parquet files behaves like a database table."*
 
 ---
 

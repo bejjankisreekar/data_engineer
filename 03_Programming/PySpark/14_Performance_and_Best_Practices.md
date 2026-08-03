@@ -62,7 +62,7 @@ Unit-test transformations with tiny inline DataFrames; integration-test pipeline
 
 ### Parameterize environment, never hardcode it
 
-Catalog/schema/paths come from job parameters or config (`dev` vs `prod` — [namespace note](11_Spark_SQL_and_Views.md)); secrets from Key Vault/secret scopes ([never literals](04_Reading_and_Writing_Data.md)); code in git, deployed via CI (Databricks Asset Bundles is the current standard), not cloned notebooks ([the discipline](Why_Spark_Why_Databricks.md)).
+Catalog/schema/paths come from job parameters or config (`dev` vs `prod` — [namespace note](11_Spark_SQL_and_Views.md)); secrets from Key Vault/secret scopes ([never literals](04_Reading_and_Writing_Data.md)); code in git, deployed via CI (Databricks Asset Bundles is the current standard), not cloned notebooks ([the discipline](../../08_Databricks/02_Why_Spark_Why_Databricks.md)).
 
 ### Make every job idempotent — the checklist
 
@@ -92,7 +92,7 @@ Catalog/schema/paths come from job parameters or config (`dev` vs `prod` — [na
 
 ### Cost habits (Databricks specifics)
 
-Job clusters + auto-terminate + spot workers as the default ([cost levers](Why_Spark_Why_Databricks.md)); Photon for SQL-shaped work, not UDF-heavy work; `availableNow` triggers instead of 24/7 streams unless latency pays for itself ([13](13_Structured_Streaming.md)); tag jobs and review the cost dashboard monthly — a data platform's bill is an engineering artifact, not an act of God ([FinOps](../../04_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md)).
+Job clusters + auto-terminate + spot workers as the default ([cost levers](../../08_Databricks/02_Why_Spark_Why_Databricks.md)); Photon for SQL-shaped work, not UDF-heavy work; `availableNow` triggers instead of 24/7 streams unless latency pays for itself ([13](13_Structured_Streaming.md)); tag jobs and review the cost dashboard monthly — a data platform's bill is an engineering artifact, not an act of God ([FinOps](../../04_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md)).
 
 ### The senior checklist for any new pipeline
 

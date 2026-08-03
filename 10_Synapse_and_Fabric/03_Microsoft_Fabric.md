@@ -107,7 +107,7 @@ Fabric's deepest idea is that **OneLake holds one Delta copy that every engine r
 
 ## Shortcuts vs copying
 
-Shortcuts let OneLake **reference** data in other locations (ADLS Gen2, Amazon S3, Google Cloud Storage, other Fabric workspaces) so it appears local without duplication. This is Fabric's answer to data silos: virtualize instead of copy. It's conceptually similar to [Delta Sharing / external locations](../08_Databricks/04_Unity_Catalog.md) — the principle of "govern and access in place" rather than move.
+Shortcuts let OneLake **reference** data in other locations (ADLS Gen2, Amazon S3, Google Cloud Storage, other Fabric workspaces) so it appears local without duplication. This is Fabric's answer to data silos: virtualize instead of copy. It's conceptually similar to [Delta Sharing / external locations](../08_Databricks/06_Unity_Catalog.md) — the principle of "govern and access in place" rather than move.
 
 ## Fabric vs Synapse — the lineage
 

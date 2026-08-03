@@ -145,7 +145,7 @@ Real orgs adopt UC incrementally: stand up the metastore, create catalogs, migra
 
 ## Related Notes
 
-- **Prev:** [Notebooks, Repos & Jobs](03_Notebooks_Repos_and_Jobs.md) · **Next:** [Delta Live Tables](05_Delta_Live_Tables.md)
+- **Prev:** [Notebooks, Repos & Jobs](04_Notebooks_Repos_and_Jobs.md) · **Next:** [Delta Live Tables](08_Delta_Live_Tables.md)
 - **Governance:** [Data Governance & Security](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) · **Access SQL:** [SQL DCL & TCL](../02_Databases/SQL/12_SQL_DCL_TCL.md)
 - **Cert:** [Data Governance & Unity Catalog](../Certifications/Databricks_Data_Engineer_Associate/10_Data_Governance_Unity_Catalog.md)
 

@@ -2,7 +2,7 @@
 
 > Prev: [Spark SQL & Views](11_Spark_SQL_and_Views.md) · Next: [Structured Streaming](13_Structured_Streaming.md)
 
-Delta Lake = [Parquet files](../../05_Storage_and_Formats/File_Formats/05_Parquet.md) + a **transaction log** (`_delta_log/`), giving lake storage database behavior: ACID commits, MERGE, time travel, schema enforcement ([why this matters](Why_Spark_Why_Databricks.md)). On Databricks, Delta is the default — `saveAsTable` already writes it. This file is the operations you'll use daily.
+Delta Lake = [Parquet files](../../05_Storage_and_Formats/File_Formats/05_Parquet.md) + a **transaction log** (`_delta_log/`), giving lake storage database behavior: ACID commits, MERGE, time travel, schema enforcement ([why this matters](../../08_Databricks/02_Why_Spark_Why_Databricks.md)). On Databricks, Delta is the default — `saveAsTable` already writes it. This file is the operations you'll use daily.
 
 ---
 

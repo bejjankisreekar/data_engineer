@@ -85,9 +85,9 @@ project_1_batch_medallion/
 |---|---|
 | `data/raw/<date>/*.csv` | ADLS Gen2 `raw-landing` container (see [ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)) |
 | `./lake/bronze,silver,gold` | ADLS containers `bronze/silver/gold` |
-| local `SparkSession` (`src/common.py`) | a Databricks cluster ([Clusters](../../08_Databricks/02_Clusters_and_Compute.md)) — delete `common.py`, use the provided `spark` |
-| `run_pipeline.py` | a Databricks **Job / Workflow** ([Workflows](../../11_Orchestration/03_Databricks_Workflows.md)) or an ADF-triggered notebook |
-| the `.py` stage files | Databricks notebooks or a **Delta Live Tables** pipeline ([DLT](../../08_Databricks/05_Delta_Live_Tables.md)) |
+| local `SparkSession` (`src/common.py`) | a Databricks cluster ([Clusters](../../08_Databricks/03_Clusters_and_Compute.md)) — delete `common.py`, use the provided `spark` |
+| `run_pipeline.py` | a Databricks **Job / Workflow** ([Workflows](../../08_Databricks/05_Databricks_Workflows.md)) or an ADF-triggered notebook |
+| the `.py` stage files | Databricks notebooks or a **Delta Live Tables** pipeline ([DLT](../../08_Databricks/08_Delta_Live_Tables.md)) |
 | `pytest` in a shell | the same tests in **CI** ([CI/CD for ADF & Databricks](../../14_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md)) |
 
 Serve the Gold tables to Power BI as described in [Power BI for Engineers](../../16_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md).

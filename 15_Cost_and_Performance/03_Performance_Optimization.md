@@ -2,7 +2,7 @@
 
 ## Why this note exists (and how it links to cost)
 
-[PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md) covers the coding details; this note frames the **big performance levers** as an engineer's diagnostic toolkit — the things you check when a job is slow — and connects each to **cost**, because a faster job is a cheaper job ([Databricks cost](02_Databricks_Cost_Optimization.md)).
+[PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md) covers the coding details; this note frames the **big performance levers** as an engineer's diagnostic toolkit — the things you check when a job is slow — and connects each to **cost**, because a faster job is a cheaper job ([Databricks cost](../08_Databricks/10_Databricks_Cost_Optimization.md)).
 
 Analogy: optimizing a Spark job is like **unclogging a highway**. The cars (data) are fine; the jams come from a few specific bottlenecks — everyone merging at one exit (skew), cars reshuffling lanes constantly (shuffle), toll booths reading every car (full scans). Fix the bottleneck, not the cars.
 
@@ -64,7 +64,7 @@ But cache **deliberately** — caching everything wastes memory and can *hurt*. 
 
 ## Reading less: pruning & pushdown
 
-The cheapest work is work you skip ([storage cost](03_Storage_and_Query_Cost.md)):
+The cheapest work is work you skip ([storage cost](02_Storage_and_Query_Cost.md)):
 - **Partition pruning** — filter on the partition column so whole folders are skipped.
 - **Predicate pushdown** — filters pushed into the file read (Parquet/Delta), so non-matching data is never loaded.
 - **Column pruning** — select only needed columns from columnar formats.
@@ -83,7 +83,7 @@ You optimize what you measure. The **Spark UI** shows where time goes:
 | Huge "Shuffle Read/Write" | Excess shuffling | Filter early, broadcast, fewer wide ops |
 | Lots of **spill** to disk | Under-provisioned memory / partitions too big | More memory or repartition |
 | Many tiny tasks | Too many small files | `OPTIMIZE`/compaction |
-| Executors idle | Over-provisioned cluster / low parallelism | Right-size ([cost](02_Databricks_Cost_Optimization.md)) |
+| Executors idle | Over-provisioned cluster / low parallelism | Right-size ([cost](../08_Databricks/10_Databricks_Cost_Optimization.md)) |
 
 "How would you debug a slow Spark job?" → *"Open the Spark UI, find the slow stage, and look for skew, shuffle, or spill."* is the answer interviewers want.
 
