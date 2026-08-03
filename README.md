@@ -123,6 +123,7 @@ Topics are grouped into **category folders** so related material lives together:
 - **[Interview Questions & Answers](05_Storage_and_Formats/Data_Storage/Interview_Questions_and_Answers.md)** — 26 Q&A covering all three notes
 
 ### 05_Storage_and_Formats › Lakehouse — the modern table format and architecture
+- [00 — Delta Lake vs Delta Table vs Lakehouse](05_Storage_and_Formats/Lakehouse/00_Delta_Lake_vs_Delta_Table_vs_Lakehouse.md) — **start here:** the beginner-friendly clarifier of the three easily-confused terms, with diagrams
 - [01 — Delta Lake](05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) — the open storage layer that adds ACID, updates/deletes, and time travel to Parquet via a transaction log
 - [02 — Delta Table](05_Storage_and_Formats/Lakehouse/02_Delta_Table.md) — the table itself: managed vs external, MERGE/upsert, OPTIMIZE, VACUUM, Change Data Feed
 - [03 — Lakehouse Architecture](05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — one copy of data for BI + ML, the two-copy problem it kills, and the three pillars

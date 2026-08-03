@@ -1,0 +1,93 @@
+/* =============================================================================
+   A4 print stylesheet for converting this repo's Markdown notes to PDF.
+
+   What it fixes:
+   - A heading never sits alone at the bottom of a page (it stays with the
+     content that follows it).
+   - Tables, code blocks, blockquotes, list items and images are not split
+     across a page boundary (when they fit on one page).
+   - Wide code/tables wrap to fit A4 width instead of overflowing.
+
+   HOW TO USE: apply this at *conversion* time (see pdf/README.md).
+   Do NOT paste it into the Markdown files.
+   ============================================================================= */
+
+@page {
+  size: A4 portrait;
+  margin: 18mm 16mm;
+}
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #1a1a1a;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ---- Keep every heading with the content that follows it (no orphan heading
+        stranded at the bottom of a page) ------------------------------------ */
+h1, h2, h3, h4, h5, h6 {
+  break-after: avoid;
+  page-break-after: avoid;      /* legacy alias, for older PDF engines */
+  break-inside: avoid;
+  page-break-inside: avoid;
+  line-height: 1.25;
+}
+/* also pull the first block after a heading onto the same page as the heading */
+h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + * {
+  break-before: avoid;
+  page-break-before: avoid;
+}
+
+/* ---- Never split these blocks across a page boundary --------------------- */
+pre, table, blockquote, figure, img, .mermaid, tr, li {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* repeat table headers if a long table must break across pages */
+thead { display: table-header-group; }
+tr    { page-break-inside: avoid; }
+
+/* ---- Paragraph orphan / widow control ----------------------------------- */
+p, li { orphans: 3; widows: 3; }
+
+/* ---- Make wide content fit the A4 page width ---------------------------- */
+img, svg { max-width: 100%; height: auto; }
+
+pre {
+  white-space: pre-wrap;        /* wrap long code lines instead of overflowing */
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  font-size: 10.5px;
+  background: #f6f8fa;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #e1e4e8;
+}
+code { word-break: break-word; }
+:not(pre) > code { background: #f2f2f2; padding: 1px 4px; border-radius: 3px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10.5px;
+  table-layout: fixed;          /* keep columns inside the page width */
+  word-break: break-word;
+  margin: 8px 0;
+}
+th, td { border: 1px solid #d0d7de; padding: 5px 8px; vertical-align: top; text-align: left; }
+th { background: #f6f8fa; }
+
+h1 { font-size: 22px; border-bottom: 2px solid #e1e4e8; padding-bottom: 4px; }
+h2 { font-size: 18px; border-bottom: 1px solid #e1e4e8; padding-bottom: 3px; margin-top: 18px; }
+h3 { font-size: 15px; margin-top: 14px; }
+blockquote { border-left: 4px solid #d0d7de; margin: 8px 0; padding: 2px 12px; color: #444; }
+
+/* ---- OPTIONAL: start every top-level "# " section on a fresh page.
+        Uncomment the next rule if you prefer one H1 per page. -------------- */
+/* h1 { break-before: page; page-break-before: always; } */

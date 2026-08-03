@@ -1,0 +1,13 @@
+{
+  "name": "data-engineer-pdf-build",
+  "private": true,
+  "type": "module",
+  "description": "Batch-convert the repo's Markdown notes to A4 PDFs with print-friendly page breaks.",
+  "scripts": {
+    "build": "node build-pdfs.mjs"
+  },
+  "dependencies": {
+    "md-to-pdf": "^5.2.4",
+    "globby": "^14.0.2"
+  }
+}

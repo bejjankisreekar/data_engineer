@@ -1,0 +1,4 @@
+# Generated PDFs and the Node toolchain for building them
+out/
+node_modules/
+package-lock.json
