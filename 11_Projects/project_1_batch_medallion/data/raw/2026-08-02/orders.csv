@@ -1,0 +1,5 @@
+order_id,order_line_id,order_date,customer_id,product_id,quantity,amount,region
+O1001,1,2026-08-02,C001,P001,2,19.98,WEST
+O1001,2,2026-08-02,C001,P003,1,4.99,WEST
+O1002,1,2026-08-02,C002,P002,3,59.97,SOUTH
+O1003,1,2026-08-02,C003,P001,1,9.99,SOUTH

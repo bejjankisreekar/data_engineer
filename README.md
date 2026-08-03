@@ -34,7 +34,7 @@ Topics are grouped into **category folders** so related material lives together:
 | **01_Foundations** | Fundamentals (OLTP/OLAP, distributed computing, Hadoop) |
 | **02_Databases** | SQL · NoSQL · Data Modeling · Data Warehousing |
 | **03_Cloud** | Cloud Concepts (deployment & service models) |
-| **04_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse) |
+| **04_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse, Medallion) |
 | **05_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
 | **06_Programming** | Python · PySpark |
 | **07_DevOps** | Git & GitHub (version control, branching, remotes, CI/CD, troubleshooting) — Docker · Kubernetes · Terraform · ARM covered in Job Interviews |
@@ -125,7 +125,8 @@ Topics are grouped into **category folders** so related material lives together:
 ### 04_Storage_and_Formats › Lakehouse — the modern table format and architecture
 - [01 — Delta Lake](04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) — the open storage layer that adds ACID, updates/deletes, and time travel to Parquet via a transaction log
 - [02 — Delta Table](04_Storage_and_Formats/Lakehouse/02_Delta_Table.md) — the table itself: managed vs external, MERGE/upsert, OPTIMIZE, VACUUM, Change Data Feed
-- [03 — Lakehouse Architecture](04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — one copy of data for BI + ML, and the Bronze/Silver/Gold medallion
+- [03 — Lakehouse Architecture](04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — one copy of data for BI + ML, the two-copy problem it kills, and the three pillars
+- [04 — Medallion Architecture](04_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md) — the **Bronze → Silver → Gold** layering in depth: per-layer rules, transformation code, batch/streaming, anti-patterns
 - **[Interview Questions & Answers](04_Storage_and_Formats/Lakehouse/Interview_Questions_and_Answers.md)** — 25 Q&A across Delta Lake, Delta tables, and the lakehouse
 
 ### 05_Data_Engineering › ETL / ELT — moving and transforming data
@@ -143,6 +144,7 @@ Topics are grouped into **category folders** so related material lives together:
 
 ### 05_Data_Engineering › Data Governance & Security — trust, access, lineage, compliance
 - [01 — Data Governance & Security](05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) — governance pillars, RBAC/ACL, MSI/Key Vault, Purview, Unity Catalog, lineage, GDPR
+- [02 — Network Security & Private Connectivity](05_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md) — private endpoints/Private Link, ADF Managed VNet, Databricks VNet injection & Secure Cluster Connectivity, Private DNS
 - **[Interview Questions & Answers](05_Data_Engineering/Data_Governance/Interview_Questions_and_Answers.md)** — 15 Q&A on governance & security
 
 ### 05_Data_Engineering › Data Quality — delivering data people can trust
@@ -227,6 +229,7 @@ Topics are grouped into **category folders** so related material lives together:
 - [02 — Azure Event Hubs](09_Streaming/02_Azure_Event_Hubs.md) — managed event ingestion: partitions, consumer groups, throughput, Capture, the Kafka endpoint
 - [03 — Apache Kafka](09_Streaming/03_Apache_Kafka.md) — the open-source streaming platform: topics, brokers, offsets, replication, exactly-once, the ecosystem
 - [04 — Azure Stream Analytics](09_Streaming/04_Azure_Stream_Analytics.md) — SQL-based stream processing: inputs/outputs, windowing functions, reference data, Streaming Units
+- [05 — KQL & Real-Time Intelligence](09_Streaming/05_KQL_and_Real_Time_Intelligence.md) — where events land to be queried instantly: **KQL**, Azure Data Explorer, and Fabric **Eventhouse/Eventstream** (a DP-700 topic)
 - **[Interview Questions & Answers](09_Streaming/Interview_Questions_and_Answers.md)** — 30 Q&A across the whole module
 
 ### 10_Synapse_and_Fabric — Microsoft's analytics platforms (and Fabric, its successor)
@@ -240,7 +243,7 @@ Topics are grouped into **category folders** so related material lives together:
 ### 11_Projects — hands-on, end-to-end (the part that gets you hired)
 - [00 — Learning Path](11_Projects/00_Projects_Learning_Path.md) — why projects beat tutorials, the shared reference architecture
 - [01 — Setup & Prerequisites](11_Projects/01_Project_Setup_and_Prerequisites.md) — Azure/Databricks/Git setup, secure ADLS access, repo structure, cost cleanup
-- [02 — Project 1: Batch Medallion Pipeline](11_Projects/02_Project_1_Batch_Medallion_Pipeline.md) — ADLS → Databricks → Delta Bronze/Silver/Gold → Power BI, with SCD2 & quarantine
+- [02 — Project 1: Batch Medallion Pipeline](11_Projects/02_Project_1_Batch_Medallion_Pipeline.md) — ADLS → Databricks → Delta Bronze/Silver/Gold → Power BI, with SCD2 & quarantine · 🖥️ **[runnable repo](11_Projects/project_1_batch_medallion/README.md)** (PySpark + Delta, runs locally, with sample data + tests)
 - [03 — Project 2: Streaming Pipeline](11_Projects/03_Project_2_Streaming_Pipeline.md) — Event Hubs → Structured Streaming → checkpointing, watermarking, exactly-once
 - [04 — Project 3: Orchestrated ELT with ADF](11_Projects/04_Project_3_ADF_Orchestrated_ELT.md) — triggers, dependencies, retries, metadata-driven, alerting
 - [05 — Portfolio & GitHub Presentation](11_Projects/05_Portfolio_and_GitHub_Presentation.md) — READMEs, résumé bullets, the 2-minute project walkthrough
@@ -263,6 +266,7 @@ Topics are grouped into **category folders** so related material lives together:
 ### 15_Testing_and_DataOps — proving pipelines correct and shipping them safely
 - [00 — Learning Path](15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) · [01 — Testing Pipelines (pytest/chispa)](15_Testing_and_DataOps/01_Testing_Data_Pipelines.md)
 - [02 — Data Quality Testing (Great Expectations)](15_Testing_and_DataOps/02_Data_Quality_Testing.md) · [03 — Data Contracts](15_Testing_and_DataOps/03_Data_Contracts.md) · [04 — DataOps & CI/CD for Data](15_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md)
+- [05 — CI/CD for ADF & Databricks](15_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md) — the concrete how-to: ADF ARM release flow, Databricks **Asset Bundles**, GitHub Actions/Azure DevOps
 - **[Interview Questions & Answers](15_Testing_and_DataOps/Interview_Questions_and_Answers.md)**
 
 ### 16_Cost_and_Performance — FinOps and making pipelines fast & cheap
@@ -300,6 +304,7 @@ A separate self-contained track outside the main learning path, for certificatio
 - [10 — Practice Questions by Domain](Certifications/AZ_900/10_Practice_Questions_by_Domain.md) — 40 questions with explanations
 - [11 — Most Asked & Tricky Questions](Certifications/AZ_900/11_Most_Asked_and_Tricky_Exam_Questions.md) — the 15 comparison pairs that decide most wrong answers
 - [12 — Final Mock Exam](Certifications/AZ_900/12_Final_Mock_Exam.md) — a timed 50-question simulation with a scoring guide
+- [13 — Exam Dump: Practice Set](Certifications/AZ_900/13_Exam_Dump_Practice_Set.md) — 30 extra exam-style Q&A with explanations
 
 ### DP-900 — Microsoft Azure Data Fundamentals
 The data counterpart to AZ-900 — the ideal foundational entry point to the data track.
@@ -308,7 +313,7 @@ The data counterpart to AZ-900 — the ideal foundational entry point to the dat
 - [02 — Relational Data on Azure](Certifications/DP_900/02_Relational_Data_on_Azure.md) — SQL categories, Azure SQL Database / MI / VM, PostgreSQL/MySQL
 - [03 — Non-Relational Data on Azure](Certifications/DP_900/03_Non_Relational_Data_on_Azure.md) — Storage services, blob tiers, Cosmos DB & its APIs
 - [04 — Analytics Workloads on Azure](Certifications/DP_900/04_Analytics_Workloads_on_Azure.md) — ADF, Synapse, Databricks, Fabric, Power BI, ETL/ELT
-- [05 — Practice Questions by Domain](Certifications/DP_900/05_Practice_Questions_by_Domain.md) · [06 — Most Asked & Tricky](Certifications/DP_900/06_Most_Asked_and_Tricky_Questions.md) · [07 — Final Mock Exam](Certifications/DP_900/07_Final_Mock_Exam.md)
+- [05 — Practice Questions by Domain](Certifications/DP_900/05_Practice_Questions_by_Domain.md) · [06 — Most Asked & Tricky](Certifications/DP_900/06_Most_Asked_and_Tricky_Questions.md) · [07 — Final Mock Exam](Certifications/DP_900/07_Final_Mock_Exam.md) · [08 — Exam Dump: Practice Set](Certifications/DP_900/08_Exam_Dump_Practice_Set.md)
 
 ### Databricks Certified Data Engineer Associate
 The hands-on Spark/Delta credential — the practical counterpart to the Microsoft certs, focused on the Databricks Lakehouse Platform.
@@ -323,7 +328,7 @@ The hands-on Spark/Delta credential — the practical counterpart to the Microso
 - [08 — Delta Live Tables](Certifications/Databricks_Data_Engineer_Associate/08_Delta_Live_Tables.md) — declarative pipelines, expectations, streaming tables vs materialized views
 - [09 — Production Pipelines & Jobs](Certifications/Databricks_Data_Engineer_Associate/09_Production_Pipelines_Jobs.md) — Workflows, scheduling, dependencies, alerts
 - [10 — Data Governance & Unity Catalog](Certifications/Databricks_Data_Engineer_Associate/10_Data_Governance_Unity_Catalog.md) — the three-level namespace, access control, lineage
-- [11 — Practice Questions by Domain](Certifications/Databricks_Data_Engineer_Associate/11_Practice_Questions_by_Domain.md) · [12 — Most Asked & Tricky](Certifications/Databricks_Data_Engineer_Associate/12_Most_Asked_and_Tricky_Exam_Questions.md) · [13 — Final Mock Exam](Certifications/Databricks_Data_Engineer_Associate/13_Final_Mock_Exam.md)
+- [11 — Practice Questions by Domain](Certifications/Databricks_Data_Engineer_Associate/11_Practice_Questions_by_Domain.md) · [12 — Most Asked & Tricky](Certifications/Databricks_Data_Engineer_Associate/12_Most_Asked_and_Tricky_Exam_Questions.md) · [13 — Final Mock Exam](Certifications/Databricks_Data_Engineer_Associate/13_Final_Mock_Exam.md) · [14 — Exam Dump: Practice Set](Certifications/Databricks_Data_Engineer_Associate/14_Exam_Dump_Practice_Set.md)
 
 ### DP-700 — Microsoft Fabric Data Engineer Associate
 The associate-level flagship — **the cert that replaced the retired DP-203** as Microsoft's forward-looking data-engineering credential.
@@ -333,7 +338,7 @@ The associate-level flagship — **the cert that replaced the retired DP-203** a
 - [03 — Ingest Data](Certifications/DP_700_Fabric_Data_Engineer/03_Ingest_Data.md) — pipelines, Dataflow Gen2, notebooks, Eventstream, load patterns
 - [04 — Transform Data](Certifications/DP_700_Fabric_Data_Engineer/04_Transform_Data.md) — Spark/T-SQL/KQL, MERGE/upsert, SCD, windowing
 - [05 — Monitor & Optimize](Certifications/DP_700_Fabric_Data_Engineer/05_Monitor_and_Optimize.md) — Monitoring hub, Capacity Metrics, OPTIMIZE/V-Order, troubleshooting
-- [06 — Practice Questions by Domain](Certifications/DP_700_Fabric_Data_Engineer/06_Practice_Questions_by_Domain.md) · [07 — Most Asked & Tricky](Certifications/DP_700_Fabric_Data_Engineer/07_Most_Asked_and_Tricky_Questions.md) · [08 — Final Mock Exam](Certifications/DP_700_Fabric_Data_Engineer/08_Final_Mock_Exam.md)
+- [06 — Practice Questions by Domain](Certifications/DP_700_Fabric_Data_Engineer/06_Practice_Questions_by_Domain.md) · [07 — Most Asked & Tricky](Certifications/DP_700_Fabric_Data_Engineer/07_Most_Asked_and_Tricky_Questions.md) · [08 — Final Mock Exam](Certifications/DP_700_Fabric_Data_Engineer/08_Final_Mock_Exam.md) · [09 — Exam Dump: Practice Set](Certifications/DP_700_Fabric_Data_Engineer/09_Exam_Dump_Practice_Set.md)
 
 ---
 

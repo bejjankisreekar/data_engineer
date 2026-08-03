@@ -24,6 +24,7 @@ This module teaches the streaming world an Azure Data Engineer must know: the **
 | 02 | [Azure Event Hubs](02_Azure_Event_Hubs.md) | Azure's managed event ingestion — partitions, consumer groups, throughput, Capture, Kafka endpoint |
 | 03 | [Apache Kafka](03_Apache_Kafka.md) | The open-source streaming platform — topics, brokers, offsets, replication, exactly-once, ecosystem |
 | 04 | [Azure Stream Analytics](04_Azure_Stream_Analytics.md) | SQL-based stream processing — inputs/outputs, windowing functions, reference data, SUs |
+| 05 | [KQL & Real-Time Intelligence](05_KQL_and_Real_Time_Intelligence.md) | Where events land to be queried instantly — KQL, Azure Data Explorer, Fabric Eventhouse/Eventstream (a DP-700 topic) |
 | — | [Interview Q&A](Interview_Questions_and_Answers.md) | Q&A across the whole module |
 
 ---

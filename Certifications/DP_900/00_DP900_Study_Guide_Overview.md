@@ -47,6 +47,7 @@ Domains 1 and 4 are the biggest — core concepts and analytics together are mor
 | 05 | [Practice Questions by Domain](05_Practice_Questions_by_Domain.md) | All — practice |
 | 06 | [Most Asked & Tricky Questions](06_Most_Asked_and_Tricky_Questions.md) | All — the traps |
 | 07 | [Final Mock Exam](07_Final_Mock_Exam.md) | All — timed simulation |
+| 08 | [Exam Dump: Practice Set](08_Exam_Dump_Practice_Set.md) | All — 30 extra exam-style Q&A |
 
 **Suggested study plan (~1 week, ~1 hour/day):**
 1. **Day 1:** File 01 — core concepts (the vocabulary everything else uses).

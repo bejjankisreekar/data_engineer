@@ -1,5 +1,7 @@
 # Project 1 — Batch Medallion Pipeline
 
+> 🖥️ **Runnable implementation:** a complete, locally-executable version of this project (PySpark + Delta, no Azure account needed) lives in **[project_1_batch_medallion/](project_1_batch_medallion/README.md)** — it implements the medallion stages, SCD2, dedupe, and quarantine below, with sample data and unit tests. Read this walkthrough for the *ideas*; run that repo to *prove* them.
+
 ## The scenario
 
 You're the data engineer for **"NorthWind Retail."** Every night, the source systems drop yesterday's **orders, order items, customers, and products** as CSV/Parquet files into a landing folder. Finance wants a **daily sales dashboard**: revenue by day, by product category, by region, and a customer view that correctly reflects address changes over time.

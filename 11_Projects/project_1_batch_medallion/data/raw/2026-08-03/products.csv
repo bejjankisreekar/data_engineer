@@ -1,0 +1,5 @@
+product_id,product_name,category,unit_price
+P001,Widget,Hardware,9.99
+P002,Gadget,Hardware,21.99
+P003,eBook,Media,4.99
+P004,Sticker Pack,Media,2.49

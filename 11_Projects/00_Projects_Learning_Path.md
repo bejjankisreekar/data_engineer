@@ -20,7 +20,7 @@ Everything else in this repo teaches you to *know* data engineering. This module
 
 | # | Project | Skills proven | Azure services |
 |---|---------|---------------|----------------|
-| 02 | [Batch Medallion Pipeline](02_Project_1_Batch_Medallion_Pipeline.md) | The core DE loop: ingest → Bronze → Silver → Gold → BI | ADLS Gen2, Databricks, PySpark, Delta, Power BI |
+| 02 | [Batch Medallion Pipeline](02_Project_1_Batch_Medallion_Pipeline.md) · 🖥️ [runnable repo](project_1_batch_medallion/README.md) | The core DE loop: ingest → Bronze → Silver → Gold → BI | ADLS Gen2, Databricks, PySpark, Delta, Power BI |
 | 03 | [Streaming Pipeline](03_Project_2_Streaming_Pipeline.md) | Real-time ingest & incremental processing | Event Hubs, Structured Streaming, Auto Loader, Delta |
 | 04 | [Orchestrated ELT with ADF](04_Project_3_ADF_Orchestrated_ELT.md) | Scheduling, dependencies, monitoring a production-shaped pipeline | ADF, Databricks, Key Vault, Azure SQL |
 

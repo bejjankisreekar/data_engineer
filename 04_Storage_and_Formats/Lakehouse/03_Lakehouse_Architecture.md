@@ -39,29 +39,15 @@ The **lakehouse** is a single building where the shelving system was installed *
 
 The standard way to organize a lakehouse is **three layers of Delta tables**, each one cleaner than the last:
 
-```
-   Raw sources (files, DBs, APIs, streams)
-                │
-                ▼
-🥉 BRONZE  — raw, append-only, exactly as ingested (+ ingest metadata)
-                │   cleanse, dedupe, enforce types
-                ▼
-🥈 SILVER  — cleaned, conformed, deduplicated, joined ("enterprise view")
-                │   aggregate, model into facts & dimensions
-                ▼
-🥇 GOLD    — business-level aggregates & star schemas, ready for BI/ML
-                │
-                ▼
-        Power BI / SQL endpoint / ML / reports
-```
-
 | Layer | Contains | Consumers |
 |---|---|---|
-| **Bronze** | Raw ingested data, untouched, with source + load timestamp | Data engineers, reprocessing |
-| **Silver** | Cleaned, typed, deduplicated, business-key-joined | Engineers, data scientists |
-| **Gold** | [Dimensional models](../../02_Databases/Data_Modeling/03_Dimensional_Modeling.md), KPIs, aggregates | BI analysts, dashboards, ML features |
+| 🥉 **Bronze** | Raw ingested data, untouched, with source + load timestamp | Data engineers, reprocessing |
+| 🥈 **Silver** | Cleaned, typed, deduplicated, business-key-joined | Engineers, data scientists |
+| 🥇 **Gold** | [Dimensional models](../../02_Databases/Data_Modeling/03_Dimensional_Modeling.md), KPIs, aggregates | BI analysts, dashboards, ML features |
 
 Each layer is a set of **Delta tables**; each hop is a transformation (often incremental via [Change Data Feed](02_Delta_Table.md)). This is [ELT](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) done inside the lake.
+
+> **Deep-dive:** the medallion pattern has its own dedicated note — **[Medallion Architecture (Bronze → Silver → Gold)](04_Medallion_Architecture.md)** — with per-layer rules, transformation code, batch-vs-streaming, anti-patterns, and interview Q&A. The rest of *this* note covers the lakehouse it lives in.
 
 ---
 
@@ -172,6 +158,7 @@ Object storage is cheap (~$20/TB/month); the real spend is **compute** (idle Spa
 ## Related Notes
 
 - **Prev:** [Delta Lake](01_Delta_Lake.md) · [Delta Table](02_Delta_Table.md) — the format and tables the lakehouse is built from.
+- **Next:** [Medallion Architecture](04_Medallion_Architecture.md) — the Bronze/Silver/Gold layering, in depth.
 - **Foundations:** [Data Lake vs Warehouse vs Database](../Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Big Data Evolution Timeline](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)
 - **Modeling the Gold layer:** [Dimensional Modeling](../../02_Databases/Data_Modeling/03_Dimensional_Modeling.md) · [Data Warehouse Fundamentals](../../02_Databases/Data_Warehousing/01_Data_Warehouse_Fundamentals.md)
 - **Building it:** [ETL vs ELT](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) · [Structured Streaming](../../06_Programming/PySpark/13_Structured_Streaming.md) · [Data Governance](../../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)

@@ -24,6 +24,7 @@ You must test **both**. Traditional unit tests cover the code; data tests (dbt/G
 | 02 | [Data Quality Testing](02_Data_Quality_Testing.md) | Great Expectations, dbt tests, contracts as tests |
 | 03 | [Data Contracts](03_Data_Contracts.md) | Producer/consumer schema agreements, schema enforcement |
 | 04 | [DataOps & CI/CD for Data](04_DataOps_and_CICD_for_Data.md) | CI for pipelines, environments, deployment, DataOps principles |
+| 05 | [CI/CD for ADF & Databricks](05_CICD_for_ADF_and_Databricks.md) | The concrete how-to — ADF ARM release flow, Databricks Asset Bundles, GitHub Actions/Azure DevOps |
 | — | [Interview Questions & Answers](Interview_Questions_and_Answers.md) | Test yourself across the module |
 
 ---

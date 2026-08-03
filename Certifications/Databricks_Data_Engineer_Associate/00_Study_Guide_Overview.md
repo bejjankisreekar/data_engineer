@@ -57,6 +57,7 @@ Domains 1 and 2 together are over half the exam — Delta Lake and Spark-SQL/PyS
 | 11 | [Practice Questions by Domain](11_Practice_Questions_by_Domain.md) | All — practice |
 | 12 | [Most Asked & Tricky Questions](12_Most_Asked_and_Tricky_Exam_Questions.md) | All — the traps |
 | 13 | [Final Mock Exam](13_Final_Mock_Exam.md) | All — timed simulation |
+| 14 | [Exam Dump: Practice Set](14_Exam_Dump_Practice_Set.md) | All — 30 extra exam-style Q&A |
 
 **Suggested study plan (~2 weeks, ~1 hour/day):**
 

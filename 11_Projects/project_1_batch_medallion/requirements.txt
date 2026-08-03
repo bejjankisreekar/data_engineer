@@ -1,0 +1,6 @@
+# Runnable locally on a laptop — no Azure account needed.
+# Python 3.9–3.11 recommended. Java 8/11/17 must be installed (Spark needs a JVM).
+pyspark==3.5.1
+delta-spark==3.2.0
+pytest==8.2.0
+chispa==0.10.1

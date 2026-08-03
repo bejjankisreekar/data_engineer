@@ -58,6 +58,7 @@ The three domains are **roughly equal** — study all three thoroughly; none is 
 | 06 | [Practice Questions by Domain](06_Practice_Questions_by_Domain.md) | All — practice |
 | 07 | [Most Asked & Tricky Questions](07_Most_Asked_and_Tricky_Questions.md) | All — the traps |
 | 08 | [Final Mock Exam](08_Final_Mock_Exam.md) | All — timed simulation |
+| 09 | [Exam Dump: Practice Set](09_Exam_Dump_Practice_Set.md) | All — 30 extra exam-style Q&A |
 
 **Suggested study plan (~2–3 weeks, ~1 hour/day):**
 1. **Days 1–3:** Files 01–02 (platform, workspaces, security, lifecycle).

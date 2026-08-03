@@ -147,7 +147,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Watermark** — the saved "high-water mark" (e.g. max `modified_at`) an incremental load uses to fetch only new/changed rows next run.
 
-**Medallion (bronze/silver/gold)** — lakehouse layering: raw as-arrived → cleaned/typed → business-ready aggregates. See [ETL vs ELT](05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).
+**Medallion (bronze/silver/gold)** — lakehouse layering: raw as-arrived → cleaned/typed → business-ready aggregates, with each boundary a quality contract. See [Medallion Architecture](04_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md).
 
 **Lakehouse** — data-lake storage + a table format (Delta/Iceberg) giving warehouse behavior (ACID, schema, time travel) on one copy of data.
 
@@ -170,6 +170,8 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 **Managed identity** — an Azure service's own Entra ID identity, letting it access storage/databases with no stored password.
 
 **RBAC (Role-Based Access Control)** — granting permissions via roles scoped to resources ("this factory may read this container").
+
+**Private endpoint / Private Link** — projecting an Azure PaaS service (Storage, Key Vault, SQL…) as a private IP inside your VNet so traffic never touches the public internet; with public access disabled, the service is reachable only from the network. See [Network Security & Private Connectivity](05_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md).
 
 **Egress** — data leaving a cloud region/provider — the direction that costs money and shapes architectures.
 
@@ -231,6 +233,8 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Job cluster vs all-purpose cluster** — a job cluster spins up for one automated job and terminates after (cheaper); an all-purpose cluster is shared and interactive (for notebooks/exploration). See [Clusters & Compute](08_Databricks/02_Clusters_and_Compute.md).
 
+**Asset Bundles (DABs)** — Databricks' way to define jobs, notebooks, DLT pipelines, and cluster config as code in a `databricks.yml`, deployed per environment via `databricks bundle deploy` — the modern basis for Databricks CI/CD. See [CI/CD for ADF & Databricks](15_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md).
+
 ---
 
 ## Streaming
@@ -244,6 +248,10 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 **Offset** — a consumer's bookmark: the position of the last event it read in a partition, so it can resume without re-reading or skipping. See [Apache Kafka](09_Streaming/03_Apache_Kafka.md).
 
 **Lambda vs Kappa architecture** — two designs for combining batch + streaming: Lambda runs separate batch and speed layers; Kappa uses one streaming path for both. See [Streaming Fundamentals](09_Streaming/01_Streaming_Fundamentals.md).
+
+**KQL (Kusto Query Language)** — the pipe-based read query language of Azure Data Explorer, Log Analytics, and Fabric Eventhouse, built for fast analytics over large append-only event/log data. See [KQL & Real-Time Intelligence](09_Streaming/05_KQL_and_Real_Time_Intelligence.md).
+
+**Real-Time Intelligence / Eventhouse** — Microsoft Fabric's real-time workload: an **Eventstream** routes events into an **Eventhouse (KQL database)** for sub-second queries, feeding live dashboards and event-driven alerts. The same Kusto engine as Azure Data Explorer.
 
 ---
 

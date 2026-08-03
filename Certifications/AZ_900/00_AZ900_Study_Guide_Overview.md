@@ -48,6 +48,7 @@ The middle domain is the largest because it covers the most ground: architecture
 | 10 | [Practice Questions by Domain](10_Practice_Questions_by_Domain.md) | All — practice |
 | 11 | [Most Asked & Tricky Questions](11_Most_Asked_and_Tricky_Exam_Questions.md) | All — the traps |
 | 12 | [Final Mock Exam](12_Final_Mock_Exam.md) | All — timed simulation |
+| 13 | [Exam Dump: Practice Set](13_Exam_Dump_Practice_Set.md) | All — 30 extra exam-style Q&A |
 
 **Suggested study plan (roughly 2 weeks, ~1 hour/day):**
 

@@ -1,0 +1,10 @@
+# Generated Delta lake output — rebuilt by run_pipeline.py
+lake/
+
+# Spark / local runtime cruft
+spark-warehouse/
+metastore_db/
+derby.log
+.pytest_cache/
+__pycache__/
+*.pyc
