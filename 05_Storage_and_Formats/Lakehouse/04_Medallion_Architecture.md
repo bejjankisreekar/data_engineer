@@ -6,7 +6,7 @@ The **medallion architecture** (a.k.a. **multi-hop architecture**) is the standa
 
 Analogy: it's a **water treatment plant**. River water enters a holding reservoir exactly as it arrived (Bronze). It's filtered and purified into safe, standard drinking water (Silver). Finally it's bottled and labelled for specific customers — sparkling, still, flavoured (Gold). You never drink straight from the river, and you never re-run the whole plant just to change a label.
 
-> 🖥️ Want to *see* it run? The [runnable Project 1 repo](../../11_Projects/project_1_batch_medallion/README.md) implements all three layers in PySpark + Delta with sample data — `src/bronze.py`, `silver.py`, `gold.py` are literally these hops.
+> 🖥️ Want to *see* it run? The [runnable Project 1 repo](../../18_Projects/project_1_batch_medallion/README.md) implements all three layers in PySpark + Delta with sample data — `src/bronze.py`, `silver.py`, `gold.py` are literally these hops.
 
 ---
 
@@ -111,7 +111,7 @@ silver = good.withColumn("rn", row_number().over(w)).filter("rn = 1").drop("rn")
 | **Contains** | [Dimensional models](../../02_Databases/Data_Modeling/03_Dimensional_Modeling.md) (fact + dimension tables), KPIs, aggregates, ML features |
 | **Typical work** | Build star schemas · surrogate keys · **[SCD2](../../02_Databases/Data_Modeling/04_Slowly_Changing_Dimensions.md)** history · aggregate to the grain the business asks about |
 | **Write mode** | Overwrite / `MERGE`; often one Gold table **per use case** (a finance mart, a marketing mart) |
-| **Consumers** | BI analysts, dashboards ([Power BI](../../17_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md)), ML feature stores |
+| **Consumers** | BI analysts, dashboards ([Power BI](../../16_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md)), ML feature stores |
 
 Gold is where **modeling discipline** lives — the lakehouse merged the storage engines but **not** the need for a star schema and a semantic layer. A lakehouse with no Gold modeling is just a faster swamp.
 
@@ -175,7 +175,7 @@ Because a Delta table is **both a stream sink and a stream source**, the *same* 
 - **Built on:** [Delta Lake](01_Delta_Lake.md) · [Delta Table](02_Delta_Table.md) · [Lakehouse Architecture](03_Lakehouse_Architecture.md)
 - **Modeling the Gold layer:** [Dimensional Modeling](../../02_Databases/Data_Modeling/03_Dimensional_Modeling.md) · [Slowly Changing Dimensions](../../02_Databases/Data_Modeling/04_Slowly_Changing_Dimensions.md)
 - **Quality gates (Bronze→Silver):** [Data Quality Fundamentals](../../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)
-- **Building it for real:** [Project 1 walkthrough](../../11_Projects/02_Project_1_Batch_Medallion_Pipeline.md) · 🖥️ [runnable repo](../../11_Projects/project_1_batch_medallion/README.md) · [ETL vs ELT](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md)
+- **Building it for real:** [Project 1 walkthrough](../../18_Projects/02_Project_1_Batch_Medallion_Pipeline.md) · 🖥️ [runnable repo](../../18_Projects/project_1_batch_medallion/README.md) · [ETL vs ELT](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md)
 
 ---
 

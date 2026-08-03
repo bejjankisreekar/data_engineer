@@ -233,7 +233,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Job cluster vs all-purpose cluster** — a job cluster spins up for one automated job and terminates after (cheaper); an all-purpose cluster is shared and interactive (for notebooks/exploration). See [Clusters & Compute](08_Databricks/02_Clusters_and_Compute.md).
 
-**Asset Bundles (DABs)** — Databricks' way to define jobs, notebooks, DLT pipelines, and cluster config as code in a `databricks.yml`, deployed per environment via `databricks bundle deploy` — the modern basis for Databricks CI/CD. See [CI/CD for ADF & Databricks](15_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md).
+**Asset Bundles (DABs)** — Databricks' way to define jobs, notebooks, DLT pipelines, and cluster config as code in a `databricks.yml`, deployed per environment via `databricks bundle deploy` — the modern basis for Databricks CI/CD. See [CI/CD for ADF & Databricks](14_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md).
 
 ---
 
@@ -271,13 +271,13 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Orchestration, testing and DataOps
 
-**Backfill** — running a pipeline over historical dates it missed or that changed, to (re)populate past partitions. See [Orchestration Fundamentals](12_Orchestration/01_Orchestration_Fundamentals.md).
+**Backfill** — running a pipeline over historical dates it missed or that changed, to (re)populate past partitions. See [Orchestration Fundamentals](11_Orchestration/01_Orchestration_Fundamentals.md).
 
-**Trigger** — what starts a pipeline run: a schedule, a tumbling window, or an event (e.g. a file landing). See [ADF Orchestration](12_Orchestration/02_ADF_Orchestration.md).
+**Trigger** — what starts a pipeline run: a schedule, a tumbling window, or an event (e.g. a file landing). See [ADF Orchestration](11_Orchestration/02_ADF_Orchestration.md).
 
-**Data contract** — an agreed, enforced schema-and-expectations promise between a data producer and its consumers, so upstream changes don't silently break downstream. See [Data Contracts](15_Testing_and_DataOps/03_Data_Contracts.md).
+**Data contract** — an agreed, enforced schema-and-expectations promise between a data producer and its consumers, so upstream changes don't silently break downstream. See [Data Contracts](14_Testing_and_DataOps/03_Data_Contracts.md).
 
-**DataOps** — applying DevOps discipline (version control, testing, CI/CD, monitoring) to data pipelines. See [DataOps & CI/CD for Data](15_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md).
+**DataOps** — applying DevOps discipline (version control, testing, CI/CD, monitoring) to data pipelines. See [DataOps & CI/CD for Data](14_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md).
 
 **CI/CD (Continuous Integration / Continuous Delivery)** — automatically testing every change and shipping it through environments, so releases are frequent, small, and safe. See [Production Best Practices & CI/CD](07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md).
 
@@ -293,9 +293,9 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Data lineage** — the tracked path of data from source through every transformation to its final use — for impact analysis, debugging, and compliance.
 
-**Data observability** — continuously monitoring the *health of the data itself* (freshness, volume, schema, distribution, lineage — the "five pillars"), not just whether the job ran. See [Data Observability](13_Monitoring_and_Observability/04_Data_Observability.md).
+**Data observability** — continuously monitoring the *health of the data itself* (freshness, volume, schema, distribution, lineage — the "five pillars"), not just whether the job ran. See [Data Observability](12_Monitoring_and_Observability/04_Data_Observability.md).
 
-**SLI / SLO** — a Service Level Indicator is a measured signal (e.g. pipeline freshness); a Service Level Objective is the target for it ("data is <2h old, 99% of days"). See [Monitoring Fundamentals](13_Monitoring_and_Observability/01_Monitoring_Fundamentals.md).
+**SLI / SLO** — a Service Level Indicator is a measured signal (e.g. pipeline freshness); a Service Level Objective is the target for it ("data is <2h old, 99% of days"). See [Monitoring Fundamentals](12_Monitoring_and_Observability/01_Monitoring_Fundamentals.md).
 
 **Purview** — Microsoft's data-governance service: cataloging, classification, and lineage across the estate. See [Data Governance & Security](06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md).
 
@@ -309,13 +309,13 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## dbt and analytics engineering
 
-**dbt (data build tool)** — a tool for transforming data *in the warehouse* with version-controlled SQL `SELECT`s, plus built-in testing and documentation. See [What is dbt](14_dbt/01_What_is_dbt.md).
+**dbt (data build tool)** — a tool for transforming data *in the warehouse* with version-controlled SQL `SELECT`s, plus built-in testing and documentation. See [What is dbt](13_dbt/01_What_is_dbt.md).
 
-**Model** — in dbt, a single `SELECT` statement in a `.sql` file that dbt materializes as a view or table. See [Models & refs](14_dbt/02_Models_and_Refs.md).
+**Model** — in dbt, a single `SELECT` statement in a `.sql` file that dbt materializes as a view or table. See [Models & refs](13_dbt/02_Models_and_Refs.md).
 
 **ref()** — the dbt function models use to reference each other; it builds the dependency DAG and lets dbt figure out build order automatically.
 
-**Snapshot** — dbt's mechanism for capturing how a mutable source row changes over time — i.e. it implements SCD Type 2. See [Snapshots, Seeds & Macros](14_dbt/04_Snapshots_Seeds_Macros.md).
+**Snapshot** — dbt's mechanism for capturing how a mutable source row changes over time — i.e. it implements SCD Type 2. See [Snapshots, Seeds & Macros](13_dbt/04_Snapshots_Seeds_Macros.md).
 
 **Macro** — a reusable, parameterized SQL snippet (Jinja) in dbt — the DRY building block for repeated logic.
 
@@ -323,21 +323,21 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Power BI and serving
 
-**Semantic model (dataset)** — the modeled layer Power BI queries: tables, relationships, and measures that turn raw Gold tables into business-friendly metrics. See [Semantic Model & Star Schema](17_Power_BI_for_Engineers/02_Semantic_Model_and_Star_Schema.md).
+**Semantic model (dataset)** — the modeled layer Power BI queries: tables, relationships, and measures that turn raw Gold tables into business-friendly metrics. See [Semantic Model & Star Schema](16_Power_BI_for_Engineers/02_Semantic_Model_and_Star_Schema.md).
 
-**DAX (Data Analysis Expressions)** — Power BI's formula language for calculated measures and columns (e.g. year-over-year growth). See [DAX Basics](17_Power_BI_for_Engineers/03_DAX_Basics.md).
+**DAX (Data Analysis Expressions)** — Power BI's formula language for calculated measures and columns (e.g. year-over-year growth). See [DAX Basics](16_Power_BI_for_Engineers/03_DAX_Basics.md).
 
-**Import vs DirectQuery vs Direct Lake** — three ways Power BI gets data: copy it in (fast, stale), query the source live each time (fresh, slower), or read Delta straight from OneLake (fast *and* fresh). See [Serving from the Lakehouse](17_Power_BI_for_Engineers/04_Serving_from_the_Lakehouse.md).
+**Import vs DirectQuery vs Direct Lake** — three ways Power BI gets data: copy it in (fast, stale), query the source live each time (fresh, slower), or read Delta straight from OneLake (fast *and* fresh). See [Serving from the Lakehouse](16_Power_BI_for_Engineers/04_Serving_from_the_Lakehouse.md).
 
 ---
 
 ## Cost and performance
 
-**FinOps** — the practice of managing cloud cost as an engineering concern: visibility, accountability, and optimization of spend. See [Cost Fundamentals (FinOps)](16_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md).
+**FinOps** — the practice of managing cloud cost as an engineering concern: visibility, accountability, and optimization of spend. See [Cost Fundamentals (FinOps)](15_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md).
 
 **Small-file problem** — thousands of tiny files that cripple read performance (huge listing/opening overhead); fixed by compaction (`OPTIMIZE`) and sensible partitioning.
 
-**Predicate pushdown / partition pruning** — skipping data that a query's filters can't possibly match — pushing the filter down to the file/partition level so less data is read. See [Performance Optimization](16_Cost_and_Performance/04_Performance_Optimization.md).
+**Predicate pushdown / partition pruning** — skipping data that a query's filters can't possibly match — pushing the filter down to the file/partition level so less data is read. See [Performance Optimization](15_Cost_and_Performance/04_Performance_Optimization.md).
 
 ---
 

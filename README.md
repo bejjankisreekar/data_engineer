@@ -41,14 +41,14 @@ Topics are grouped into **category folders** so related material lives together:
 | **08_Databricks** | Databricks platform · Clusters · Notebooks/Jobs · Unity Catalog · DLT · Auto Loader |
 | **09_Streaming** | Streaming fundamentals · Event Hubs · Kafka · Stream Analytics |
 | **10_Synapse_and_Fabric** | Synapse Analytics · Dedicated/Serverless SQL pools (MPP) · Microsoft Fabric · platform decision guide |
-| **11_Projects** | Hands-on end-to-end projects (batch medallion · streaming · ADF-orchestrated) + portfolio |
-| **12_Orchestration** | DAGs · ADF triggers · Databricks Workflows · Apache Airflow |
-| **13_Monitoring_and_Observability** | Monitoring · Azure Monitor/KQL · pipeline reliability · data observability |
-| **14_dbt** | data build tool — models, tests, docs, snapshots (SCD2), dbt in Azure |
-| **15_Testing_and_DataOps** | Testing pipelines · data quality tests · data contracts · CI/CD for data |
-| **16_Cost_and_Performance** | FinOps · Databricks/Spark cost · storage & query cost · performance tuning |
-| **17_Power_BI_for_Engineers** | Semantic models · star schema · DAX basics · serving from the lakehouse |
-| **18_System_Design** | Design framework · batch · streaming/real-time · case studies |
+| **11_Orchestration** | DAGs · ADF triggers · Databricks Workflows · Apache Airflow |
+| **12_Monitoring_and_Observability** | Monitoring · Azure Monitor/KQL · pipeline reliability · data observability |
+| **13_dbt** | data build tool — models, tests, docs, snapshots (SCD2), dbt in Azure |
+| **14_Testing_and_DataOps** | Testing pipelines · data quality tests · data contracts · CI/CD for data |
+| **15_Cost_and_Performance** | FinOps · Databricks/Spark cost · storage & query cost · performance tuning |
+| **16_Power_BI_for_Engineers** | Semantic models · star schema · DAX basics · serving from the lakehouse |
+| **17_System_Design** | Design framework · batch · streaming/real-time · case studies |
+| **18_Projects** | Hands-on end-to-end projects (batch medallion · streaming · ADF-orchestrated) + portfolio — the capstone |
 | **Certifications** | AZ-900 · DP-900 · Databricks Data Engineer Associate · DP-700 (Fabric) |
 | **Job Interviews** | 31 interview-prep topic folders |
 
@@ -240,49 +240,49 @@ Topics are grouped into **category folders** so related material lives together:
 - [04 — Synapse vs Fabric vs Databricks](10_Synapse_and_Fabric/04_Synapse_vs_Fabric_vs_Databricks.md) — the **decision framework** — which platform for which job
 - **[Interview Questions & Answers](10_Synapse_and_Fabric/Interview_Questions_and_Answers.md)** — 26 Q&A across the whole module
 
-### 11_Projects — hands-on, end-to-end (the part that gets you hired)
-- [00 — Learning Path](11_Projects/00_Projects_Learning_Path.md) — why projects beat tutorials, the shared reference architecture
-- [01 — Setup & Prerequisites](11_Projects/01_Project_Setup_and_Prerequisites.md) — Azure/Databricks/Git setup, secure ADLS access, repo structure, cost cleanup
-- [02 — Project 1: Batch Medallion Pipeline](11_Projects/02_Project_1_Batch_Medallion_Pipeline.md) — ADLS → Databricks → Delta Bronze/Silver/Gold → Power BI, with SCD2 & quarantine · 🖥️ **[runnable repo](11_Projects/project_1_batch_medallion/README.md)** (PySpark + Delta, runs locally, with sample data + tests)
-- [03 — Project 2: Streaming Pipeline](11_Projects/03_Project_2_Streaming_Pipeline.md) — Event Hubs → Structured Streaming → checkpointing, watermarking, exactly-once
-- [04 — Project 3: Orchestrated ELT with ADF](11_Projects/04_Project_3_ADF_Orchestrated_ELT.md) — triggers, dependencies, retries, metadata-driven, alerting
-- [05 — Portfolio & GitHub Presentation](11_Projects/05_Portfolio_and_GitHub_Presentation.md) — READMEs, résumé bullets, the 2-minute project walkthrough
+### 18_Projects — hands-on, end-to-end (the part that gets you hired)
+- [00 — Learning Path](18_Projects/00_Projects_Learning_Path.md) — why projects beat tutorials, the shared reference architecture
+- [01 — Setup & Prerequisites](18_Projects/01_Project_Setup_and_Prerequisites.md) — Azure/Databricks/Git setup, secure ADLS access, repo structure, cost cleanup
+- [02 — Project 1: Batch Medallion Pipeline](18_Projects/02_Project_1_Batch_Medallion_Pipeline.md) — ADLS → Databricks → Delta Bronze/Silver/Gold → Power BI, with SCD2 & quarantine · 🖥️ **[runnable repo](18_Projects/project_1_batch_medallion/README.md)** (PySpark + Delta, runs locally, with sample data + tests)
+- [03 — Project 2: Streaming Pipeline](18_Projects/03_Project_2_Streaming_Pipeline.md) — Event Hubs → Structured Streaming → checkpointing, watermarking, exactly-once
+- [04 — Project 3: Orchestrated ELT with ADF](18_Projects/04_Project_3_ADF_Orchestrated_ELT.md) — triggers, dependencies, retries, metadata-driven, alerting
+- [05 — Portfolio & GitHub Presentation](18_Projects/05_Portfolio_and_GitHub_Presentation.md) — READMEs, résumé bullets, the 2-minute project walkthrough
 
-### 12_Orchestration — scheduling & coordinating pipelines
-- [00 — Learning Path](12_Orchestration/00_Orchestration_Learning_Path.md) · [01 — Fundamentals (DAGs, idempotency, backfill)](12_Orchestration/01_Orchestration_Fundamentals.md)
-- [02 — ADF Orchestration (triggers, metadata-driven)](12_Orchestration/02_ADF_Orchestration.md) · [03 — Databricks Workflows](12_Orchestration/03_Databricks_Workflows.md) · [04 — Apache Airflow](12_Orchestration/04_Apache_Airflow.md)
-- **[Interview Questions & Answers](12_Orchestration/Interview_Questions_and_Answers.md)**
+### 11_Orchestration — scheduling & coordinating pipelines
+- [00 — Learning Path](11_Orchestration/00_Orchestration_Learning_Path.md) · [01 — Fundamentals (DAGs, idempotency, backfill)](11_Orchestration/01_Orchestration_Fundamentals.md)
+- [02 — ADF Orchestration (triggers, metadata-driven)](11_Orchestration/02_ADF_Orchestration.md) · [03 — Databricks Workflows](11_Orchestration/03_Databricks_Workflows.md) · [04 — Apache Airflow](11_Orchestration/04_Apache_Airflow.md)
+- **[Interview Questions & Answers](11_Orchestration/Interview_Questions_and_Answers.md)**
 
-### 13_Monitoring_and_Observability — knowing your pipelines (and data) are healthy
-- [00 — Learning Path](13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md) · [01 — Monitoring Fundamentals (SLIs/SLOs/alerting)](13_Monitoring_and_Observability/01_Monitoring_Fundamentals.md)
-- [02 — Azure Monitor & Log Analytics (KQL)](13_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md) · [03 — Pipeline Reliability](13_Monitoring_and_Observability/03_Pipeline_Reliability.md) · [04 — Data Observability (5 pillars)](13_Monitoring_and_Observability/04_Data_Observability.md)
-- **[Interview Questions & Answers](13_Monitoring_and_Observability/Interview_Questions_and_Answers.md)**
+### 12_Monitoring_and_Observability — knowing your pipelines (and data) are healthy
+- [00 — Learning Path](12_Monitoring_and_Observability/00_Monitoring_Learning_Path.md) · [01 — Monitoring Fundamentals (SLIs/SLOs/alerting)](12_Monitoring_and_Observability/01_Monitoring_Fundamentals.md)
+- [02 — Azure Monitor & Log Analytics (KQL)](12_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md) · [03 — Pipeline Reliability](12_Monitoring_and_Observability/03_Pipeline_Reliability.md) · [04 — Data Observability (5 pillars)](12_Monitoring_and_Observability/04_Data_Observability.md)
+- **[Interview Questions & Answers](12_Monitoring_and_Observability/Interview_Questions_and_Answers.md)**
 
-### 14_dbt — SQL transformations with software-engineering discipline
-- [00 — Learning Path](14_dbt/00_dbt_Learning_Path.md) · [01 — What is dbt](14_dbt/01_What_is_dbt.md) · [02 — Models & refs](14_dbt/02_Models_and_Refs.md)
-- [03 — Tests & Documentation](14_dbt/03_Tests_and_Documentation.md) · [04 — Snapshots, Seeds & Macros (SCD2)](14_dbt/04_Snapshots_Seeds_Macros.md) · [05 — dbt in Azure](14_dbt/05_dbt_in_Azure.md)
-- **[Interview Questions & Answers](14_dbt/Interview_Questions_and_Answers.md)**
+### 13_dbt — SQL transformations with software-engineering discipline
+- [00 — Learning Path](13_dbt/00_dbt_Learning_Path.md) · [01 — What is dbt](13_dbt/01_What_is_dbt.md) · [02 — Models & refs](13_dbt/02_Models_and_Refs.md)
+- [03 — Tests & Documentation](13_dbt/03_Tests_and_Documentation.md) · [04 — Snapshots, Seeds & Macros (SCD2)](13_dbt/04_Snapshots_Seeds_Macros.md) · [05 — dbt in Azure](13_dbt/05_dbt_in_Azure.md)
+- **[Interview Questions & Answers](13_dbt/Interview_Questions_and_Answers.md)**
 
-### 15_Testing_and_DataOps — proving pipelines correct and shipping them safely
-- [00 — Learning Path](15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) · [01 — Testing Pipelines (pytest/chispa)](15_Testing_and_DataOps/01_Testing_Data_Pipelines.md)
-- [02 — Data Quality Testing (Great Expectations)](15_Testing_and_DataOps/02_Data_Quality_Testing.md) · [03 — Data Contracts](15_Testing_and_DataOps/03_Data_Contracts.md) · [04 — DataOps & CI/CD for Data](15_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md)
-- [05 — CI/CD for ADF & Databricks](15_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md) — the concrete how-to: ADF ARM release flow, Databricks **Asset Bundles**, GitHub Actions/Azure DevOps
-- **[Interview Questions & Answers](15_Testing_and_DataOps/Interview_Questions_and_Answers.md)**
+### 14_Testing_and_DataOps — proving pipelines correct and shipping them safely
+- [00 — Learning Path](14_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) · [01 — Testing Pipelines (pytest/chispa)](14_Testing_and_DataOps/01_Testing_Data_Pipelines.md)
+- [02 — Data Quality Testing (Great Expectations)](14_Testing_and_DataOps/02_Data_Quality_Testing.md) · [03 — Data Contracts](14_Testing_and_DataOps/03_Data_Contracts.md) · [04 — DataOps & CI/CD for Data](14_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md)
+- [05 — CI/CD for ADF & Databricks](14_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md) — the concrete how-to: ADF ARM release flow, Databricks **Asset Bundles**, GitHub Actions/Azure DevOps
+- **[Interview Questions & Answers](14_Testing_and_DataOps/Interview_Questions_and_Answers.md)**
 
-### 16_Cost_and_Performance — FinOps and making pipelines fast & cheap
-- [00 — Learning Path](16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md) · [01 — Cost Fundamentals (FinOps)](16_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md)
-- [02 — Databricks/Spark Cost](16_Cost_and_Performance/02_Databricks_Cost_Optimization.md) · [03 — Storage & Query Cost](16_Cost_and_Performance/03_Storage_and_Query_Cost.md) · [04 — Performance Optimization (shuffle/skew)](16_Cost_and_Performance/04_Performance_Optimization.md)
-- **[Interview Questions & Answers](16_Cost_and_Performance/Interview_Questions_and_Answers.md)**
+### 15_Cost_and_Performance — FinOps and making pipelines fast & cheap
+- [00 — Learning Path](15_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md) · [01 — Cost Fundamentals (FinOps)](15_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md)
+- [02 — Databricks/Spark Cost](15_Cost_and_Performance/02_Databricks_Cost_Optimization.md) · [03 — Storage & Query Cost](15_Cost_and_Performance/03_Storage_and_Query_Cost.md) · [04 — Performance Optimization (shuffle/skew)](15_Cost_and_Performance/04_Performance_Optimization.md)
+- **[Interview Questions & Answers](15_Cost_and_Performance/Interview_Questions_and_Answers.md)**
 
-### 17_Power_BI_for_Engineers — serving the Gold layer to the business
-- [00 — Learning Path](17_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md) · [01 — Fundamentals](17_Power_BI_for_Engineers/01_Power_BI_Fundamentals.md) · [02 — Semantic Model & Star Schema](17_Power_BI_for_Engineers/02_Semantic_Model_and_Star_Schema.md)
-- [03 — DAX Basics](17_Power_BI_for_Engineers/03_DAX_Basics.md) · [04 — Serving from the Lakehouse (Direct Lake)](17_Power_BI_for_Engineers/04_Serving_from_the_Lakehouse.md)
-- **[Interview Questions & Answers](17_Power_BI_for_Engineers/Interview_Questions_and_Answers.md)**
+### 16_Power_BI_for_Engineers — serving the Gold layer to the business
+- [00 — Learning Path](16_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md) · [01 — Fundamentals](16_Power_BI_for_Engineers/01_Power_BI_Fundamentals.md) · [02 — Semantic Model & Star Schema](16_Power_BI_for_Engineers/02_Semantic_Model_and_Star_Schema.md)
+- [03 — DAX Basics](16_Power_BI_for_Engineers/03_DAX_Basics.md) · [04 — Serving from the Lakehouse (Direct Lake)](16_Power_BI_for_Engineers/04_Serving_from_the_Lakehouse.md)
+- **[Interview Questions & Answers](16_Power_BI_for_Engineers/Interview_Questions_and_Answers.md)**
 
-### 18_System_Design — the senior interview filter: "design a data platform for X"
-- [00 — Learning Path](18_System_Design/00_System_Design_Learning_Path.md) · [01 — The Design Framework](18_System_Design/01_Design_Framework.md)
-- [02 — Batch Pipeline Design](18_System_Design/02_Batch_Pipeline_Design.md) · [03 — Streaming & Real-Time Design (Lambda/Kappa)](18_System_Design/03_Streaming_and_Realtime_Design.md) · [04 — Case Studies](18_System_Design/04_Case_Studies.md)
-- **[Interview Questions & Answers](18_System_Design/Interview_Questions_and_Answers.md)**
+### 17_System_Design — the senior interview filter: "design a data platform for X"
+- [00 — Learning Path](17_System_Design/00_System_Design_Learning_Path.md) · [01 — The Design Framework](17_System_Design/01_Design_Framework.md)
+- [02 — Batch Pipeline Design](17_System_Design/02_Batch_Pipeline_Design.md) · [03 — Streaming & Real-Time Design (Lambda/Kappa)](17_System_Design/03_Streaming_and_Realtime_Design.md) · [04 — Case Studies](17_System_Design/04_Case_Studies.md)
+- **[Interview Questions & Answers](17_System_Design/Interview_Questions_and_Answers.md)**
 
 ---
 
@@ -348,17 +348,17 @@ Following the typical Azure Data Engineer learning path (aligned with the modern
 
 **Recently added ✅**
 - **[02_Databases › NoSQL](02_Databases/NoSQL/00_NoSQL_Learning_Path.md)** — key-value, document, wide-column, graph, CAP, Cosmos DB
-- **[11_Projects](11_Projects/00_Projects_Learning_Path.md)** — hands-on end-to-end pipelines + portfolio presentation
-- **[12_Orchestration](12_Orchestration/00_Orchestration_Learning_Path.md)** — ADF triggers, Databricks Workflows, Apache Airflow
-- **[13_Monitoring_and_Observability](13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md)** — Azure Monitor/KQL, reliability, data observability
-- **[14_dbt](14_dbt/00_dbt_Learning_Path.md)** — models, tests, docs, snapshots (SCD2), dbt in Azure
-- **[15_Testing_and_DataOps](15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)** — pipeline testing, data quality, data contracts, CI/CD for data
-- **[16_Cost_and_Performance](16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md)** — FinOps, Databricks/Spark cost, performance tuning
-- **[17_Power_BI_for_Engineers](17_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md)** — semantic models, star schema, DAX, Direct Lake serving
-- **[18_System_Design](18_System_Design/00_System_Design_Learning_Path.md)** — the design framework, batch/streaming design, case studies
+- **[18_Projects](18_Projects/00_Projects_Learning_Path.md)** — hands-on end-to-end pipelines + portfolio presentation
+- **[11_Orchestration](11_Orchestration/00_Orchestration_Learning_Path.md)** — ADF triggers, Databricks Workflows, Apache Airflow
+- **[12_Monitoring_and_Observability](12_Monitoring_and_Observability/00_Monitoring_Learning_Path.md)** — Azure Monitor/KQL, reliability, data observability
+- **[13_dbt](13_dbt/00_dbt_Learning_Path.md)** — models, tests, docs, snapshots (SCD2), dbt in Azure
+- **[14_Testing_and_DataOps](14_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)** — pipeline testing, data quality, data contracts, CI/CD for data
+- **[15_Cost_and_Performance](15_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md)** — FinOps, Databricks/Spark cost, performance tuning
+- **[16_Power_BI_for_Engineers](16_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md)** — semantic models, star schema, DAX, Direct Lake serving
+- **[17_System_Design](17_System_Design/00_System_Design_Learning_Path.md)** — the design framework, batch/streaming design, case studies
 - **[07_DevOps › Git & GitHub](07_DevOps/Git_GitHub/00_Git_GitHub_Learning_Path.md)** — version control from zero to production-ready (branching, remotes, CI/CD, troubleshooting)
 
-Topics are grouped into numbered **category folders** (`01_Foundations` → `18_System_Design`) so related material lives together, and the category numbers still suggest a reading order. The `Certifications/` and `Job Interviews/` folders sit outside the numbered learning path as separate tracks.
+Topics are grouped into numbered **category folders** (`01_Foundations` → `18_Projects`) so related material lives together, and the category numbers still suggest a reading order. The `Certifications/` and `Job Interviews/` folders sit outside the numbered learning path as separate tracks.
 
 ---
 

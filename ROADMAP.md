@@ -166,14 +166,14 @@ The Azure toolset for that: **ADLS, Data Factory, Databricks, Synapse/Fabric, Ev
 
 - ✅ **Synapse & Fabric:** [Synapse & Fabric module (10)](10_Synapse_and_Fabric/00_Learning_Path.md) — [Synapse](10_Synapse_and_Fabric/01_Azure_Synapse_Analytics.md) · [SQL pools/MPP](10_Synapse_and_Fabric/02_Dedicated_vs_Serverless_SQL_Pools.md) · [Fabric](10_Synapse_and_Fabric/03_Microsoft_Fabric.md) · [decision guide](10_Synapse_and_Fabric/04_Synapse_vs_Fabric_vs_Databricks.md)
 
-- ✅ **Orchestration:** [Orchestration module (12)](12_Orchestration/00_Orchestration_Learning_Path.md) — DAGs, [ADF triggers](12_Orchestration/02_ADF_Orchestration.md), [Databricks Workflows](12_Orchestration/03_Databricks_Workflows.md), [Apache Airflow](12_Orchestration/04_Apache_Airflow.md)
-- ✅ **Monitoring & Observability:** [Monitoring module (13)](13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md) — [Azure Monitor/KQL](13_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md), [reliability](13_Monitoring_and_Observability/03_Pipeline_Reliability.md), [data observability](13_Monitoring_and_Observability/04_Data_Observability.md)
-- ✅ **dbt:** [dbt module (14)](14_dbt/00_dbt_Learning_Path.md) — models, tests, docs, [snapshots/SCD2](14_dbt/04_Snapshots_Seeds_Macros.md), [dbt in Azure](14_dbt/05_dbt_in_Azure.md)
-- ✅ **Testing & DataOps:** [Testing module (15)](15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) — [pipeline testing](15_Testing_and_DataOps/01_Testing_Data_Pipelines.md), [data quality tests](15_Testing_and_DataOps/02_Data_Quality_Testing.md), [data contracts](15_Testing_and_DataOps/03_Data_Contracts.md), [CI/CD for data](15_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md), [CI/CD for ADF & Databricks](15_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md)
-- ✅ **Cost & Performance:** [Cost module (16)](16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md) — [FinOps](16_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md), [Databricks cost](16_Cost_and_Performance/02_Databricks_Cost_Optimization.md), [performance tuning](16_Cost_and_Performance/04_Performance_Optimization.md)
-- ✅ **Power BI for engineers:** [Power BI module (17)](17_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md) — semantic models, [star schema](17_Power_BI_for_Engineers/02_Semantic_Model_and_Star_Schema.md), DAX, [Direct Lake serving](17_Power_BI_for_Engineers/04_Serving_from_the_Lakehouse.md)
+- ✅ **Orchestration:** [Orchestration module (11)](11_Orchestration/00_Orchestration_Learning_Path.md) — DAGs, [ADF triggers](11_Orchestration/02_ADF_Orchestration.md), [Databricks Workflows](11_Orchestration/03_Databricks_Workflows.md), [Apache Airflow](11_Orchestration/04_Apache_Airflow.md)
+- ✅ **Monitoring & Observability:** [Monitoring module (12)](12_Monitoring_and_Observability/00_Monitoring_Learning_Path.md) — [Azure Monitor/KQL](12_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md), [reliability](12_Monitoring_and_Observability/03_Pipeline_Reliability.md), [data observability](12_Monitoring_and_Observability/04_Data_Observability.md)
+- ✅ **dbt:** [dbt module (13)](13_dbt/00_dbt_Learning_Path.md) — models, tests, docs, [snapshots/SCD2](13_dbt/04_Snapshots_Seeds_Macros.md), [dbt in Azure](13_dbt/05_dbt_in_Azure.md)
+- ✅ **Testing & DataOps:** [Testing module (14)](14_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) — [pipeline testing](14_Testing_and_DataOps/01_Testing_Data_Pipelines.md), [data quality tests](14_Testing_and_DataOps/02_Data_Quality_Testing.md), [data contracts](14_Testing_and_DataOps/03_Data_Contracts.md), [CI/CD for data](14_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md), [CI/CD for ADF & Databricks](14_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md)
+- ✅ **Cost & Performance:** [Cost module (15)](15_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md) — [FinOps](15_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md), [Databricks cost](15_Cost_and_Performance/02_Databricks_Cost_Optimization.md), [performance tuning](15_Cost_and_Performance/04_Performance_Optimization.md)
+- ✅ **Power BI for engineers:** [Power BI module (16)](16_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md) — semantic models, [star schema](16_Power_BI_for_Engineers/02_Semantic_Model_and_Star_Schema.md), DAX, [Direct Lake serving](16_Power_BI_for_Engineers/04_Serving_from_the_Lakehouse.md)
 
-**Milestone:** whiteboard an end-to-end pipeline for a real scenario ("ingest daily sales files + a live order stream, serve a finance dashboard") naming the Azure service at each hop and where you'd put quality checks and governance. Then **build it** — see the [Projects module (11)](11_Projects/00_Projects_Learning_Path.md), including a **[runnable batch-medallion repo](11_Projects/project_1_batch_medallion/README.md)** (PySpark + Delta, runs locally) you can clone, execute, and put on GitHub.
+**Milestone:** whiteboard an end-to-end pipeline for a real scenario ("ingest daily sales files + a live order stream, serve a finance dashboard") naming the Azure service at each hop and where you'd put quality checks and governance. Then **build it** — see the [Projects module (18)](18_Projects/00_Projects_Learning_Path.md), including a **[runnable batch-medallion repo](18_Projects/project_1_batch_medallion/README.md)** (PySpark + Delta, runs locally) you can clone, execute, and put on GitHub.
 
 ---
 
@@ -192,14 +192,14 @@ The Azure toolset for that: **ADLS, Data Factory, Databricks, Synapse/Fabric, Ev
 > **Note:** DP‑203 (Azure Data Engineer Associate) was **retired in 2025** and replaced by **DP‑700 (Fabric Data Engineer)** — study DP‑700, not DP‑203.
 
 **System design (the senior interview filter):**
-- ✅ [System Design module (18)](18_System_Design/00_System_Design_Learning_Path.md) — the [design framework](18_System_Design/01_Design_Framework.md), [batch](18_System_Design/02_Batch_Pipeline_Design.md) & [streaming/real-time](18_System_Design/03_Streaming_and_Realtime_Design.md) design, [case studies](18_System_Design/04_Case_Studies.md)
+- ✅ [System Design module (17)](17_System_Design/00_System_Design_Learning_Path.md) — the [design framework](17_System_Design/01_Design_Framework.md), [batch](17_System_Design/02_Batch_Pipeline_Design.md) & [streaming/real-time](17_System_Design/03_Streaming_and_Realtime_Design.md) design, [case studies](17_System_Design/04_Case_Studies.md)
 
 **Portfolio (do this in parallel — it matters more than any single cert):**
-- ✅ [Projects module (11)](11_Projects/00_Projects_Learning_Path.md) — build the three end-to-end projects and [present them well](11_Projects/05_Portfolio_and_GitHub_Presentation.md)
+- ✅ [Projects module (18)](18_Projects/00_Projects_Learning_Path.md) — build the three end-to-end projects and [present them well](18_Projects/05_Portfolio_and_GitHub_Presentation.md)
 
 **Interview prep:** see the dedicated track below.
 
-**Milestone:** pass the [Databricks Associate mock exam](Certifications/Databricks_Data_Engineer_Associate/13_Final_Mock_Exam.md), and complete a mock interview covering SQL + PySpark + one **[system-design](18_System_Design/00_System_Design_Learning_Path.md)** architecture question — with a **[portfolio project](11_Projects/00_Projects_Learning_Path.md)** on GitHub to walk through.
+**Milestone:** pass the [Databricks Associate mock exam](Certifications/Databricks_Data_Engineer_Associate/13_Final_Mock_Exam.md), and complete a mock interview covering SQL + PySpark + one **[system-design](17_System_Design/00_System_Design_Learning_Path.md)** architecture question — with a **[portfolio project](18_Projects/00_Projects_Learning_Path.md)** on GitHub to walk through.
 
 ---
 

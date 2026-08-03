@@ -57,7 +57,7 @@ flowchart LR
 ## Supporting controls
 
 - **NSG (Network Security Group)** — subnet/NIC-level allow/deny rules (the stateful firewall on your subnets).
-- **User-Defined Routes (UDR) + Azure Firewall / NVA** — force outbound traffic through a firewall for inspection and egress control (limits [data exfiltration](../../16_Cost_and_Performance/03_Storage_and_Query_Cost.md) and controls **egress** cost).
+- **User-Defined Routes (UDR) + Azure Firewall / NVA** — force outbound traffic through a firewall for inspection and egress control (limits [data exfiltration](../../15_Cost_and_Performance/03_Storage_and_Query_Cost.md) and controls **egress** cost).
 - **Service tags** — named groups of Azure IP ranges (e.g. `Storage`, `AzureDatabricks`) so NSG rules don't hard-code IPs.
 - **Managed Identity + Key Vault** ([governance note](01_Data_Governance_and_Security.md)) — networking hides the path; identity still authenticates the caller. Use **both**; never rely on network isolation alone (defense in depth).
 

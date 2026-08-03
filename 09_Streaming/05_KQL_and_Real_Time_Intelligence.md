@@ -6,7 +6,7 @@ The rest of this module gets events *moving* — [Event Hubs](02_Azure_Event_Hub
 
 Analogy: Stream Analytics is the conveyor belt that inspects each parcel as it rolls past; a KQL database is the **giant, instantly-searchable warehouse** the parcels drop into, where you can later ask "how many red parcels arrived per minute last Tuesday?" and get an answer over billions of rows in seconds.
 
-You met KQL briefly in [Azure Monitor & Log Analytics](../13_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md) — that's the *logs* face of the same engine. This note is the *data-engineering* face: KQL as a first-class analytics store, and the Fabric **DP-700** exam topic most self-study skips.
+You met KQL briefly in [Azure Monitor & Log Analytics](../12_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md) — that's the *logs* face of the same engine. This note is the *data-engineering* face: KQL as a first-class analytics store, and the Fabric **DP-700** exam topic most self-study skips.
 
 ---
 
@@ -17,7 +17,7 @@ The same core engine (**Kusto**) ships under three product names — knowing the
 | Product | What it is |
 |---|---|
 | **Azure Data Explorer (ADX)** | The standalone Azure service — a fast, append-optimized analytics database for logs, telemetry, IoT, events |
-| **Log Analytics** | ADX under the hood, dedicated to Azure resource logs ([monitoring](../13_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md)) |
+| **Log Analytics** | ADX under the hood, dedicated to Azure resource logs ([monitoring](../12_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md)) |
 | **Fabric Real-Time Intelligence (Eventhouse / KQL Database)** | The same engine as a **Microsoft Fabric** workload, integrated with [OneLake](../10_Synapse_and_Fabric/03_Microsoft_Fabric.md) |
 
 **Why it's fast:** data is stored **columnar + heavily compressed + time-indexed**, and the engine is built for **append-only, high-ingest, read-mostly** workloads. It is *not* an OLTP database — no per-row updates in the transactional sense; you append and query.
