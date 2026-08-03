@@ -37,7 +37,7 @@ Topics are grouped into **category folders** so related material lives together:
 | **04_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse) |
 | **05_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
 | **06_Programming** | Python · PySpark |
-| **07_DevOps** | Git & GitHub · CI/CD · Containers · IaC & Tooling |
+| **07_DevOps** | Git & GitHub (version control, branching, remotes, CI/CD, troubleshooting) — Docker · Kubernetes · Terraform · ARM covered in Job Interviews |
 | **08_Databricks** | Databricks platform · Clusters · Notebooks/Jobs · Unity Catalog · DLT · Auto Loader |
 | **09_Streaming** | Streaming fundamentals · Event Hubs · Kafka · Stream Analytics |
 | **10_Synapse_and_Fabric** | Synapse Analytics · Dedicated/Serverless SQL pools (MPP) · Microsoft Fabric · platform decision guide |
@@ -78,6 +78,7 @@ Topics are grouped into **category folders** so related material lives together:
 - [SQL DCL and TCL](02_Databases/SQL/12_SQL_DCL_TCL.md) — controlling permissions (`GRANT`/`REVOKE`) and transactions (`COMMIT`/`ROLLBACK`/`SAVEPOINT`)
 - [SQL Warehouse](02_Databases/SQL/13_SQL_Warehouse.md) — what a data warehouse is and how it differs from a database
 - **[Interview Questions & Answers](02_Databases/SQL/Interview_Questions_and_Answers.md)** — 39 Q&A, heavy on practical "write this query" questions with real SQL
+- **[Practical SQL Query Interview Questions](02_Databases/SQL/Practical_SQL_Query_Interview_Questions.md)** — hands-on "write the query" problems (joins, aggregates, subqueries, window functions) with worked solutions
 
 ### 02_Databases › NoSQL — non-relational databases for scale & flexible data
 - [00 — Learning Path](02_Databases/NoSQL/00_NoSQL_Learning_Path.md) — the map of the module (level 0 to job-ready)
@@ -309,6 +310,21 @@ The data counterpart to AZ-900 — the ideal foundational entry point to the dat
 - [04 — Analytics Workloads on Azure](Certifications/DP_900/04_Analytics_Workloads_on_Azure.md) — ADF, Synapse, Databricks, Fabric, Power BI, ETL/ELT
 - [05 — Practice Questions by Domain](Certifications/DP_900/05_Practice_Questions_by_Domain.md) · [06 — Most Asked & Tricky](Certifications/DP_900/06_Most_Asked_and_Tricky_Questions.md) · [07 — Final Mock Exam](Certifications/DP_900/07_Final_Mock_Exam.md)
 
+### Databricks Certified Data Engineer Associate
+The hands-on Spark/Delta credential — the practical counterpart to the Microsoft certs, focused on the Databricks Lakehouse Platform.
+- [00 — Study Guide Overview](Certifications/Databricks_Data_Engineer_Associate/00_Study_Guide_Overview.md) — exam format, domain weights, and study plan — start here
+- [01 — Lakehouse Platform Fundamentals](Certifications/Databricks_Data_Engineer_Associate/01_Lakehouse_Platform_Fundamentals.md) — the platform, control plane vs data plane, workspace, Repos
+- [02 — Workspace, Clusters, Notebooks & Repos](Certifications/Databricks_Data_Engineer_Associate/02_Workspace_Clusters_Notebooks_Repos.md) — compute, notebooks, Git integration
+- [03 — Delta Lake Fundamentals](Certifications/Databricks_Data_Engineer_Associate/03_Delta_Lake_Fundamentals.md) — ACID, transaction log, time travel, OPTIMIZE/VACUUM
+- [04 — ELT with Spark SQL](Certifications/Databricks_Data_Engineer_Associate/04_ELT_with_Spark_SQL.md) — CTAS, views, MERGE, higher-order functions
+- [05 — ELT with PySpark & Python](Certifications/Databricks_Data_Engineer_Associate/05_ELT_with_PySpark_and_Python.md) — DataFrames, UDFs, control flow
+- [06 — Structured Streaming](Certifications/Databricks_Data_Engineer_Associate/06_Structured_Streaming.md) — readStream/writeStream, checkpoints, triggers
+- [07 — Auto Loader & Multi-Hop](Certifications/Databricks_Data_Engineer_Associate/07_Auto_Loader_and_Multi_Hop.md) — incremental ingestion + the medallion architecture
+- [08 — Delta Live Tables](Certifications/Databricks_Data_Engineer_Associate/08_Delta_Live_Tables.md) — declarative pipelines, expectations, streaming tables vs materialized views
+- [09 — Production Pipelines & Jobs](Certifications/Databricks_Data_Engineer_Associate/09_Production_Pipelines_Jobs.md) — Workflows, scheduling, dependencies, alerts
+- [10 — Data Governance & Unity Catalog](Certifications/Databricks_Data_Engineer_Associate/10_Data_Governance_Unity_Catalog.md) — the three-level namespace, access control, lineage
+- [11 — Practice Questions by Domain](Certifications/Databricks_Data_Engineer_Associate/11_Practice_Questions_by_Domain.md) · [12 — Most Asked & Tricky](Certifications/Databricks_Data_Engineer_Associate/12_Most_Asked_and_Tricky_Exam_Questions.md) · [13 — Final Mock Exam](Certifications/Databricks_Data_Engineer_Associate/13_Final_Mock_Exam.md)
+
 ### DP-700 — Microsoft Fabric Data Engineer Associate
 The associate-level flagship — **the cert that replaced the retired DP-203** as Microsoft's forward-looking data-engineering credential.
 - [00 — Study Guide Overview](Certifications/DP_700_Fabric_Data_Engineer/00_DP700_Study_Guide_Overview.md) — exam format, three domains, prerequisites, study plan — start here
@@ -335,7 +351,7 @@ Following the typical Azure Data Engineer learning path (aligned with the modern
 - **[16_Cost_and_Performance](16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md)** — FinOps, Databricks/Spark cost, performance tuning
 - **[17_Power_BI_for_Engineers](17_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md)** — semantic models, star schema, DAX, Direct Lake serving
 - **[18_System_Design](18_System_Design/00_System_Design_Learning_Path.md)** — the design framework, batch/streaming design, case studies
-- **[07_DevOps](07_DevOps/CICD/00_CICD_Learning_Path.md)** — CI/CD, Docker/Kubernetes, Terraform/IaC (beyond Git)
+- **[07_DevOps › Git & GitHub](07_DevOps/Git_GitHub/00_Git_GitHub_Learning_Path.md)** — version control from zero to production-ready (branching, remotes, CI/CD, troubleshooting)
 
 Topics are grouped into numbered **category folders** (`01_Foundations` → `18_System_Design`) so related material lives together, and the category numbers still suggest a reading order. The `Certifications/` and `Job Interviews/` folders sit outside the numbered learning path as separate tracks.
 
