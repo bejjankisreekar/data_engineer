@@ -2,7 +2,7 @@
 
 ## What is it?
 
-A **cluster** in Databricks is the group of virtual machines that actually runs your Spark code. Nothing executes without compute attached: a notebook or job hands work to a cluster, the cluster's **driver** plans it and the **workers** (executors) do it in parallel ([Spark architecture recap](../06_Programming/PySpark/Spark_Architecture.md)).
+A **cluster** in Databricks is the group of virtual machines that actually runs your Spark code. Nothing executes without compute attached: a notebook or job hands work to a cluster, the cluster's **driver** plans it and the **workers** (executors) do it in parallel ([Spark architecture recap](../03_Programming/PySpark/Spark_Architecture.md)).
 
 Choosing and sizing compute correctly is where Databricks cost and performance are won or lost — this is the most practical note in the module.
 
@@ -89,7 +89,7 @@ A team's nightly ETL ran on the same all-purpose cluster they used for developme
 
 ## Right-sizing: memory vs compute vs storage optimized
 
-- **Memory-optimized** — wide joins, big shuffles, caching, skew ([joins](../06_Programming/PySpark/07_Joins.md)). Most ETL lives here.
+- **Memory-optimized** — wide joins, big shuffles, caching, skew ([joins](../03_Programming/PySpark/07_Joins.md)). Most ETL lives here.
 - **Compute-optimized** — CPU-bound work, lots of narrow transformations, streaming.
 - **Storage-optimized** — very large shuffles/caching that spill to local disk.
 
@@ -101,7 +101,7 @@ Autoscaling adds/removes *workers* based on pending tasks. It helps bursty and u
 
 ## Photon
 
-Photon is a native (C++) vectorized execution engine that replaces parts of the JVM Spark engine for SQL and DataFrame operations. It can dramatically speed up scans, filters, joins, and aggregations — and because it costs more DBUs per hour but finishes faster, the *total* cost often drops. It doesn't accelerate arbitrary Python UDFs ([why UDFs are slow](../06_Programming/PySpark/10_UDFs_and_Pandas_Integration.md)).
+Photon is a native (C++) vectorized execution engine that replaces parts of the JVM Spark engine for SQL and DataFrame operations. It can dramatically speed up scans, filters, joins, and aggregations — and because it costs more DBUs per hour but finishes faster, the *total* cost often drops. It doesn't accelerate arbitrary Python UDFs ([why UDFs are slow](../03_Programming/PySpark/10_UDFs_and_Pandas_Integration.md)).
 
 ## SQL warehouses vs clusters
 
@@ -113,7 +113,7 @@ Photon is a native (C++) vectorized execution engine that replaces parts of the 
 
 ## Reading the Spark UI is the real tuning skill
 
-Right-sizing isn't guesswork — the **Spark UI** shows it. Look for: tasks spilling to disk (need more memory or better partitioning), one task far slower than the rest ([skew](../06_Programming/PySpark/14_Performance_and_Best_Practices.md)), a huge shuffle read (a join that should be broadcast), and long GC pauses (driver/executor under-provisioned). The pro sizes a cluster by running once and reading the UI, not by copying someone's config.
+Right-sizing isn't guesswork — the **Spark UI** shows it. Look for: tasks spilling to disk (need more memory or better partitioning), one task far slower than the rest ([skew](../03_Programming/PySpark/14_Performance_and_Best_Practices.md)), a huge shuffle read (a join that should be broadcast), and long GC pauses (driver/executor under-provisioned). The pro sizes a cluster by running once and reading the UI, not by copying someone's config.
 
 ## Job clusters + pools is the production default
 
@@ -145,7 +145,7 @@ Spot (preemptible) workers cut cost sharply but can be reclaimed. The field patt
 ## Related Notes
 
 - **Prev:** [What is Databricks?](01_What_is_Databricks.md) · **Next:** [Notebooks, Repos & Jobs](03_Notebooks_Repos_and_Jobs.md)
-- **Spark internals:** [Spark Architecture](../06_Programming/PySpark/Spark_Architecture.md) · [Performance & Best Practices](../06_Programming/PySpark/14_Performance_and_Best_Practices.md)
+- **Spark internals:** [Spark Architecture](../03_Programming/PySpark/Spark_Architecture.md) · [Performance & Best Practices](../03_Programming/PySpark/14_Performance_and_Best_Practices.md)
 - **Interview:** [Databricks Performance Optimization](../Job%20Interviews/Azure%20Databricks/Performance%20Optimization.md)
 
 ---

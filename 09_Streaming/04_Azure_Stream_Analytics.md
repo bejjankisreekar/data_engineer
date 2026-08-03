@@ -4,7 +4,7 @@
 
 **Azure Stream Analytics (ASA)** is a **fully-managed, SQL-based stream-processing service**. You point it at a streaming **input** (usually [Event Hubs](02_Azure_Event_Hubs.md) or IoT Hub), write a **SQL-like query** with windowing and filtering, and it continuously processes events and writes results to an **output** (Power BI, ADLS, SQL, Cosmos DB, and more) — all without managing any infrastructure or writing Spark.
 
-If [Event Hubs/Kafka](02_Azure_Event_Hubs.md) is the *pipe* that buffers events, Stream Analytics is a *processor* that computes on the stream — the low-code option, versus [Spark Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md) for code-heavy needs.
+If [Event Hubs/Kafka](02_Azure_Event_Hubs.md) is the *pipe* that buffers events, Stream Analytics is a *processor* that computes on the stream — the low-code option, versus [Spark Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md) for code-heavy needs.
 
 In one line: **Stream Analytics = real-time stream processing written in SQL, fully managed, input → query → output.**
 
@@ -150,7 +150,7 @@ Microsoft is unifying streaming under **Fabric Real-Time Intelligence** — **Ev
 ## Related Notes
 
 - **Prev:** [Apache Kafka](03_Apache_Kafka.md) · **Module start:** [Learning Path](00_Streaming_Learning_Path.md)
-- **Input from:** [Event Hubs](02_Azure_Event_Hubs.md) · **Alternative processor:** [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md)
+- **Input from:** [Event Hubs](02_Azure_Event_Hubs.md) · **Alternative processor:** [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md)
 - **Concepts:** [Streaming Fundamentals](01_Streaming_Fundamentals.md) · **SQL basis:** [What is SQL](../02_Databases/SQL/01_What_is_SQL.md)
 - **Interview:** [Stream Analytics Q&A](../Job%20Interviews/Stream%20Analytics/Stream%20Analytics%20Interview%20Questions.md)
 

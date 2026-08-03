@@ -83,9 +83,9 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Compression** — shrinking file size by removing repetition, similar to summarizing a long report so it takes up less space, without losing the information.
 
-**Data Lake** — a large storage area that holds raw data of any kind (structured, semi-structured, unstructured), before it's been cleaned or organized. Think of it as a big warehouse room where boxes arrive as-is, unsorted. See [Data Lake vs Warehouse vs Database](04_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
+**Data Lake** — a large storage area that holds raw data of any kind (structured, semi-structured, unstructured), before it's been cleaned or organized. Think of it as a big warehouse room where boxes arrive as-is, unsorted. See [Data Lake vs Warehouse vs Database](05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
 
-**Blob** — Azure's term for "a file stored in the cloud" (Binary Large OBject). See [Azure Blob Storage](04_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md).
+**Blob** — Azure's term for "a file stored in the cloud" (Binary Large OBject). See [Azure Blob Storage](05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md).
 
 ---
 
@@ -93,7 +93,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Pipeline** — an automated sequence of steps that moves data from one place to another, similar to an assembly line: extract from the source, transform it, load it into the destination.
 
-**ETL (Extract, Transform, Load)** — extract data from a source, clean/reshape it *before* loading it into its destination. See [ETL vs ELT](05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).
+**ETL (Extract, Transform, Load)** — extract data from a source, clean/reshape it *before* loading it into its destination. See [ETL vs ELT](06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).
 
 **ELT (Extract, Load, Transform)** — extract data, load it into the destination first, and transform it there afterward. Common with modern cloud warehouses that have plenty of processing power.
 
@@ -107,9 +107,9 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Azure-specific terms
 
-**Azure Data Factory (ADF)** — Azure's tool for building and scheduling data pipelines, largely through a drag-and-drop interface. See [Azure Data Factory](05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md).
+**Azure Data Factory (ADF)** — Azure's tool for building and scheduling data pipelines, largely through a drag-and-drop interface. See [Azure Data Factory](06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md).
 
-**Azure Data Lake Storage (ADLS)** — Azure Blob Storage with extra features (folder structure, fine-grained permissions) tuned for big-data analytics. See [Azure Data Lake Storage](04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md).
+**Azure Data Lake Storage (ADLS)** — Azure Blob Storage with extra features (folder structure, fine-grained permissions) tuned for big-data analytics. See [Azure Data Lake Storage](05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md).
 
 **Azure Synapse Analytics** — Microsoft's cloud data warehouse and analytics service (successor to Azure SQL Data Warehouse).
 
@@ -127,11 +127,11 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Partition** — one chunk of a dataset, small enough for one worker/core to process; the unit of parallelism in Spark and the unit of pruning in storage.
 
-**Shuffle** — redistributing data across the cluster by key (for GROUP BY, JOIN) — the most expensive operation in distributed processing. See [Spark Processing](06_Programming/PySpark/Spark_Processing.md).
+**Shuffle** — redistributing data across the cluster by key (for GROUP BY, JOIN) — the most expensive operation in distributed processing. See [Spark Processing](03_Programming/PySpark/Spark_Processing.md).
 
 **Data skew** — when one key/partition holds far more data than the rest, so one worker becomes the bottleneck ("the job is 99% done for an hour").
 
-**Driver / Executor** — Spark's master and workers: the driver plans and schedules; executors run tasks and hold cached data. See [Spark Architecture](06_Programming/PySpark/Spark_Architecture.md).
+**Driver / Executor** — Spark's master and workers: the driver plans and schedules; executors run tasks and hold cached data. See [Spark Architecture](03_Programming/PySpark/Spark_Architecture.md).
 
 **Lazy evaluation** — Spark records transformations without running them, then optimizes and executes the whole plan when an action (count, write) triggers it.
 
@@ -147,7 +147,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Watermark** — the saved "high-water mark" (e.g. max `modified_at`) an incremental load uses to fetch only new/changed rows next run.
 
-**Medallion (bronze/silver/gold)** — lakehouse layering: raw as-arrived → cleaned/typed → business-ready aggregates, with each boundary a quality contract. See [Medallion Architecture](04_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md).
+**Medallion (bronze/silver/gold)** — lakehouse layering: raw as-arrived → cleaned/typed → business-ready aggregates, with each boundary a quality contract. See [Medallion Architecture](05_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md).
 
 **Lakehouse** — data-lake storage + a table format (Delta/Iceberg) giving warehouse behavior (ACID, schema, time travel) on one copy of data.
 
@@ -161,9 +161,9 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Cloud terms
 
-**Region / Availability Zone** — a metro-area group of datacenters / one independent facility within it. See [Public, Private & Hybrid Cloud](03_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md).
+**Region / Availability Zone** — a metro-area group of datacenters / one independent facility within it. See [Public, Private & Hybrid Cloud](04_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md).
 
-**IaaS / PaaS / SaaS** — how much of the stack you rent: raw VMs / a managed platform for your code and data / finished software. See [SaaS, PaaS, IaaS](03_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md).
+**IaaS / PaaS / SaaS** — how much of the stack you rent: raw VMs / a managed platform for your code and data / finished software. See [SaaS, PaaS, IaaS](04_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md).
 
 **Serverless** — compute that scales to zero and bills per use; you never size or manage instances.
 
@@ -171,7 +171,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **RBAC (Role-Based Access Control)** — granting permissions via roles scoped to resources ("this factory may read this container").
 
-**Private endpoint / Private Link** — projecting an Azure PaaS service (Storage, Key Vault, SQL…) as a private IP inside your VNet so traffic never touches the public internet; with public access disabled, the service is reachable only from the network. See [Network Security & Private Connectivity](05_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md).
+**Private endpoint / Private Link** — projecting an Azure PaaS service (Storage, Key Vault, SQL…) as a private IP inside your VNet so traffic never touches the public internet; with public access disabled, the service is reachable only from the network. See [Network Security & Private Connectivity](06_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md).
 
 **Egress** — data leaving a cloud region/provider — the direction that costs money and shapes architectures.
 
@@ -201,11 +201,11 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Delta Lake and lakehouse operations
 
-**Transaction log (`_delta_log`)** — the ordered record of every change to a Delta table; it's what gives a pile of Parquet files ACID guarantees, time travel, and concurrent-write safety. See [Delta Lake](04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md).
+**Transaction log (`_delta_log`)** — the ordered record of every change to a Delta table; it's what gives a pile of Parquet files ACID guarantees, time travel, and concurrent-write safety. See [Delta Lake](05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md).
 
 **Time travel** — querying a Delta table *as of* an earlier version or timestamp, using the transaction log — for audits, debugging, and reproducible reports.
 
-**MERGE (upsert)** — a single statement that inserts new rows and updates matching existing ones ("update if present, else insert") — the backbone of incremental loads and SCD2. See [Delta Table](04_Storage_and_Formats/Lakehouse/02_Delta_Table.md).
+**MERGE (upsert)** — a single statement that inserts new rows and updates matching existing ones ("update if present, else insert") — the backbone of incremental loads and SCD2. See [Delta Table](05_Storage_and_Formats/Lakehouse/02_Delta_Table.md).
 
 **OPTIMIZE** — compacts many small Delta files into fewer large ones to speed up reads (the "small-file problem" fix).
 
@@ -239,7 +239,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Streaming
 
-**Checkpoint** — the saved progress of a streaming query (which data it has already processed) that lets it restart exactly where it left off after a failure. See [Structured Streaming](06_Programming/PySpark/13_Structured_Streaming.md).
+**Checkpoint** — the saved progress of a streaming query (which data it has already processed) that lets it restart exactly where it left off after a failure. See [Structured Streaming](03_Programming/PySpark/13_Structured_Streaming.md).
 
 **Windowing (tumbling / sliding / session)** — grouping unbounded stream events into finite time buckets so you can aggregate them ("count per 5-minute window"). See [Streaming Fundamentals](09_Streaming/01_Streaming_Fundamentals.md).
 
@@ -285,7 +285,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 ## Data quality, governance and observability
 
-**Data quality dimensions** — the yardsticks for "good" data: completeness, accuracy, consistency, timeliness, validity, uniqueness. See [Data Quality Fundamentals](05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md).
+**Data quality dimensions** — the yardsticks for "good" data: completeness, accuracy, consistency, timeliness, validity, uniqueness. See [Data Quality Fundamentals](06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md).
 
 **Expectations** — declarative rules that data must satisfy (e.g. "`amount` is never null"); rows that fail can be dropped, quarantined, or fail the run. Used by DLT and Great Expectations.
 
@@ -297,7 +297,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **SLI / SLO** — a Service Level Indicator is a measured signal (e.g. pipeline freshness); a Service Level Objective is the target for it ("data is <2h old, 99% of days"). See [Monitoring Fundamentals](13_Monitoring_and_Observability/01_Monitoring_Fundamentals.md).
 
-**Purview** — Microsoft's data-governance service: cataloging, classification, and lineage across the estate. See [Data Governance & Security](05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md).
+**Purview** — Microsoft's data-governance service: cataloging, classification, and lineage across the estate. See [Data Governance & Security](06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md).
 
 **Key Vault** — Azure's managed store for secrets, keys, and certificates, so pipelines never hard-code passwords or connection strings.
 

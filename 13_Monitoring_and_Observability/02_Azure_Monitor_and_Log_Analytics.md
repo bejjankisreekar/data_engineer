@@ -82,7 +82,7 @@ Assemble the key views into a **Workbook** or **Azure Dashboard**: pipeline succ
 ## Service-specific monitoring (still feeds Azure Monitor)
 
 - **ADF Monitor** — visual run history; rerun from failed activity; also exports to Log Analytics.
-- **Databricks** — the Jobs UI, the Spark UI (stages/tasks/shuffle for [performance](../06_Programming/PySpark/14_Performance_and_Best_Practices.md)), and cluster/audit logs to Log Analytics.
+- **Databricks** — the Jobs UI, the Spark UI (stages/tasks/shuffle for [performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md)), and cluster/audit logs to Log Analytics.
 - **Cost** — **Azure Cost Management** + budgets/alerts ([Cost](../16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md)).
 
 The unifying idea: individual services have their own UIs, but you **centralize** into Azure Monitor so one place answers "is the platform healthy?"

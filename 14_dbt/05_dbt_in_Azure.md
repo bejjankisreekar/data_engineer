@@ -27,7 +27,7 @@ Your models are (mostly) **portable** across these — the same `SELECT` logic, 
 ## dbt on Databricks (the flagship Azure combo)
 
 `dbt-databricks` runs your models against a **Databricks SQL Warehouse** (or cluster), materializing them as **Delta tables** in Unity Catalog. This gives you:
-- dbt's testing/docs/lineage **plus** Delta's ACID, time travel, and `MERGE` ([Delta](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)).
+- dbt's testing/docs/lineage **plus** Delta's ACID, time travel, and `MERGE` ([Delta](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)).
 - Incremental models compiled to Delta `MERGE` under the hood.
 - Governance via [Unity Catalog](../08_Databricks/04_Unity_Catalog.md).
 

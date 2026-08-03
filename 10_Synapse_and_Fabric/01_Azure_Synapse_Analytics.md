@@ -2,7 +2,7 @@
 
 ## What is it?
 
-**Azure Synapse Analytics** is a **unified analytics platform** that brings together, in one workspace, the pieces a data team used to buy separately: a **data warehouse** (SQL pools), a **big-data engine** ([Spark](../06_Programming/PySpark/00_PySpark_Learning_Path.md) pools), **data integration** (pipelines — essentially [Azure Data Factory](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) built in), and a query-over-the-lake engine — all managed from a single UI called **Synapse Studio**.
+**Azure Synapse Analytics** is a **unified analytics platform** that brings together, in one workspace, the pieces a data team used to buy separately: a **data warehouse** (SQL pools), a **big-data engine** ([Spark](../03_Programming/PySpark/00_PySpark_Learning_Path.md) pools), **data integration** (pipelines — essentially [Azure Data Factory](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) built in), and a query-over-the-lake engine — all managed from a single UI called **Synapse Studio**.
 
 It was Microsoft's flagship analytics platform (the evolution of Azure SQL Data Warehouse) and remains widely deployed — though for *new* builds Microsoft now steers customers to [Microsoft Fabric](03_Microsoft_Fabric.md).
 
@@ -12,7 +12,7 @@ In one line: **Synapse = data warehouse + Spark + data pipelines + lake querying
 
 ## Analogy: a single workshop with every tool
 
-Before Synapse, doing analytics was like driving between separate specialist shops — one place to weld (warehouse), another to cut wood (Spark), another to paint (pipelines) — each with its own key, its own paperwork, its own bill. **Synapse is one big workshop with every station under one roof**: the warehouse bench, the Spark bench, the pipeline bench, all sharing the same materials store (your [data lake](../04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)) and one door key (one workspace, one security model). You walk between stations instead of driving across town.
+Before Synapse, doing analytics was like driving between separate specialist shops — one place to weld (warehouse), another to cut wood (Spark), another to paint (pipelines) — each with its own key, its own paperwork, its own bill. **Synapse is one big workshop with every station under one roof**: the warehouse bench, the Spark bench, the pipeline bench, all sharing the same materials store (your [data lake](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)) and one door key (one workspace, one security model). You walk between stations instead of driving across town.
 
 ---
 
@@ -69,7 +69,7 @@ Serverless SQL pool: ad-hoc T-SQL over any lake file, any time
 Synapse Link: near-real-time analytics on Cosmos DB / SQL without ETL
 ```
 
-- **Synapse Link** provides **HTAP** — it replicates operational data (Cosmos DB, Azure SQL) into an analytical store automatically, so you analyze fresh data without building [CDC](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md) pipelines yourself.
+- **Synapse Link** provides **HTAP** — it replicates operational data (Cosmos DB, Azure SQL) into an analytical store automatically, so you analyze fresh data without building [CDC](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md) pipelines yourself.
 
 ---
 
@@ -96,7 +96,7 @@ Synapse Spark pools run Apache Spark integrated into the workspace — convenien
 
 ## Synapse Pipelines = ADF
 
-Synapse Pipelines are the **same engine as Azure Data Factory**, embedded in the workspace — same activities, linked services, integration runtimes, and mapping data flows ([ADF](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md)). The practical difference is packaging: standalone ADF vs pipelines living inside Synapse alongside the SQL and Spark engines. Skills transfer directly between them.
+Synapse Pipelines are the **same engine as Azure Data Factory**, embedded in the workspace — same activities, linked services, integration runtimes, and mapping data flows ([ADF](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md)). The practical difference is packaging: standalone ADF vs pipelines living inside Synapse alongside the SQL and Spark engines. Skills transfer directly between them.
 
 ## Synapse Link — HTAP without ETL
 
@@ -116,7 +116,7 @@ A dedicated SQL pool bills for its provisioned DWUs whenever it's *online*, rega
 
 ## Choose the engine per workload, not per platform loyalty
 
-The Synapse trap is doing everything in the dedicated pool because it's there — running exploratory scans that belong in serverless (cheaper), or heavy transforms that belong in Spark (more flexible). The pro routes each workload to its best engine: serverless for explore, Spark for transform, dedicated for governed high-concurrency serving — the same "right tool per job" discipline as the [lake/warehouse/lakehouse](../04_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) choice.
+The Synapse trap is doing everything in the dedicated pool because it's there — running exploratory scans that belong in serverless (cheaper), or heavy transforms that belong in Spark (more flexible). The pro routes each workload to its best engine: serverless for explore, Spark for transform, dedicated for governed high-concurrency serving — the same "right tool per job" discipline as the [lake/warehouse/lakehouse](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) choice.
 
 ## Field-tested gotchas
 
@@ -140,7 +140,7 @@ The Synapse trap is doing everything in the dedicated pool because it's there �
 
 - **Next:** [Dedicated vs Serverless SQL Pools](02_Dedicated_vs_Serverless_SQL_Pools.md) · [Microsoft Fabric](03_Microsoft_Fabric.md) · [Decision framework](04_Synapse_vs_Fabric_vs_Databricks.md)
 - **Foundations:** [SQL Warehouse](../02_Databases/SQL/13_SQL_Warehouse.md) · [Data Warehouse Fundamentals](../02_Databases/Data_Warehousing/01_Data_Warehouse_Fundamentals.md)
-- **Related engines:** [Azure Data Factory](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) · [Databricks](../08_Databricks/01_What_is_Databricks.md)
+- **Related engines:** [Azure Data Factory](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) · [Databricks](../08_Databricks/01_What_is_Databricks.md)
 - **Interview:** [Synapse Q&A](../Job%20Interviews/Azure%20Synapse/Synapse%20Interview%20Questions.md)
 
 ---

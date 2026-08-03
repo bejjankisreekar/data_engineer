@@ -26,10 +26,10 @@ It is a **practical, scenario-heavy** exam. You'll choose the right Fabric item 
 
 DP-700 sits on top of nearly everything in this repo. Shore up these first:
 - [Microsoft Fabric](../../10_Synapse_and_Fabric/03_Microsoft_Fabric.md) & [Synapse](../../10_Synapse_and_Fabric/01_Azure_Synapse_Analytics.md) — the platform
-- [Lakehouse Architecture](../../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md), [Delta Lake](../../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) & [Delta Table](../../04_Storage_and_Formats/Lakehouse/02_Delta_Table.md)
-- [PySpark](../../06_Programming/PySpark/00_PySpark_Learning_Path.md) & [SQL](../../02_Databases/SQL/01_What_is_SQL.md)
+- [Lakehouse Architecture](../../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md), [Delta Lake](../../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) & [Delta Table](../../05_Storage_and_Formats/Lakehouse/02_Delta_Table.md)
+- [PySpark](../../03_Programming/PySpark/00_PySpark_Learning_Path.md) & [SQL](../../02_Databases/SQL/01_What_is_SQL.md)
 - [Streaming](../../09_Streaming/00_Streaming_Learning_Path.md) — for Eventstream/Eventhouse
-- [Data Governance](../../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) & [Git/CI-CD](../../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md)
+- [Data Governance](../../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) & [Git/CI-CD](../../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md)
 
 ---
 

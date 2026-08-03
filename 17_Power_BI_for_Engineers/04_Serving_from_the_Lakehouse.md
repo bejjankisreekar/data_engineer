@@ -69,7 +69,7 @@ Notice how many are *upstream* decisions — the quality of the dashboard is lar
 ## Refresh orchestration & governance
 
 - **Sequence the refresh after Gold** — trigger Power BI dataset refresh (via ADF/Databricks/Fabric pipeline or the Power BI API) *once the Gold load succeeds*, so dashboards never show partially-loaded data.
-- **Row-Level Security (RLS)** — filter what each user sees (a regional manager sees only their region), often defined in the semantic model — a [governance](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) concern.
+- **Row-Level Security (RLS)** — filter what each user sees (a regional manager sees only their region), often defined in the semantic model — a [governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) concern.
 - **Certified/endorsed datasets** — mark the trusted semantic model so analysts build on the governed one, not a rogue copy.
 
 ---

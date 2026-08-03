@@ -66,7 +66,7 @@ Job: "Nightly Sales Pipeline"   (trigger: cron 0 2 * * *)
   on failure → retry 2×, then email/Teams alert
 ```
 
-A task can be a notebook, a Python script/wheel, a JAR, a SQL query, a DLT pipeline, or `dbt`. Tasks form a **DAG** ([DAG concept](../05_Data_Engineering/ETL_ELT/03_Data_Pipelines.md)) with dependencies, so steps run in order and in parallel where possible. Features: retries, timeouts, alerts, parameters, and running on cheap **job clusters** ([why](02_Clusters_and_Compute.md)).
+A task can be a notebook, a Python script/wheel, a JAR, a SQL query, a DLT pipeline, or `dbt`. Tasks form a **DAG** ([DAG concept](../06_Data_Engineering/ETL_ELT/03_Data_Pipelines.md)) with dependencies, so steps run in order and in parallel where possible. Features: retries, timeouts, alerts, parameters, and running on cheap **job clusters** ([why](02_Clusters_and_Compute.md)).
 
 ---
 
@@ -89,7 +89,7 @@ A task can be a notebook, a Python script/wheel, a JAR, a SQL query, a DLT pipel
 
 ## Azure Usage
 
-- **Secrets** — back Databricks secret scopes with **Azure Key Vault**; read via `dbutils.secrets.get()` so credentials never appear in code ([governance](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)).
+- **Secrets** — back Databricks secret scopes with **Azure Key Vault**; read via `dbutils.secrets.get()` so credentials never appear in code ([governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)).
 - **ADF ↔ Databricks** — Azure Data Factory can trigger a Databricks notebook/job as a pipeline activity, passing parameters — common when ADF owns ingestion and Databricks owns transformation.
 - **Azure DevOps Repos** — the usual Git backend for Databricks Repos and CI/CD.
 
@@ -168,7 +168,7 @@ Databricks Workflows handles Databricks-centric pipelines well and cheaply. But 
 ## Related Notes
 
 - **Prev:** [Clusters & Compute](02_Clusters_and_Compute.md) · **Next:** [Unity Catalog](04_Unity_Catalog.md)
-- **Orchestration concept:** [Data Pipelines](../05_Data_Engineering/ETL_ELT/03_Data_Pipelines.md) · **CI/CD:** [Production Best Practices](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md)
+- **Orchestration concept:** [Data Pipelines](../06_Data_Engineering/ETL_ELT/03_Data_Pipelines.md) · **CI/CD:** [Production Best Practices](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md)
 - **Cert:** [Production Pipelines & Jobs](../Certifications/Databricks_Data_Engineer_Associate/09_Production_Pipelines_Jobs.md)
 
 ---

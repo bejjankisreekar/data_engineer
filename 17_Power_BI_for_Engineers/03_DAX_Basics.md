@@ -72,7 +72,7 @@ Gold layer (Spark/dbt)  →  Semantic model (calculated column)  →  Measure (D
 - **Reusable, heavy, or shared** logic (revenue definitions, cleaned attributes) → compute in **Gold** so every consumer gets it consistently.
 - **Dynamic, filter-responsive** aggregations → **measures** (they *must* be DAX to react to slicers).
 
-This division keeps the semantic model light and the business logic **single-sourced** — a governance win ([data quality/consistency](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)).
+This division keeps the semantic model light and the business logic **single-sourced** — a governance win ([data quality/consistency](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)).
 
 ---
 

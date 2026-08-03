@@ -26,8 +26,8 @@ Every analytics solution is some version of this flow. Know which Azure service 
 
 | Service | Role | Repo deep-dive |
 |---|---|---|
-| **Azure Data Factory (ADF)** | Cloud **ingestion & orchestration** (ETL/ELT pipelines, low-code) | [ADF](../../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) |
-| **Azure Data Lake Storage Gen2** | Scalable **storage** for raw/curated analytics data | [ADLS](../../04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) |
+| **Azure Data Factory (ADF)** | Cloud **ingestion & orchestration** (ETL/ELT pipelines, low-code) | [ADF](../../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) |
+| **Azure Data Lake Storage Gen2** | Scalable **storage** for raw/curated analytics data | [ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) |
 | **Azure Synapse Analytics** | Unified **warehouse + Spark + pipelines** platform | [Synapse](../../10_Synapse_and_Fabric/01_Azure_Synapse_Analytics.md) |
 | **Azure Databricks** | Apache **Spark** big-data processing & ML (lakehouse) | [Databricks](../../08_Databricks/01_What_is_Databricks.md) |
 | **Microsoft Fabric** | All-in-one **SaaS analytics** on OneLake (Synapse's successor) | [Fabric](../../10_Synapse_and_Fabric/03_Microsoft_Fabric.md) |
@@ -42,7 +42,7 @@ Every analytics solution is some version of this flow. Know which Azure service 
 - **ETL** — Extract → **Transform** → Load (transform *before* loading; classic warehouse).
 - **ELT** — Extract → Load → **Transform** (load raw first, transform in the target; modern lake/lakehouse).
 
-Full note: [ETL vs ELT](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).
+Full note: [ETL vs ELT](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).
 
 > **Exam Tip:** ELT loads raw data first and transforms it *inside* the destination (data lake/warehouse) — the modern big-data pattern. ETL transforms *before* loading.
 

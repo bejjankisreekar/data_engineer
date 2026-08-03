@@ -29,7 +29,7 @@ In one line: **streaming = process each event as it happens; batch = process a c
 | Examples | Nightly warehouse load, monthly report | Fraud alerts, live dashboards, IoT |
 | Cost/complexity | Simpler, cheaper | Harder, needs care (state, ordering, failures) |
 
-Most real platforms use **both** — streaming for the fresh/reactive layer, batch for heavy historical reprocessing ([ETL vs ELT](../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md)).
+Most real platforms use **both** — streaming for the fresh/reactive layer, batch for heavy historical reprocessing ([ETL vs ELT](../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md)).
 
 ---
 
@@ -129,7 +129,7 @@ Two classic ways to combine batch and streaming:
 ## Stateful vs stateless processing
 
 - **Stateless** — each event handled independently (filter, map, enrich with static reference data). Easy, scales trivially.
-- **Stateful** — the result depends on *past* events (windowed counts, running totals, sessionization, dedup). Requires the engine to **store state** reliably (checkpointed), which is where most streaming complexity and failure-recovery logic lives ([checkpoints](../06_Programming/PySpark/13_Structured_Streaming.md)).
+- **Stateful** — the result depends on *past* events (windowed counts, running totals, sessionization, dedup). Requires the engine to **store state** reliably (checkpointed), which is where most streaming complexity and failure-recovery logic lives ([checkpoints](../03_Programming/PySpark/13_Structured_Streaming.md)).
 
 ## Backpressure & throughput
 
@@ -178,8 +178,8 @@ The watermark is a **latency-vs-completeness dial**. Tight watermark → low lat
 ## Related Notes
 
 - **Next:** [Azure Event Hubs](02_Azure_Event_Hubs.md)
-- **Spark side:** [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md)
-- **Context:** [ETL vs ELT](../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) · [Data Integration Fundamentals](../05_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md) · [Change Data Capture](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)
+- **Spark side:** [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md)
+- **Context:** [ETL vs ELT](../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) · [Data Integration Fundamentals](../06_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md) · [Change Data Capture](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)
 
 ---
 

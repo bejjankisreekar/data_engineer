@@ -73,7 +73,7 @@ Permissions use familiar SQL: `GRANT SELECT ON TABLE prod.sales.orders TO group_
 
 - **Identity** — UC users and groups come from **Microsoft Entra ID** (SCIM sync), so access aligns with corporate identity.
 - **Storage** — UC governs data in **ADLS Gen2** via *storage credentials* (a managed identity) + *external locations* (a governed path). This **replaces DBFS mounts**, which are being deprecated.
-- **Purview** — UC lineage/metadata integrates with **Microsoft Purview** for enterprise-wide cataloging beyond Databricks ([governance](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)).
+- **Purview** — UC lineage/metadata integrates with **Microsoft Purview** for enterprise-wide cataloging beyond Databricks ([governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)).
 
 ---
 
@@ -88,7 +88,7 @@ A bank runs a dev and a prod Databricks workspace and must prove to auditors exa
 
 ## Managed vs external tables under UC
 
-UC sharpens the [managed vs external](../04_Storage_and_Formats/Lakehouse/02_Delta_Table.md) distinction:
+UC sharpens the [managed vs external](../05_Storage_and_Formats/Lakehouse/02_Delta_Table.md) distinction:
 - **Managed tables** live in UC-managed storage; UC owns the full lifecycle (and `DROP` deletes the data).
 - **External tables** point at an **external location** (a governed ADLS path via a storage credential); `DROP` removes only metadata.
 
@@ -115,7 +115,7 @@ An open protocol to share live Delta tables with other orgs/tools **without copy
 
 ## UC is what makes "one copy, many engines" governable
 
-The [lakehouse promise](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) is one copy of data read by many engines — but without a single governance layer that's a security nightmare. Unity Catalog is the piece that makes it *safe*: one permission model spanning engineering (Spark), BI (SQL warehouses), and ML, tied to corporate identity. When evaluating a lakehouse, the pro asks "whose catalog governs it?" — UC is Databricks' answer, and it's the difference between a governed platform and a swamp.
+The [lakehouse promise](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) is one copy of data read by many engines — but without a single governance layer that's a security nightmare. Unity Catalog is the piece that makes it *safe*: one permission model spanning engineering (Spark), BI (SQL warehouses), and ML, tied to corporate identity. When evaluating a lakehouse, the pro asks "whose catalog governs it?" — UC is Databricks' answer, and it's the difference between a governed platform and a swamp.
 
 ## Catalog design is an org-design decision
 
@@ -146,7 +146,7 @@ Real orgs adopt UC incrementally: stand up the metastore, create catalogs, migra
 ## Related Notes
 
 - **Prev:** [Notebooks, Repos & Jobs](03_Notebooks_Repos_and_Jobs.md) · **Next:** [Delta Live Tables](05_Delta_Live_Tables.md)
-- **Governance:** [Data Governance & Security](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) · **Access SQL:** [SQL DCL & TCL](../02_Databases/SQL/12_SQL_DCL_TCL.md)
+- **Governance:** [Data Governance & Security](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) · **Access SQL:** [SQL DCL & TCL](../02_Databases/SQL/12_SQL_DCL_TCL.md)
 - **Cert:** [Data Governance & Unity Catalog](../Certifications/Databricks_Data_Engineer_Associate/10_Data_Governance_Unity_Catalog.md)
 
 ---

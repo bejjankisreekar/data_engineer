@@ -93,8 +93,8 @@ You are **not** expected to be a Kusto expert for a DE role — but reading thes
 |---|---|
 | Sub-second queries over **huge** volumes of recent events/logs/telemetry | **KQL DB / ADX / Eventhouse** |
 | Continuous **windowed processing** with SQL, outputs to sinks | [Stream Analytics](04_Azure_Stream_Analytics.md) |
-| Complex **transformations / ML** on streams, full control | Spark [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md) |
-| Cheap **historical** store for BI & batch | Delta lakehouse ([Lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)) |
+| Complex **transformations / ML** on streams, full control | Spark [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md) |
+| Cheap **historical** store for BI & batch | Delta lakehouse ([Lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)) |
 
 They compose: Eventstream → **Eventhouse** (hot, KQL) **and** → **Lakehouse** (cold, Delta). Don't pick one; route to both.
 

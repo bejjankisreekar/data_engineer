@@ -82,7 +82,7 @@ def test_removes_negative_amounts_and_dupes(spark):
     assert_df_equality(result, expected, ignore_row_order=True)
 ```
 
-Run with `pytest`. The pattern is always **arrange** (build a tiny input), **act** (call the function), **assert** (compare to expected). `assert_df_equality` handles the Spark-specific comparison (schema + rows). See [PySpark](../06_Programming/PySpark/00_PySpark_Learning_Path.md).
+Run with `pytest`. The pattern is always **arrange** (build a tiny input), **act** (call the function), **assert** (compare to expected). `assert_df_equality` handles the Spark-specific comparison (schema + rows). See [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md).
 
 ---
 

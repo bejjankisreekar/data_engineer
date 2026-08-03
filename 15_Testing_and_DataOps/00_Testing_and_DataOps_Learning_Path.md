@@ -2,7 +2,7 @@
 
 Most data engineers can write a transformation. Far fewer can **prove it's correct** and **deploy it safely**. This module is about that gap: **testing data pipelines** and **DataOps** — applying DevOps discipline (CI/CD, automation, version control) to data. It's what makes the difference between "it worked on my laptop" and "it runs reliably in production and I can change it without fear."
 
-Builds on [Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md), [CI/CD](../07_DevOps/CICD/00_CICD_Learning_Path.md), [dbt](../14_dbt/00_dbt_Learning_Path.md), and [Monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md).
+Builds on [Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md), [CI/CD](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md), [dbt](../14_dbt/00_dbt_Learning_Path.md), and [Monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md).
 
 ---
 

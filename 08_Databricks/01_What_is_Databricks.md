@@ -2,9 +2,9 @@
 
 ## What is it?
 
-**Databricks** is a cloud **data platform** built on top of Apache Spark by the people who created Spark. It bundles managed Spark compute, notebooks, [Delta Lake](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md), governance, and orchestration into one product so teams can run data engineering, analytics, and machine learning on a single [lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — without assembling and babysitting the infrastructure themselves.
+**Databricks** is a cloud **data platform** built on top of Apache Spark by the people who created Spark. It bundles managed Spark compute, notebooks, [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md), governance, and orchestration into one product so teams can run data engineering, analytics, and machine learning on a single [lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — without assembling and babysitting the infrastructure themselves.
 
-**Azure Databricks** is Databricks sold as a first-party Azure service: same platform, integrated with Azure identity (Entra ID), storage ([ADLS](../04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)), networking, and billing.
+**Azure Databricks** is Databricks sold as a first-party Azure service: same platform, integrated with Azure identity (Entra ID), storage ([ADLS](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)), networking, and billing.
 
 In one line: **Databricks = managed Spark + Delta Lake + notebooks + governance + jobs, as one lakehouse platform.**
 
@@ -66,7 +66,7 @@ This is the single most important thing to understand about Databricks — and a
 | **Cluster / compute** | The Spark VMs that run your code — see [02](02_Clusters_and_Compute.md) |
 | **Notebook** | Interactive multi-language document (Python/SQL/Scala/R) — see [03](03_Notebooks_Repos_and_Jobs.md) |
 | **Job / Workflow** | A scheduled, orchestrated pipeline — see [03](03_Notebooks_Repos_and_Jobs.md) |
-| **Delta Lake** | The default table format — see [Delta Lake](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) |
+| **Delta Lake** | The default table format — see [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) |
 | **Unity Catalog** | Central governance & metadata — see [04](04_Unity_Catalog.md) |
 | **DBFS / mounts** | A file-path abstraction over your cloud storage |
 | **Runtime (DBR)** | The pre-packaged Spark + libraries version your cluster runs |
@@ -133,7 +133,7 @@ Pinning a DBR version matters for reproducibility — a job that "worked last ye
 
 ## How Databricks relates to open-source Spark
 
-Everything you learned in [PySpark](../06_Programming/PySpark/00_PySpark_Learning_Path.md) works here unchanged — Databricks *is* Spark. What Databricks adds on top: the managed cluster lifecycle, Photon, Delta optimizations (liquid clustering, deletion vectors), Unity Catalog, DLT, Auto Loader, Databricks SQL, and MLflow. You can lift a plain PySpark job into Databricks with near-zero code change.
+Everything you learned in [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md) works here unchanged — Databricks *is* Spark. What Databricks adds on top: the managed cluster lifecycle, Photon, Delta optimizations (liquid clustering, deletion vectors), Unity Catalog, DLT, Auto Loader, Databricks SQL, and MLflow. You can lift a plain PySpark job into Databricks with near-zero code change.
 
 ---
 
@@ -172,8 +172,8 @@ In a real org you don't let everyone spin up any cluster — **cluster policies*
 ## Related Notes
 
 - **Next:** [Clusters & Compute](02_Clusters_and_Compute.md)
-- **Foundations:** [Why Spark? Why Databricks?](../06_Programming/PySpark/Why_Spark_Why_Databricks.md) · [Spark Architecture](../06_Programming/PySpark/Spark_Architecture.md)
-- **Storage:** [Lakehouse Architecture](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)
+- **Foundations:** [Why Spark? Why Databricks?](../03_Programming/PySpark/Why_Spark_Why_Databricks.md) · [Spark Architecture](../03_Programming/PySpark/Spark_Architecture.md)
+- **Storage:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)
 - **Cert:** [Databricks Associate — Lakehouse Platform](../Certifications/Databricks_Data_Engineer_Associate/01_Lakehouse_Platform_Fundamentals.md)
 
 ---

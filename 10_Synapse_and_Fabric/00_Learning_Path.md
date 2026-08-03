@@ -10,8 +10,8 @@ This module teaches **Synapse** (still widely deployed, heavily interviewed — 
 
 - [SQL Warehouse](../02_Databases/SQL/13_SQL_Warehouse.md) & [Data Warehouse Fundamentals](../02_Databases/Data_Warehousing/01_Data_Warehouse_Fundamentals.md) — Synapse *is* a warehouse
 - [Distributed Computing](../01_Foundations/Fundamentals/03_Distributed_Computing.md) & [Master–Slave Architecture](../01_Foundations/Fundamentals/04_Master_Slave_Architecture.md) — MPP is distributed SQL
-- [Lakehouse Architecture](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) & [Delta Lake](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) — Fabric's OneLake is Delta-native
-- [Data Lake vs Warehouse vs Database](../04_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)
+- [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) & [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) — Fabric's OneLake is Delta-native
+- [Data Lake vs Warehouse vs Database](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)
 
 ---
 

@@ -107,4 +107,4 @@ Operational: success/failure + duration-trend alerts, retries, and a failure→a
 
 ## Further Learning
 - Back to the [Learning Path](00_Monitoring_Learning_Path.md)
-- Related: [Reliability](03_Pipeline_Reliability.md) · [Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · [Testing & DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)
+- Related: [Reliability](03_Pipeline_Reliability.md) · [Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · [Testing & DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)

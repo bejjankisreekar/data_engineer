@@ -33,10 +33,10 @@ Topics are grouped into **category folders** so related material lives together:
 |---|---|
 | **01_Foundations** | Fundamentals (OLTP/OLAP, distributed computing, Hadoop) |
 | **02_Databases** | SQL · NoSQL · Data Modeling · Data Warehousing |
-| **03_Cloud** | Cloud Concepts (deployment & service models) |
-| **04_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse, Medallion) |
-| **05_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
-| **06_Programming** | Python · PySpark |
+| **03_Programming** | Python · PySpark |
+| **04_Cloud** | Cloud Concepts (deployment & service models) |
+| **05_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse, Medallion) |
+| **06_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
 | **07_DevOps** | Git & GitHub (version control, branching, remotes, CI/CD, troubleshooting) — Docker · Kubernetes · Terraform · ARM covered in Job Interviews |
 | **08_Databricks** | Databricks platform · Clusters · Notebooks/Jobs · Unity Catalog · DLT · Auto Loader |
 | **09_Streaming** | Streaming fundamentals · Event Hubs · Kafka · Stream Analytics |
@@ -102,97 +102,97 @@ Topics are grouped into **category folders** so related material lives together:
 - [05 — Data Vault & Modern Modeling](02_Databases/Data_Modeling/05_Data_Vault_and_Modern_Modeling.md) — Data Vault 2.0, OBT, modeling for the lakehouse
 - **[Interview Questions & Answers](02_Databases/Data_Modeling/Interview_Questions_and_Answers.md)** — 26 Q&A across the module
 
-### 04_Storage_and_Formats › File Formats — how data is stored on disk
-- [CSV](04_Storage_and_Formats/File_Formats/01_CSV.md) — the simplest, most universal text format
-- [JSON](04_Storage_and_Formats/File_Formats/02_JSON.md) — flexible, nested key-value data
-- [Avro](04_Storage_and_Formats/File_Formats/03_Avro.md) — row-based format built for fast writes and schema evolution
-- [ORC](04_Storage_and_Formats/File_Formats/04_ORC.md) — columnar format from the Hadoop world
-- [Parquet](04_Storage_and_Formats/File_Formats/05_Parquet.md) — the columnar format most used in modern analytics
-- [File Format Comparison](04_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md) — a side-by-side cheat sheet for choosing between them
-- **[Interview Questions & Answers](04_Storage_and_Formats/File_Formats/Interview_Questions_and_Answers.md)** — 22 Q&A covering all five formats plus the comparison framework
+### 05_Storage_and_Formats › File Formats — how data is stored on disk
+- [CSV](05_Storage_and_Formats/File_Formats/01_CSV.md) — the simplest, most universal text format
+- [JSON](05_Storage_and_Formats/File_Formats/02_JSON.md) — flexible, nested key-value data
+- [Avro](05_Storage_and_Formats/File_Formats/03_Avro.md) — row-based format built for fast writes and schema evolution
+- [ORC](05_Storage_and_Formats/File_Formats/04_ORC.md) — columnar format from the Hadoop world
+- [Parquet](05_Storage_and_Formats/File_Formats/05_Parquet.md) — the columnar format most used in modern analytics
+- [File Format Comparison](05_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md) — a side-by-side cheat sheet for choosing between them
+- **[Interview Questions & Answers](05_Storage_and_Formats/File_Formats/Interview_Questions_and_Answers.md)** — 22 Q&A covering all five formats plus the comparison framework
 
-### 03_Cloud › Cloud Concepts — where all of this runs
-- [Public, Private & Hybrid Cloud](03_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md) — the three deployment models: whose computers are they?
-- [IaaS vs PaaS vs SaaS](03_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md) — the three service models: how much of the stack do you manage?
-- **[Interview Questions & Answers](03_Cloud/Cloud_Concepts/Interview_Questions_and_Answers.md)** — 18 Q&A going deep on both notes
+### 04_Cloud › Cloud Concepts — where all of this runs
+- [Public, Private & Hybrid Cloud](04_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md) — the three deployment models: whose computers are they?
+- [IaaS vs PaaS vs SaaS](04_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md) — the three service models: how much of the stack do you manage?
+- **[Interview Questions & Answers](04_Cloud/Cloud_Concepts/Interview_Questions_and_Answers.md)** — 18 Q&A going deep on both notes
 
-### 04_Storage_and_Formats › Data Storage — where data lives in Azure
-- [Data Lake vs Warehouse vs Database](04_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) — the three storage patterns and when each is used
-- [Azure Blob Storage](04_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md) — general-purpose cloud file storage
-- [Azure Data Lake Storage](04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) — Blob Storage built for large-scale analytics
-- **[Interview Questions & Answers](04_Storage_and_Formats/Data_Storage/Interview_Questions_and_Answers.md)** — 26 Q&A covering all three notes
+### 05_Storage_and_Formats › Data Storage — where data lives in Azure
+- [Data Lake vs Warehouse vs Database](05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) — the three storage patterns and when each is used
+- [Azure Blob Storage](05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md) — general-purpose cloud file storage
+- [Azure Data Lake Storage](05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) — Blob Storage built for large-scale analytics
+- **[Interview Questions & Answers](05_Storage_and_Formats/Data_Storage/Interview_Questions_and_Answers.md)** — 26 Q&A covering all three notes
 
-### 04_Storage_and_Formats › Lakehouse — the modern table format and architecture
-- [01 — Delta Lake](04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) — the open storage layer that adds ACID, updates/deletes, and time travel to Parquet via a transaction log
-- [02 — Delta Table](04_Storage_and_Formats/Lakehouse/02_Delta_Table.md) — the table itself: managed vs external, MERGE/upsert, OPTIMIZE, VACUUM, Change Data Feed
-- [03 — Lakehouse Architecture](04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — one copy of data for BI + ML, the two-copy problem it kills, and the three pillars
-- [04 — Medallion Architecture](04_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md) — the **Bronze → Silver → Gold** layering in depth: per-layer rules, transformation code, batch/streaming, anti-patterns
-- **[Interview Questions & Answers](04_Storage_and_Formats/Lakehouse/Interview_Questions_and_Answers.md)** — 25 Q&A across Delta Lake, Delta tables, and the lakehouse
+### 05_Storage_and_Formats › Lakehouse — the modern table format and architecture
+- [01 — Delta Lake](05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) — the open storage layer that adds ACID, updates/deletes, and time travel to Parquet via a transaction log
+- [02 — Delta Table](05_Storage_and_Formats/Lakehouse/02_Delta_Table.md) — the table itself: managed vs external, MERGE/upsert, OPTIMIZE, VACUUM, Change Data Feed
+- [03 — Lakehouse Architecture](05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — one copy of data for BI + ML, the two-copy problem it kills, and the three pillars
+- [04 — Medallion Architecture](05_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md) — the **Bronze → Silver → Gold** layering in depth: per-layer rules, transformation code, batch/streaming, anti-patterns
+- **[Interview Questions & Answers](05_Storage_and_Formats/Lakehouse/Interview_Questions_and_Answers.md)** — 25 Q&A across Delta Lake, Delta tables, and the lakehouse
 
-### 05_Data_Engineering › ETL / ELT — moving and transforming data
-- [ETL vs ELT](05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) — the two common patterns for getting data from source to destination
-- [Azure Data Factory](05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) — Azure's drag-and-drop data pipeline tool
-- [Data Pipelines](05_Data_Engineering/ETL_ELT/03_Data_Pipelines.md) — the tool-agnostic architecture: components, batch vs streaming, DAGs, idempotency, orchestration tools, failure handling
-- **[Interview Questions & Answers](05_Data_Engineering/ETL_ELT/Interview_Questions_and_Answers.md)** — 16 Q&A going deep on both notes
+### 06_Data_Engineering › ETL / ELT — moving and transforming data
+- [ETL vs ELT](06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) — the two common patterns for getting data from source to destination
+- [Azure Data Factory](06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) — Azure's drag-and-drop data pipeline tool
+- [Data Pipelines](06_Data_Engineering/ETL_ELT/03_Data_Pipelines.md) — the tool-agnostic architecture: components, batch vs streaming, DAGs, idempotency, orchestration tools, failure handling
+- **[Interview Questions & Answers](06_Data_Engineering/ETL_ELT/Interview_Questions_and_Answers.md)** — 16 Q&A going deep on both notes
 
-### 05_Data_Engineering › Data Integration — combining data from many sources
-- [01 — Data Integration Fundamentals](05_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md) — ETL/ELT/replication/CDC/virtualization/streaming/API, batch vs stream
-- [02 — Integration Patterns](05_Data_Engineering/Data_Integration/02_Integration_Patterns.md) — full/incremental/CDC, metadata-driven, reliability & delivery semantics
-- [03 — Change Data Capture (CDC)](05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md) — log-based CDC, MERGE, Delta Change Data Feed
-- [04 — Azure Integration Services](05_Data_Engineering/Data_Integration/04_Azure_Integration_Services.md) — ADF, Databricks, Event Hub, Logic Apps, Event Grid, Service Bus
-- **[Interview Questions & Answers](05_Data_Engineering/Data_Integration/Interview_Questions_and_Answers.md)** — 20 Q&A across the module
+### 06_Data_Engineering › Data Integration — combining data from many sources
+- [01 — Data Integration Fundamentals](06_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md) — ETL/ELT/replication/CDC/virtualization/streaming/API, batch vs stream
+- [02 — Integration Patterns](06_Data_Engineering/Data_Integration/02_Integration_Patterns.md) — full/incremental/CDC, metadata-driven, reliability & delivery semantics
+- [03 — Change Data Capture (CDC)](06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md) — log-based CDC, MERGE, Delta Change Data Feed
+- [04 — Azure Integration Services](06_Data_Engineering/Data_Integration/04_Azure_Integration_Services.md) — ADF, Databricks, Event Hub, Logic Apps, Event Grid, Service Bus
+- **[Interview Questions & Answers](06_Data_Engineering/Data_Integration/Interview_Questions_and_Answers.md)** — 20 Q&A across the module
 
-### 05_Data_Engineering › Data Governance & Security — trust, access, lineage, compliance
-- [01 — Data Governance & Security](05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) — governance pillars, RBAC/ACL, MSI/Key Vault, Purview, Unity Catalog, lineage, GDPR
-- [02 — Network Security & Private Connectivity](05_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md) — private endpoints/Private Link, ADF Managed VNet, Databricks VNet injection & Secure Cluster Connectivity, Private DNS
-- **[Interview Questions & Answers](05_Data_Engineering/Data_Governance/Interview_Questions_and_Answers.md)** — 15 Q&A on governance & security
+### 06_Data_Engineering › Data Governance & Security — trust, access, lineage, compliance
+- [01 — Data Governance & Security](06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) — governance pillars, RBAC/ACL, MSI/Key Vault, Purview, Unity Catalog, lineage, GDPR
+- [02 — Network Security & Private Connectivity](06_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md) — private endpoints/Private Link, ADF Managed VNet, Databricks VNet injection & Secure Cluster Connectivity, Private DNS
+- **[Interview Questions & Answers](06_Data_Engineering/Data_Governance/Interview_Questions_and_Answers.md)** — 15 Q&A on governance & security
 
-### 05_Data_Engineering › Data Quality — delivering data people can trust
-- [01 — Data Quality & Validation](05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) — quality dimensions, shift-left, quarantine, DLT expectations, Great Expectations, observability
-- **[Interview Questions & Answers](05_Data_Engineering/Data_Quality/Interview_Questions_and_Answers.md)** — 14 Q&A on data quality
+### 06_Data_Engineering › Data Quality — delivering data people can trust
+- [01 — Data Quality & Validation](06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) — quality dimensions, shift-left, quarantine, DLT expectations, Great Expectations, observability
+- **[Interview Questions & Answers](06_Data_Engineering/Data_Quality/Interview_Questions_and_Answers.md)** — 14 Q&A on data quality
 
-### 06_Programming › Python — the language of data engineering
-- [00 — Python Learning Path](06_Programming/Python/00_Python_Learning_Path.md) — the map of the series and the suggested route
-- [01 — Getting Started](06_Programming/Python/01_Getting_Started.md) — what Python is, installing it, running code, the REPL
-- [02 — Variables & Data Types](06_Programming/Python/02_Variables_and_Data_Types.md) — int/float/str/bool/None and dynamic typing
-- [03 — Strings](06_Programming/Python/03_Strings.md) — slicing, methods, f-strings, formatting
-- [04 — Lists, Tuples & Sets](06_Programming/Python/04_Lists_Tuples_Sets.md) — the ordered and unordered collections
-- [05 — Dictionaries](06_Programming/Python/05_Dictionaries.md) — key-value data, the workhorse of Python
-- [06 — Conditionals & Loops](06_Programming/Python/06_Conditionals_and_Loops.md) — if/elif/else, for, while, range, break/continue
-- [07 — Functions](06_Programming/Python/07_Functions.md) — def, arguments, return, *args/**kwargs, lambda, scope
-- [08 — Comprehensions](06_Programming/Python/08_Comprehensions.md) — list/dict/set comprehensions
-- [09 — Files & Exceptions](06_Programming/Python/09_Files_and_Exceptions.md) — reading/writing files, try/except error handling
-- [10 — Modules & Virtual Environments](06_Programming/Python/10_Modules_and_Virtual_Environments.md) — import, pip, venv, project structure
-- [11 — Python for Data Engineering](06_Programming/Python/11_Python_for_Data_Engineering.md) — pandas intro and the bridge to PySpark
-- **[Interview Questions & Answers](06_Programming/Python/Interview_Questions_and_Answers.md)** — Q&A covering the whole module
+### 03_Programming › Python — the language of data engineering
+- [00 — Python Learning Path](03_Programming/Python/00_Python_Learning_Path.md) — the map of the series and the suggested route
+- [01 — Getting Started](03_Programming/Python/01_Getting_Started.md) — what Python is, installing it, running code, the REPL
+- [02 — Variables & Data Types](03_Programming/Python/02_Variables_and_Data_Types.md) — int/float/str/bool/None and dynamic typing
+- [03 — Strings](03_Programming/Python/03_Strings.md) — slicing, methods, f-strings, formatting
+- [04 — Lists, Tuples & Sets](03_Programming/Python/04_Lists_Tuples_Sets.md) — the ordered and unordered collections
+- [05 — Dictionaries](03_Programming/Python/05_Dictionaries.md) — key-value data, the workhorse of Python
+- [06 — Conditionals & Loops](03_Programming/Python/06_Conditionals_and_Loops.md) — if/elif/else, for, while, range, break/continue
+- [07 — Functions](03_Programming/Python/07_Functions.md) — def, arguments, return, *args/**kwargs, lambda, scope
+- [08 — Comprehensions](03_Programming/Python/08_Comprehensions.md) — list/dict/set comprehensions
+- [09 — Files & Exceptions](03_Programming/Python/09_Files_and_Exceptions.md) — reading/writing files, try/except error handling
+- [10 — Modules & Virtual Environments](03_Programming/Python/10_Modules_and_Virtual_Environments.md) — import, pip, venv, project structure
+- [11 — Python for Data Engineering](03_Programming/Python/11_Python_for_Data_Engineering.md) — pandas intro and the bridge to PySpark
+- **[Interview Questions & Answers](03_Programming/Python/Interview_Questions_and_Answers.md)** — Q&A covering the whole module
 
-### 06_Programming › PySpark — big data processing
+### 03_Programming › PySpark — big data processing
 
 **Concept track** (how Spark works inside):
-- [What is Apache Spark?](06_Programming/PySpark/What_Is_Apache_Spark.md) — the distributed, in-memory processing engine, explained from scratch
-- [Spark Architecture](06_Programming/PySpark/Spark_Architecture.md) — driver, executors, cluster manager, jobs, stages, and tasks
-- [Spark Processing](06_Programming/PySpark/Spark_Processing.md) — partitions, lazy evaluation, transformations vs actions, shuffles, caching
-- [Why Spark? Why Databricks?](06_Programming/PySpark/Why_Spark_Why_Databricks.md) — why Spark replaced MapReduce, and what Databricks adds on top
+- [What is Apache Spark?](03_Programming/PySpark/What_Is_Apache_Spark.md) — the distributed, in-memory processing engine, explained from scratch
+- [Spark Architecture](03_Programming/PySpark/Spark_Architecture.md) — driver, executors, cluster manager, jobs, stages, and tasks
+- [Spark Processing](03_Programming/PySpark/Spark_Processing.md) — partitions, lazy evaluation, transformations vs actions, shuffles, caching
+- [Why Spark? Why Databricks?](03_Programming/PySpark/Why_Spark_Why_Databricks.md) — why Spark replaced MapReduce, and what Databricks adds on top
 
 **Coding track** (zero-to-pro series — start at 00 and read in order):
-- [00 — PySpark Learning Path](06_Programming/PySpark/00_PySpark_Learning_Path.md) — the map of the whole series and suggested routes
-- [01 — Getting Started & SparkSession](06_Programming/PySpark/01_Getting_Started_SparkSession.md) — install, run, and your entry point
-- [02 — DataFrame Basics](06_Programming/PySpark/02_DataFrame_Basics.md) — select, filter, withColumn, sort — the daily verbs
-- [03 — Schemas & Data Types](06_Programming/PySpark/03_Schemas_and_Data_Types.md) — declaring structure, casting, timezone discipline
-- [04 — Reading & Writing Data](06_Programming/PySpark/04_Reading_and_Writing_Data.md) — CSV/JSON/Parquet/Delta/JDBC in and out
-- [05 — Column Operations & Functions](06_Programming/PySpark/05_Column_Operations_and_Functions.md) — strings, dates, conditionals, null handling
-- [06 — Aggregations & Grouping](06_Programming/PySpark/06_Aggregations_and_Grouping.md) — groupBy, agg, pivot, rollup
-- [07 — Joins](06_Programming/PySpark/07_Joins.md) — every join type, broadcast, semi/anti, fan-out defense
-- [08 — Window Functions](06_Programming/PySpark/08_Window_Functions.md) — ranking, lag/lead, running totals, dedupe
-- [09 — Complex Types & JSON](06_Programming/PySpark/09_Complex_Types_and_JSON.md) — structs, arrays, explode, from_json
-- [10 — UDFs & Pandas Integration](06_Programming/PySpark/10_UDFs_and_Pandas_Integration.md) — custom functions and when not to write them
-- [11 — Spark SQL & Views](06_Programming/PySpark/11_Spark_SQL_and_Views.md) — mixing SQL and DataFrames, catalogs
-- [12 — Delta Lake with PySpark](06_Programming/PySpark/12_Delta_Lake_with_PySpark.md) — MERGE, time travel, OPTIMIZE, the transaction log
-- [13 — Structured Streaming](06_Programming/PySpark/13_Structured_Streaming.md) — checkpoints, triggers, watermarks, foreachBatch
-- [14 — Performance & Best Practices](06_Programming/PySpark/14_Performance_and_Best_Practices.md) — the tuning workflow, testing, production habits
-- [15 — RDDs: The Foundation](06_Programming/PySpark/15_RDDs_The_Foundation.md) — map/reduce, lineage, shuffles, and why the DataFrame API replaced hand-written RDD code
+- [00 — PySpark Learning Path](03_Programming/PySpark/00_PySpark_Learning_Path.md) — the map of the whole series and suggested routes
+- [01 — Getting Started & SparkSession](03_Programming/PySpark/01_Getting_Started_SparkSession.md) — install, run, and your entry point
+- [02 — DataFrame Basics](03_Programming/PySpark/02_DataFrame_Basics.md) — select, filter, withColumn, sort — the daily verbs
+- [03 — Schemas & Data Types](03_Programming/PySpark/03_Schemas_and_Data_Types.md) — declaring structure, casting, timezone discipline
+- [04 — Reading & Writing Data](03_Programming/PySpark/04_Reading_and_Writing_Data.md) — CSV/JSON/Parquet/Delta/JDBC in and out
+- [05 — Column Operations & Functions](03_Programming/PySpark/05_Column_Operations_and_Functions.md) — strings, dates, conditionals, null handling
+- [06 — Aggregations & Grouping](03_Programming/PySpark/06_Aggregations_and_Grouping.md) — groupBy, agg, pivot, rollup
+- [07 — Joins](03_Programming/PySpark/07_Joins.md) — every join type, broadcast, semi/anti, fan-out defense
+- [08 — Window Functions](03_Programming/PySpark/08_Window_Functions.md) — ranking, lag/lead, running totals, dedupe
+- [09 — Complex Types & JSON](03_Programming/PySpark/09_Complex_Types_and_JSON.md) — structs, arrays, explode, from_json
+- [10 — UDFs & Pandas Integration](03_Programming/PySpark/10_UDFs_and_Pandas_Integration.md) — custom functions and when not to write them
+- [11 — Spark SQL & Views](03_Programming/PySpark/11_Spark_SQL_and_Views.md) — mixing SQL and DataFrames, catalogs
+- [12 — Delta Lake with PySpark](03_Programming/PySpark/12_Delta_Lake_with_PySpark.md) — MERGE, time travel, OPTIMIZE, the transaction log
+- [13 — Structured Streaming](03_Programming/PySpark/13_Structured_Streaming.md) — checkpoints, triggers, watermarks, foreachBatch
+- [14 — Performance & Best Practices](03_Programming/PySpark/14_Performance_and_Best_Practices.md) — the tuning workflow, testing, production habits
+- [15 — RDDs: The Foundation](03_Programming/PySpark/15_RDDs_The_Foundation.md) — map/reduce, lineage, shuffles, and why the DataFrame API replaced hand-written RDD code
 
-**[Interview Questions & Answers](06_Programming/PySpark/Interview_Questions_and_Answers.md)** — 78 Q&A, the largest in the series, covering all 19 files above with real PySpark code in every practical answer
+**[Interview Questions & Answers](03_Programming/PySpark/Interview_Questions_and_Answers.md)** — 78 Q&A, the largest in the series, covering all 19 files above with real PySpark code in every practical answer
 
 ### 02_Databases › Data Warehousing — architectures beyond a single central warehouse
 - [Data Warehouse Fundamentals](02_Databases/Data_Warehousing/01_Data_Warehouse_Fundamentals.md) — Inmon's four properties, warehouse layers (staging/ODS/marts), single/two/three-tier architecture, Inmon vs Kimball

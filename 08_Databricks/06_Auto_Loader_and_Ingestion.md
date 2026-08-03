@@ -2,7 +2,7 @@
 
 ## What is it?
 
-**Auto Loader** is a Databricks feature that **incrementally and efficiently ingests new files** as they land in cloud storage — automatically detecting which files are new, without you tracking them or reprocessing everything each run. It's the standard way to load the **Bronze** layer of a [medallion pipeline](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) from a stream of arriving files.
+**Auto Loader** is a Databricks feature that **incrementally and efficiently ingests new files** as they land in cloud storage — automatically detecting which files are new, without you tracking them or reprocessing everything each run. It's the standard way to load the **Bronze** layer of a [medallion pipeline](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) from a stream of arriving files.
 
 Under the hood it's a Structured Streaming source (`cloudFiles`) that remembers what it has already processed via a checkpoint, so each run picks up only the new files — exactly-once, at scale.
 
@@ -109,7 +109,7 @@ A retailer's point-of-sale systems drop a JSON file per store per hour into ADLS
 
 ## Checkpoints are the source of truth
 
-Auto Loader (like all [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md)) records processed-file state and stream progress in the **checkpoint location**. This is what guarantees exactly-once and enables resume-after-failure. Consequences: never point two streams at the same checkpoint, never hand-edit it, and understand that *deleting* it means "reprocess everything from scratch." The checkpoint is production state, not a temp folder.
+Auto Loader (like all [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md)) records processed-file state and stream progress in the **checkpoint location**. This is what guarantees exactly-once and enables resume-after-failure. Consequences: never point two streams at the same checkpoint, never hand-edit it, and understand that *deleting* it means "reprocess everything from scratch." The checkpoint is production state, not a temp folder.
 
 ## `trigger(availableNow=True)` — incremental batch
 
@@ -135,7 +135,7 @@ The `_rescued_data` column captures any incoming field that doesn't fit the curr
 
 ## The small-file problem starts at ingestion
 
-Auto Loader faithfully ingests whatever arrives — including millions of tiny files, which then produce a poorly-laid-out Bronze table that's slow to query ([small-file problem](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)). The fix isn't in Auto Loader; it's **compacting downstream** (`OPTIMIZE`, or letting Silver rewrite into well-sized files) and not partitioning Bronze to death. Think about file layout at every hop, not just ingestion.
+Auto Loader faithfully ingests whatever arrives — including millions of tiny files, which then produce a poorly-laid-out Bronze table that's slow to query ([small-file problem](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)). The fix isn't in Auto Loader; it's **compacting downstream** (`OPTIMIZE`, or letting Silver rewrite into well-sized files) and not partitioning Bronze to death. Think about file layout at every hop, not just ingestion.
 
 ## File-notification mode: powerful but operationally heavier
 
@@ -163,8 +163,8 @@ At millions of files, notification mode is the right call — but it introduces 
 ## Related Notes
 
 - **Prev:** [Delta Live Tables](05_Delta_Live_Tables.md) · **Module start:** [Learning Path](00_Databricks_Learning_Path.md)
-- **Streaming:** [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md) · **Bronze layer:** [Lakehouse Architecture](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)
-- **Integration patterns:** [Integration Patterns](../05_Data_Engineering/Data_Integration/02_Integration_Patterns.md)
+- **Streaming:** [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md) · **Bronze layer:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)
+- **Integration patterns:** [Integration Patterns](../06_Data_Engineering/Data_Integration/02_Integration_Patterns.md)
 - **Cert:** [Auto Loader & Multi-Hop](../Certifications/Databricks_Data_Engineer_Associate/07_Auto_Loader_and_Multi_Hop.md)
 
 ---

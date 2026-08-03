@@ -30,7 +30,7 @@ flowchart LR
 | **True streaming** (Event Hubs → Structured Streaming) | Continuous processing of an event stream | Real-time dashboards, alerting, IoT |
 | **Incremental file ingestion** (**Auto Loader**) | New *files* landing in ADLS processed as they arrive | "Micro-batch" — files drop every few minutes |
 
-Both use the same Structured Streaming engine. Auto Loader is the everyday Databricks pattern; do the Event Hubs version too because interviews ask about it. See [Streaming Fundamentals](../09_Streaming/01_Streaming_Fundamentals.md) and [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md).
+Both use the same Structured Streaming engine. Auto Loader is the everyday Databricks pattern; do the Event Hubs version too because interviews ask about it. See [Streaming Fundamentals](../09_Streaming/01_Streaming_Fundamentals.md) and [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md).
 
 ---
 
@@ -91,7 +91,7 @@ parsed = (bronze_stream
     .dropDuplicates(["order_id", "event_time"]))       # streaming dedupe
 ```
 
-Watermarking + `dropDuplicates` gives **deduplicated, bounded-state** streaming — covered in [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md).
+Watermarking + `dropDuplicates` gives **deduplicated, bounded-state** streaming — covered in [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md).
 
 ---
 

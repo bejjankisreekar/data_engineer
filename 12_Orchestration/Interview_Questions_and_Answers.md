@@ -107,4 +107,4 @@ You want: an **alert** fired immediately, **retries** already attempted for tran
 
 ## Further Learning
 - Back to the [Learning Path](00_Orchestration_Learning_Path.md)
-- Related: [ADF basics](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) · [Monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md) · [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)
+- Related: [ADF basics](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) · [Monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md) · [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)

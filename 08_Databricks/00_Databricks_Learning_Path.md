@@ -1,6 +1,6 @@
 # Databricks — Learning Path
 
-**Azure Databricks** is the platform where most modern Azure data engineering actually happens: it's a managed Apache Spark environment with the [lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) built in. If [PySpark](../06_Programming/PySpark/00_PySpark_Learning_Path.md) is the *language* and [Delta Lake](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) is the *storage format*, **Databricks is the house they both live in.**
+**Azure Databricks** is the platform where most modern Azure data engineering actually happens: it's a managed Apache Spark environment with the [lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) built in. If [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md) is the *language* and [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) is the *storage format*, **Databricks is the house they both live in.**
 
 This module teaches the **platform** — clusters, notebooks, jobs, governance, and the managed features (Unity Catalog, DLT, Auto Loader) that turn raw Spark into a production data platform.
 
@@ -11,9 +11,9 @@ This module teaches the **platform** — clusters, notebooks, jobs, governance, 
 ## Prerequisites
 
 Before this module, you should have done:
-- [PySpark](../06_Programming/PySpark/00_PySpark_Learning_Path.md) — Databricks runs Spark; you need to speak it
-- [Delta Lake](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) & [Lakehouse Architecture](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — the storage foundation
-- [Azure Data Lake Storage](../04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) — where the data physically lives
+- [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md) — Databricks runs Spark; you need to speak it
+- [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) & [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — the storage foundation
+- [Azure Data Lake Storage](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) — where the data physically lives
 
 ---
 

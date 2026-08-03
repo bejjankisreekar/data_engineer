@@ -82,7 +82,7 @@ This costs a few extra seconds and prevents most accidental data loss.
 
 ## Azure Usage
 
-Azure SQL Database, Synapse Analytics, and Databricks (via Spark SQL) all support standard `INSERT`/`UPDATE`/`DELETE`. In [ETL/ELT pipelines](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md), DML is frequently generated automatically by tools like [Azure Data Factory](../../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) rather than typed by hand — a pipeline might insert thousands of new rows nightly as part of a scheduled load.
+Azure SQL Database, Synapse Analytics, and Databricks (via Spark SQL) all support standard `INSERT`/`UPDATE`/`DELETE`. In [ETL/ELT pipelines](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md), DML is frequently generated automatically by tools like [Azure Data Factory](../../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) rather than typed by hand — a pipeline might insert thousands of new rows nightly as part of a scheduled load.
 
 ---
 
@@ -186,7 +186,7 @@ Many systems never physically DELETE: an `is_deleted BIT + deleted_at` flag pres
 - `UPDATE` with a join that matches multiple source rows picks one **nondeterministically** (T-SQL) or errors (Postgres) — dedupe the source first.
 - Triggers fire on your DML — an innocent bulk UPDATE can cascade into row-by-row trigger logic 100× slower than the statement itself.
 - `@@ROWCOUNT`/`ROW_COUNT()` is the cheapest data-quality check there is: log "rows affected" on every pipeline DML and alert when today ≠ yesterday's order of magnitude.
-- On Delta, many small MERGEs = many small files + version bloat: batch micro-changes, then `OPTIMIZE` ([Spark_Processing.md](../../06_Programming/PySpark/Spark_Processing.md)).
+- On Delta, many small MERGEs = many small files + version bloat: batch micro-changes, then `OPTIMIZE` ([Spark_Processing.md](../../03_Programming/PySpark/Spark_Processing.md)).
 
 ## Interview-grade Q&A
 

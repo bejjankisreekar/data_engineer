@@ -89,7 +89,7 @@ DLT covered in the [Databricks module](../08_Databricks/05_Delta_Live_Tables.md)
 
 ## Deploying jobs (as code)
 
-Production teams don't click-build jobs — they define them as **JSON/YAML** and deploy via the **Databricks CLI / REST API / Terraform / Databricks Asset Bundles (DABs)**, promoted through CI/CD. This makes jobs versioned, reviewable, and reproducible across environments — see [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) and [IaC/Terraform](../07_DevOps/IaC_and_Tooling/02_Terraform.md).
+Production teams don't click-build jobs — they define them as **JSON/YAML** and deploy via the **Databricks CLI / REST API / Terraform / Databricks Asset Bundles (DABs)**, promoted through CI/CD. This makes jobs versioned, reviewable, and reproducible across environments — see [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) and [IaC/Terraform](../Job%20Interviews/Terraform/Terraform%20Interview%20Questions.md).
 
 ---
 

@@ -75,7 +75,7 @@ Strong candidates proactively cover what juniors forget:
 - **Reliability** — retries, idempotency, failure handling ([reliability](../13_Monitoring_and_Observability/03_Pipeline_Reliability.md))
 - **Data quality** — validation, quarantine ([quality](../15_Testing_and_DataOps/02_Data_Quality_Testing.md))
 - **Monitoring & observability** ([monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md))
-- **Security & governance** — access, PII, lineage ([governance](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md))
+- **Security & governance** — access, PII, lineage ([governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md))
 - **Cost** — right-sizing, the bill implication ([cost](../16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md))
 - **Scalability & evolution** — how it grows 10×, how schema change is handled
 

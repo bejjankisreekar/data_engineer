@@ -85,4 +85,4 @@ Requirements-first, split by latency (batch default, streaming/micro-batch where
 
 ## Further Learning
 - Back to the [Learning Path](00_System_Design_Learning_Path.md)
-- Related: [Case Studies](04_Case_Studies.md) · [Streaming](../09_Streaming/00_Streaming_Learning_Path.md) · [Lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Cost](../16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md)
+- Related: [Case Studies](04_Case_Studies.md) · [Streaming](../09_Streaming/00_Streaming_Learning_Path.md) · [Lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Cost](../16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md)

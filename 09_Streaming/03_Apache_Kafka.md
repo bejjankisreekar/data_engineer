@@ -99,8 +99,8 @@ Each partition has one **leader** broker (handles reads/writes) and **follower**
 ## The Kafka ecosystem
 
 Kafka is more than the broker:
-- **Kafka Connect** — pre-built connectors to move data in/out (databases, S3, Elasticsearch) without custom code, including **CDC** via Debezium ([CDC](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)).
-- **Schema Registry** — enforces and evolves message schemas ([Avro](../04_Storage_and_Formats/File_Formats/03_Avro.md)), preventing producers from breaking consumers.
+- **Kafka Connect** — pre-built connectors to move data in/out (databases, S3, Elasticsearch) without custom code, including **CDC** via Debezium ([CDC](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)).
+- **Schema Registry** — enforces and evolves message schemas ([Avro](../05_Storage_and_Formats/File_Formats/03_Avro.md)), preventing producers from breaking consumers.
 - **Kafka Streams / ksqlDB** — stream processing (joins, windows, aggregations) directly on Kafka, SQL-like.
 
 ## Log compaction
@@ -150,8 +150,8 @@ Kafka genuinely supports transactional exactly-once *within Kafka* (read-process
 ## Related Notes
 
 - **Prev:** [Azure Event Hubs](02_Azure_Event_Hubs.md) · **Next:** [Azure Stream Analytics](04_Azure_Stream_Analytics.md)
-- **Concepts:** [Streaming Fundamentals](01_Streaming_Fundamentals.md) · **Process with:** [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md)
-- **Related:** [Change Data Capture (Debezium)](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md) · [Avro & Schema Registry](../04_Storage_and_Formats/File_Formats/03_Avro.md)
+- **Concepts:** [Streaming Fundamentals](01_Streaming_Fundamentals.md) · **Process with:** [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md)
+- **Related:** [Change Data Capture (Debezium)](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md) · [Avro & Schema Registry](../05_Storage_and_Formats/File_Formats/03_Avro.md)
 - **Interview:** [Kafka Q&A](../Job%20Interviews/Kafka/Kafka%20Interview%20Questions.md)
 
 ---

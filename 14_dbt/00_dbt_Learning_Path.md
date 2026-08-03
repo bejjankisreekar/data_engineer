@@ -2,7 +2,7 @@
 
 **dbt** is the tool that brought software-engineering discipline to the **T (transform)** in ELT. You write transformations as **SQL SELECT statements**, and dbt turns them into tables/views, in the right dependency order, with **built-in testing, documentation, and lineage**. It's one of the most in-demand skills in modern data-engineering job specs — and it was entirely absent from this repo until now.
 
-This module builds on [SQL](../02_Databases/SQL/01_What_is_SQL.md), [ETL/ELT](../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md), and [Data Modeling](../02_Databases/Data_Modeling/00_Data_Modeling_Learning_Path.md).
+This module builds on [SQL](../02_Databases/SQL/01_What_is_SQL.md), [ETL/ELT](../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md), and [Data Modeling](../02_Databases/Data_Modeling/00_Data_Modeling_Learning_Path.md).
 
 ---
 
@@ -51,7 +51,7 @@ dbt **does not extract or load** and **does not have its own compute** — it **
 
 > **dbt = SQL + software engineering.** You write `SELECT`s; dbt handles dependencies, materialization, testing, docs, and lineage.
 
-If you can write SQL ([Phase 1](../ROADMAP.md)), you can learn dbt quickly — and it makes your [Gold layer](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) transformations tested and documented, a big upgrade for your [portfolio projects](../11_Projects/05_Portfolio_and_GitHub_Presentation.md).
+If you can write SQL ([Phase 1](../ROADMAP.md)), you can learn dbt quickly — and it makes your [Gold layer](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) transformations tested and documented, a big upgrade for your [portfolio projects](../11_Projects/05_Portfolio_and_GitHub_Presentation.md).
 
 Start here: **[01 — What is dbt](01_What_is_dbt.md)**.
 

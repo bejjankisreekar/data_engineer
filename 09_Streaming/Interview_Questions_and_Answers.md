@@ -117,4 +117,4 @@ Ingest with Event Hubs/IoT Hub (or Kafka), process with Stream Analytics (SQL) o
 ## Related Notes
 
 - Module: [00 Learning Path](00_Streaming_Learning_Path.md) → [01](01_Streaming_Fundamentals.md) · [02](02_Azure_Event_Hubs.md) · [03](03_Apache_Kafka.md) · [04](04_Azure_Stream_Analytics.md)
-- [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md) · [Change Data Capture](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md) · [Lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)
+- [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md) · [Change Data Capture](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md) · [Lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)

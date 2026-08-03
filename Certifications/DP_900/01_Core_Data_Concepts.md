@@ -8,7 +8,7 @@
 
 This domain is the **vocabulary** of data — the ideas every later domain builds on: the *kinds* of data, the two big *workload types* (transactional vs analytical), the *roles* who work with data, and *how* data is stored and processed. It's the highest-weighted domain and the easiest to score if you learn the definitions cleanly.
 
-Much of it is covered in depth in this repo's [Foundations](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md) and [Storage & Formats](../../04_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md) notes.
+Much of it is covered in depth in this repo's [Foundations](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md) and [Storage & Formats](../../05_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md) notes.
 
 ---
 
@@ -17,7 +17,7 @@ Much of it is covered in depth in this repo's [Foundations](../../01_Foundations
 | Type | Definition | Examples |
 |---|---|---|
 | **Structured** | Fits a fixed schema of rows & columns | Relational tables, CSV with a schema |
-| **Semi-structured** | Has tags/keys but a flexible schema | [JSON](../../04_Storage_and_Formats/File_Formats/02_JSON.md), XML, [Avro](../../04_Storage_and_Formats/File_Formats/03_Avro.md) |
+| **Semi-structured** | Has tags/keys but a flexible schema | [JSON](../../05_Storage_and_Formats/File_Formats/02_JSON.md), XML, [Avro](../../05_Storage_and_Formats/File_Formats/03_Avro.md) |
 | **Unstructured** | No predefined data model | Images, video, audio, PDFs, free text |
 
 > **Exam Tip:** Structured = relational/tabular with a fixed schema. Semi-structured = JSON/XML (self-describing, flexible). Unstructured = media/files with no schema. A key-value or document store holds **semi-structured** data.
@@ -70,7 +70,7 @@ Full treatment: [Streaming Fundamentals](../../09_Streaming/01_Streaming_Fundame
 
 ## Data storage: files vs databases
 
-- **File storage** — data in files ([CSV](../../04_Storage_and_Formats/File_Formats/01_CSV.md), [JSON](../../04_Storage_and_Formats/File_Formats/02_JSON.md), [Parquet](../../04_Storage_and_Formats/File_Formats/05_Parquet.md), Avro, ORC) in a file system or object store. Cheap, flexible, schema-on-read.
+- **File storage** — data in files ([CSV](../../05_Storage_and_Formats/File_Formats/01_CSV.md), [JSON](../../05_Storage_and_Formats/File_Formats/02_JSON.md), [Parquet](../../05_Storage_and_Formats/File_Formats/05_Parquet.md), Avro, ORC) in a file system or object store. Cheap, flexible, schema-on-read.
 - **Databases** — data managed by a database engine with querying, indexing, and integrity — **relational** (tables/SQL) or **non-relational/NoSQL** (documents, key-value, graph, column-family).
 
 File format quick facts (commonly tested):
@@ -80,7 +80,7 @@ File format quick facts (commonly tested):
 - **Avro** — row-based, good for streaming/schema evolution.
 - **ORC** — columnar, from the Hadoop world.
 
-Full comparison: [File Format Comparison](../../04_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md).
+Full comparison: [File Format Comparison](../../05_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md).
 
 ---
 

@@ -31,7 +31,7 @@ It is a **conceptual, breadth-first** exam. You won't write queries or build pip
 | 3 | **Non-relational data on Azure** | 15–20% | [03](03_Non_Relational_Data_on_Azure.md) |
 | 4 | **Analytics workloads on Azure** | 25–30% | [04](04_Analytics_Workloads_on_Azure.md) |
 
-Domains 1 and 4 are the biggest — core concepts and analytics together are more than half the exam. Domain 4 leans on services this repo covers in depth ([Synapse/Fabric](../../10_Synapse_and_Fabric/00_Learning_Path.md), [Databricks](../../08_Databricks/00_Databricks_Learning_Path.md), [ADF](../../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md), Power BI).
+Domains 1 and 4 are the biggest — core concepts and analytics together are more than half the exam. Domain 4 leans on services this repo covers in depth ([Synapse/Fabric](../../10_Synapse_and_Fabric/00_Learning_Path.md), [Databricks](../../08_Databricks/00_Databricks_Learning_Path.md), [ADF](../../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md), Power BI).
 
 ---
 

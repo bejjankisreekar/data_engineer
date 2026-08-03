@@ -49,7 +49,7 @@ bronze = (raw
     .save("abfss://bronze@…/orders"))
 ```
 
-Why explicit schema, not `inferSchema`? Inference reads the data twice, is slow, and silently changes types between days — a classic production bug. See [Schemas](../06_Programming/PySpark/03_Schemas_and_Data_Types.md).
+Why explicit schema, not `inferSchema`? Inference reads the data twice, is slow, and silently changes types between days — a classic production bug. See [Schemas](../03_Programming/PySpark/03_Schemas_and_Data_Types.md).
 
 ---
 
@@ -83,7 +83,7 @@ deduped = (good.withColumn("rn", row_number().over(w))
 deduped.write.format("delta").mode("overwrite").save("abfss://silver@…/orders")
 ```
 
-The **quarantine** pattern (route bad rows aside, keep the pipeline running, alert on volume) is straight from [Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) — mention it and interviewers nod.
+The **quarantine** pattern (route bad rows aside, keep the pipeline running, alert on volume) is straight from [Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) — mention it and interviewers nod.
 
 ---
 
@@ -127,7 +127,7 @@ dim = DeltaTable.forPath(spark, "abfss://gold@…/dim_customer")
   .execute())
 ```
 
-`MERGE` (upsert) is the single most-tested Delta operation — see [Delta with PySpark](../06_Programming/PySpark/12_Delta_Lake_with_PySpark.md) and [SCDs](../02_Databases/Data_Modeling/04_Slowly_Changing_Dimensions.md).
+`MERGE` (upsert) is the single most-tested Delta operation — see [Delta with PySpark](../03_Programming/PySpark/12_Delta_Lake_with_PySpark.md) and [SCDs](../02_Databases/Data_Modeling/04_Slowly_Changing_Dimensions.md).
 
 ---
 
@@ -144,7 +144,7 @@ Point Power BI at the Gold Delta tables (via Databricks SQL Warehouse / serverle
 | Day 2's file has an extra column | Delta **schema evolution** (`mergeSchema`) in Bronze; validate in Silver |
 | Same order arrives twice (re-run) | **Dedupe window** + idempotent `MERGE` on business key |
 | Tiny-file explosion after many days | `OPTIMIZE` + partition sensibly; don't over-partition |
-| Slow join customers↔orders | Broadcast the small dim; check for skew ([Performance](../06_Programming/PySpark/14_Performance_and_Best_Practices.md)) |
+| Slow join customers↔orders | Broadcast the small dim; check for skew ([Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md)) |
 | Numbers wrong after a re-run | Gold built with **overwrite/MERGE**, never blind `append` |
 
 Being able to *narrate these* is what separates "I followed a tutorial" from "I built a pipeline."

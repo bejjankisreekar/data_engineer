@@ -39,7 +39,7 @@ flowchart LR
 | **Trigger** | What starts a pipeline: **schedule**, **tumbling window**, **event**, or manual |
 | **Integration Runtime (IR)** | The compute that moves data: **Azure IR** (cloud), **Self-hosted IR** (on-prem/VNet), **SSIS IR** |
 
-Deep-dived in [Azure Data Factory](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) and orchestration patterns in [Orchestration](../12_Orchestration/00_Orchestration_Learning_Path.md).
+Deep-dived in [Azure Data Factory](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) and orchestration patterns in [Orchestration](../12_Orchestration/00_Orchestration_Learning_Path.md).
 
 ---
 
@@ -98,7 +98,7 @@ Failure handling and alerting are the heart of [Monitoring & Observability](../1
 
 ## Step 5 — Source control & deploy the pipeline
 
-Connect ADF to **Git** (Azure DevOps/GitHub): pipelines are stored as JSON, and you promote dev→prod via **ARM templates / CI-CD**. Export the `adf/` JSON into your project repo so reviewers can see the orchestration. This ties into [CI/CD](../07_DevOps/CICD/00_CICD_Learning_Path.md) and [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md).
+Connect ADF to **Git** (Azure DevOps/GitHub): pipelines are stored as JSON, and you promote dev→prod via **ARM templates / CI-CD**. Export the `adf/` JSON into your project repo so reviewers can see the orchestration. This ties into [CI/CD](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md) and [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md).
 
 ---
 
@@ -119,7 +119,7 @@ Connect ADF to **Git** (Azure DevOps/GitHub): pipelines are stored as JSON, and 
 
 - *"How do you orchestrate pipelines?"* → ADF pipelines with triggers, dependency chains, retries, and failure/alert paths; Databricks activity for transforms.
 - *"Schedule vs tumbling-window trigger?"* → Tumbling is stateful, supports dependencies and backfill; schedule just fires on a clock.
-- *"How do you do incremental loads?"* → Watermark column + Lookup/Copy/update-watermark, or CDC ([Change Data Capture](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)).
+- *"How do you do incremental loads?"* → Watermark column + Lookup/Copy/update-watermark, or CDC ([Change Data Capture](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)).
 - *"What's a metadata-driven pipeline?"* → One parameterized pipeline that loops over a config table of tables — DRY and scalable.
 - *"ADF vs Databricks — who does what?"* → ADF orchestrates/moves (control plane); Databricks transforms at scale (data plane).
 

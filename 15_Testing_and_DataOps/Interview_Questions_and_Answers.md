@@ -98,4 +98,4 @@ Work on a branch; extract the logic into a tested pure function; add/expand unit
 
 ## Further Learning
 - Back to the [Learning Path](00_Testing_and_DataOps_Learning_Path.md)
-- Related: [Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · [CI/CD](../07_DevOps/CICD/00_CICD_Learning_Path.md) · [dbt](../14_dbt/00_dbt_Learning_Path.md) · [Monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md)
+- Related: [Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · [CI/CD](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md) · [dbt](../14_dbt/00_dbt_Learning_Path.md) · [Monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md)

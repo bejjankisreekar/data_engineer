@@ -31,7 +31,7 @@ The design decisions layered on top are what an interviewer probes.
 
 ### 1. Full load vs incremental
 - **Full load** — reprocess everything each run. Simple; fine for small data; wasteful and slow at scale.
-- **Incremental** — process only new/changed data via a **watermark** (`modified_date`) or **CDC** ([Change Data Capture](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)). The scalable default.
+- **Incremental** — process only new/changed data via a **watermark** (`modified_date`) or **CDC** ([Change Data Capture](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)). The scalable default.
 
 "How do you know what's new?" → watermark column or CDC. A guaranteed follow-up.
 

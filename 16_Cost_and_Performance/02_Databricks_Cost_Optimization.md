@@ -70,7 +70,7 @@ Every performance optimization in [file 04](04_Performance_Optimization.md) is *
 ## Lever 7 — Don't recompute; cache and reuse
 
 - Persist expensive intermediate results instead of recomputing them across notebooks.
-- Use **incremental** pipelines so each run processes only new data ([dbt incremental](../14_dbt/02_Models_and_Refs.md), [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md)).
+- Use **incremental** pipelines so each run processes only new data ([dbt incremental](../14_dbt/02_Models_and_Refs.md), [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md)).
 - Materialize a shared Gold table once rather than every dashboard recomputing it.
 
 ---

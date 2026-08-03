@@ -6,7 +6,7 @@
 
 ## What it is
 
-Getting data **into** Fabric — batch and streaming — and choosing the **right tool** for each ingestion scenario. This is where the "which item?" decisions matter most. Concepts build on [Data Integration](../../05_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md), [Integration Patterns](../../05_Data_Engineering/Data_Integration/02_Integration_Patterns.md), and [Streaming](../../09_Streaming/00_Streaming_Learning_Path.md).
+Getting data **into** Fabric — batch and streaming — and choosing the **right tool** for each ingestion scenario. This is where the "which item?" decisions matter most. Concepts build on [Data Integration](../../06_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md), [Integration Patterns](../../06_Data_Engineering/Data_Integration/02_Integration_Patterns.md), and [Streaming](../../09_Streaming/00_Streaming_Learning_Path.md).
 
 ---
 
@@ -30,9 +30,9 @@ Getting data **into** Fabric — batch and streaming — and choosing the **righ
 ## Loading patterns (design questions)
 
 - **Full load** — reload the entire dataset each run. Simple; expensive at scale.
-- **Incremental load** — load only new/changed data since last run (by watermark/timestamp, or [CDC](../../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)). Efficient; the default for large sources.
+- **Incremental load** — load only new/changed data since last run (by watermark/timestamp, or [CDC](../../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)). Efficient; the default for large sources.
 - **Batch vs streaming** — scheduled chunks vs continuous ([Streaming Fundamentals](../../09_Streaming/01_Streaming_Fundamentals.md)).
-- **Medallion (Bronze/Silver/Gold)** — land raw → clean/conform → model, each layer a set of Delta tables ([Lakehouse](../../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)).
+- **Medallion (Bronze/Silver/Gold)** — land raw → clean/conform → model, each layer a set of Delta tables ([Lakehouse](../../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)).
 
 > **Exam Tip:** "Only load rows changed since yesterday" → **incremental load** with a watermark column (e.g. `LastModified > @lastRun`). Full loads are for small dims or first loads.
 
@@ -75,7 +75,7 @@ df.write.mode("append").saveAsTable("silver.sales")
    .trigger(availableNow=True).toTable("bronze.sales"))
 ```
 
-The PySpark you learned applies unchanged ([Reading & Writing Data](../../06_Programming/PySpark/04_Reading_and_Writing_Data.md), [Structured Streaming](../../06_Programming/PySpark/13_Structured_Streaming.md)).
+The PySpark you learned applies unchanged ([Reading & Writing Data](../../03_Programming/PySpark/04_Reading_and_Writing_Data.md), [Structured Streaming](../../03_Programming/PySpark/13_Structured_Streaming.md)).
 
 ---
 

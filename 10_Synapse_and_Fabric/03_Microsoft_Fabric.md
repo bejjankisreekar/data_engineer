@@ -4,7 +4,7 @@
 
 **Microsoft Fabric** is an **all-in-one SaaS analytics platform** that unifies everything a data team needs — data integration, data engineering (Spark), data warehousing, real-time analytics, data science, and **Power BI** — into a single product, built on top of one shared, Delta-native data lake called **OneLake**.
 
-It's Microsoft's **next-generation, unified successor** to the separate-services world of [Synapse](01_Azure_Synapse_Analytics.md) + [ADF](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) + Power BI. Where Synapse bundled engines into a workspace, Fabric goes further: it's fully **SaaS** (no infrastructure at all), everything writes to **one lake in [Delta](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) format**, and it's billed as **one capacity**.
+It's Microsoft's **next-generation, unified successor** to the separate-services world of [Synapse](01_Azure_Synapse_Analytics.md) + [ADF](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) + Power BI. Where Synapse bundled engines into a workspace, Fabric goes further: it's fully **SaaS** (no infrastructure at all), everything writes to **one lake in [Delta](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) format**, and it's billed as **one capacity**.
 
 In one line: **Fabric = a single SaaS platform for all analytics workloads, on one Delta lake (OneLake), with Power BI built in.**
 
@@ -21,7 +21,7 @@ In one line: **Fabric = a single SaaS platform for all analytics workloads, on o
 **OneLake** is the single, unified, organization-wide data lake — often described as **"OneDrive for data."** It's the feature everything else hangs off:
 
 - **One lake for the whole tenant** — automatically provisioned, no storage accounts to create.
-- **Delta/Parquet-native** — every Fabric engine reads and writes **open Delta** format, so there's genuinely **one copy** of data for all workloads ([lakehouse promise](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)).
+- **Delta/Parquet-native** — every Fabric engine reads and writes **open Delta** format, so there's genuinely **one copy** of data for all workloads ([lakehouse promise](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)).
 - **Shortcuts** — reference data that lives elsewhere (ADLS, S3, another workspace) **without copying it** — it appears in OneLake as if local.
 - **One security & governance layer** across all of it.
 
@@ -35,7 +35,7 @@ Fabric packages capabilities as **workloads**, all sharing OneLake:
 
 | Workload | What it does | Cousin of |
 |---|---|---|
-| **Data Factory** | Ingestion & pipelines (+ Dataflows Gen2) | [Azure Data Factory](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) |
+| **Data Factory** | Ingestion & pipelines (+ Dataflows Gen2) | [Azure Data Factory](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) |
 | **Data Engineering** | Spark notebooks + **Lakehouse** items | [Databricks](../08_Databricks/01_What_is_Databricks.md) / Synapse Spark |
 | **Data Warehouse** | Full T-SQL warehouse (Delta-backed) | Synapse dedicated pool |
 | **Real-Time Intelligence** | Eventstream + Eventhouse/KQL | [Stream Analytics](../09_Streaming/04_Azure_Stream_Analytics.md) |
@@ -88,7 +88,7 @@ Historically Power BI either **imported** data (fast but a copy that goes stale)
 
 - **Capacities (F SKUs)** — Fabric is licensed as a capacity (e.g. F64) shared across all workloads in the tenant; you size and can pause/scale it. Power BI Premium capacities map into Fabric.
 - **Billing model shift** — instead of per-service bills (ADF + Synapse + storage + Power BI), it's one capacity — simpler, but capacity management becomes the cost lever.
-- **Governance** — integrates with **Microsoft Purview** for cataloging, lineage, and sensitivity across OneLake ([governance](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)).
+- **Governance** — integrates with **Microsoft Purview** for cataloging, lineage, and sensitivity across OneLake ([governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)).
 
 ---
 
@@ -103,7 +103,7 @@ A mid-size insurer wants analytics without a platform team. In **Fabric**, a **D
 
 ## "One copy" is the real architectural shift
 
-Fabric's deepest idea is that **OneLake holds one Delta copy that every engine reads** — the [lakehouse "one copy, many engines"](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) principle made the *default*, not something you assemble. A table written by Spark in a Lakehouse is immediately queryable by the Warehouse's T-SQL engine and readable by Power BI Direct Lake — no ETL between them. This is what removes the copy-pipeline tax that defined the Synapse-era architecture.
+Fabric's deepest idea is that **OneLake holds one Delta copy that every engine reads** — the [lakehouse "one copy, many engines"](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) principle made the *default*, not something you assemble. A table written by Spark in a Lakehouse is immediately queryable by the Warehouse's T-SQL engine and readable by Power BI Direct Lake — no ETL between them. This is what removes the copy-pipeline tax that defined the Synapse-era architecture.
 
 ## Shortcuts vs copying
 
@@ -155,8 +155,8 @@ Direct Lake is powerful but "falls back" to DirectQuery under certain conditions
 ## Related Notes
 
 - **Prev:** [Dedicated vs Serverless SQL Pools](02_Dedicated_vs_Serverless_SQL_Pools.md) · **Next:** [Synapse vs Fabric vs Databricks](04_Synapse_vs_Fabric_vs_Databricks.md)
-- **Foundations:** [Lakehouse Architecture](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) · [Data Fabric & Architecture Comparison](../02_Databases/Data_Warehousing/04_Data_Fabric_and_Architecture_Comparison.md)
-- **Related workloads:** [Real-Time Intelligence ≈ Stream Analytics](../09_Streaming/04_Azure_Stream_Analytics.md) · [Data Factory](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md)
+- **Foundations:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) · [Data Fabric & Architecture Comparison](../02_Databases/Data_Warehousing/04_Data_Fabric_and_Architecture_Comparison.md)
+- **Related workloads:** [Real-Time Intelligence ≈ Stream Analytics](../09_Streaming/04_Azure_Stream_Analytics.md) · [Data Factory](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md)
 
 ---
 

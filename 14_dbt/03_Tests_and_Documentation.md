@@ -2,7 +2,7 @@
 
 ## Why this is dbt's killer feature
 
-Anyone can write SQL that transforms data. What makes dbt beloved is that it makes **testing and documenting** that data *easy and automatic* — the two things hand-written SQL pipelines almost always skip. This is where dbt turns "some SQL scripts" into a trustworthy data product, and it's exactly the [data quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) and [observability](../13_Monitoring_and_Observability/04_Data_Observability.md) discipline made effortless.
+Anyone can write SQL that transforms data. What makes dbt beloved is that it makes **testing and documenting** that data *easy and automatic* — the two things hand-written SQL pipelines almost always skip. This is where dbt turns "some SQL scripts" into a trustworthy data product, and it's exactly the [data quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) and [observability](../13_Monitoring_and_Observability/04_Data_Observability.md) discipline made effortless.
 
 ---
 
@@ -58,7 +58,7 @@ dbt test --select fct_sales       # tests for one model
 dbt build                         # run + test together, in DAG order (recommended)
 ```
 
-Wire `dbt build` into [CI/CD](../07_DevOps/CICD/00_CICD_Learning_Path.md) so a pull request that would break data-quality **fails the build before it merges** — this is the heart of [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md). Extend built-ins with the **dbt-utils** and **dbt-expectations** packages for dozens more tests (row counts, ranges, freshness).
+Wire `dbt build` into [CI/CD](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md) so a pull request that would break data-quality **fails the build before it merges** — this is the heart of [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md). Extend built-ins with the **dbt-utils** and **dbt-expectations** packages for dozens more tests (row counts, ranges, freshness).
 
 ---
 

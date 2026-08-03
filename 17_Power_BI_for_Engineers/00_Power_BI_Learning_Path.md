@@ -2,7 +2,7 @@
 
 Power BI is the **serving layer** — where all your pipeline work finally becomes something a human looks at and makes decisions on. You're **not** becoming a BI analyst; you're learning **just enough Power BI to serve your Gold layer well** and to speak the language of your main consumers. A data engineer who understands what BI needs builds better Gold tables — and it's a Phase 7 🔜 gap the [ROADMAP](../ROADMAP.md) flagged.
 
-Builds on [Dimensional Modeling](../02_Databases/Data_Modeling/03_Dimensional_Modeling.md), [Lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md), and [Synapse/Fabric](../10_Synapse_and_Fabric/00_Learning_Path.md).
+Builds on [Dimensional Modeling](../02_Databases/Data_Modeling/03_Dimensional_Modeling.md), [Lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md), and [Synapse/Fabric](../10_Synapse_and_Fabric/00_Learning_Path.md).
 
 ---
 

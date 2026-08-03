@@ -6,7 +6,7 @@
 
 ## What it is
 
-Turning raw ingested data into clean, modeled, query-ready tables — with the right engine (**Spark**, **T-SQL**, or **KQL**) and the right techniques (dedup, aggregation, joins, upserts, [SCD](../../02_Databases/Data_Modeling/04_Slowly_Changing_Dimensions.md)). This is the most code-heavy part of the exam. Foundations: [PySpark](../../06_Programming/PySpark/00_PySpark_Learning_Path.md), [Spark SQL](../../06_Programming/PySpark/11_Spark_SQL_and_Views.md), [Delta Table](../../04_Storage_and_Formats/Lakehouse/02_Delta_Table.md).
+Turning raw ingested data into clean, modeled, query-ready tables — with the right engine (**Spark**, **T-SQL**, or **KQL**) and the right techniques (dedup, aggregation, joins, upserts, [SCD](../../02_Databases/Data_Modeling/04_Slowly_Changing_Dimensions.md)). This is the most code-heavy part of the exam. Foundations: [PySpark](../../03_Programming/PySpark/00_PySpark_Learning_Path.md), [Spark SQL](../../03_Programming/PySpark/11_Spark_SQL_and_Views.md), [Delta Table](../../05_Storage_and_Formats/Lakehouse/02_Delta_Table.md).
 
 ---
 
@@ -25,10 +25,10 @@ Turning raw ingested data into clean, modeled, query-ready tables — with the r
 
 ## Core transformation techniques
 
-- **Deduplication** — `dropDuplicates()` / `ROW_NUMBER()` window keep-latest ([Window Functions](../../06_Programming/PySpark/08_Window_Functions.md)).
-- **Handling nulls** — `fillna()`, `COALESCE`, filtering ([Column Ops](../../06_Programming/PySpark/05_Column_Operations_and_Functions.md)).
-- **Aggregation / grouping** — `groupBy().agg()` / `GROUP BY` ([Aggregations](../../06_Programming/PySpark/06_Aggregations_and_Grouping.md)).
-- **Joins** — combine tables; mind fan-out and broadcast ([Joins](../../06_Programming/PySpark/07_Joins.md)).
+- **Deduplication** — `dropDuplicates()` / `ROW_NUMBER()` window keep-latest ([Window Functions](../../03_Programming/PySpark/08_Window_Functions.md)).
+- **Handling nulls** — `fillna()`, `COALESCE`, filtering ([Column Ops](../../03_Programming/PySpark/05_Column_Operations_and_Functions.md)).
+- **Aggregation / grouping** — `groupBy().agg()` / `GROUP BY` ([Aggregations](../../03_Programming/PySpark/06_Aggregations_and_Grouping.md)).
+- **Joins** — combine tables; mind fan-out and broadcast ([Joins](../../03_Programming/PySpark/07_Joins.md)).
 - **Denormalization** — flatten star/normalized data into wide tables for BI.
 - **Late-arriving / out-of-order data** — watermarks in streaming; reprocessing in batch.
 

@@ -11,7 +11,7 @@ So storage optimization is really two jobs: **store cold data cheaply**, and **l
 
 ## ADLS storage tiers (store cold data cheaply)
 
-Azure Storage / ADLS Gen2 offers **access tiers** priced for how often you read data ([ADLS](../04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)):
+Azure Storage / ADLS Gen2 offers **access tiers** priced for how often you read data ([ADLS](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)):
 
 | Tier | Storage cost | Read cost | Use for |
 |---|---|---|---|
@@ -45,7 +45,7 @@ Delta stores **min/max stats per file**, so it skips files that can't contain ma
 OPTIMIZE sales ZORDER BY (customer_id);
 ```
 
-Great for high-cardinality filter columns that you *can't* partition by. See [Delta](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md).
+Great for high-cardinality filter columns that you *can't* partition by. See [Delta](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md).
 
 ---
 
@@ -64,7 +64,7 @@ Target file sizes around **128 MB–1 GB**. "Too many small files" is one of the
 
 ## Choosing formats (scan less, compress more)
 
-- **Columnar formats (Parquet/Delta)** let queries read only the **columns** they need (column pruning) and compress far better than CSV/JSON — less storage *and* less scan. Prefer them for analytics ([File Formats](../04_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md)).
+- **Columnar formats (Parquet/Delta)** let queries read only the **columns** they need (column pruning) and compress far better than CSV/JSON — less storage *and* less scan. Prefer them for analytics ([File Formats](../05_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md)).
 - Reading a 200-column table's 3 columns from Parquet touches ~1.5% of the bytes CSV would.
 
 ---

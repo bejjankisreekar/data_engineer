@@ -6,7 +6,7 @@
 
 ## What it is
 
-The other half of "implement and manage": **who can access what** (security & governance) and **how solutions move from dev to production** (lifecycle management with Git and deployment pipelines). Background: [Data Governance & Security](../../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) and [Git/CI-CD](../../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md).
+The other half of "implement and manage": **who can access what** (security & governance) and **how solutions move from dev to production** (lifecycle management with Git and deployment pipelines). Background: [Data Governance & Security](../../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) and [Git/CI-CD](../../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md).
 
 ---
 

@@ -121,5 +121,5 @@ Auto Loader (`availableNow` triggered, hourly) ingests new files into a DLT Bron
 ## Related Notes
 
 - Module: [00 Learning Path](00_Databricks_Learning_Path.md) → [01](01_What_is_Databricks.md) · [02](02_Clusters_and_Compute.md) · [03](03_Notebooks_Repos_and_Jobs.md) · [04](04_Unity_Catalog.md) · [05](05_Delta_Live_Tables.md) · [06](06_Auto_Loader_and_Ingestion.md)
-- [Lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) · [PySpark](../06_Programming/PySpark/00_PySpark_Learning_Path.md)
+- [Lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) · [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md)
 - Cert track: [Databricks Data Engineer Associate](../Certifications/Databricks_Data_Engineer_Associate/00_Study_Guide_Overview.md)

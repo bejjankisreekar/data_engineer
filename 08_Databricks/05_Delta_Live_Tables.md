@@ -6,7 +6,7 @@
 
 **Delta Live Tables (DLT)** is a framework for building data pipelines **declaratively**: instead of writing *how* to run and orchestrate each step, you declare *what* each table should contain, and DLT figures out the execution order, runs it incrementally, manages the infrastructure, enforces data quality, and handles errors and recovery for you.
 
-It's the managed, opinionated way to build a [medallion](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) (Bronze→Silver→Gold) pipeline on Databricks.
+It's the managed, opinionated way to build a [medallion](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) (Bronze→Silver→Gold) pipeline on Databricks.
 
 In one line: **DLT = declarative pipelines — you define the tables and quality rules; DLT builds, orchestrates, and maintains the pipeline.**
 
@@ -59,7 +59,7 @@ Expectations are quality rules attached to a table, with three behaviours:
 | `@dlt.expect_or_drop(...)` | **Drop** the bad row, keep the pipeline running |
 | `@dlt.expect_or_fail(...)` | **Fail** the pipeline update |
 
-Violations are tracked as metrics you can monitor over time — turning [data quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) from a hope into an enforced, observable part of the pipeline.
+Violations are tracked as metrics you can monitor over time — turning [data quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) from a hope into an enforced, observable part of the pipeline.
 
 ---
 
@@ -108,7 +108,7 @@ Choosing correctly per layer is the main DLT design skill: Bronze usually stream
 
 ## CDC with `APPLY CHANGES INTO`
 
-DLT has first-class [Change Data Capture](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md): `APPLY CHANGES INTO` (a.k.a. `AUTO CDC`) applies inserts/updates/deletes from a change feed and handles out-of-order events and [SCD Type 1 or 2](../02_Databases/Data_Modeling/04_Slowly_Changing_Dimensions.md) — replacing a hand-written, error-prone `MERGE` with a declarative statement.
+DLT has first-class [Change Data Capture](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md): `APPLY CHANGES INTO` (a.k.a. `AUTO CDC`) applies inserts/updates/deletes from a change feed and handles out-of-order events and [SCD Type 1 or 2](../02_Databases/Data_Modeling/04_Slowly_Changing_Dimensions.md) — replacing a hand-written, error-prone `MERGE` with a declarative statement.
 
 ## Pipeline modes & development
 
@@ -130,7 +130,7 @@ DLT shines for **standard medallion pipelines** where you want quality enforceme
 
 ## Expectations are a contract, and drop rates are an SLO
 
-The real power isn't dropping bad rows — it's that the **drop/violation rate becomes a monitored metric**. A Silver table quietly dropping 3% then 15% of rows signals an upstream break *before* the dashboard lies. Treat expectation metrics like SLOs: alert on them, trend them, and make a rising drop rate a page, not a surprise discovered in a meeting ([data quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)).
+The real power isn't dropping bad rows — it's that the **drop/violation rate becomes a monitored metric**. A Silver table quietly dropping 3% then 15% of rows signals an upstream break *before* the dashboard lies. Treat expectation metrics like SLOs: alert on them, trend them, and make a rising drop rate a page, not a surprise discovered in a meeting ([data quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)).
 
 ## Streaming-table semantics bite the unwary
 
@@ -157,7 +157,7 @@ A DLT streaming table processes each input **once** — reprocessing history or 
 ## Related Notes
 
 - **Prev:** [Unity Catalog](04_Unity_Catalog.md) · **Next:** [Auto Loader & Ingestion](06_Auto_Loader_and_Ingestion.md)
-- **Medallion:** [Lakehouse Architecture](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · **Quality:** [Data Quality Fundamentals](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · **CDC:** [Change Data Capture](../05_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)
+- **Medallion:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · **Quality:** [Data Quality Fundamentals](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · **CDC:** [Change Data Capture](../06_Data_Engineering/Data_Integration/03_Change_Data_Capture.md)
 - **Cert:** [Delta Live Tables](../Certifications/Databricks_Data_Engineer_Associate/08_Delta_Live_Tables.md)
 
 ---

@@ -123,4 +123,4 @@ Reimplement the transforms as dbt models with `ref()` (auto ordering + lineage),
 
 ## Further Learning
 - Back to the [Learning Path](00_dbt_Learning_Path.md)
-- Related: [ETL vs ELT](../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) · [Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · [Testing & DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)
+- Related: [ETL vs ELT](../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) · [Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) · [Testing & DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)

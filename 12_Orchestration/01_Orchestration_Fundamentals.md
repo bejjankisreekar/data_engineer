@@ -79,7 +79,7 @@ Idempotency + a natural **partition/key per run** is what lets you retry and bac
 
 - **Retry with backoff** for transient errors (network, throttling).
 - **Fail-fast vs continue** — decide whether one failed table should stop the whole DAG or just skip that branch.
-- **Dead-letter / quarantine** — route bad records aside so one poison row doesn't kill the run ([Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)).
+- **Dead-letter / quarantine** — route bad records aside so one poison row doesn't kill the run ([Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)).
 - **Alert on failure** — always. A silent failure is the most dangerous kind.
 - **SLA/timeout** — flag when a run is late even if it hasn't technically failed.
 

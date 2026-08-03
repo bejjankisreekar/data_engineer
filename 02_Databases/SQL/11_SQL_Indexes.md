@@ -58,7 +58,7 @@ The [`PRIMARY KEY`](07_SQL_Keys_and_Joins.md) of a table is automatically indexe
 
 ## Azure Usage
 
-Azure SQL Database and Azure Synapse Analytics both support indexes, and Synapse specifically offers **columnstore indexes** — an index type designed around [columnar storage](../../04_Storage_and_Formats/File_Formats/05_Parquet.md) principles, built for the large-scale analytical queries a data warehouse typically runs. Choosing the right indexing strategy is one of the most common ways a database administrator improves report performance without changing a single query.
+Azure SQL Database and Azure Synapse Analytics both support indexes, and Synapse specifically offers **columnstore indexes** — an index type designed around [columnar storage](../../05_Storage_and_Formats/File_Formats/05_Parquet.md) principles, built for the large-scale analytical queries a data warehouse typically runs. Choosing the right indexing strategy is one of the most common ways a database administrator improves report performance without changing a single query.
 
 ---
 
@@ -100,7 +100,7 @@ The single most effective targeted fix for a hot query — at the cost of a wide
 
 ## Columnstore — indexes for analytics
 
-Rowstore B-trees answer "find these few rows fast"; **columnstore indexes** (Synapse default, SQL Server option) store data [column-wise, compressed, batch-processed](../../01_Foundations/Fundamentals/02_OLAP_Storage.md) — built for "scan a billion rows, aggregate three columns." The two coexist: clustered columnstore for the big fact table + a few B-tree indexes for point lookups on it. In the lakehouse the same role is played by [Parquet](../../04_Storage_and_Formats/File_Formats/05_Parquet.md) + statistics + Z-ordering — "indexing" became file layout ([Spark_Processing.md](../../06_Programming/PySpark/Spark_Processing.md)).
+Rowstore B-trees answer "find these few rows fast"; **columnstore indexes** (Synapse default, SQL Server option) store data [column-wise, compressed, batch-processed](../../01_Foundations/Fundamentals/02_OLAP_Storage.md) — built for "scan a billion rows, aggregate three columns." The two coexist: clustered columnstore for the big fact table + a few B-tree indexes for point lookups on it. In the lakehouse the same role is played by [Parquet](../../05_Storage_and_Formats/File_Formats/05_Parquet.md) + statistics + Z-ordering — "indexing" became file layout ([Spark_Processing.md](../../03_Programming/PySpark/Spark_Processing.md)).
 
 ---
 

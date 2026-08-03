@@ -5,7 +5,7 @@
 Azure Synapse offers **two very different SQL engines**, and knowing which is which — and the **MPP internals** of the dedicated one — is one of the most tested topics in Azure Data Engineer interviews.
 
 - **Dedicated SQL pool** — a **provisioned** Massively Parallel Processing (**MPP**) data warehouse. You buy compute (DWUs), load data into distributed tables, and get fast, high-concurrency SQL. (This is the former *SQL Data Warehouse*.)
-- **Serverless SQL pool** — a **pay-per-query** engine that runs T-SQL directly over files in the [data lake](../04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md), with no provisioning and no storage of its own.
+- **Serverless SQL pool** — a **pay-per-query** engine that runs T-SQL directly over files in the [data lake](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md), with no provisioning and no storage of its own.
 
 In one line: **dedicated = a provisioned MPP warehouse you load and serve BI from; serverless = ad-hoc T-SQL over lake files, billed per terabyte scanned.**
 
@@ -62,7 +62,7 @@ How a table's rows are assigned to the 60 distributions:
 | **Round-robin** | Evenly, at random | Staging/loading tables, or when no good hash key exists |
 | **Replicated** | Full copy of the table on every node | **Small dimension tables** (< ~2 GB) |
 
-**Why it matters — data movement (shuffle):** when a join's two tables are distributed on the *same* key, matching rows are already co-located and the join is fast. When they're not, Synapse must **shuffle** data across nodes ([shuffle recap](../06_Programming/PySpark/14_Performance_and_Best_Practices.md)) — the main cause of slow MPP queries. Good distribution design = minimize data movement.
+**Why it matters — data movement (shuffle):** when a join's two tables are distributed on the *same* key, matching rows are already co-located and the join is fast. When they're not, Synapse must **shuffle** data across nodes ([shuffle recap](../03_Programming/PySpark/14_Performance_and_Best_Practices.md)) — the main cause of slow MPP queries. Good distribution design = minimize data movement.
 
 **The classic star-schema recipe:** hash-distribute large fact tables on their common join key; replicate small dimensions so every node has them locally — joins then need little or no shuffle.
 
@@ -128,7 +128,7 @@ Dedicated pools control concurrency via **resource classes / workload groups** �
 
 ## Serverless as a logical warehouse
 
-Serverless shines as a **logical/virtual warehouse**: define external tables or views over lake files ([medallion](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) gold Parquet/Delta), and BI tools query those views with T-SQL — no data copied into a warehouse. It's a low-cost way to serve SQL over the lakehouse when full dedicated-pool performance isn't needed. File layout (partitioning, Parquet, not-too-many-small-files) directly controls both speed and cost, since you pay per byte scanned.
+Serverless shines as a **logical/virtual warehouse**: define external tables or views over lake files ([medallion](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) gold Parquet/Delta), and BI tools query those views with T-SQL — no data copied into a warehouse. It's a low-cost way to serve SQL over the lakehouse when full dedicated-pool performance isn't needed. File layout (partitioning, Parquet, not-too-many-small-files) directly controls both speed and cost, since you pay per byte scanned.
 
 ---
 
@@ -136,7 +136,7 @@ Serverless shines as a **logical/virtual warehouse**: define external tables or 
 
 ## Distribution design is where MPP warehouses live or die
 
-Everything about dedicated-pool performance traces back to two enemies: **data movement** (shuffle) and **data skew**. The senior designs the schema to defeat both — hash facts on the true join/aggregation key, replicate small dimensions, round-robin only staging, and never hash on a skewed/low-cardinality column. A pool that "got slow as it grew" is almost always a distribution problem, not a DWU problem — and throwing DWUs at a shuffle-bound query wastes money. This mirrors the [join/shuffle discipline](../06_Programming/PySpark/07_Joins.md) in Spark; the physics are the same.
+Everything about dedicated-pool performance traces back to two enemies: **data movement** (shuffle) and **data skew**. The senior designs the schema to defeat both — hash facts on the true join/aggregation key, replicate small dimensions, round-robin only staging, and never hash on a skewed/low-cardinality column. A pool that "got slow as it grew" is almost always a distribution problem, not a DWU problem — and throwing DWUs at a shuffle-bound query wastes money. This mirrors the [join/shuffle discipline](../03_Programming/PySpark/07_Joins.md) in Spark; the physics are the same.
 
 ## Pay-per-scan makes file layout a cost control
 
@@ -170,7 +170,7 @@ The mature pattern isn't "dedicated vs serverless" — it's **both, by role**: s
 
 - **Prev:** [Azure Synapse Analytics](01_Azure_Synapse_Analytics.md) · **Next:** [Microsoft Fabric](03_Microsoft_Fabric.md)
 - **Foundations:** [OLAP/Columnar Storage](../01_Foundations/Fundamentals/02_OLAP_Storage.md) · [Distributed Computing](../01_Foundations/Fundamentals/03_Distributed_Computing.md) · [Dimensional Modeling](../02_Databases/Data_Modeling/03_Dimensional_Modeling.md)
-- **Same physics in Spark:** [Joins](../06_Programming/PySpark/07_Joins.md) · [Performance](../06_Programming/PySpark/14_Performance_and_Best_Practices.md)
+- **Same physics in Spark:** [Joins](../03_Programming/PySpark/07_Joins.md) · [Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md)
 - **Interview:** [Synapse Q&A](../Job%20Interviews/Azure%20Synapse/Synapse%20Interview%20Questions.md)
 
 ---

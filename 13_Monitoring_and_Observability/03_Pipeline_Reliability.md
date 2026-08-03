@@ -16,7 +16,7 @@ Analogy: a reliable pipeline is a **commercial airliner**, not a paper plane. Pl
 | **Idempotency** | Double-processing on rerun/retry | MERGE/upsert, partition overwrite — see below |
 | **Timeouts** | Hung tasks blocking the DAG | Kill and fail a task that runs too long |
 | **Dead-letter / quarantine** | One poison record killing the batch | Route bad rows aside, keep going, alert on volume |
-| **Checkpointing** | Loss/duplication in streaming | Track processed offsets ([Streaming](../06_Programming/PySpark/13_Structured_Streaming.md)) |
+| **Checkpointing** | Loss/duplication in streaming | Track processed offsets ([Streaming](../03_Programming/PySpark/13_Structured_Streaming.md)) |
 | **Circuit breaking** | Hammering a failing dependency | Stop calling a source that's clearly down |
 | **Backfill capability** | Missed/corrupted historical windows | Re-run a date range safely (needs idempotency) |
 
@@ -56,7 +56,7 @@ good.write.format("delta").mode("append").save(silver_path)       # pipeline con
 # then: alert if bad-row COUNT or RATIO exceeds a threshold
 ```
 
-You lose nothing (bad rows are stored, not dropped), the pipeline stays up, and you're alerted only when badness is *significant*. Straight from [Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md).
+You lose nothing (bad rows are stored, not dropped), the pipeline stays up, and you're alerted only when badness is *significant*. Straight from [Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md).
 
 ---
 

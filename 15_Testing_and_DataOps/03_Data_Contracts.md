@@ -65,7 +65,7 @@ Contracts formalize **what kinds of change are safe**:
 | Widen a type (int→long) | Backward-compatible | ✅ often fine |
 | Narrow a type / change meaning | Breaking | ❌ dangerous (the "cents" bug) |
 
-This is the same compatibility thinking behind [Avro schema evolution](../04_Storage_and_Formats/File_Formats/03_Avro.md) and Delta schema enforcement — contracts apply it at the **organizational** level, not just the file level.
+This is the same compatibility thinking behind [Avro schema evolution](../05_Storage_and_Formats/File_Formats/03_Avro.md) and Delta schema enforcement — contracts apply it at the **organizational** level, not just the file level.
 
 ---
 

@@ -144,7 +144,7 @@ Also in the family: **anti-join** ("customers with NO orders") — `LEFT JOIN ..
 | **Hash join** | Build hash table on smaller input, probe with larger | Large unsorted inputs (analytics default) |
 | **Merge join** | Both inputs sorted on key, zip together | Pre-sorted/indexed inputs |
 
-You don't pick these directly — but you *cause* them: bad statistics that underestimate rows send a million-row input into nested loops (the "query that ran fine yesterday" classic). Distributed engines add a location dimension: **broadcast vs shuffle joins** ([Spark join strategies](../../06_Programming/PySpark/Spark_Processing.md)).
+You don't pick these directly — but you *cause* them: bad statistics that underestimate rows send a million-row input into nested loops (the "query that ran fine yesterday" classic). Distributed engines add a location dimension: **broadcast vs shuffle joins** ([Spark join strategies](../../03_Programming/PySpark/Spark_Processing.md)).
 
 ---
 

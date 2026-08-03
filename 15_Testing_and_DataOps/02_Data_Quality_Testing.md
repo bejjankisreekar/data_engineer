@@ -10,7 +10,7 @@ Analogy: unit tests are checking the **recipe** is written correctly; data quali
 
 ## The dimensions of data quality
 
-The checks you write map to well-known quality dimensions (from [Data Quality Fundamentals](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)):
+The checks you write map to well-known quality dimensions (from [Data Quality Fundamentals](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md)):
 
 | Dimension | Check |
 |---|---|

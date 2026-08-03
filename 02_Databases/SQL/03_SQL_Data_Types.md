@@ -118,9 +118,9 @@ Every pipeline hop is a type-conversion boundary; know the lossy edges:
 
 | Boundary | Classic loss |
 |---|---|
-| SQL `DECIMAL(38,x)` → [Parquet](../../04_Storage_and_Formats/File_Formats/05_Parquet.md)/Spark | Overflow or precision truncation past Spark's `Decimal(38)` limits |
+| SQL `DECIMAL(38,x)` → [Parquet](../../05_Storage_and_Formats/File_Formats/05_Parquet.md)/Spark | Overflow or precision truncation past Spark's `Decimal(38)` limits |
 | SQL `DATETIME2(7)` → Parquet timestamp | Precision drop (100ns → µs/ms) |
-| [CSV](../../04_Storage_and_Formats/File_Formats/01_CSV.md) → anything | *Everything is a string*; leading zeros, "NULL" vs empty, scientific notation all bite |
+| [CSV](../../05_Storage_and_Formats/File_Formats/01_CSV.md) → anything | *Everything is a string*; leading zeros, "NULL" vs empty, scientific notation all bite |
 | JSON numbers → SQL | JavaScript's 2^53 integer ceiling silently rounds big IDs |
 | Oracle `NUMBER` → SQL Server | Unbounded precision must be pinned or truncated |
 
@@ -128,7 +128,7 @@ Pro habit: define the **canonical schema once** (in the lakehouse contract), and
 
 ## Semi-structured types — the modern middle ground
 
-Modern engines let a typed table carry an untyped column: SQL Server/Postgres `JSON`/`JSONB`, Databricks `VARIANT`, Snowflake `VARIANT`. The pattern that works: land the raw JSON blob beside extracted, *typed* hot columns (promote the fields you query into real columns; keep the blob for the long tail). Full detail in [02_JSON.md](../../04_Storage_and_Formats/File_Formats/02_JSON.md).
+Modern engines let a typed table carry an untyped column: SQL Server/Postgres `JSON`/`JSONB`, Databricks `VARIANT`, Snowflake `VARIANT`. The pattern that works: land the raw JSON blob beside extracted, *typed* hot columns (promote the fields you query into real columns; keep the blob for the long tail). Full detail in [02_JSON.md](../../05_Storage_and_Formats/File_Formats/02_JSON.md).
 
 ## Field-tested gotchas
 

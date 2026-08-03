@@ -42,21 +42,21 @@ Every modern tool (Spark, Databricks, Snowflake, Azure Data Lake) exists to fix 
 
 ## Era 4 — Spark (2009–2015)
 
-- **[Apache Spark](../../06_Programming/PySpark/What_Is_Apache_Spark.md)** (UC Berkeley, 2009; Apache top-level 2014) kept distributed processing but moved it **in-memory** — 10–100× faster than MapReduce.
+- **[Apache Spark](../../03_Programming/PySpark/What_Is_Apache_Spark.md)** (UC Berkeley, 2009; Apache top-level 2014) kept distributed processing but moved it **in-memory** — 10–100× faster than MapReduce.
 - One engine for batch, SQL, streaming, and ML; friendly APIs in Python/Scala/SQL.
-- Spark replaced MapReduce as the de facto processing engine (details: [Why_Spark_Why_Databricks.md](../../06_Programming/PySpark/Why_Spark_Why_Databricks.md)).
+- Spark replaced MapReduce as the de facto processing engine (details: [Why_Spark_Why_Databricks.md](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md)).
 - **Breaking point:** running your *own* Spark/Hadoop cluster was still heavy ops work.
 
 ## Era 5 — Cloud (2013–2020)
 
-- Storage and compute moved to the [cloud](../../03_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md): S3 / [Azure Data Lake](../../04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) replaced HDFS; managed services replaced hand-run clusters.
-- **Databricks** (founded 2013 by Spark's creators) offered Spark as a managed [SaaS/PaaS](../../03_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md) platform.
+- Storage and compute moved to the [cloud](../../04_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md): S3 / [Azure Data Lake](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) replaced HDFS; managed services replaced hand-run clusters.
+- **Databricks** (founded 2013 by Spark's creators) offered Spark as a managed [SaaS/PaaS](../../04_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md) platform.
 - Cloud warehouses (Snowflake, BigQuery, Synapse) separated **storage from compute** — pay for each independently, scale instantly.
 - **Breaking point:** companies now ran *two* copies of data — a lake (cheap, messy) and a warehouse (clean, expensive) — with pipelines constantly syncing them.
 
 ## Era 6 — The Lakehouse (2020+)
 
-- **Delta Lake** (and Iceberg/Hudi) added warehouse features — ACID transactions, schema enforcement, time travel — directly **on top of data lake files** ([Parquet](../../04_Storage_and_Formats/File_Formats/05_Parquet.md)).
+- **Delta Lake** (and Iceberg/Hudi) added warehouse features — ACID transactions, schema enforcement, time travel — directly **on top of data lake files** ([Parquet](../../05_Storage_and_Formats/File_Formats/05_Parquet.md)).
 - Result: the **lakehouse** — one copy of data, lake prices, warehouse reliability. Databricks' core pitch.
 - Current trends: streaming-first pipelines, governance (Unity Catalog), and AI/ML workloads on the same platform.
 
@@ -112,7 +112,7 @@ All three give: **ACID commits, schema evolution, time travel, hidden partitioni
 |---|---|
 | "Schema-on-read" | Hadoop era: dump raw now, impose structure at query time — the data lake's founding principle (and the source of "data swamps" when governance was skipped) |
 | "Data gravity" | Data is heavy; compute moves to it — why every vendor wants to host your storage |
-| "Medallion (bronze/silver/gold)" | Databricks' codification of raw → cleaned → business-ready layers in a lake ([ETL_vs_ELT](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md)) |
+| "Medallion (bronze/silver/gold)" | Databricks' codification of raw → cleaned → business-ready layers in a lake ([ETL_vs_ELT](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md)) |
 | "ELT beat ETL" | Cheap elastic warehouse compute made "load raw, transform in SQL (dbt)" the default over pre-transforming in tools |
 
 ---
@@ -139,7 +139,7 @@ Pros use this lens to evaluate new tech: *"which coupling does this remove, and 
 
 ## How to use history in interviews & design reviews
 
-- *"Why does Databricks exist?"* → trace era 4→5: Spark solved speed, Databricks solved operations ([Why_Spark_Why_Databricks](../../06_Programming/PySpark/Why_Spark_Why_Databricks.md)).
+- *"Why does Databricks exist?"* → trace era 4→5: Spark solved speed, Databricks solved operations ([Why_Spark_Why_Databricks](../../03_Programming/PySpark/Why_Spark_Why_Databricks.md)).
 - *"Lake or warehouse?"* → era 6 answer: one lakehouse, unless the org already runs a mature warehouse and the migration cost outweighs duplication cost.
 - *"Should we adopt X?"* → ask which era's problem X solves; adopting a solution to a problem you don't have is how teams end up running Kafka for 100 rows/day.
 - Architecture reviews respect scars: name the *breaking point* a proposal inherits (e.g. "this re-couples storage and compute — we know how that movie ends").

@@ -54,7 +54,7 @@ Non-negotiables: **an architecture diagram**, **screenshots of the result**, and
 | **No secrets committed** | `.gitignore` for `.env`/keys; if you ever leak one, rotate it and say so |
 | **Real commit history** | Logical commits with clear messages, not one "final upload" ([Git](../07_DevOps/Git_GitHub/02_Core_Workflow_Add_Commit_Status_Log.md)) |
 | **Tests exist** | Even a few `chispa`/pytest tests signal maturity ([Testing](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)) |
-| **CI badge** | A GitHub Actions workflow that lints + tests → green badge in the README ([CI/CD](../07_DevOps/CICD/00_CICD_Learning_Path.md)) |
+| **CI badge** | A GitHub Actions workflow that lints + tests → green badge in the README ([CI/CD](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md)) |
 | **Reproducible** | Someone else could run it from the README |
 
 ---

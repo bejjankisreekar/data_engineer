@@ -2,7 +2,7 @@
 
 ## What is DataOps?
 
-DataOps is **DevOps applied to data** — bringing version control, automated testing, continuous integration/deployment, and monitoring to data pipelines so teams can ship changes **quickly and safely**. It's the practice that ties together everything in this repo: the code ([PySpark](../06_Programming/PySpark/00_PySpark_Learning_Path.md)/[dbt](../14_dbt/00_dbt_Learning_Path.md)), the tests ([testing](01_Testing_Data_Pipelines.md)/[quality](02_Data_Quality_Testing.md)), the [orchestration](../12_Orchestration/00_Orchestration_Learning_Path.md), and the [monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md).
+DataOps is **DevOps applied to data** — bringing version control, automated testing, continuous integration/deployment, and monitoring to data pipelines so teams can ship changes **quickly and safely**. It's the practice that ties together everything in this repo: the code ([PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md)/[dbt](../14_dbt/00_dbt_Learning_Path.md)), the tests ([testing](01_Testing_Data_Pipelines.md)/[quality](02_Data_Quality_Testing.md)), the [orchestration](../12_Orchestration/00_Orchestration_Learning_Path.md), and the [monitoring](../13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md).
 
 Analogy: DataOps is the **assembly line with quality control** in a modern factory, versus a workshop where one artisan hand-builds each item and hopes it's right. The assembly line has automated checkpoints (tests), a repeatable process (CI/CD), and gauges everywhere (monitoring) — so it produces reliable output fast, and any worker can improve the line without breaking it.
 
@@ -23,7 +23,7 @@ Analogy: DataOps is the **assembly line with quality control** in a modern facto
 
 ## CI/CD for data pipelines
 
-[CI/CD](../07_DevOps/CICD/00_CICD_Learning_Path.md) for application code is well-trodden; for data there are **extra** steps because both code and data can break.
+[CI/CD](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md) for application code is well-trodden; for data there are **extra** steps because both code and data can break.
 
 ```mermaid
 flowchart LR
@@ -51,7 +51,7 @@ Never develop against production data or write to production tables from a lapto
 | **Test/Staging** | Realistic subset | CI runs, integration tests |
 | **Prod** | Real data | Live, protected, deploy-only |
 
-Tools make this concrete: dbt **targets**, Databricks **workspaces/catalogs per env**, ADF **git integration + ARM parameters** ([ADF](../12_Orchestration/02_ADF_Orchestration.md)), and [Terraform](../07_DevOps/IaC_and_Tooling/02_Terraform.md) to provision identical infra per environment. `ref()` in dbt and parameterization in ADF make the *same code* run against different environments — the whole point.
+Tools make this concrete: dbt **targets**, Databricks **workspaces/catalogs per env**, ADF **git integration + ARM parameters** ([ADF](../12_Orchestration/02_ADF_Orchestration.md)), and [Terraform](../Job%20Interviews/Terraform/Terraform%20Interview%20Questions.md) to provision identical infra per environment. `ref()` in dbt and parameterization in ADF make the *same code* run against different environments — the whole point.
 
 ---
 
@@ -62,7 +62,7 @@ Everything a data platform needs should be **reproducible from Git**, not clicke
 - **Notebooks / Spark jobs** → Databricks Repos + Asset Bundles ([Workflows](../12_Orchestration/03_Databricks_Workflows.md)).
 - **dbt project** → deployed via CI or dbt Cloud.
 - **ADF pipelines** → ARM templates promoted through a release pipeline.
-- **Infrastructure** → [Terraform](../07_DevOps/IaC_and_Tooling/02_Terraform.md) (storage, clusters, permissions).
+- **Infrastructure** → [Terraform](../Job%20Interviews/Terraform/Terraform%20Interview%20Questions.md) (storage, clusters, permissions).
 
 If your platform can be **rebuilt from the repo**, you have DataOps. If it lives only in someone's workspace clicks, you don't.
 

@@ -38,7 +38,7 @@ The modern trend leans **Kappa** (or "just use Delta streaming for both") to avo
 ### 1. Delivery semantics
 - **At-most-once** — may lose data (rarely acceptable).
 - **At-least-once** — no loss, possible duplicates (needs dedup downstream).
-- **Exactly-once** — no loss, no dupes — the gold standard, achieved via **checkpointing + idempotent sinks** ([Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md)).
+- **Exactly-once** — no loss, no dupes — the gold standard, achieved via **checkpointing + idempotent sinks** ([Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md)).
 
 ### 2. Windowing & time
 Aggregate over **windows** (tumbling/sliding/session) and choose **event time vs processing time**. Handle **late data** with **watermarks** that bound state ([Project 2](../11_Projects/03_Project_2_Streaming_Pipeline.md)).

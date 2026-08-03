@@ -105,4 +105,4 @@ Core on **Fabric**: Data Factory ingests into a **Lakehouse** in OneLake (Delta)
 ## Related Notes
 
 - Module: [00 Learning Path](00_Learning_Path.md) → [01 Synapse](01_Azure_Synapse_Analytics.md) · [02 SQL Pools](02_Dedicated_vs_Serverless_SQL_Pools.md) · [03 Fabric](03_Microsoft_Fabric.md) · [04 Decision framework](04_Synapse_vs_Fabric_vs_Databricks.md)
-- [Databricks](../08_Databricks/00_Databricks_Learning_Path.md) · [Lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Data Warehouse Fundamentals](../02_Databases/Data_Warehousing/01_Data_Warehouse_Fundamentals.md)
+- [Databricks](../08_Databricks/00_Databricks_Learning_Path.md) · [Lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Data Warehouse Fundamentals](../02_Databases/Data_Warehousing/01_Data_Warehouse_Fundamentals.md)

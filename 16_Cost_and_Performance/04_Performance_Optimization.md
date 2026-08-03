@@ -2,7 +2,7 @@
 
 ## Why this note exists (and how it links to cost)
 
-[PySpark Performance](../06_Programming/PySpark/14_Performance_and_Best_Practices.md) covers the coding details; this note frames the **big performance levers** as an engineer's diagnostic toolkit — the things you check when a job is slow — and connects each to **cost**, because a faster job is a cheaper job ([Databricks cost](02_Databricks_Cost_Optimization.md)).
+[PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md) covers the coding details; this note frames the **big performance levers** as an engineer's diagnostic toolkit — the things you check when a job is slow — and connects each to **cost**, because a faster job is a cheaper job ([Databricks cost](02_Databricks_Cost_Optimization.md)).
 
 Analogy: optimizing a Spark job is like **unclogging a highway**. The cars (data) are fine; the jams come from a few specific bottlenecks — everyone merging at one exit (skew), cars reshuffling lanes constantly (shuffle), toll booths reading every car (full scans). Fix the bottleneck, not the cars.
 

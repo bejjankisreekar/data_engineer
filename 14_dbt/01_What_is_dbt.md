@@ -31,7 +31,7 @@ flowchart LR
     INT --> MARTS[Marts<br/>fct_/dim_ for BI]
 ```
 
-Crucially, **dbt has no compute of its own** — it **compiles your SQL and pushes it down** to Snowflake / Databricks / Fabric / BigQuery / Postgres, which does the heavy lifting. dbt is the *authoring, testing, and orchestration-of-SQL* layer. See [ETL vs ELT](../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).
+Crucially, **dbt has no compute of its own** — it **compiles your SQL and pushes it down** to Snowflake / Databricks / Fabric / BigQuery / Postgres, which does the heavy lifting. dbt is the *authoring, testing, and orchestration-of-SQL* layer. See [ETL vs ELT](../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).
 
 ---
 

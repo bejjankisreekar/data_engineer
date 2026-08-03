@@ -112,7 +112,7 @@ A SQL Database is built for OLTP — Online Transaction Processing, meaning many
 - Petabytes of data
 - Data Lake storage
 
-For those cases, see [SQL Warehouse](13_SQL_Warehouse.md) and [Data Lake vs Warehouse vs Database](../../04_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
+For those cases, see [SQL Warehouse](13_SQL_Warehouse.md) and [Data Lake vs Warehouse vs Database](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
 
 ---
 
@@ -204,7 +204,7 @@ The honest summary a senior gives: NoSQL trades ACID/joins for horizontal scale 
 
 - **ORMs hide N+1 queries** — one page load silently firing 300 SELECTs is the classic app-slowness root cause; it also hammers the DB your pipeline shares.
 - **Index sprawl**: every extra index taxes every INSERT/UPDATE. OLTP tables want *few, surgical* indexes ([11_SQL_Indexes.md](11_SQL_Indexes.md)).
-- **Auto-growth events** on data/log files cause mysterious latency spikes — pre-size files in on-prem SQL Server; managed services handle this for you (part of what you pay for — [02_SaaS_PaaS_IaaS.md](../../03_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md)).
+- **Auto-growth events** on data/log files cause mysterious latency spikes — pre-size files in on-prem SQL Server; managed services handle this for you (part of what you pay for — [02_SaaS_PaaS_IaaS.md](../../04_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md)).
 - A database that fits in RAM behaves like a different product than one that doesn't; capacity-plan around the *working set*, not disk size.
 
 ## Interview-grade Q&A

@@ -33,7 +33,7 @@ This domain covers **relational databases** — data in tables with fixed schema
 
 ## Azure relational services
 
-The core decision is **IaaS vs PaaS** ([IaaS/PaaS/SaaS](../../03_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md)) — how much you manage vs Azure manages.
+The core decision is **IaaS vs PaaS** ([IaaS/PaaS/SaaS](../../04_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md)) — how much you manage vs Azure manages.
 
 | Service | Model | What it is |
 |---|---|---|

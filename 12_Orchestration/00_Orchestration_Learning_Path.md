@@ -2,7 +2,7 @@
 
 A pipeline that you run by hand isn't a pipeline — it's a script. **Orchestration** is the layer that runs your jobs **automatically, in the right order, on a schedule, with retries, dependencies, and alerts** when things break. It's the difference between "I wrote a transformation" and "I run a production data platform."
 
-This module fills a gap the [ROADMAP](../ROADMAP.md) explicitly flagged (Phase 7 🔜). It builds directly on [ETL/ELT](../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md), [ADF](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md), and [Databricks](../08_Databricks/00_Databricks_Learning_Path.md).
+This module fills a gap the [ROADMAP](../ROADMAP.md) explicitly flagged (Phase 7 🔜). It builds directly on [ETL/ELT](../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md), [ADF](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md), and [Databricks](../08_Databricks/00_Databricks_Learning_Path.md).
 
 ---
 

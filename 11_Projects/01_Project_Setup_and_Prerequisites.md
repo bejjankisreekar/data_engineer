@@ -38,7 +38,7 @@ az storage account create -n stdeprojects001 -g rg-de-projects \
   --sku Standard_LRS --hns true          # --hns true = ADLS Gen2
 ```
 
-See [ADLS](../04_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) for what the hierarchical namespace buys you.
+See [ADLS](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) for what the hierarchical namespace buys you.
 
 ---
 
@@ -58,7 +58,7 @@ spark.conf.set("fs.azure.account.auth.type.stdeprojects001.dfs.core.windows.net"
 df = spark.read.parquet("abfss://bronze@stdeprojects001.dfs.core.windows.net/…")
 ```
 
-This "secret scope + service principal" pattern is itself an interview answer — see [Governance & Security](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md).
+This "secret scope + service principal" pattern is itself an interview answer — see [Governance & Security](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md).
 
 ---
 

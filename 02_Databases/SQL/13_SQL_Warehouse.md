@@ -122,7 +122,7 @@ GROUP BY Month;
 
 ## Where does this data come from?
 
-A warehouse doesn't collect its own data — it's filled by pipelines that pull data in from elsewhere. See [ETL vs ELT](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) for the two common ways this data-loading happens, and [Data Lake vs Warehouse vs Database](../../04_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how a warehouse fits alongside raw storage.
+A warehouse doesn't collect its own data — it's filled by pipelines that pull data in from elsewhere. See [ETL vs ELT](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) for the two common ways this data-loading happens, and [Data Lake vs Warehouse vs Database](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how a warehouse fits alongside raw storage.
 
 ## SQL Database vs Warehouse
 
@@ -204,7 +204,7 @@ An MPP warehouse spreads each table across many compute nodes ([distributed comp
 | **ROUND_ROBIN** | Even spray, no key | Staging/loading tables |
 | **REPLICATE** | Full copy on every node | Small dimensions (< ~2 GB) — kills data movement |
 
-The performance killer is **data movement**: joining two large tables hash-distributed on *different* keys forces a network re-shuffle per query (the same shuffle economics as [Spark](../../06_Programming/PySpark/Spark_Processing.md)). Fact hashed on `order_key` + replicated dimensions = star joins with near-zero movement.
+The performance killer is **data movement**: joining two large tables hash-distributed on *different* keys forces a network re-shuffle per query (the same shuffle economics as [Spark](../../03_Programming/PySpark/Spark_Processing.md)). Fact hashed on `order_key` + replicated dimensions = star joins with near-zero movement.
 
 ---
 

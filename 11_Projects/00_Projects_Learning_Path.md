@@ -4,7 +4,7 @@ Everything else in this repo teaches you to *know* data engineering. This module
 
 > **The ROADMAP's Golden Rule #3:** *"Build 1–2 real projects. A medallion pipeline on public data beats ten certificates on a résumé."* This module is that rule, made concrete.
 
-**Prerequisites:** you should have worked through [SQL](../02_Databases/SQL/01_What_is_SQL.md), [Python](../06_Programming/Python/00_Python_Learning_Path.md), [PySpark](../06_Programming/PySpark/00_PySpark_Learning_Path.md), [Delta/Lakehouse](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md), and [Databricks](../08_Databricks/00_Databricks_Learning_Path.md). The projects *apply* those; they don't re-teach them.
+**Prerequisites:** you should have worked through [SQL](../02_Databases/SQL/01_What_is_SQL.md), [Python](../03_Programming/Python/00_Python_Learning_Path.md), [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md), [Delta/Lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md), and [Databricks](../08_Databricks/00_Databricks_Learning_Path.md). The projects *apply* those; they don't re-teach them.
 
 ---
 

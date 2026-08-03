@@ -4,15 +4,15 @@ Everything so far in this repo has mostly been **batch**: data arrives in files 
 
 This module teaches the streaming world an Azure Data Engineer must know: the **concepts** (what makes streaming different and hard), and the three **tools** that show up in every Azure DE interview — **Event Hubs**, **Kafka**, and **Stream Analytics**.
 
-> **Where Spark Structured Streaming fits:** the Databricks/Spark side of streaming already lives in [PySpark 13 — Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md). This module is the **ingestion + Azure-services** side; the two are complementary and cross-linked throughout.
+> **Where Spark Structured Streaming fits:** the Databricks/Spark side of streaming already lives in [PySpark 13 — Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md). This module is the **ingestion + Azure-services** side; the two are complementary and cross-linked throughout.
 
 ---
 
 ## Prerequisites
 
-- [ETL vs ELT](../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) & [Data Pipelines](../05_Data_Engineering/ETL_ELT/03_Data_Pipelines.md) — batch vs streaming, DAGs, idempotency
-- [Data Integration Fundamentals](../05_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md) — where streaming sits among integration styles
-- [Structured Streaming](../06_Programming/PySpark/13_Structured_Streaming.md) — helpful but not required; this module re-introduces the concepts
+- [ETL vs ELT](../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) & [Data Pipelines](../06_Data_Engineering/ETL_ELT/03_Data_Pipelines.md) — batch vs streaming, DAGs, idempotency
+- [Data Integration Fundamentals](../06_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md) — where streaming sits among integration styles
+- [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md) — helpful but not required; this module re-introduces the concepts
 
 ---
 

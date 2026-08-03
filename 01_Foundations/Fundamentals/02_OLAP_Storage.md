@@ -44,7 +44,7 @@ For a query like `SELECT SUM(amount) FROM sales`, the engine reads **only the `a
 
 Bonus: values in one column are similar (all numbers, all city names), so they **compress extremely well** — less disk, less I/O, faster queries.
 
-This is exactly why analytical file formats like [Parquet](../../04_Storage_and_Formats/File_Formats/05_Parquet.md) are columnar.
+This is exactly why analytical file formats like [Parquet](../../05_Storage_and_Formats/File_Formats/05_Parquet.md) are columnar.
 
 ---
 
@@ -94,7 +94,7 @@ Denormalized and simple on purpose, so analysts can join and aggregate quickly.
 OLTP Databases → ETL/ELT → Data Lake → Data Warehouse (OLAP) → BI / Reports
 ```
 
-See [ETL vs ELT](../../05_Data_Engineering/ETL_ELT) and [01_Data_Lake_vs_Warehouse_vs_Database.md](../../04_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how data travels from OLTP to OLAP.
+See [ETL vs ELT](../../06_Data_Engineering/ETL_ELT) and [01_Data_Lake_vs_Warehouse_vs_Database.md](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how data travels from OLTP to OLAP.
 
 ---
 ---
@@ -103,7 +103,7 @@ See [ETL vs ELT](../../05_Data_Engineering/ETL_ELT) and [01_Data_Lake_vs_Warehou
 
 ## Inside a columnar file: how the speed actually happens
 
-Columnar engines (and formats like [Parquet](../../04_Storage_and_Formats/File_Formats/05_Parquet.md)/ORC) layer several tricks:
+Columnar engines (and formats like [Parquet](../../05_Storage_and_Formats/File_Formats/05_Parquet.md)/ORC) layer several tricks:
 
 1. **Encodings before compression**
    - **Dictionary encoding** — `["Hyderabad","Hyderabad","Chennai"]` → dictionary `{0:"Hyderabad",1:"Chennai"}` + values `[0,0,1]`.

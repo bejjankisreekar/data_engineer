@@ -2,7 +2,7 @@
 
 ## What this note covers
 
-[Azure Data Factory basics](../05_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) taught you *what* ADF is. This note is about using ADF as an **orchestrator** — triggers, dependencies, parameterization, and the patterns that make ADF pipelines production-grade rather than toy demos.
+[Azure Data Factory basics](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) taught you *what* ADF is. This note is about using ADF as an **orchestrator** — triggers, dependencies, parameterization, and the patterns that make ADF pipelines production-grade rather than toy demos.
 
 Analogy: ADF is the **air-traffic control tower** of an Azure data platform. It doesn't fly the planes (Databricks/Spark do the transforming); it decides which plane takes off when, in what order, holds them if the runway's busy, and raises an alarm if one goes missing.
 
@@ -76,7 +76,7 @@ Lookup (read config: list of tables + watermark columns)
         → update watermark
 ```
 
-Add a table to the config → it's loaded, no new pipeline. This **metadata-driven / config-driven** approach is a strong interview talking point and how real platforms scale to hundreds of tables. Ties into [Data Integration Patterns](../05_Data_Engineering/Data_Integration/02_Integration_Patterns.md).
+Add a table to the config → it's loaded, no new pipeline. This **metadata-driven / config-driven** approach is a strong interview talking point and how real platforms scale to hundreds of tables. Ties into [Data Integration Patterns](../06_Data_Engineering/Data_Integration/02_Integration_Patterns.md).
 
 ---
 
@@ -85,7 +85,7 @@ Add a table to the config → it's loaded, no new pipeline. This **metadata-driv
 - **Pipeline parameters** — passed at trigger time (batch date, table name).
 - **Variables** — mutable within a run (build up a value in a loop).
 - **Global parameters / environment** — differ per dev/test/prod.
-- **Key Vault–backed linked services** — never store connection secrets in ADF; reference Key Vault ([Governance](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)).
+- **Key Vault–backed linked services** — never store connection secrets in ADF; reference Key Vault ([Governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)).
 
 ---
 
@@ -111,7 +111,7 @@ Add a table to the config → it's loaded, no new pipeline. This **metadata-driv
 
 ## CI/CD for ADF
 
-ADF integrates with **Git** (Azure Repos/GitHub): authoring happens in a branch, publishing generates **ARM templates**, and a release pipeline promotes dev→test→prod with per-environment parameters. Covered in [CI/CD](../07_DevOps/CICD/00_CICD_Learning_Path.md) and [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md).
+ADF integrates with **Git** (Azure Repos/GitHub): authoring happens in a branch, publishing generates **ARM templates**, and a release pipeline promotes dev→test→prod with per-environment parameters. Covered in [CI/CD](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md) and [DataOps](../15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md).
 
 ---
 

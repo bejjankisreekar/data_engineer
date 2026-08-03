@@ -1,7 +1,7 @@
 # Python (for Data Engineers) — Interview Questions & Answers
 
 ## Overview
-Python interviews for DE focus on data-handling fluency: data types, comprehensions, functions, file/JSON handling, error handling, pandas basics, and clean pipeline code. See the repo's `06_Programming/Python` module for depth.
+Python interviews for DE focus on data-handling fluency: data types, comprehensions, functions, file/JSON handling, error handling, pandas basics, and clean pipeline code. See the repo's `03_Programming/Python` module for depth.
 
 Difficulty: 🟢 Easy · 🟡 Medium · 🔴 Hard · Confidence: ★.
 

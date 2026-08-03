@@ -55,7 +55,7 @@ null_rate = df.filter(col("customer_id").isNull()).count() / today
 assert null_rate < 0.01, f"NULL SPIKE in customer_id: {null_rate:.1%}"
 ```
 
-Failing (or better, **alerting**) on these turns silent corruption into a visible, actionable signal. Pair with [Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) expectations and quarantine.
+Failing (or better, **alerting**) on these turns silent corruption into a visible, actionable signal. Pair with [Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) expectations and quarantine.
 
 ---
 
@@ -67,7 +67,7 @@ Failing (or better, **alerting**) on these turns silent corruption into a visibl
 | **dbt tests** | Built-in `not_null`, `unique`, `relationships`, custom tests ([dbt](../14_dbt/03_Tests_and_Documentation.md)) |
 | **Delta Live Tables expectations** | `@dlt.expect` quality gates inside the pipeline ([DLT](../08_Databricks/05_Delta_Live_Tables.md)) |
 | **Monte Carlo / Bigeye / Anomalo** | ML-based anomaly detection across all five pillars, automatically |
-| **Microsoft Purview** | Lineage + cataloging across Azure ([Governance](../05_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)) |
+| **Microsoft Purview** | Lineage + cataloging across Azure ([Governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)) |
 
 Start with code/dbt/DLT checks; graduate to a dedicated platform when scale and criticality justify it.
 

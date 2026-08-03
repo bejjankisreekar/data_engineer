@@ -152,7 +152,7 @@ Neither is universally "correct" — the trade-off is coordination cost (easier 
 
 ### The senior habit: treat pipeline/infra config the same as code
 
-Everything in this file — hooks, CI workflows, branch protection as code (some platforms support this) — follows one underlying principle already established in [Data Pipelines](../../05_Data_Engineering/ETL_ELT/03_Data_Pipelines.md#pipeline-as-code-and-cicd): **infrastructure and process definitions belong in version control, reviewed the same way application code is**, not configured by hand through a UI where changes are invisible and unaudited.
+Everything in this file — hooks, CI workflows, branch protection as code (some platforms support this) — follows one underlying principle already established in [Data Pipelines](../../06_Data_Engineering/ETL_ELT/03_Data_Pipelines.md#pipeline-as-code-and-cicd): **infrastructure and process definitions belong in version control, reviewed the same way application code is**, not configured by hand through a UI where changes are invisible and unaudited.
 
 ### Field-tested gotchas
 

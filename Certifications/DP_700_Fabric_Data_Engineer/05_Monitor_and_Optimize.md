@@ -6,7 +6,7 @@
 
 ## What it is
 
-The full third of the exam devoted to **operations**: watching runs, catching and fixing errors, and making pipelines/tables/queries faster and cheaper. Foundations: [Performance & Best Practices](../../06_Programming/PySpark/14_Performance_and_Best_Practices.md), [Delta Lake maintenance](../../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md), [Data Quality](../../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md).
+The full third of the exam devoted to **operations**: watching runs, catching and fixing errors, and making pipelines/tables/queries faster and cheaper. Foundations: [Performance & Best Practices](../../03_Programming/PySpark/14_Performance_and_Best_Practices.md), [Delta Lake maintenance](../../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md), [Data Quality](../../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md).
 
 ---
 
@@ -38,13 +38,13 @@ The full third of the exam devoted to **operations**: watching runs, catching an
 
 ## Optimizing the Lakehouse (Spark / Delta)
 
-The Delta maintenance you learned applies ([Delta Lake](../../04_Storage_and_Formats/Lakehouse/01_Delta_Lake.md), [Delta Table](../../04_Storage_and_Formats/Lakehouse/02_Delta_Table.md)):
+The Delta maintenance you learned applies ([Delta Lake](../../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md), [Delta Table](../../05_Storage_and_Formats/Lakehouse/02_Delta_Table.md)):
 
 - **`OPTIMIZE`** — compact many small files into fewer large ones (fixes the small-file problem from streaming/frequent writes).
 - **V-Order** — Fabric's write-time optimization that sorts/encodes Parquet for fast reads (especially **Direct Lake** and Power BI); often on by default.
 - **`VACUUM`** — remove old tombstoned files (mind the retention window / time-travel trade-off).
 - **Partitioning / liquid clustering** — reduce data scanned; don't over-partition.
-- **Spark tuning** — right-size the pool, avoid skew and unnecessary shuffles, broadcast small joins ([Performance](../../06_Programming/PySpark/14_Performance_and_Best_Practices.md)).
+- **Spark tuning** — right-size the pool, avoid skew and unnecessary shuffles, broadcast small joins ([Performance](../../03_Programming/PySpark/14_Performance_and_Best_Practices.md)).
 
 > **Exam Tip:** Slow queries on a table with **millions of tiny files** → run **`OPTIMIZE`** (compaction). For fast Direct Lake / Power BI reads → ensure **V-Order** is applied. `VACUUM` reclaims storage but can break time travel if retention is too short.
 

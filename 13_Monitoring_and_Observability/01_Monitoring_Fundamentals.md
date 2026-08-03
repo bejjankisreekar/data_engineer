@@ -44,7 +44,7 @@ For data engineers the headline SLA is usually **freshness/timeliness** ("data i
 - Freshness (is today's data here?)
 - Volume (row counts within expected range?)
 - Schema (did columns/types change?)
-- Quality (nulls, duplicates, out-of-range) ([Data Quality](../05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md))
+- Quality (nulls, duplicates, out-of-range) ([Data Quality](../06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md))
 
 ---
 

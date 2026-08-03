@@ -32,7 +32,7 @@ ERP → CRM → HRMS → Sales System → Website Logs → APIs
               Data Warehouse
 ```
 
-A warehouse doesn't generate its own data — it's filled by pipelines pulling from operational ([OLTP](../../01_Foundations/Fundamentals/01_OLTP_Storage.md)) systems and external sources. See [ETL vs ELT](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) and [Data Pipelines](../../05_Data_Engineering/ETL_ELT/03_Data_Pipelines.md) for how that loading actually happens.
+A warehouse doesn't generate its own data — it's filled by pipelines pulling from operational ([OLTP](../../01_Foundations/Fundamentals/01_OLTP_Storage.md)) systems and external sources. See [ETL vs ELT](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) and [Data Pipelines](../../06_Data_Engineering/ETL_ELT/03_Data_Pipelines.md) for how that loading actually happens.
 
 ---
 
@@ -72,7 +72,7 @@ A hospital network's data warehouse integrates patient records from five hospita
 | **Two-tier** | Staging + warehouse, no separate mart layer | Common in smaller estates |
 | **Three-tier** | Staging → warehouse → data marts, each layer serving a distinct purpose | The standard enterprise pattern — separates raw landing, integrated history, and department-facing consumption |
 
-The three-tier shape maps directly onto the [medallion architecture](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) used in modern lakehouses (staging ≈ bronze, warehouse ≈ silver, marts ≈ gold) — the *names* changed with the technology, but the layering logic that Inmon described in the 1990s is the same reasoning that produced bronze/silver/gold decades later.
+The three-tier shape maps directly onto the [medallion architecture](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) used in modern lakehouses (staging ≈ bronze, warehouse ≈ silver, marts ≈ gold) — the *names* changed with the technology, but the layering logic that Inmon described in the 1990s is the same reasoning that produced bronze/silver/gold decades later.
 
 ## Two competing methodologies: Inmon vs Kimball
 
@@ -108,7 +108,7 @@ Everything Inmon and Kimball described (staging, integration, conformed dimensio
 
 ## Field-tested gotchas
 
-- **Skipping the staging layer** to "save a step" removes your only safe place to re-run a broken transformation without re-hitting the source system — see the [raw retention discipline](../../05_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) this maps to.
+- **Skipping the staging layer** to "save a step" removes your only safe place to re-run a broken transformation without re-hitting the source system — see the [raw retention discipline](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) this maps to.
 - **An ODS built without a retention/archival policy quietly becomes a second warehouse** — nobody decided that, it just accumulated history because deleting felt risky. Decide ODS retention explicitly.
 - **"We'll conform the dimensions later"** never happens under deadline pressure — conformed dimensions (shared Date, Customer, Product keys across every mart) are dramatically cheaper to design *before* the second mart exists than to retrofit across five marts that have already diverged.
 - Time-variance is often only partially implemented — teams build SCD Type 2 on customer dimensions but forget it on product dimensions, silently losing "what did this product cost when it was sold" accuracy.

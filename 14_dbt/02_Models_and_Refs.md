@@ -88,7 +88,7 @@ On the first run it builds everything; on later runs, `is_incremental()` is true
 
 ## The layered modeling convention
 
-dbt projects follow a standard layering that mirrors the [medallion architecture](../04_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md):
+dbt projects follow a standard layering that mirrors the [medallion architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md):
 
 | Layer | Prefix | Job |
 |---|---|---|
