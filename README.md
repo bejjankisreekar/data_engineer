@@ -32,14 +32,24 @@ Topics are grouped into **category folders** so related material lives together:
 | Category folder | Contains |
 |---|---|
 | **01_Foundations** | Fundamentals (OLTP/OLAP, distributed computing, Hadoop) |
-| **02_Databases** | SQL · Data Modeling · Data Warehousing |
+| **02_Databases** | SQL · NoSQL · Data Modeling · Data Warehousing |
 | **03_Cloud** | Cloud Concepts (deployment & service models) |
 | **04_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse) |
 | **05_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
 | **06_Programming** | Python · PySpark |
-| **07_DevOps** | Git & GitHub |
+| **07_DevOps** | Git & GitHub · CI/CD · Containers · IaC & Tooling |
 | **08_Databricks** | Databricks platform · Clusters · Notebooks/Jobs · Unity Catalog · DLT · Auto Loader |
-| **Certifications** | AZ-900 · Databricks Data Engineer Associate |
+| **09_Streaming** | Streaming fundamentals · Event Hubs · Kafka · Stream Analytics |
+| **10_Synapse_and_Fabric** | Synapse Analytics · Dedicated/Serverless SQL pools (MPP) · Microsoft Fabric · platform decision guide |
+| **11_Projects** | Hands-on end-to-end projects (batch medallion · streaming · ADF-orchestrated) + portfolio |
+| **12_Orchestration** | DAGs · ADF triggers · Databricks Workflows · Apache Airflow |
+| **13_Monitoring_and_Observability** | Monitoring · Azure Monitor/KQL · pipeline reliability · data observability |
+| **14_dbt** | data build tool — models, tests, docs, snapshots (SCD2), dbt in Azure |
+| **15_Testing_and_DataOps** | Testing pipelines · data quality tests · data contracts · CI/CD for data |
+| **16_Cost_and_Performance** | FinOps · Databricks/Spark cost · storage & query cost · performance tuning |
+| **17_Power_BI_for_Engineers** | Semantic models · star schema · DAX basics · serving from the lakehouse |
+| **18_System_Design** | Design framework · batch · streaming/real-time · case studies |
+| **Certifications** | AZ-900 · DP-900 · Databricks Data Engineer Associate · DP-700 (Fabric) |
 | **Job Interviews** | 31 interview-prep topic folders |
 
 ---
@@ -68,6 +78,19 @@ Topics are grouped into **category folders** so related material lives together:
 - [SQL DCL and TCL](02_Databases/SQL/12_SQL_DCL_TCL.md) — controlling permissions (`GRANT`/`REVOKE`) and transactions (`COMMIT`/`ROLLBACK`/`SAVEPOINT`)
 - [SQL Warehouse](02_Databases/SQL/13_SQL_Warehouse.md) — what a data warehouse is and how it differs from a database
 - **[Interview Questions & Answers](02_Databases/SQL/Interview_Questions_and_Answers.md)** — 39 Q&A, heavy on practical "write this query" questions with real SQL
+
+### 02_Databases › NoSQL — non-relational databases for scale & flexible data
+- [00 — Learning Path](02_Databases/NoSQL/00_NoSQL_Learning_Path.md) — the map of the module (level 0 to job-ready)
+- [01 — What is NoSQL](02_Databases/NoSQL/01_What_is_NoSQL.md) — why it exists, SQL vs NoSQL, the four families, when (not) to use it
+- [02 — Key-Value Stores](02_Databases/NoSQL/02_Key_Value_Stores.md) — Redis/DynamoDB, caching, sessions, cache-aside
+- [03 — Document Databases](02_Databases/NoSQL/03_Document_Databases.md) — MongoDB/Cosmos DB, JSON docs, embedding vs referencing
+- [04 — Wide-Column Stores](02_Databases/NoSQL/04_Wide_Column_Stores.md) — Cassandra/HBase, partition & clustering keys, LSM writes
+- [05 — Graph Databases](02_Databases/NoSQL/05_Graph_Databases.md) — Neo4j, nodes/edges, index-free adjacency, traversals
+- [06 — CAP Theorem & Consistency](02_Databases/NoSQL/06_CAP_Theorem_and_Consistency.md) — CP vs AP, ACID vs BASE, quorums, PACELC
+- [07 — NoSQL Data Modeling](02_Databases/NoSQL/07_NoSQL_Data_Modeling.md) — model by access pattern, denormalize, schema patterns
+- [08 — Azure Cosmos DB](02_Databases/NoSQL/08_Azure_Cosmos_DB.md) — partition keys, RUs, APIs, 5 consistency levels, Synapse Link
+- [09 — NoSQL in Data Engineering](02_Databases/NoSQL/09_NoSQL_in_Data_Engineering.md) — change feed ingestion, flattening JSON, reverse ETL, practical scenarios
+- **[Interview Questions & Answers](02_Databases/NoSQL/Interview_Questions_and_Answers.md)** — 45 Q&A across the module, tagged by frequency
 
 ### 02_Databases › Data Modeling — designing how data is structured
 - [00 — Learning Path](02_Databases/Data_Modeling/00_Data_Modeling_Learning_Path.md) — the map of the module
@@ -197,6 +220,65 @@ Topics are grouped into **category folders** so related material lives together:
 - [06 — Auto Loader & Ingestion](08_Databricks/06_Auto_Loader_and_Ingestion.md) — incremental file ingestion, schema evolution, file notification, `COPY INTO`
 - **[Interview Questions & Answers](08_Databricks/Interview_Questions_and_Answers.md)** — 30 Q&A across the whole module
 
+### 09_Streaming — processing data in real time (Event Hubs, Kafka, Stream Analytics)
+- [00 — Learning Path](09_Streaming/00_Streaming_Learning_Path.md) — the map, prerequisites, and how the pieces (pipe vs processor) fit together
+- [01 — Streaming Fundamentals](09_Streaming/01_Streaming_Fundamentals.md) — batch vs stream, the event log, windows, watermarks, delivery semantics, **Lambda vs Kappa**
+- [02 — Azure Event Hubs](09_Streaming/02_Azure_Event_Hubs.md) — managed event ingestion: partitions, consumer groups, throughput, Capture, the Kafka endpoint
+- [03 — Apache Kafka](09_Streaming/03_Apache_Kafka.md) — the open-source streaming platform: topics, brokers, offsets, replication, exactly-once, the ecosystem
+- [04 — Azure Stream Analytics](09_Streaming/04_Azure_Stream_Analytics.md) — SQL-based stream processing: inputs/outputs, windowing functions, reference data, Streaming Units
+- **[Interview Questions & Answers](09_Streaming/Interview_Questions_and_Answers.md)** — 30 Q&A across the whole module
+
+### 10_Synapse_and_Fabric — Microsoft's analytics platforms (and Fabric, its successor)
+- [00 — Learning Path](10_Synapse_and_Fabric/00_Learning_Path.md) — the map, prerequisites, and one-line orientation on all three platforms
+- [01 — Azure Synapse Analytics](10_Synapse_and_Fabric/01_Azure_Synapse_Analytics.md) — the unified platform: SQL pools, Spark pools, pipelines, Synapse Studio, Synapse Link
+- [02 — Dedicated vs Serverless SQL Pools](10_Synapse_and_Fabric/02_Dedicated_vs_Serverless_SQL_Pools.md) — **MPP internals, distribution (hash/round-robin/replicated)**, DWUs, loading, pay-per-query
+- [03 — Microsoft Fabric](10_Synapse_and_Fabric/03_Microsoft_Fabric.md) — SaaS analytics, **OneLake**, workloads, **Direct Lake**, Lakehouse vs Warehouse items, capacities
+- [04 — Synapse vs Fabric vs Databricks](10_Synapse_and_Fabric/04_Synapse_vs_Fabric_vs_Databricks.md) — the **decision framework** — which platform for which job
+- **[Interview Questions & Answers](10_Synapse_and_Fabric/Interview_Questions_and_Answers.md)** — 26 Q&A across the whole module
+
+### 11_Projects — hands-on, end-to-end (the part that gets you hired)
+- [00 — Learning Path](11_Projects/00_Projects_Learning_Path.md) — why projects beat tutorials, the shared reference architecture
+- [01 — Setup & Prerequisites](11_Projects/01_Project_Setup_and_Prerequisites.md) — Azure/Databricks/Git setup, secure ADLS access, repo structure, cost cleanup
+- [02 — Project 1: Batch Medallion Pipeline](11_Projects/02_Project_1_Batch_Medallion_Pipeline.md) — ADLS → Databricks → Delta Bronze/Silver/Gold → Power BI, with SCD2 & quarantine
+- [03 — Project 2: Streaming Pipeline](11_Projects/03_Project_2_Streaming_Pipeline.md) — Event Hubs → Structured Streaming → checkpointing, watermarking, exactly-once
+- [04 — Project 3: Orchestrated ELT with ADF](11_Projects/04_Project_3_ADF_Orchestrated_ELT.md) — triggers, dependencies, retries, metadata-driven, alerting
+- [05 — Portfolio & GitHub Presentation](11_Projects/05_Portfolio_and_GitHub_Presentation.md) — READMEs, résumé bullets, the 2-minute project walkthrough
+
+### 12_Orchestration — scheduling & coordinating pipelines
+- [00 — Learning Path](12_Orchestration/00_Orchestration_Learning_Path.md) · [01 — Fundamentals (DAGs, idempotency, backfill)](12_Orchestration/01_Orchestration_Fundamentals.md)
+- [02 — ADF Orchestration (triggers, metadata-driven)](12_Orchestration/02_ADF_Orchestration.md) · [03 — Databricks Workflows](12_Orchestration/03_Databricks_Workflows.md) · [04 — Apache Airflow](12_Orchestration/04_Apache_Airflow.md)
+- **[Interview Questions & Answers](12_Orchestration/Interview_Questions_and_Answers.md)**
+
+### 13_Monitoring_and_Observability — knowing your pipelines (and data) are healthy
+- [00 — Learning Path](13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md) · [01 — Monitoring Fundamentals (SLIs/SLOs/alerting)](13_Monitoring_and_Observability/01_Monitoring_Fundamentals.md)
+- [02 — Azure Monitor & Log Analytics (KQL)](13_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md) · [03 — Pipeline Reliability](13_Monitoring_and_Observability/03_Pipeline_Reliability.md) · [04 — Data Observability (5 pillars)](13_Monitoring_and_Observability/04_Data_Observability.md)
+- **[Interview Questions & Answers](13_Monitoring_and_Observability/Interview_Questions_and_Answers.md)**
+
+### 14_dbt — SQL transformations with software-engineering discipline
+- [00 — Learning Path](14_dbt/00_dbt_Learning_Path.md) · [01 — What is dbt](14_dbt/01_What_is_dbt.md) · [02 — Models & refs](14_dbt/02_Models_and_Refs.md)
+- [03 — Tests & Documentation](14_dbt/03_Tests_and_Documentation.md) · [04 — Snapshots, Seeds & Macros (SCD2)](14_dbt/04_Snapshots_Seeds_Macros.md) · [05 — dbt in Azure](14_dbt/05_dbt_in_Azure.md)
+- **[Interview Questions & Answers](14_dbt/Interview_Questions_and_Answers.md)**
+
+### 15_Testing_and_DataOps — proving pipelines correct and shipping them safely
+- [00 — Learning Path](15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) · [01 — Testing Pipelines (pytest/chispa)](15_Testing_and_DataOps/01_Testing_Data_Pipelines.md)
+- [02 — Data Quality Testing (Great Expectations)](15_Testing_and_DataOps/02_Data_Quality_Testing.md) · [03 — Data Contracts](15_Testing_and_DataOps/03_Data_Contracts.md) · [04 — DataOps & CI/CD for Data](15_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md)
+- **[Interview Questions & Answers](15_Testing_and_DataOps/Interview_Questions_and_Answers.md)**
+
+### 16_Cost_and_Performance — FinOps and making pipelines fast & cheap
+- [00 — Learning Path](16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md) · [01 — Cost Fundamentals (FinOps)](16_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md)
+- [02 — Databricks/Spark Cost](16_Cost_and_Performance/02_Databricks_Cost_Optimization.md) · [03 — Storage & Query Cost](16_Cost_and_Performance/03_Storage_and_Query_Cost.md) · [04 — Performance Optimization (shuffle/skew)](16_Cost_and_Performance/04_Performance_Optimization.md)
+- **[Interview Questions & Answers](16_Cost_and_Performance/Interview_Questions_and_Answers.md)**
+
+### 17_Power_BI_for_Engineers — serving the Gold layer to the business
+- [00 — Learning Path](17_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md) · [01 — Fundamentals](17_Power_BI_for_Engineers/01_Power_BI_Fundamentals.md) · [02 — Semantic Model & Star Schema](17_Power_BI_for_Engineers/02_Semantic_Model_and_Star_Schema.md)
+- [03 — DAX Basics](17_Power_BI_for_Engineers/03_DAX_Basics.md) · [04 — Serving from the Lakehouse (Direct Lake)](17_Power_BI_for_Engineers/04_Serving_from_the_Lakehouse.md)
+- **[Interview Questions & Answers](17_Power_BI_for_Engineers/Interview_Questions_and_Answers.md)**
+
+### 18_System_Design — the senior interview filter: "design a data platform for X"
+- [00 — Learning Path](18_System_Design/00_System_Design_Learning_Path.md) · [01 — The Design Framework](18_System_Design/01_Design_Framework.md)
+- [02 — Batch Pipeline Design](18_System_Design/02_Batch_Pipeline_Design.md) · [03 — Streaming & Real-Time Design (Lambda/Kappa)](18_System_Design/03_Streaming_and_Realtime_Design.md) · [04 — Case Studies](18_System_Design/04_Case_Studies.md)
+- **[Interview Questions & Answers](18_System_Design/Interview_Questions_and_Answers.md)**
+
 ---
 
 ## Certificates & Exams
@@ -218,19 +300,44 @@ A separate self-contained track outside the main learning path, for certificatio
 - [11 — Most Asked & Tricky Questions](Certifications/AZ_900/11_Most_Asked_and_Tricky_Exam_Questions.md) — the 15 comparison pairs that decide most wrong answers
 - [12 — Final Mock Exam](Certifications/AZ_900/12_Final_Mock_Exam.md) — a timed 50-question simulation with a scoring guide
 
+### DP-900 — Microsoft Azure Data Fundamentals
+The data counterpart to AZ-900 — the ideal foundational entry point to the data track.
+- [00 — Study Guide Overview](Certifications/DP_900/00_DP900_Study_Guide_Overview.md) — exam format, four domains, study plan — start here
+- [01 — Core Data Concepts](Certifications/DP_900/01_Core_Data_Concepts.md) — structured/semi/unstructured, OLTP vs OLAP, batch vs stream, data roles
+- [02 — Relational Data on Azure](Certifications/DP_900/02_Relational_Data_on_Azure.md) — SQL categories, Azure SQL Database / MI / VM, PostgreSQL/MySQL
+- [03 — Non-Relational Data on Azure](Certifications/DP_900/03_Non_Relational_Data_on_Azure.md) — Storage services, blob tiers, Cosmos DB & its APIs
+- [04 — Analytics Workloads on Azure](Certifications/DP_900/04_Analytics_Workloads_on_Azure.md) — ADF, Synapse, Databricks, Fabric, Power BI, ETL/ELT
+- [05 — Practice Questions by Domain](Certifications/DP_900/05_Practice_Questions_by_Domain.md) · [06 — Most Asked & Tricky](Certifications/DP_900/06_Most_Asked_and_Tricky_Questions.md) · [07 — Final Mock Exam](Certifications/DP_900/07_Final_Mock_Exam.md)
+
+### DP-700 — Microsoft Fabric Data Engineer Associate
+The associate-level flagship — **the cert that replaced the retired DP-203** as Microsoft's forward-looking data-engineering credential.
+- [00 — Study Guide Overview](Certifications/DP_700_Fabric_Data_Engineer/00_DP700_Study_Guide_Overview.md) — exam format, three domains, prerequisites, study plan — start here
+- [01 — Fabric & Workspace Fundamentals](Certifications/DP_700_Fabric_Data_Engineer/01_Fabric_and_Workspace_Fundamentals.md) — OneLake, items, workspaces, shortcuts, mirroring, capacity
+- [02 — Security, Governance & Lifecycle](Certifications/DP_700_Fabric_Data_Engineer/02_Security_Governance_and_Lifecycle.md) — roles, RLS/CLS/OLS/DDM, sensitivity labels, Git, deployment pipelines
+- [03 — Ingest Data](Certifications/DP_700_Fabric_Data_Engineer/03_Ingest_Data.md) — pipelines, Dataflow Gen2, notebooks, Eventstream, load patterns
+- [04 — Transform Data](Certifications/DP_700_Fabric_Data_Engineer/04_Transform_Data.md) — Spark/T-SQL/KQL, MERGE/upsert, SCD, windowing
+- [05 — Monitor & Optimize](Certifications/DP_700_Fabric_Data_Engineer/05_Monitor_and_Optimize.md) — Monitoring hub, Capacity Metrics, OPTIMIZE/V-Order, troubleshooting
+- [06 — Practice Questions by Domain](Certifications/DP_700_Fabric_Data_Engineer/06_Practice_Questions_by_Domain.md) · [07 — Most Asked & Tricky](Certifications/DP_700_Fabric_Data_Engineer/07_Most_Asked_and_Tricky_Questions.md) · [08 — Final Mock Exam](Certifications/DP_700_Fabric_Data_Engineer/08_Final_Mock_Exam.md)
+
 ---
 
 ## Roadmap (coming later)
 
-These modules are planned next (numbered to follow `09_Git_GitHub`), following the typical Azure Data Engineer learning path (roughly aligned with the Microsoft DP-203 certification):
+Following the typical Azure Data Engineer learning path (aligned with the modern **DP-700 Fabric Data Engineer** certification, which replaced the retired DP-203). See the **[ROADMAP](ROADMAP.md)** for the full zero-to-job-ready plan.
 
-- 10. Databricks & Delta Lake — hands-on lakehouse, Unity Catalog, DLT (see also the [Databricks certification track](Certifications/Databricks_Data_Engineer_Associate/00_Study_Guide_Overview.md))
-- 11. Streaming Data — Event Hubs, Kafka, Stream Analytics, batch vs. real-time
-- 12. Security & Governance — access control, Microsoft Purview, data classification
-- 13. Monitoring & Orchestration — Airflow, pipeline monitoring, alerting, cost management
-- 14. Reporting — Power BI basics for data engineers
+**Recently added ✅**
+- **[02_Databases › NoSQL](02_Databases/NoSQL/00_NoSQL_Learning_Path.md)** — key-value, document, wide-column, graph, CAP, Cosmos DB
+- **[11_Projects](11_Projects/00_Projects_Learning_Path.md)** — hands-on end-to-end pipelines + portfolio presentation
+- **[12_Orchestration](12_Orchestration/00_Orchestration_Learning_Path.md)** — ADF triggers, Databricks Workflows, Apache Airflow
+- **[13_Monitoring_and_Observability](13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md)** — Azure Monitor/KQL, reliability, data observability
+- **[14_dbt](14_dbt/00_dbt_Learning_Path.md)** — models, tests, docs, snapshots (SCD2), dbt in Azure
+- **[15_Testing_and_DataOps](15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md)** — pipeline testing, data quality, data contracts, CI/CD for data
+- **[16_Cost_and_Performance](16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md)** — FinOps, Databricks/Spark cost, performance tuning
+- **[17_Power_BI_for_Engineers](17_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md)** — semantic models, star schema, DAX, Direct Lake serving
+- **[18_System_Design](18_System_Design/00_System_Design_Learning_Path.md)** — the design framework, batch/streaming design, case studies
+- **[07_DevOps](07_DevOps/CICD/00_CICD_Learning_Path.md)** — CI/CD, Docker/Kubernetes, Terraform/IaC (beyond Git)
 
-Topics are grouped into numbered **category folders** (`01_Foundations` → `07_DevOps`) so related material lives together, and the category numbers still suggest a reading order. The `Certifications/` and `Job Interviews/` folders sit outside the numbered learning path as separate tracks.
+Topics are grouped into numbered **category folders** (`01_Foundations` → `18_System_Design`) so related material lives together, and the category numbers still suggest a reading order. The `Certifications/` and `Job Interviews/` folders sit outside the numbered learning path as separate tracks.
 
 ---
 

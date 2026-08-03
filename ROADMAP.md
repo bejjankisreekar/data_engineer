@@ -1,6 +1,6 @@
 # Azure Data Engineer — Roadmap (Zero to Everything)
 
-A single, ordered path from *"I've never written code"* to *"I can pass DP‑203 / Databricks Associate and clear a 5‑year Azure Data Engineer interview."*
+A single, ordered path from *"I've never written code"* to *"I can pass DP‑700 (Fabric) / Databricks Associate and clear a 5‑year Azure Data Engineer interview."*
 
 This is the **map**. The actual lessons live in the [category folders](README.md); this file tells you **what to learn, in what order, why, and how to know you're ready**. Every ✅ topic already has notes in this repo — the link takes you straight there. Every 🔜 topic is on the roadmap but not yet written.
 
@@ -34,7 +34,7 @@ The Azure toolset for that: **ADLS, Data Factory, Databricks, Synapse/Fabric, Ev
 | **5** | Data modeling & warehousing | Design a star schema, handle SCDs, know Kimball vs Inmon |
 | **6** | PySpark & the lakehouse | Transform big data with Spark, use Delta Lake & the medallion architecture |
 | **7** | Data engineering in practice | Build ETL/ELT pipelines, CDC, streaming, quality, governance |
-| **8** | DevOps, certs & interviews | Use Git/CI-CD, pass DP‑203 & Databricks Associate, clear interviews |
+| **8** | DevOps, certs & interviews | Use Git/CI-CD, pass DP‑700 & Databricks Associate, clear interviews |
 
 ---
 
@@ -162,9 +162,18 @@ The Azure toolset for that: **ADLS, Data Factory, Databricks, Synapse/Fabric, Ev
 - ✅ **Quality:** [Data Quality Fundamentals](05_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) — expectations, quarantine, observability
 - ✅ Q&A: [ETL/ELT](05_Data_Engineering/ETL_ELT/Interview_Questions_and_Answers.md) · [Integration](05_Data_Engineering/Data_Integration/Interview_Questions_and_Answers.md) · [Governance](05_Data_Engineering/Data_Governance/Interview_Questions_and_Answers.md) · [Quality](05_Data_Engineering/Data_Quality/Interview_Questions_and_Answers.md)
 
-**Still to add (🔜):** streaming deep-dive (Event Hubs, Kafka, Stream Analytics), orchestration (Airflow / ADF triggers), monitoring & alerting, cost management, Power BI for engineers. See [interview folders](#interview-prep-track) below for the current coverage.
+- ✅ **Streaming:** [Streaming module (09)](09_Streaming/00_Streaming_Learning_Path.md) — [Fundamentals](09_Streaming/01_Streaming_Fundamentals.md) · [Event Hubs](09_Streaming/02_Azure_Event_Hubs.md) · [Kafka](09_Streaming/03_Apache_Kafka.md) · [Stream Analytics](09_Streaming/04_Azure_Stream_Analytics.md)
 
-**Milestone:** whiteboard an end-to-end pipeline for a real scenario ("ingest daily sales files + a live order stream, serve a finance dashboard") naming the Azure service at each hop and where you'd put quality checks and governance.
+- ✅ **Synapse & Fabric:** [Synapse & Fabric module (10)](10_Synapse_and_Fabric/00_Learning_Path.md) — [Synapse](10_Synapse_and_Fabric/01_Azure_Synapse_Analytics.md) · [SQL pools/MPP](10_Synapse_and_Fabric/02_Dedicated_vs_Serverless_SQL_Pools.md) · [Fabric](10_Synapse_and_Fabric/03_Microsoft_Fabric.md) · [decision guide](10_Synapse_and_Fabric/04_Synapse_vs_Fabric_vs_Databricks.md)
+
+- ✅ **Orchestration:** [Orchestration module (12)](12_Orchestration/00_Orchestration_Learning_Path.md) — DAGs, [ADF triggers](12_Orchestration/02_ADF_Orchestration.md), [Databricks Workflows](12_Orchestration/03_Databricks_Workflows.md), [Apache Airflow](12_Orchestration/04_Apache_Airflow.md)
+- ✅ **Monitoring & Observability:** [Monitoring module (13)](13_Monitoring_and_Observability/00_Monitoring_Learning_Path.md) — [Azure Monitor/KQL](13_Monitoring_and_Observability/02_Azure_Monitor_and_Log_Analytics.md), [reliability](13_Monitoring_and_Observability/03_Pipeline_Reliability.md), [data observability](13_Monitoring_and_Observability/04_Data_Observability.md)
+- ✅ **dbt:** [dbt module (14)](14_dbt/00_dbt_Learning_Path.md) — models, tests, docs, [snapshots/SCD2](14_dbt/04_Snapshots_Seeds_Macros.md), [dbt in Azure](14_dbt/05_dbt_in_Azure.md)
+- ✅ **Testing & DataOps:** [Testing module (15)](15_Testing_and_DataOps/00_Testing_and_DataOps_Learning_Path.md) — [pipeline testing](15_Testing_and_DataOps/01_Testing_Data_Pipelines.md), [data quality tests](15_Testing_and_DataOps/02_Data_Quality_Testing.md), [data contracts](15_Testing_and_DataOps/03_Data_Contracts.md), [CI/CD for data](15_Testing_and_DataOps/04_DataOps_and_CICD_for_Data.md)
+- ✅ **Cost & Performance:** [Cost module (16)](16_Cost_and_Performance/00_Cost_and_Performance_Learning_Path.md) — [FinOps](16_Cost_and_Performance/01_Cost_Fundamentals_FinOps.md), [Databricks cost](16_Cost_and_Performance/02_Databricks_Cost_Optimization.md), [performance tuning](16_Cost_and_Performance/04_Performance_Optimization.md)
+- ✅ **Power BI for engineers:** [Power BI module (17)](17_Power_BI_for_Engineers/00_Power_BI_Learning_Path.md) — semantic models, [star schema](17_Power_BI_for_Engineers/02_Semantic_Model_and_Star_Schema.md), DAX, [Direct Lake serving](17_Power_BI_for_Engineers/04_Serving_from_the_Lakehouse.md)
+
+**Milestone:** whiteboard an end-to-end pipeline for a real scenario ("ingest daily sales files + a live order stream, serve a finance dashboard") naming the Azure service at each hop and where you'd put quality checks and governance. Then **build it** — see the [Projects module (11)](11_Projects/00_Projects_Learning_Path.md).
 
 ---
 
@@ -175,14 +184,22 @@ The Azure toolset for that: **ADLS, Data Factory, Databricks, Synapse/Fabric, Ev
 **DevOps / Git:**
 - ✅ [Git & GitHub track (00→10)](07_DevOps/Git_GitHub/00_Git_GitHub_Learning_Path.md) — version control, branching, remotes, [CI/CD](07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md), troubleshooting
 
-**Certifications (in order):**
-1. 🎓 [AZ‑900 — Azure Fundamentals](Certifications/AZ_900/00_AZ900_Study_Guide_Overview.md) *(done in Phase 3)*
-2. 🎓 [Databricks Data Engineer Associate](Certifications/Databricks_Data_Engineer_Associate/00_Study_Guide_Overview.md) — 13 notes covering Delta, ELT, streaming, Auto Loader, DLT, Unity Catalog, + mock exam
-3. 🔜 **DP‑203 — Azure Data Engineer Associate** *(the flagship cert; this whole roadmap is roughly aligned to it)*
+**Certifications (recommended order):**
+1. 🎓 [AZ‑900 — Azure Fundamentals](Certifications/AZ_900/00_AZ900_Study_Guide_Overview.md) *(done in Phase 3)* — broad Azure fundamentals
+2. 🎓 [DP‑900 — Azure Data Fundamentals](Certifications/DP_900/00_DP900_Study_Guide_Overview.md) — the data counterpart to AZ‑900; easy foundational win
+3. 🎓 [Databricks Data Engineer Associate](Certifications/Databricks_Data_Engineer_Associate/00_Study_Guide_Overview.md) — Delta, ELT, streaming, Auto Loader, DLT, Unity Catalog, + mock exam
+4. 🎓 [DP‑700 — Fabric Data Engineer Associate](Certifications/DP_700_Fabric_Data_Engineer/00_DP700_Study_Guide_Overview.md) — **the flagship**; replaced the retired DP‑203. Ingest/transform/serve + secure/monitor/optimize on Fabric
+> **Note:** DP‑203 (Azure Data Engineer Associate) was **retired in 2025** and replaced by **DP‑700 (Fabric Data Engineer)** — study DP‑700, not DP‑203.
+
+**System design (the senior interview filter):**
+- ✅ [System Design module (18)](18_System_Design/00_System_Design_Learning_Path.md) — the [design framework](18_System_Design/01_Design_Framework.md), [batch](18_System_Design/02_Batch_Pipeline_Design.md) & [streaming/real-time](18_System_Design/03_Streaming_and_Realtime_Design.md) design, [case studies](18_System_Design/04_Case_Studies.md)
+
+**Portfolio (do this in parallel — it matters more than any single cert):**
+- ✅ [Projects module (11)](11_Projects/00_Projects_Learning_Path.md) — build the three end-to-end projects and [present them well](11_Projects/05_Portfolio_and_GitHub_Presentation.md)
 
 **Interview prep:** see the dedicated track below.
 
-**Milestone:** pass the [Databricks Associate mock exam](Certifications/Databricks_Data_Engineer_Associate/13_Final_Mock_Exam.md), and complete a mock interview covering SQL + PySpark + one architecture question.
+**Milestone:** pass the [Databricks Associate mock exam](Certifications/Databricks_Data_Engineer_Associate/13_Final_Mock_Exam.md), and complete a mock interview covering SQL + PySpark + one **[system-design](18_System_Design/00_System_Design_Learning_Path.md)** architecture question — with a **[portfolio project](11_Projects/00_Projects_Learning_Path.md)** on GitHub to walk through.
 
 ---
 
@@ -240,7 +257,8 @@ Tick these off before calling yourself job-ready:
 **Proof**
 - [ ] AZ‑900 passed
 - [ ] Databricks Data Engineer Associate passed
-- [ ] DP‑203 passed
+- [ ] DP‑900 passed
+- [ ] DP‑700 (Fabric Data Engineer) passed
 - [ ] 1–2 end-to-end portfolio projects on GitHub
 
 ---
