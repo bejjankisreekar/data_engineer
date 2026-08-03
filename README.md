@@ -192,6 +192,8 @@ Topics are grouped into **category folders** so related material lives together:
 - [14 — Performance & Best Practices](03_Programming/PySpark/14_Performance_and_Best_Practices.md) — the tuning workflow, testing, production habits
 - [15 — RDDs: The Foundation](03_Programming/PySpark/15_RDDs_The_Foundation.md) — map/reduce, lineage, shuffles, and why the DataFrame API replaced hand-written RDD code
 
+**📋 [PySpark Syntax & Methods Reference](03_Programming/PySpark/PySpark_Syntax_and_Methods_Reference.md)** — the dense one-page look-up: read every file format (CSV/JSON/Parquet/Delta/JDBC…) + every common operation (filter, select, join, groupBy, window, complex types, UDFs…) with syntax and snippets
+
 **[Interview Questions & Answers](03_Programming/PySpark/Interview_Questions_and_Answers.md)** — 78 Q&A, the largest in the series, covering all 19 files above with real PySpark code in every practical answer
 
 ### 02_Databases › Data Warehousing — architectures beyond a single central warehouse

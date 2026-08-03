@@ -31,6 +31,8 @@ This folder teaches **PySpark from zero to pro**. Files are numbered in reading 
 | 14 | [Performance_and_Best_Practices](14_Performance_and_Best_Practices.md) | Tuning, testing, production habits |
 | 15 | [RDDs_The_Foundation](15_RDDs_The_Foundation.md) | The structure underneath DataFrames — map/reduce, lineage, when to still use RDDs |
 
+**📋 [PySpark Syntax & Methods Reference](PySpark_Syntax_and_Methods_Reference.md)** — the dense look-up sheet: reading every file format + every common operation (filter, select, join, groupBy, window, complex types…) with syntax and snippets. Keep it open while coding.
+
 ## Suggested route by experience level
 
 - **Complete beginner**: read [What_Is_Apache_Spark](What_Is_Apache_Spark.md) Part 1, then files 01–08 in order, practicing each. That's a working data engineer's daily toolkit.
