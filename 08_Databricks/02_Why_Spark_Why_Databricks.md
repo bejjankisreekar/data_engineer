@@ -70,7 +70,7 @@ Spark is free. So why pay?
 | What it is | Open-source processing **engine** | Commercial **platform** built around Spark |
 | Cost | Free | Pay per compute (DBUs) + cloud VMs |
 | You manage | Everything (clusters, tuning, security) | Almost nothing — managed service |
-| Storage | None (reads external storage) | None either — your data stays in [ADLS](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)/S3; Delta Lake adds the table layer |
+| Storage | None (reads external storage) | None either — your data stays in [ADLS](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)/S3; Delta Lake adds the table layer |
 | Made by | Apache community | Company founded by Spark's creators |
 
 ---

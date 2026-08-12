@@ -2,7 +2,7 @@
 
 > Domain: **Describe Azure architecture and services** · Prev: [Networking Services](04_Azure_Networking_Services.md) · Next: [Identity, Access & Security](06_Identity_Access_Security.md)
 
-For the full engineering-depth version of this topic (internals, ACLs, performance), see the main repo's [Azure Blob Storage](../../05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md) and [Azure Data Lake Storage](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) notes. This file covers exactly what AZ-900 tests.
+For the full engineering-depth version of this topic (internals, ACLs, performance), see the main repo's [Azure Blob Storage](../../05_Storage_and_Formats/Data_Lakes_and_Storage/02_Azure_Blob_Storage.md) and [Azure Data Lake Storage](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) notes. This file covers exactly what AZ-900 tests.
 
 ---
 

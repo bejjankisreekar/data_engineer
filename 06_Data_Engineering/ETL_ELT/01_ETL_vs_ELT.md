@@ -63,7 +63,7 @@ Analogy: the caterer drives raw, unprepped ingredients straight to the event ven
 
 [Azure Data Factory](02_Azure_Data_Factory.md) can build either pattern:
 - **ETL**: use Data Factory's Mapping Data Flows (or Azure Databricks) to transform data mid-pipeline, before writing to Synapse.
-- **ELT**: use Data Factory purely to copy raw data into a [Data Lake](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) or Synapse, then run transformation queries inside Synapse itself.
+- **ELT**: use Data Factory purely to copy raw data into a [Data Lake](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) or Synapse, then run transformation queries inside Synapse itself.
 
 Most new Azure projects lean toward ELT, because cloud warehouses like Synapse are built to handle heavy transformation workloads efficiently.
 
@@ -83,7 +83,7 @@ A retail chain collects sales data from 500 stores nightly.
 
 ## The medallion architecture — ELT with named quality gates
 
-Modern ELT on the lakehouse formalizes "load raw, refine in place" into layers with contracts ([ADLS zone layout](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)):
+Modern ELT on the lakehouse formalizes "load raw, refine in place" into layers with contracts ([ADLS zone layout](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)):
 
 ```
 BRONZE  as-arrived, immutable, source-native formats + ingest metadata

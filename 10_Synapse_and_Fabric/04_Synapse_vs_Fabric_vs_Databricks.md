@@ -89,11 +89,11 @@ Knowing *where each platform sits in its lifecycle* matters as much as features:
 
 ## Total cost of ownership beats feature checklists
 
-The platform with the longest feature list rarely wins the real decision — **TCO and team fit do**. Databricks' power is wasted (and its cluster ops a burden) on a five-person Power BI shop that Fabric's SaaS would serve for less total effort. Conversely, forcing a heavy-ML, multi-cloud enterprise onto Fabric to "keep it simple" caps them below what Databricks delivers. Price the *people and ops*, the *duplication avoided*, and the *lock-in*, not just the per-unit compute — the same discipline as the [lake/warehouse/lakehouse TCO](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) analysis.
+The platform with the longest feature list rarely wins the real decision — **TCO and team fit do**. Databricks' power is wasted (and its cluster ops a burden) on a five-person Power BI shop that Fabric's SaaS would serve for less total effort. Conversely, forcing a heavy-ML, multi-cloud enterprise onto Fabric to "keep it simple" caps them below what Databricks delivers. Price the *people and ops*, the *duplication avoided*, and the *lock-in*, not just the per-unit compute — the same discipline as the [lake/warehouse/lakehouse TCO](../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) analysis.
 
 ## Migration reality: move workloads, not everything
 
-Synapse→Fabric (or anything→anything) succeeds workload-by-workload with parallel-run and reconciliation, never big-bang. Move new pipelines to the target first, keep BI marts last, and retire the old platform only once trust transfers — the same [migration playbook](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) that governs every platform change. Because all three share open Delta, migrations are often "re-point the engine at the same data," which is a genuine advantage to plan around.
+Synapse→Fabric (or anything→anything) succeeds workload-by-workload with parallel-run and reconciliation, never big-bang. Move new pipelines to the target first, keep BI marts last, and retire the old platform only once trust transfers — the same [migration playbook](../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) that governs every platform change. Because all three share open Delta, migrations are often "re-point the engine at the same data," which is a genuine advantage to plan around.
 
 ## Field-tested gotchas
 
@@ -118,7 +118,7 @@ Synapse→Fabric (or anything→anything) succeeds workload-by-workload with par
 
 - **Prev:** [Microsoft Fabric](03_Microsoft_Fabric.md) · **Module start:** [Learning Path](00_Learning_Path.md)
 - **The platforms:** [Synapse](01_Azure_Synapse_Analytics.md) · [Fabric](03_Microsoft_Fabric.md) · [Databricks](../08_Databricks/01_What_is_Databricks.md)
-- **Foundations:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Data Lake vs Warehouse vs Database](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Data Fabric & Architecture Comparison](../02_Databases/Data_Warehousing/04_Data_Fabric_and_Architecture_Comparison.md)
+- **Foundations:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Data Lake vs Warehouse vs Database](../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Data Fabric & Architecture Comparison](../02_Databases/Data_Warehousing/04_Data_Fabric_and_Architecture_Comparison.md)
 
 ---
 

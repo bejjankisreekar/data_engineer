@@ -121,7 +121,7 @@ During a network **P**artition, a system must choose between **C**onsistency (ev
 | **CP** | Reject requests rather than serve stale data | HDFS NameNode, ZooKeeper, Spanner-style DBs |
 | **AP** | Keep answering, reconcile later ("eventual consistency") | Cassandra, DynamoDB (tunable), DNS |
 
-Cloud object stores (S3, [ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)) are now **strongly consistent** for reads-after-write — a real change from early S3 that used to break pipelines.
+Cloud object stores (S3, [ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)) are now **strongly consistent** for reads-after-write — a real change from early S3 that used to break pipelines.
 
 ---
 

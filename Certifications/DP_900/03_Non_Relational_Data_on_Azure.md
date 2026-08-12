@@ -29,14 +29,14 @@ An **Azure Storage account** provides four data services:
 
 | Service | What it stores | Use for |
 |---|---|---|
-| **Blob Storage** | Unstructured objects (files) in containers | Images, video, backups, data-lake files ([Blob](../../05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md)) |
+| **Blob Storage** | Unstructured objects (files) in containers | Images, video, backups, data-lake files ([Blob](../../05_Storage_and_Formats/Data_Lakes_and_Storage/02_Azure_Blob_Storage.md)) |
 | **File Storage** | Managed SMB/NFS file shares | Lift-and-shift shared drives |
 | **Table Storage** | Key-value / NoSQL tables | Simple, cheap semi-structured data |
 | **Queue Storage** | Messages between app components | Decoupling, async messaging |
 
 **Blob access tiers** (cost vs access speed): **Hot** (frequent access) → **Cool** (infrequent, ~30+ days) → **Cold** → **Archive** (rarely accessed, lowest cost, retrieval latency).
 
-**Azure Data Lake Storage Gen2** = Blob Storage + a **hierarchical namespace**, optimized for big-data analytics ([ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)).
+**Azure Data Lake Storage Gen2** = Blob Storage + a **hierarchical namespace**, optimized for big-data analytics ([ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)).
 
 > **Exam Tip:** Blob = unstructured object storage; **ADLS Gen2 = Blob with a hierarchical namespace for analytics**. Files = SMB share; Table = NoSQL key-value; Queue = messaging. For rarely-accessed data at lowest cost → **Archive** tier.
 

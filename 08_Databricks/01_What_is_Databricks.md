@@ -4,7 +4,7 @@
 
 **Databricks** is a cloud **data platform** built on top of Apache Spark by the people who created Spark. It bundles managed Spark compute, notebooks, [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md), governance, and orchestration into one product so teams can run data engineering, analytics, and machine learning on a single [lakehouse](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — without assembling and babysitting the infrastructure themselves.
 
-**Azure Databricks** is Databricks sold as a first-party Azure service: same platform, integrated with Azure identity (Entra ID), storage ([ADLS](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)), networking, and billing.
+**Azure Databricks** is Databricks sold as a first-party Azure service: same platform, integrated with Azure identity (Entra ID), storage ([ADLS](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)), networking, and billing.
 
 In one line: **Databricks = managed Spark + Delta Lake + notebooks + governance + jobs, as one lakehouse platform.**
 

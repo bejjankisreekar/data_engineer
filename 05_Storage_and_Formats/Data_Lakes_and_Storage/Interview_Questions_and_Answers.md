@@ -1,4 +1,4 @@
-# 04_Data_Storage — Interview Questions & Answers
+# Data Lakes & Storage — Interview Questions & Answers
 
 ## How to use this file
 

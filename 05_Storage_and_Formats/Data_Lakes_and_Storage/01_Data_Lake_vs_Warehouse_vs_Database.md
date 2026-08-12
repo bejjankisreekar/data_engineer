@@ -1,5 +1,7 @@
 # Data Lake vs Data Warehouse vs Database
 
+> 🗺️ Part of the big storage picture — see the [Storage Paradigms Map](../00_Storage_Paradigms_Map.md) for how database, warehouse, lake, and lakehouse fit together and where each lives in this repo.
+
 ## Why compare all three?
 
 By now you've met the [SQL Database](../../02_Databases/SQL/02_SQL_Database.md) and the [SQL Warehouse](../../02_Databases/SQL/13_SQL_Warehouse.md). This note adds a third storage pattern — the **Data Lake** — and lines up all three side by side, because beginners often mix them up. They solve different problems and are frequently used *together* in the same company.

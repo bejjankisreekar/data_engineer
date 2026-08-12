@@ -6,7 +6,7 @@
 
 The term was coined by Zhamak Dehghani in 2019, specifically as a response to a problem large organizations kept hitting: a single central data engineering team becomes a permanent bottleneck as the company grows, because every new data need — from any department — has to queue up behind that one team's backlog.
 
-Analogy: a [data warehouse](01_Data_Warehouse_Fundamentals.md) or [data lake](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) is one central kitchen cooking for an entire restaurant chain — every dish, for every branch, funnels through one kitchen's queue. Data mesh is each branch running its own kitchen, cooking what its own customers actually need, while all branches still follow the same shared food-safety standards and use the same supplier network — decentralized execution, centralized *standards*.
+Analogy: a [data warehouse](01_Data_Warehouse_Fundamentals.md) or [data lake](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) is one central kitchen cooking for an entire restaurant chain — every dish, for every branch, funnels through one kitchen's queue. Data mesh is each branch running its own kitchen, cooking what its own customers actually need, while all branches still follow the same shared food-safety standards and use the same supplier network — decentralized execution, centralized *standards*.
 
 ---
 

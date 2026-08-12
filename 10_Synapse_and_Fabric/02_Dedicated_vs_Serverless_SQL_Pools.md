@@ -5,7 +5,7 @@
 Azure Synapse offers **two very different SQL engines**, and knowing which is which — and the **MPP internals** of the dedicated one — is one of the most tested topics in Azure Data Engineer interviews.
 
 - **Dedicated SQL pool** — a **provisioned** Massively Parallel Processing (**MPP**) data warehouse. You buy compute (DWUs), load data into distributed tables, and get fast, high-concurrency SQL. (This is the former *SQL Data Warehouse*.)
-- **Serverless SQL pool** — a **pay-per-query** engine that runs T-SQL directly over files in the [data lake](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md), with no provisioning and no storage of its own.
+- **Serverless SQL pool** — a **pay-per-query** engine that runs T-SQL directly over files in the [data lake](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md), with no provisioning and no storage of its own.
 
 In one line: **dedicated = a provisioned MPP warehouse you load and serve BI from; serverless = ad-hoc T-SQL over lake files, billed per terabyte scanned.**
 

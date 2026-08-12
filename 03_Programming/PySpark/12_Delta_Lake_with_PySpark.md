@@ -93,7 +93,7 @@ spark.sql("VACUUM silver.sales")                            # purge unreferenced
 
 ### VACUUM vs time travel — the retention triangle
 
-Time travel needs old files; VACUUM deletes old files. Defaults: `delta.deletedFileRetentionDuration` 7 days — VACUUM past that kills older time travel *and* any reader still on an old snapshot. Decide retention per table class (audit tables: long; churny staging: short), and never disable the safety check casually. Costs: skipping VACUUM on high-churn tables silently doubles/triples storage ([blob versioning interplay](../../05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md) — don't stack both).
+Time travel needs old files; VACUUM deletes old files. Defaults: `delta.deletedFileRetentionDuration` 7 days — VACUUM past that kills older time travel *and* any reader still on an old snapshot. Decide retention per table class (audit tables: long; churny staging: short), and never disable the safety check casually. Costs: skipping VACUUM on high-churn tables silently doubles/triples storage ([blob versioning interplay](../../05_Storage_and_Formats/Data_Lakes_and_Storage/02_Azure_Blob_Storage.md) — don't stack both).
 
 ### Constraints, CDF, and the features worth knowing exist
 
@@ -113,7 +113,7 @@ spark.sql("ALTER TABLE silver.employees ALTER COLUMN id SET NOT NULL")
 - MERGE performance is a [join problem](07_Joins.md): source deduped and small → broadcast; match condition partition-scoped; target Z-ordered/clustered on the merge key.
 - `overwriteSchema=true` with `mode("overwrite")` replaces the *schema itself* — powerful for intentional rebuilds, catastrophic as a copy-paste habit.
 - DML on Delta is still big-data DML: an unpartitioned `DELETE WHERE date < X` on 10 TB rewrites files galore (pre-deletion-vectors) — design retention as partition drops or DV-enabled deletes.
-- History is not a backup: `RESTORE` can't survive a VACUUM'd version and `_delta_log` corruption is real — critical tables still get [cross-account protection](../../05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md).
+- History is not a backup: `RESTORE` can't survive a VACUUM'd version and `_delta_log` corruption is real — critical tables still get [cross-account protection](../../05_Storage_and_Formats/Data_Lakes_and_Storage/02_Azure_Blob_Storage.md).
 
 ## Checkpoint
 

@@ -19,7 +19,7 @@ df = spark.read.format("delta").load("path/delta_table/")              # Delta
 df = spark.read.table("catalog.schema.orders")                         # catalog table (Databricks)
 ```
 
-Paths can be a file, a **folder** (reads every file inside), or a glob (`"path/2026-07-*.csv"`). On Azure, paths look like `abfss://container@account.dfs.core.windows.net/folder/` ([ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)).
+Paths can be a file, a **folder** (reads every file inside), or a glob (`"path/2026-07-*.csv"`). On Azure, paths look like `abfss://container@account.dfs.core.windows.net/folder/` ([ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)).
 
 ### The options you'll actually use
 

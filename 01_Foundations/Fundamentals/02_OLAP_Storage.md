@@ -94,7 +94,7 @@ Denormalized and simple on purpose, so analysts can join and aggregate quickly.
 OLTP Databases → ETL/ELT → Data Lake → Data Warehouse (OLAP) → BI / Reports
 ```
 
-See [ETL vs ELT](../../06_Data_Engineering/ETL_ELT) and [01_Data_Lake_vs_Warehouse_vs_Database.md](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how data travels from OLTP to OLAP.
+See [ETL vs ELT](../../06_Data_Engineering/ETL_ELT) and [01_Data_Lake_vs_Warehouse_vs_Database.md](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how data travels from OLTP to OLAP.
 
 ---
 ---

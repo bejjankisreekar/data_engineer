@@ -119,7 +119,7 @@ This folder has two notes covering cloud deployment models and service models �
 - Q: Spot VMs are appropriate for what kind of workload? — A: Retryable, stateless batch work — never a stateful driver/primary node.
 - Q: What makes strategic (not accidental) multi-cloud often more expensive than the lock-in it avoids? — A: Forfeiting best-of-breed services per cloud, plus paying egress costs twice.
 
-Back to the folder: [04_Cloud notes](.) · Related: [04_Data_Storage Interview Q&A](../../05_Storage_and_Formats/Data_Storage/Interview_Questions_and_Answers.md)
+Back to the folder: [04_Cloud notes](.) · Related: [Data Lakes & Storage Interview Q&A](../../05_Storage_and_Formats/Data_Lakes_and_Storage/Interview_Questions_and_Answers.md)
 
 ---
 

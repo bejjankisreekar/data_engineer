@@ -195,7 +195,7 @@ The same pattern governs breaking changes to lakehouse tables consumed by other 
 - `WITH NOCHECK` foreign keys/checks don't validate existing rows *and* are ignored by the optimizer — untrusted constraints are documentation, not protection.
 - Dropping a column doesn't always reclaim space (metadata-hidden until rebuild) — and in Delta, `DROP COLUMN` behavior depends on column-mapping mode.
 - Every DDL statement takes a **schema lock**: an innocent ALTER can queue behind a long transaction and then *block every query* behind itself — always deploy DDL with a lock timeout and off-peak.
-- `DROP TABLE` in the lake deletes metadata; whether *files* die depends on managed vs external tables ([ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)) — know which you have before "cleaning up."
+- `DROP TABLE` in the lake deletes metadata; whether *files* die depends on managed vs external tables ([ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)) — know which you have before "cleaning up."
 
 ## Interview-grade Q&A
 

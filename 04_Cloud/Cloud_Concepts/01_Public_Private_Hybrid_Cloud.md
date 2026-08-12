@@ -25,7 +25,7 @@ Infrastructure owned and operated by a provider — **Azure, AWS, Google Cloud**
 - **Elastic** — scale from 1 to 1,000 machines in minutes, scale back down after
 - **Global** — data centers worldwide
 - **No maintenance** — provider handles hardware, power, cooling, physical security
-- Huge catalog of ready services (databases, [data lakes](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md), Databricks, AI)
+- Huge catalog of ready services (databases, [data lakes](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md), Databricks, AI)
 
 **Weaknesses**
 - Less control over the underlying infrastructure

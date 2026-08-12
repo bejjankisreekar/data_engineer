@@ -58,4 +58,4 @@ Show RBAC/UC grants to groups (least privilege), Purview **classification** of t
 - Confusing RBAC (identity permissions) with Azure Policy (resource compliance).
 
 ## Related Topics
-[Data Quality](../Data_Quality/01_Data_Quality_Fundamentals.md) · [ADLS Gen2 security](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) · [Databricks Unity Catalog](../../Certifications/Databricks_Data_Engineer_Associate/10_Data_Governance_Unity_Catalog.md)
+[Data Quality](../Data_Quality/01_Data_Quality_Fundamentals.md) · [ADLS Gen2 security](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) · [Databricks Unity Catalog](../../Certifications/Databricks_Data_Engineer_Associate/10_Data_Governance_Unity_Catalog.md)

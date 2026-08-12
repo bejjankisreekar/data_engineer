@@ -102,11 +102,11 @@ The Azure toolset for that: **ADLS, Data Factory, Databricks, Synapse/Fabric, Ev
 
 **Goal:** know where data physically lives and in what format — the foundation of every pipeline.
 
-- ✅ [Data Lake vs Warehouse vs Database](05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)
-- ✅ [Azure Blob Storage](05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md) · [Azure Data Lake Storage (ADLS)](05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)
+- ✅ [Data Lake vs Warehouse vs Database](05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)
+- ✅ [Azure Blob Storage](05_Storage_and_Formats/Data_Lakes_and_Storage/02_Azure_Blob_Storage.md) · [Azure Data Lake Storage (ADLS)](05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)
 - ✅ File formats: [CSV](05_Storage_and_Formats/File_Formats/01_CSV.md) · [JSON](05_Storage_and_Formats/File_Formats/02_JSON.md) · [Avro](05_Storage_and_Formats/File_Formats/03_Avro.md) · [ORC](05_Storage_and_Formats/File_Formats/04_ORC.md) · [Parquet](05_Storage_and_Formats/File_Formats/05_Parquet.md) · [Comparison](05_Storage_and_Formats/File_Formats/06_File_Format_Comparison.md)
 - ✅ **Lakehouse formats:** [Delta Lake](05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) · [Delta Table](05_Storage_and_Formats/Lakehouse/02_Delta_Table.md) · [Lakehouse Architecture](05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Medallion Architecture](05_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md)
-- ✅ Q&A: [Data Storage](05_Storage_and_Formats/Data_Storage/Interview_Questions_and_Answers.md) · [File Formats](05_Storage_and_Formats/File_Formats/Interview_Questions_and_Answers.md) · [Lakehouse](05_Storage_and_Formats/Lakehouse/Interview_Questions_and_Answers.md)
+- ✅ Q&A: [Data Storage](05_Storage_and_Formats/Data_Lakes_and_Storage/Interview_Questions_and_Answers.md) · [File Formats](05_Storage_and_Formats/File_Formats/Interview_Questions_and_Answers.md) · [Lakehouse](05_Storage_and_Formats/Lakehouse/Interview_Questions_and_Answers.md)
 
 **Milestone:** explain why analytics uses Parquet over CSV, and what Delta Lake adds on top of Parquet (transaction log → ACID, updates, time travel).
 

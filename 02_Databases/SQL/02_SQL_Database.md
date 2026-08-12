@@ -112,7 +112,7 @@ A SQL Database is built for OLTP — Online Transaction Processing, meaning many
 - Petabytes of data
 - Data Lake storage
 
-For those cases, see [SQL Warehouse](13_SQL_Warehouse.md) and [Data Lake vs Warehouse vs Database](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
+For those cases, see [SQL Warehouse](13_SQL_Warehouse.md) and [Data Lake vs Warehouse vs Database](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
 
 ---
 

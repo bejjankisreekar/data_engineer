@@ -11,7 +11,7 @@ So storage optimization is really two jobs: **store cold data cheaply**, and **l
 
 ## ADLS storage tiers (store cold data cheaply)
 
-Azure Storage / ADLS Gen2 offers **access tiers** priced for how often you read data ([ADLS](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)):
+Azure Storage / ADLS Gen2 offers **access tiers** priced for how often you read data ([ADLS](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)):
 
 | Tier | Storage cost | Read cost | Use for |
 |---|---|---|---|

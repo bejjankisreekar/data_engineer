@@ -44,7 +44,7 @@ You rent **raw building blocks**: virtual machines, disks, networks. You install
 
 You rent a **ready platform** and bring only your code/data/configuration. No OS patching, no server management; scaling is a slider or automatic.
 
-- **Azure examples:** Azure SQL Database, [Azure Data Factory](../../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md), Azure Databricks, Synapse, App Service, [ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)
+- **Azure examples:** Azure SQL Database, [Azure Data Factory](../../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md), Azure Databricks, Synapse, App Service, [ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)
 - **Use when:** you want to build things without babysitting servers — **this is where data engineers live**
 - **Trade-off:** less control over the underlying environment
 

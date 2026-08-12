@@ -83,9 +83,9 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Compression** — shrinking file size by removing repetition, similar to summarizing a long report so it takes up less space, without losing the information.
 
-**Data Lake** — a large storage area that holds raw data of any kind (structured, semi-structured, unstructured), before it's been cleaned or organized. Think of it as a big warehouse room where boxes arrive as-is, unsorted. See [Data Lake vs Warehouse vs Database](05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
+**Data Lake** — a large storage area that holds raw data of any kind (structured, semi-structured, unstructured), before it's been cleaned or organized. Think of it as a big warehouse room where boxes arrive as-is, unsorted. See [Data Lake vs Warehouse vs Database](05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
 
-**Blob** — Azure's term for "a file stored in the cloud" (Binary Large OBject). See [Azure Blob Storage](05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md).
+**Blob** — Azure's term for "a file stored in the cloud" (Binary Large OBject). See [Azure Blob Storage](05_Storage_and_Formats/Data_Lakes_and_Storage/02_Azure_Blob_Storage.md).
 
 ---
 
@@ -109,7 +109,7 @@ Every SQL statement belongs to one of five categories. Full explanations live in
 
 **Azure Data Factory (ADF)** — Azure's tool for building and scheduling data pipelines, largely through a drag-and-drop interface. See [Azure Data Factory](06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md).
 
-**Azure Data Lake Storage (ADLS)** — Azure Blob Storage with extra features (folder structure, fine-grained permissions) tuned for big-data analytics. See [Azure Data Lake Storage](05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md).
+**Azure Data Lake Storage (ADLS)** — Azure Blob Storage with extra features (folder structure, fine-grained permissions) tuned for big-data analytics. See [Azure Data Lake Storage](05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md).
 
 **Azure Synapse Analytics** — Microsoft's cloud data warehouse and analytics service (successor to Azure SQL Data Warehouse).
 

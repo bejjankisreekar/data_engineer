@@ -110,4 +110,4 @@ Bronze = raw (no modeling), Silver = cleaned/normalized (or Data Vault), **Gold 
 - Using Data Vault as the serving layer (too many joins).
 
 ## Related Topics
-[SQL](../SQL/07_SQL_Keys_and_Joins.md) · [Data Warehousing](../Data_Warehousing/01_Data_Warehouse_Fundamentals.md) · [Data Integration](../../06_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md) · [Delta Lake / Lakehouse](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)
+[SQL](../SQL/07_SQL_Keys_and_Joins.md) · [Data Warehousing](../Data_Warehousing/01_Data_Warehouse_Fundamentals.md) · [Data Integration](../../06_Data_Engineering/Data_Integration/01_Data_Integration_Fundamentals.md) · [Delta Lake / Lakehouse](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)

@@ -102,7 +102,7 @@ Three levels of statistics — file, stripe, and **row group (every 10,000 rows)
 
 ## ORC ACID — the feature that previewed the lakehouse
 
-Hive built full **transactional tables** on ORC years before Delta/Iceberg went mainstream: base files + **delta files** (insert/update/delete records) merged at read time, compacted in the background — conceptually the same mechanics Delta Lake later popularized ([evolution timeline](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)). If you inherit a Hive estate, know that "transactional ORC tables" cannot be read as plain ORC folders — they need Hive-aware readers or a migration step, a classic trap when lifting Hive data into [ADLS](../Data_Storage/03_Azure_Data_Lake_Storage.md).
+Hive built full **transactional tables** on ORC years before Delta/Iceberg went mainstream: base files + **delta files** (insert/update/delete records) merged at read time, compacted in the background — conceptually the same mechanics Delta Lake later popularized ([evolution timeline](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)). If you inherit a Hive estate, know that "transactional ORC tables" cannot be read as plain ORC folders — they need Hive-aware readers or a migration step, a classic trap when lifting Hive data into [ADLS](../Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md).
 
 ---
 

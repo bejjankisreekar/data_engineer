@@ -41,7 +41,7 @@ Five patterns, one table — the question each was invented to answer:
 | Pattern | Core question it answers | Centralized or decentralized | Where it's covered |
 |---|---|---|---|
 | **Data Warehouse** | How do we store integrated, historical data for fast analytical SQL? | Centralized | [Data Warehouse Fundamentals](01_Data_Warehouse_Fundamentals.md) |
-| **Data Lake** | How do we store *any* raw data cheaply, before deciding its shape? | Centralized (usually) | [Data Lake vs Warehouse vs Database](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) |
+| **Data Lake** | How do we store *any* raw data cheaply, before deciding its shape? | Centralized (usually) | [Data Lake vs Warehouse vs Database](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) |
 | **Lakehouse** | How do we get warehouse guarantees (ACID, schema) at lake economics? | Centralized (usually) | [Big Data Evolution Timeline](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md) |
 | **Data Mesh** | Who *owns* data as an organization scales past one team's capacity? | Decentralized (organizationally) | [Data Mesh](03_Data_Mesh.md) |
 | **Data Fabric** | How do we technically connect and govern data that's *already* scattered across many systems? | Often centralized metadata layer, distributed data | This file |

@@ -83,7 +83,7 @@ project_1_batch_medallion/
 
 | Local here | On Azure |
 |---|---|
-| `data/raw/<date>/*.csv` | ADLS Gen2 `raw-landing` container (see [ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)) |
+| `data/raw/<date>/*.csv` | ADLS Gen2 `raw-landing` container (see [ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)) |
 | `./lake/bronze,silver,gold` | ADLS containers `bronze/silver/gold` |
 | local `SparkSession` (`src/common.py`) | a Databricks cluster ([Clusters](../../08_Databricks/03_Clusters_and_Compute.md)) — delete `common.py`, use the provided `spark` |
 | `run_pipeline.py` | a Databricks **Job / Workflow** ([Workflows](../../08_Databricks/05_Databricks_Workflows.md)) or an ADF-triggered notebook |

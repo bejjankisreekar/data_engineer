@@ -45,7 +45,7 @@ Producers ──► ┌──────────── Event Hub ───�
 - **Fully managed** — no brokers to patch or clusters to run (unlike self-hosted [Kafka](03_Apache_Kafka.md)).
 - **Kafka-compatible** — existing Kafka apps connect by changing the connection string, no code rewrite.
 - **Multiple independent consumers** — consumer groups let many pipelines read the same stream.
-- **Event Hubs Capture** — auto-archive the stream to [ADLS/Blob](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) as [Avro](../05_Storage_and_Formats/File_Formats/03_Avro.md), no code.
+- **Event Hubs Capture** — auto-archive the stream to [ADLS/Blob](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) as [Avro](../05_Storage_and_Formats/File_Formats/03_Avro.md), no code.
 - **Deep Azure integration** — native inputs to Stream Analytics, Functions, Databricks; secured by Entra ID.
 
 ## Disadvantages
@@ -158,7 +158,7 @@ Teams scale TUs when throttled, but the bottleneck is often **downstream** (the 
 
 - **Prev:** [Streaming Fundamentals](01_Streaming_Fundamentals.md) · **Next:** [Apache Kafka](03_Apache_Kafka.md)
 - **Process it with:** [Stream Analytics](04_Azure_Stream_Analytics.md) · [Structured Streaming](../03_Programming/PySpark/13_Structured_Streaming.md)
-- **Land it in:** [ADLS](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) · [Lakehouse/Bronze](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)
+- **Land it in:** [ADLS](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) · [Lakehouse/Bronze](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md)
 - **Interview:** [Event Hub Q&A](../Job%20Interviews/Event%20Hub/Event%20Hub%20Interview%20Questions.md)
 
 ---

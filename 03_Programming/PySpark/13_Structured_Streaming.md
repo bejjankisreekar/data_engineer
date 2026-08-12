@@ -106,7 +106,7 @@ def upsert(batch_df, batch_id):
 - **Stateful skew**: `groupBy(user_id)` state with one bot user = one giant state partition — same [skew playbook](Spark_Processing.md), plus consider whether the key needs sub-bucketing.
 - **Stream-stream joins** exist (both sides watermarked, bounded buffers) but are the hardest feature to operate — prefer stream-static joins (stream × Delta dim, refreshed by its own pipeline) whenever the use case allows; it's also 90% of real needs.
 - **DLT / Lakeflow Declarative Pipelines**: Databricks' managed layer over all of this (declare tables + expectations; it owns checkpoints, retries, compaction). Worth adopting once hand-rolled streams multiply — concepts here transfer 1:1.
-- Small files: streaming's [signature failure mode](12_Delta_Lake_with_PySpark.md) — enable auto-compaction or scheduled OPTIMIZE from day one, and keep checkpoint folders out of lifecycle/tiering policies ([storage gotcha](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)).
+- Small files: streaming's [signature failure mode](12_Delta_Lake_with_PySpark.md) — enable auto-compaction or scheduled OPTIMIZE from day one, and keep checkpoint folders out of lifecycle/tiering policies ([storage gotcha](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)).
 
 ## Checkpoint
 

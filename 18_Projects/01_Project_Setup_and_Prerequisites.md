@@ -38,7 +38,7 @@ az storage account create -n stdeprojects001 -g rg-de-projects \
   --sku Standard_LRS --hns true          # --hns true = ADLS Gen2
 ```
 
-See [ADLS](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) for what the hierarchical namespace buys you.
+See [ADLS](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) for what the hierarchical namespace buys you.
 
 ---
 

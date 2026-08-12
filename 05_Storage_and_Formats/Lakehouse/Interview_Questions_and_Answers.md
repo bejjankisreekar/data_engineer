@@ -94,6 +94,6 @@ Azure Databricks (Delta + Unity Catalog + Databricks SQL) is the primary lakehou
 ## Related Notes
 
 - [Delta Lake](01_Delta_Lake.md) · [Delta Table](02_Delta_Table.md) · [Lakehouse Architecture](03_Lakehouse_Architecture.md)
-- [Data Lake vs Warehouse vs Database](../Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Parquet](../File_Formats/05_Parquet.md)
+- [Data Lake vs Warehouse vs Database](../Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Parquet](../File_Formats/05_Parquet.md)
 - [12 — Delta Lake with PySpark](../../03_Programming/PySpark/12_Delta_Lake_with_PySpark.md) (hands-on code)
 - Interview folders: [Delta Lake](../../Job%20Interviews/Delta%20Lake/Delta%20Lake%20Interview%20Questions.md) · [Lakehouse](../../Job%20Interviews/Lakehouse/Lakehouse%20Interview%20Questions.md)

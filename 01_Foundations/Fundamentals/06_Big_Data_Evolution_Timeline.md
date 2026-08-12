@@ -49,7 +49,7 @@ Every modern tool (Spark, Databricks, Snowflake, Azure Data Lake) exists to fix 
 
 ## Era 5 — Cloud (2013–2020)
 
-- Storage and compute moved to the [cloud](../../04_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md): S3 / [Azure Data Lake](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) replaced HDFS; managed services replaced hand-run clusters.
+- Storage and compute moved to the [cloud](../../04_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md): S3 / [Azure Data Lake](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) replaced HDFS; managed services replaced hand-run clusters.
 - **Databricks** (founded 2013 by Spark's creators) offered Spark as a managed [SaaS/PaaS](../../04_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md) platform.
 - Cloud warehouses (Snowflake, BigQuery, Synapse) separated **storage from compute** — pay for each independently, scale instantly.
 - **Breaking point:** companies now ran *two* copies of data — a lake (cheap, messy) and a warehouse (clean, expensive) — with pipelines constantly syncing them.

@@ -61,7 +61,7 @@ You could write a custom program to move and transform data instead. Data Factor
 Data Factory typically sits at the center of an Azure data platform, connecting:
 
 - Source systems (on-premises databases, SaaS apps, APIs)
-- [Azure Data Lake Storage](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) (raw storage)
+- [Azure Data Lake Storage](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) (raw storage)
 - Azure Databricks (heavy transformation)
 - Azure Synapse Analytics (final, query-ready warehouse)
 

@@ -2,7 +2,7 @@
 
 ## What is it?
 
-**Delta Lake** is an open-source **storage layer** that sits on top of a [data lake](../Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) and gives it the reliability of a database. It doesn't replace your files — it wraps your ordinary [Parquet](../File_Formats/05_Parquet.md) files with a **transaction log** so that a folder of files behaves like a real table: with transactions, updates, deletes, and history.
+**Delta Lake** is an open-source **storage layer** that sits on top of a [data lake](../Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) and gives it the reliability of a database. It doesn't replace your files — it wraps your ordinary [Parquet](../File_Formats/05_Parquet.md) files with a **transaction log** so that a folder of files behaves like a real table: with transactions, updates, deletes, and history.
 
 In one line: **Delta Lake = Parquet files + a transaction log (`_delta_log`) that makes them behave like a database table.**
 
@@ -72,7 +72,7 @@ spark.sql("UPDATE sales SET amount = 0 WHERE amount IS NULL")
 |---|---|
 | **Azure Databricks** | The default table format; the foundation of the [lakehouse](03_Lakehouse_Architecture.md) and Unity Catalog. |
 | **Microsoft Fabric** | OneLake stores everything as Delta by default; Fabric Warehouse and Lakehouse both write Delta. |
-| **Azure Synapse (Spark)** | Synapse Spark pools read and write Delta on [ADLS](../Data_Storage/03_Azure_Data_Lake_Storage.md). |
+| **Azure Synapse (Spark)** | Synapse Spark pools read and write Delta on [ADLS](../Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md). |
 | **ADLS Gen2** | The physical storage the Delta files (and `_delta_log`) actually live in. |
 
 ---
@@ -113,6 +113,33 @@ SELECT * FROM sales TIMESTAMP AS OF '2026-07-30 00:00:00';
 ```
 
 Uses: reproducing a report exactly, debugging "what changed", rolling back a bad load (`RESTORE TABLE ... VERSION AS OF`), and auditing.
+
+### How far back can you go? (history retention)
+
+**By default a Delta table keeps its history for 30 days** — you can time-travel and see `DESCRIBE HISTORY` entries for the last month. **This is configurable**: set it to any interval you need (7 days, 90 days, a year…).
+
+```sql
+-- Keep 60 days of history instead of the default 30
+ALTER TABLE sales
+SET TBLPROPERTIES ('delta.logRetentionDuration' = 'interval 60 days');
+```
+
+**The nuance that trips people up — two clocks, not one:**
+
+| Property | Default | Controls |
+|---|---|---|
+| `delta.logRetentionDuration` | **30 days** | How long the **history log** (`DESCRIBE HISTORY`, version metadata) is kept |
+| `delta.deletedFileRetentionDuration` | **7 days** | How long the **old data files** survive before `VACUUM` can delete them |
+
+To *actually query* data 30+ days back, you must raise **both** — the 30-day log alone isn't enough, because `VACUUM` can remove the underlying data files after just 7 days. Increasing retention keeps more history but **costs more storage** (old file versions pile up), so raise it deliberately, not "just in case."
+
+```sql
+-- To reliably time-travel ~90 days back, extend BOTH clocks:
+ALTER TABLE sales SET TBLPROPERTIES (
+  'delta.logRetentionDuration'         = 'interval 90 days',
+  'delta.deletedFileRetentionDuration' = 'interval 90 days'
+);
+```
 
 ## Schema enforcement vs evolution
 
@@ -178,7 +205,7 @@ The strategic reason Delta matters: the *same* physical table is read by Spark (
 - **Next:** [Delta Table](02_Delta_Table.md) — the table itself: managed vs external, MERGE, OPTIMIZE, VACUUM in practice.
 - **Architecture:** [Lakehouse Architecture](03_Lakehouse_Architecture.md) — how Delta enables the medallion lakehouse.
 - **Hands-on code:** [12 — Delta Lake with PySpark](../../03_Programming/PySpark/12_Delta_Lake_with_PySpark.md) — MERGE, time travel, OPTIMIZE in real PySpark.
-- **Context:** [Data Lake vs Warehouse vs Database](../Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Parquet](../File_Formats/05_Parquet.md)
+- **Context:** [Data Lake vs Warehouse vs Database](../Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Parquet](../File_Formats/05_Parquet.md)
 
 ---
 

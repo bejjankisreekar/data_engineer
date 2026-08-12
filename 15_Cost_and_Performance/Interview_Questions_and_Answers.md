@@ -107,4 +107,4 @@ Job cluster with auto-termination and autoscaling; spot workers + on-demand driv
 
 ## Further Learning
 - Back to the [Learning Path](00_Cost_and_Performance_Learning_Path.md)
-- Related: [PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md) · [Databricks Clusters](../08_Databricks/03_Clusters_and_Compute.md) · [Storage](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)
+- Related: [PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md) · [Databricks Clusters](../08_Databricks/03_Clusters_and_Compute.md) · [Storage](../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)

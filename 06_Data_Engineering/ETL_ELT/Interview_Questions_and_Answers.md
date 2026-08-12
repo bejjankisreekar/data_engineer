@@ -110,7 +110,7 @@ This folder has only two notes, so this file goes deep rather than wide — theo
 - Q: What ADF ForEach setting prevents accidentally overwhelming a source database? — A: The batch count (parallelism) setting.
 - Q: Where does dbt fit in ETL/ELT? — A: It's the industrialized "T" of ELT — versioned, tested SQL transformation models running on the destination's own compute.
 
-Back to the folder: [05_ETL_ELT notes](.) · Related: [04_Data_Storage Interview Q&A](../../05_Storage_and_Formats/Data_Storage/Interview_Questions_and_Answers.md)
+Back to the folder: [05_ETL_ELT notes](.) · Related: [Data Lakes & Storage Interview Q&A](../../05_Storage_and_Formats/Data_Lakes_and_Storage/Interview_Questions_and_Answers.md)
 
 ---
 

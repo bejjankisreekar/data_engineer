@@ -1,5 +1,7 @@
 # Data Warehouse Fundamentals
 
+> 🗺️ **Lost in database vs warehouse vs lake vs lakehouse?** See the [Storage Paradigms Map](../../05_Storage_and_Formats/00_Storage_Paradigms_Map.md) — the single page that ties all four together and shows where each lives in this repo.
+
 ## What is a Data Warehouse?
 
 A **Data Warehouse** is a central repository that collects, integrates, and stores data from many different source systems, structured specifically to support business analysis and reporting — not day-to-day transactions.

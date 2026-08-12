@@ -105,7 +105,7 @@ Input blocks     MAP phase              SHUFFLE           REDUCE phase
 
 On-prem Hadoop clusters are fading, but the ideas live on everywhere:
 
-- HDFS → cloud data lakes ([Azure Data Lake Storage](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md), S3)
+- HDFS → cloud data lakes ([Azure Data Lake Storage](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md), S3)
 - MapReduce → [Spark](../../03_Programming/PySpark/What_Is_Apache_Spark.md)
 - YARN → Kubernetes / managed cloud clusters (Databricks)
 - Hive → Databricks SQL, Synapse, Snowflake
@@ -183,7 +183,7 @@ Hive's lasting gift isn't its engine; it's the **metastore**: a central map of "
 
 | On-prem piece | Azure landing zone |
 |---|---|
-| HDFS data | [ADLS Gen2](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) (distcp/ADF copy) |
+| HDFS data | [ADLS Gen2](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) (distcp/ADF copy) |
 | Hive tables | Delta tables + Unity Catalog |
 | MapReduce/Hive jobs | Spark on [Databricks](../../08_Databricks/02_Why_Spark_Why_Databricks.md) (Hive SQL ports ~90% cleanly to Spark SQL) |
 | Oozie workflows | [Data Factory](../../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) / Databricks Workflows |

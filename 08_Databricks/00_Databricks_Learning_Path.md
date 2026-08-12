@@ -13,7 +13,7 @@ This module teaches the **platform** — clusters, notebooks, jobs, governance, 
 Before this module, you should have done:
 - [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md) — Databricks runs Spark; you need to speak it
 - [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) & [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — the storage foundation
-- [Azure Data Lake Storage](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) — where the data physically lives
+- [Azure Data Lake Storage](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) — where the data physically lives
 
 ---
 

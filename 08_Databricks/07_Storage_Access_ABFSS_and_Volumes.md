@@ -2,7 +2,7 @@
 
 ## What is this note?
 
-Databricks compute is separate from your data — the data lives in **[ADLS Gen2](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)**, and a cluster has to be *told how to reach it and be allowed to*. This note is the complete picture of **how you reference and access files** from Databricks: the **`abfss://`** path scheme, **Unity Catalog Volumes**, **External Locations + Storage Credentials**, and the older **DBFS / mounts** patterns you'll still see (and should mostly avoid).
+Databricks compute is separate from your data — the data lives in **[ADLS Gen2](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)**, and a cluster has to be *told how to reach it and be allowed to*. This note is the complete picture of **how you reference and access files** from Databricks: the **`abfss://`** path scheme, **Unity Catalog Volumes**, **External Locations + Storage Credentials**, and the older **DBFS / mounts** patterns you'll still see (and should mostly avoid).
 
 Analogy: your data is a warehouse across town. **`abfss://`** is the street address. A **Storage Credential** is the company keycard that proves you're allowed in. An **External Location** is "this keycard opens this specific building." A **Volume** is a labelled, access-controlled room inside that you refer to by a friendly name (`/Volumes/...`) instead of the raw address. **Mounts** were the old shared master key taped under the doormat — convenient, and exactly why security hated them.
 
@@ -171,7 +171,7 @@ The replacement is exactly the UC stack above: **External Location** for governe
 ## Related Notes
 - **Prev:** [Unity Catalog](06_Unity_Catalog.md) — the governance layer that owns Storage Credentials, External Locations, and Volumes.
 - **Then:** [Auto Loader & Ingestion](09_Auto_Loader_and_Ingestion.md) — ingest files (often from a Volume/External Location) into Bronze.
-- **Foundations:** [Azure Data Lake Storage](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) · [Network Security & Private Connectivity](../06_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md) · [Data Governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)
+- **Foundations:** [Azure Data Lake Storage](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) · [Network Security & Private Connectivity](../06_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md) · [Data Governance](../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)
 
 ---
 

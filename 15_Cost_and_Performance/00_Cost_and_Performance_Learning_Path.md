@@ -2,7 +2,7 @@
 
 Anyone can make a query *run*. A data engineer makes it run **fast and cheap**. Cloud bills are metered by the second, and a careless pipeline can cost 10× what a careful one does for the *same result*. **Cost and performance optimization** is a core, promotable skill — and a Phase 7 🔜 gap the [ROADMAP](../ROADMAP.md) flagged.
 
-Builds on [PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md), [Storage](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md), and [Databricks](../08_Databricks/03_Clusters_and_Compute.md).
+Builds on [PySpark Performance](../03_Programming/PySpark/14_Performance_and_Best_Practices.md), [Storage](../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md), and [Databricks](../08_Databricks/03_Clusters_and_Compute.md).
 
 ---
 

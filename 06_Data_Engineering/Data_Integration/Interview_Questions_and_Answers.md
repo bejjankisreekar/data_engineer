@@ -76,4 +76,4 @@ Metadata-driven framework + **CDC** (SQL CDC/Debezium) → Event Hub/files → *
 - Confusing Event Hubs / Service Bus / Event Grid.
 
 ## Related Topics
-[ETL vs ELT](../ETL_ELT/01_ETL_vs_ELT.md) · [Azure Data Factory](../ETL_ELT/02_Azure_Data_Factory.md) · [Data Modeling](../../02_Databases/Data_Modeling/00_Data_Modeling_Learning_Path.md) · [Data Storage](../../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)
+[ETL vs ELT](../ETL_ELT/01_ETL_vs_ELT.md) · [Azure Data Factory](../ETL_ELT/02_Azure_Data_Factory.md) · [Data Modeling](../../02_Databases/Data_Modeling/00_Data_Modeling_Learning_Path.md) · [Data Storage](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)

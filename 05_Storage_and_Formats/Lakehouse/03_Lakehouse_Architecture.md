@@ -2,7 +2,7 @@
 
 ## What is it?
 
-A **lakehouse** is a data architecture that combines the **cheap, flexible storage of a [data lake](../Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)** with the **transactions, governance, and BI performance of a [data warehouse](../../02_Databases/SQL/13_SQL_Warehouse.md)** — in *one* system, on *one* copy of the data.
+A **lakehouse** is a data architecture that combines the **cheap, flexible storage of a [data lake](../Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)** with the **transactions, governance, and BI performance of a [data warehouse](../../02_Databases/SQL/13_SQL_Warehouse.md)** — in *one* system, on *one* copy of the data.
 
 It's made possible by an open **table format** like [Delta Lake](01_Delta_Lake.md): once your lake files behave like transactional tables (ACID, updates, time travel), you no longer need a separate warehouse to get warehouse behavior. Store once in the lake; serve engineering, BI, streaming, and ML from the same tables.
 
@@ -12,7 +12,7 @@ In one line: **lakehouse = data lake storage + [Delta](01_Delta_Lake.md) table f
 
 ## Analogy: the warehouse *and* the loading dock, merged
 
-In the older world (recap from [Data Lake vs Warehouse](../Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)):
+In the older world (recap from [Data Lake vs Warehouse](../Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md)):
 
 - The **data lake** is the loading dock — everything dumped in raw, cheap, unsorted.
 - The **data warehouse** is the tidy store shelves — cleaned, organized, ready for shoppers (analysts).
@@ -64,7 +64,7 @@ Each layer is a set of **Delta tables**; each hop is a transformation (often inc
 - **Newer discipline** — teams used to pure SQL warehouses face a learning curve (Spark, files, maintenance).
 - **You own the maintenance** — `OPTIMIZE`/`VACUUM`, small-file management, clustering are your job.
 - **BI concurrency** — a mature warehouse can still beat a lakehouse on very high-concurrency small-query BI (narrowing fast with Photon/serverless SQL & caching).
-- **Governance doesn't come free** — without a catalog and layer contracts, a lakehouse degrades into a [data swamp](../Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
+- **Governance doesn't come free** — without a catalog and layer contracts, a lakehouse degrades into a [data swamp](../Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
 
 ---
 
@@ -159,7 +159,7 @@ Object storage is cheap (~$20/TB/month); the real spend is **compute** (idle Spa
 
 - **Prev:** [Delta Lake](01_Delta_Lake.md) · [Delta Table](02_Delta_Table.md) — the format and tables the lakehouse is built from.
 - **Next:** [Medallion Architecture](04_Medallion_Architecture.md) — the Bronze/Silver/Gold layering, in depth.
-- **Foundations:** [Data Lake vs Warehouse vs Database](../Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Big Data Evolution Timeline](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)
+- **Foundations:** [Data Lake vs Warehouse vs Database](../Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) · [Big Data Evolution Timeline](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)
 - **Modeling the Gold layer:** [Dimensional Modeling](../../02_Databases/Data_Modeling/03_Dimensional_Modeling.md) · [Data Warehouse Fundamentals](../../02_Databases/Data_Warehousing/01_Data_Warehouse_Fundamentals.md)
 - **Building it:** [ETL vs ELT](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) · [Structured Streaming](../../03_Programming/PySpark/13_Structured_Streaming.md) · [Data Governance](../../06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md)
 

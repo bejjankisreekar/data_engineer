@@ -12,7 +12,7 @@ In one line: **Synapse = data warehouse + Spark + data pipelines + lake querying
 
 ## Analogy: a single workshop with every tool
 
-Before Synapse, doing analytics was like driving between separate specialist shops — one place to weld (warehouse), another to cut wood (Spark), another to paint (pipelines) — each with its own key, its own paperwork, its own bill. **Synapse is one big workshop with every station under one roof**: the warehouse bench, the Spark bench, the pipeline bench, all sharing the same materials store (your [data lake](../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)) and one door key (one workspace, one security model). You walk between stations instead of driving across town.
+Before Synapse, doing analytics was like driving between separate specialist shops — one place to weld (warehouse), another to cut wood (Spark), another to paint (pipelines) — each with its own key, its own paperwork, its own bill. **Synapse is one big workshop with every station under one roof**: the warehouse bench, the Spark bench, the pipeline bench, all sharing the same materials store (your [data lake](../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)) and one door key (one workspace, one security model). You walk between stations instead of driving across town.
 
 ---
 
@@ -116,7 +116,7 @@ A dedicated SQL pool bills for its provisioned DWUs whenever it's *online*, rega
 
 ## Choose the engine per workload, not per platform loyalty
 
-The Synapse trap is doing everything in the dedicated pool because it's there — running exploratory scans that belong in serverless (cheaper), or heavy transforms that belong in Spark (more flexible). The pro routes each workload to its best engine: serverless for explore, Spark for transform, dedicated for governed high-concurrency serving — the same "right tool per job" discipline as the [lake/warehouse/lakehouse](../05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) choice.
+The Synapse trap is doing everything in the dedicated pool because it's there — running exploratory scans that belong in serverless (cheaper), or heavy transforms that belong in Spark (more flexible). The pro routes each workload to its best engine: serverless for explore, Spark for transform, dedicated for governed high-concurrency serving — the same "right tool per job" discipline as the [lake/warehouse/lakehouse](../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) choice.
 
 ## Field-tested gotchas
 

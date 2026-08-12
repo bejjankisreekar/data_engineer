@@ -35,7 +35,7 @@ Topics are grouped into **category folders** so related material lives together:
 | **02_Databases** | SQL · NoSQL · Data Modeling · Data Warehousing |
 | **03_Programming** | Python · PySpark |
 | **04_Cloud** | Cloud Concepts (deployment & service models) |
-| **05_Storage_and_Formats** | File Formats · Data Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse, Medallion) |
+| **05_Storage_and_Formats** | Storage Paradigms Map · File Formats · Data Lakes & Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse, Medallion) |
 | **06_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
 | **07_DevOps** | Git & GitHub (version control, branching, remotes, CI/CD, troubleshooting) — Docker · Kubernetes · Terraform · ARM covered in Job Interviews |
 | **08_Databricks** | Platform · Why Spark · Clusters · Notebooks/Jobs · Workflows · Unity Catalog · ABFSS/Volumes · DLT · Auto Loader · Cost |
@@ -102,6 +102,9 @@ Topics are grouped into **category folders** so related material lives together:
 - [05 — Data Vault & Modern Modeling](02_Databases/Data_Modeling/05_Data_Vault_and_Modern_Modeling.md) — Data Vault 2.0, OBT, modeling for the lakehouse
 - **[Interview Questions & Answers](02_Databases/Data_Modeling/Interview_Questions_and_Answers.md)** — 26 Q&A across the module
 
+### 05_Storage_and_Formats › 🗺️ Start here — the big picture
+- **[Storage Paradigms Map](05_Storage_and_Formats/00_Storage_Paradigms_Map.md)** — Database → Warehouse → Data Lake → Lakehouse in one place: how they relate, and where each topic lives across the repo. Read this if the terms blur together.
+
 ### 05_Storage_and_Formats › File Formats — how data is stored on disk
 - [CSV](05_Storage_and_Formats/File_Formats/01_CSV.md) — the simplest, most universal text format
 - [JSON](05_Storage_and_Formats/File_Formats/02_JSON.md) — flexible, nested key-value data
@@ -116,11 +119,11 @@ Topics are grouped into **category folders** so related material lives together:
 - [IaaS vs PaaS vs SaaS](04_Cloud/Cloud_Concepts/02_SaaS_PaaS_IaaS.md) — the three service models: how much of the stack do you manage?
 - **[Interview Questions & Answers](04_Cloud/Cloud_Concepts/Interview_Questions_and_Answers.md)** — 18 Q&A going deep on both notes
 
-### 05_Storage_and_Formats › Data Storage — where data lives in Azure
-- [Data Lake vs Warehouse vs Database](05_Storage_and_Formats/Data_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) — the three storage patterns and when each is used
-- [Azure Blob Storage](05_Storage_and_Formats/Data_Storage/02_Azure_Blob_Storage.md) — general-purpose cloud file storage
-- [Azure Data Lake Storage](05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) — Blob Storage built for large-scale analytics
-- **[Interview Questions & Answers](05_Storage_and_Formats/Data_Storage/Interview_Questions_and_Answers.md)** — 26 Q&A covering all three notes
+### 05_Storage_and_Formats › Data Lakes & Storage — where data lives in Azure
+- [Data Lake vs Warehouse vs Database](05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) — the three storage patterns and when each is used
+- [Azure Blob Storage](05_Storage_and_Formats/Data_Lakes_and_Storage/02_Azure_Blob_Storage.md) — general-purpose cloud file storage
+- [Azure Data Lake Storage](05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) — Blob Storage built for large-scale analytics
+- **[Interview Questions & Answers](05_Storage_and_Formats/Data_Lakes_and_Storage/Interview_Questions_and_Answers.md)** — 26 Q&A covering all three notes
 
 ### 05_Storage_and_Formats › Lakehouse — the modern table format and architecture
 - [00 — Delta Lake vs Delta Table vs Lakehouse](05_Storage_and_Formats/Lakehouse/00_Delta_Lake_vs_Delta_Table_vs_Lakehouse.md) — **start here:** the beginner-friendly clarifier of the three easily-confused terms, with diagrams
@@ -202,6 +205,7 @@ Topics are grouped into **category folders** so related material lives together:
 - [Data Mart](02_Databases/Data_Warehousing/02_Data_Mart.md) — dependent vs independent vs hybrid marts, star schema per mart, the "spreadmart" failure mode
 - [Data Mesh](02_Databases/Data_Warehousing/03_Data_Mesh.md) — the four principles (domain ownership, data as a product, self-serve platform, federated governance), when it's the right call vs overkill
 - [Data Fabric & Architecture Comparison](02_Databases/Data_Warehousing/04_Data_Fabric_and_Architecture_Comparison.md) — data fabric vs data mesh, the Microsoft Fabric naming collision, a five-pattern decision framework
+- **[Interview Questions & Answers](02_Databases/Data_Warehousing/Interview_Questions_and_Answers.md)** — 30 Q&A across warehouse fundamentals, layers/ODS, Inmon vs Kimball, marts, mesh, and fabric
 
 ### 07_DevOps › Git & GitHub — version control from zero to production-ready
 - [00 — Learning Path](07_DevOps/Git_GitHub/00_Git_GitHub_Learning_Path.md) — the map of the series, Git vs GitHub in one sentence
@@ -215,6 +219,7 @@ Topics are grouped into **category folders** so related material lives together:
 - [08 — Branching Strategies & Collaboration](07_DevOps/Git_GitHub/08_Branching_Strategies_and_Collaboration.md) — Git Flow vs GitHub Flow vs trunk-based, branch protection, CODEOWNERS
 - [09 — Production Best Practices & CI/CD](07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md) — Conventional Commits, hooks, GitHub Actions, secrets, Git LFS, signed commits
 - [10 — Troubleshooting & Real-World Scenarios](07_DevOps/Git_GitHub/10_Troubleshooting_and_Real_World_Scenarios.md) — symptom-indexed fixes for every common Git disaster
+- **[Interview Questions & Answers](07_DevOps/Git_GitHub/Interview_Questions_and_Answers.md)** — 46 Q&A from the core workflow to rebase vs revert, branching strategies, CI/CD, notebooks in Git, and "you broke production" scenarios
 
 ### 08_Databricks — the managed lakehouse platform (where modern Azure DE happens)
 - [00 — Learning Path](08_Databricks/00_Databricks_Learning_Path.md) — the map of the module, prerequisites, and how it differs from the cert track
@@ -254,6 +259,7 @@ Topics are grouped into **category folders** so related material lives together:
 - [03 — Project 2: Streaming Pipeline](18_Projects/03_Project_2_Streaming_Pipeline.md) — Event Hubs → Structured Streaming → checkpointing, watermarking, exactly-once
 - [04 — Project 3: Orchestrated ELT with ADF](18_Projects/04_Project_3_ADF_Orchestrated_ELT.md) — triggers, dependencies, retries, metadata-driven, alerting
 - [05 — Portfolio & GitHub Presentation](18_Projects/05_Portfolio_and_GitHub_Presentation.md) — READMEs, résumé bullets, the 2-minute project walkthrough
+- **[Interview Questions & Answers](18_Projects/Interview_Questions_and_Answers.md)** — 38 Q&A for **defending your project**: the 2-minute walkthrough, per-project follow-ups (idempotency, SCD2, watermarks, metadata-driven ADF), and résumé claims that survive scrutiny
 
 ### 11_Orchestration — scheduling & coordinating pipelines
 - [00 — Learning Path](11_Orchestration/00_Orchestration_Learning_Path.md) · [01 — Fundamentals (DAGs, idempotency, backfill)](11_Orchestration/01_Orchestration_Fundamentals.md)

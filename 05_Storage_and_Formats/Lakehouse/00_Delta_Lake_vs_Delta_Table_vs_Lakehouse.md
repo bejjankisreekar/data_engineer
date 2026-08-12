@@ -1,5 +1,7 @@
 # Delta Lake vs Delta Table vs Lakehouse — what is what?
 
+> 🗺️ Zooming out to database vs warehouse vs lake vs lakehouse? See the [Storage Paradigms Map](../00_Storage_Paradigms_Map.md). This page zooms *in* on the three easily-confused Delta terms.
+
 These three words sound almost the same and are constantly mixed up. They are **not** synonyms — they sit at three different *levels*. Get this one picture straight and the rest of the folder clicks into place. Read this first, then dive into the detailed notes: [Delta Lake](01_Delta_Lake.md) · [Delta Table](02_Delta_Table.md) · [Lakehouse Architecture](03_Lakehouse_Architecture.md).
 
 ---
@@ -25,6 +27,40 @@ Think of **PDF**:
 - The **Lakehouse** is like the **entire digital library** — the building, the shelves, the catalogue, and the librarians — all organised around PDF documents so people can find and use them.
 
 You wouldn't say "email me the PDF format." You'd say "email me the PDF (document)." Same here: you *store data in* Delta Lake, you *query a* Delta table, you *build a* Lakehouse.
+
+---
+
+## Explain it to a non-technical person (the library analogy)
+
+Forget PDFs for a second. Picture a **big modern library building**. 📚
+
+| Term | In one picture | What it means |
+|---|---|---|
+| 🗄️ **Delta Table** | **One smart bookshelf** with a logbook attached | One table of data (e.g. `Customers`) |
+| 🏛️ **Delta Lake** | The **whole library building** and its rules | The technology that keeps every shelf reliable |
+| 🏠 **Lakehouse** | The **modern library concept** — storage *and* reading rooms in one | The overall design that does both cheap storage and fast answers |
+
+**🗄️ Delta Table = one smart bookshelf.**
+A normal shelf: if someone grabs a book while you're reorganising, they might take a half-updated mess. A **Delta table** is a shelf with a **logbook (the transaction log)** — every change is written down ("added 5 rows at 2 PM", "removed 1 row at 3 PM"). Two people can update it at once without corrupting it, and you can even ask *"show me how this shelf looked last Tuesday"* (**time travel**).
+*Example:* a table of orders — thousands of new orders pour in while reports are being read, and nobody ever sees broken half-data.
+
+**🏛️ Delta Lake = the whole library building (with rules).**
+Before Delta Lake, companies had a **data lake** — think of a **giant garage where you dump boxes of stuff**: cheap and huge, but messy and unlabelled. **Delta Lake** turns that messy garage into an **organised library**: same cheap big space, but now with labels, order, and a logbook for every shelf, so the data is trustworthy.
+
+**🏠 Lakehouse = the modern library concept (the "room with benches" part).**
+There used to be **two separate buildings**:
+- **Data Lake** — the cheap giant garage. Holds *everything* (even photos and videos), but slow to get clean answers.
+- **Data Warehouse** — a fancy, tidy office with **comfortable reading rooms and benches**: fast, clean answers, but expensive and rigid.
+
+Companies hated paying for *two* buildings and copying data between them. A **Lakehouse** is **one building that does both** — the cheap huge basement storage *plus* the comfortable reading rooms with benches — so you don't need two buildings anymore. **Delta Lake is the technology that makes this single building possible.**
+
+```
+🏠 LAKEHOUSE   = the whole modern library (storage + reading rooms in one)
+   └── 🏛️ DELTA LAKE = the rules & logbooks that keep it trustworthy
+          ├── 🗄️ DELTA TABLE: Customers   (one smart shelf)
+          ├── 🗄️ DELTA TABLE: Orders      (another smart shelf)
+          └── 🗄️ DELTA TABLE: Products    (another smart shelf)
+```
 
 ---
 

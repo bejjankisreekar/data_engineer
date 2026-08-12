@@ -193,7 +193,7 @@ Pro reflex on any slow job: UI → find the dominant stage → look at its shuff
 - **Everything serialized between driver and executors must be picklable/serializable** — a lambda closing over a DB connection object fails at run time, on the cluster, not on your laptop.
 - Too-large broadcast (default threshold 10 MB, sometimes raised to GBs) can OOM *every* executor simultaneously — the failure looks like a cluster-wide crash.
 - One giant executor per node ≠ faster: GC pauses scale superlinearly with heap; several mid-size executors usually beat one 200 GB monster.
-- Logs for a dead executor live on that node — centralize (cluster log delivery to [ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md)) or the evidence disappears with the VM.
+- Logs for a dead executor live on that node — centralize (cluster log delivery to [ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)) or the evidence disappears with the VM.
 
 ## Interview-grade Q&A
 

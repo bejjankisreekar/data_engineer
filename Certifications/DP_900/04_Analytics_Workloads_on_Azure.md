@@ -27,7 +27,7 @@ Every analytics solution is some version of this flow. Know which Azure service 
 | Service | Role | Repo deep-dive |
 |---|---|---|
 | **Azure Data Factory (ADF)** | Cloud **ingestion & orchestration** (ETL/ELT pipelines, low-code) | [ADF](../../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) |
-| **Azure Data Lake Storage Gen2** | Scalable **storage** for raw/curated analytics data | [ADLS](../../05_Storage_and_Formats/Data_Storage/03_Azure_Data_Lake_Storage.md) |
+| **Azure Data Lake Storage Gen2** | Scalable **storage** for raw/curated analytics data | [ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) |
 | **Azure Synapse Analytics** | Unified **warehouse + Spark + pipelines** platform | [Synapse](../../10_Synapse_and_Fabric/01_Azure_Synapse_Analytics.md) |
 | **Azure Databricks** | Apache **Spark** big-data processing & ML (lakehouse) | [Databricks](../../08_Databricks/01_What_is_Databricks.md) |
 | **Microsoft Fabric** | All-in-one **SaaS analytics** on OneLake (Synapse's successor) | [Fabric](../../10_Synapse_and_Fabric/03_Microsoft_Fabric.md) |
