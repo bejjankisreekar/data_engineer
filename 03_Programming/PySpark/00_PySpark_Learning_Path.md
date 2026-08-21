@@ -35,7 +35,7 @@ This folder teaches **PySpark from zero to pro**. Files are numbered in reading 
 
 ## Suggested route by experience level
 
-- **Complete beginner**: read [What_Is_Apache_Spark](What_Is_Apache_Spark.md) Part 1, then files 01–08 in order, practicing each. That's a working data engineer's daily toolkit.
+- **Complete beginner**: read [What_Is_Apache_Spark](What_Is_Apache_Spark.md) (at least as far as the internals section), then files 01–08 in order, practicing each. That's a working data engineer's daily toolkit.
 - **Know pandas/SQL already**: skim 01–02, read 03–08 properly (the distributed differences hide there), then 09–14.
 - **Interview prep**: the concept track fully + files 07, 08, 12, 14, 15 + every "Pro corner" section.
 

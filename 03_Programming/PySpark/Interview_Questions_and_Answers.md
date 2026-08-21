@@ -5,7 +5,7 @@
 PySpark/Spark is the single most heavily interview-tested topic for Data Engineer roles after SQL — expect deep, code-heavy questions here. This file mixes THEORY (concepts, internals, trade-offs) with heavy PRACTICAL/CODING questions (write this transformation, find the bug, predict the output, optimize this join, read this plan) — every practical answer includes real PySpark code. Every question states what it's testing; every answer explains why it's correct.
 
 - **[Frequently Asked]** — the true PySpark interview classics: what is Spark, lazy evaluation, transformation vs action, RDD vs DataFrame, shuffles, broadcast joins, window functions, Delta MERGE, checkpointing, UDF costs.
-- **[Senior/Experienced]** — Pro-level material: Catalyst/Tungsten internals, AQE, executor memory model, skew/salting, the Delta transaction log, exactly-once semantics, RDD lineage, custom partitioners.
+- **[Senior/Experienced]** — the deeper material: Catalyst/Tungsten internals, AQE, executor memory model, skew/salting, the Delta transaction log, exactly-once semantics, RDD lineage, custom partitioners.
 
 ---
 

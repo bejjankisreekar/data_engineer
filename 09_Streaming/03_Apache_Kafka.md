@@ -79,9 +79,6 @@ Downstream, Kafka/Event Hubs feeds **Databricks (Structured Streaming)**, **Stre
 A bank builds its transaction backbone on Kafka: every card swipe is published to an `transactions` topic, partitioned by `account_id` so each account's events stay ordered. Multiple independent consumer groups process the *same* stream — a **fraud-detection** service scores transactions in real time, a **ledger** service updates balances, and a **Databricks** job lands them into the lakehouse. With a **replication factor of 3**, a broker can fail mid-day without losing a single transaction, and because Kafka retains the log, when the fraud team ships a new model they **reset offsets** and replay a week of history through it — no re-ingestion needed.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Delivery guarantees & `acks`
 
@@ -112,8 +109,6 @@ Beyond time/size retention, Kafka can **compact** a topic — keep only the *lat
 Older Kafka used **ZooKeeper** for cluster metadata/coordination; modern Kafka replaces it with **KRaft** (Kafka Raft), removing the ZooKeeper dependency for a simpler, more scalable architecture. If asked "does Kafka need ZooKeeper?", the current answer is "no — KRaft mode is the modern default."
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The real Kafka question is "managed or self-managed?"
 

@@ -76,9 +76,6 @@ The pattern is everywhere — learn it once and every big data architecture diag
 > **Note on terminology:** the industry is moving away from "master/slave" toward *leader/follower* or *primary/replica* — you'll see both in docs and interviews.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Making the master not die: High Availability (HA) patterns
 
@@ -121,8 +118,6 @@ When one coordinator can't cope:
 - **Metadata sharding** — the "master" becomes a distributed service itself (e.g. cloud object stores' metadata layers).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The alternative: masterless (peer-to-peer) architectures
 

@@ -62,9 +62,6 @@ Power BI / Reports
 Raw data usually lands in the lake first — cheaply and without needing a plan — and only the data worth analyzing gets cleaned and moved into the warehouse.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The fourth pattern: the lakehouse
 
@@ -104,8 +101,6 @@ Anti-patterns each direction: analytics hammering the OLTP primary ([why not](..
 The connective tissue, named: **CDC** streams database changes into the lake (log-based, not queries — [WAL/CDC](../../02_Databases/SQL/02_SQL_Database.md)); **ELT** lands raw then transforms in-place through bronze→silver→gold ([medallion](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md)); **reverse ETL** pushes gold aggregates *back* into operational systems (CRM enrichment, app personalization) — the arrow beginners forget exists.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## One copy of data, many engines — the architectural end-state
 

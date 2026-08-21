@@ -72,9 +72,6 @@ Common thread: the **relationships and their patterns are the primary question**
 A bank fights fraud by modeling **accounts, devices, phone numbers, and addresses as nodes**, with edges when they're shared. A single fraudulent ring might be twenty "different" customers who all quietly connect through two shared devices and one address. In SQL, detecting that means recursive self-joins that time out. As a graph, it's a short traversal: *find clusters of accounts within N hops of a shared device* — the ring lights up instantly. This "connected data" pattern is why graphs took over fraud, recommendations, and knowledge graphs.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Property graph vs RDF
 
@@ -93,8 +90,6 @@ Graph query languages express **patterns**, not tables. Cypher's ASCII-art `(a)-
 A modern, job-relevant use: **knowledge graphs feeding LLMs**. Instead of retrieving loose text chunks, **GraphRAG** retrieves a connected subgraph of facts and their relationships, giving the model structured, linked context and reducing hallucination. If you work near AI/RAG systems, graph databases are increasingly part of the retrieval architecture — a strong talking point in 2026 interviews.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Graph is a serving model, rarely a warehouse
 

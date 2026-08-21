@@ -95,9 +95,6 @@ Violations are tracked as metrics you can monitor over time — turning [data qu
 An IoT team ingests sensor files that occasionally arrive corrupt (missing readings, negative temperatures). Their old hand-built pipeline silently loaded the bad rows, and dashboards showed impossible values until someone noticed days later. Rebuilt in DLT: the Bronze streaming table ingests raw files via Auto Loader; the Silver table carries `@dlt.expect_or_drop("sane_temp", "temp_c BETWEEN -50 AND 80")`, so corrupt readings are dropped and *counted*; Gold aggregates the clean data. Now bad data is quarantined automatically, the drop rate is a monitored metric that alerts when a sensor misbehaves, and the whole Bronze→Silver→Gold graph — with row counts and quality stats — is visible in one pipeline UI.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Streaming tables vs materialized views
 
@@ -121,8 +118,6 @@ DLT has first-class [Change Data Capture](../06_Data_Engineering/Data_Integratio
 They're complementary, not competing: **Auto Loader** *ingests* files incrementally, often *inside* a DLT streaming table; **DLT** *builds and maintains* the medallion with quality rules; **Jobs/Workflows** can *schedule/trigger* a DLT pipeline alongside non-DLT tasks. A common stack is Job → triggers → DLT pipeline (using Auto Loader) → UC tables.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## DLT trades control for correctness — know when that's the right trade
 

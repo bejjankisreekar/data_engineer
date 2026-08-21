@@ -91,9 +91,6 @@ Clickstream ────────────┘                └─► Dat
 An e-commerce site streams every clickstream event — page views, add-to-cart, searches — into an **Event Hub** with 8 partitions, keyed by `session_id` so each user's journey stays ordered within a partition. Three **consumer groups** read the same stream independently: a **Stream Analytics** job powers a live "trending products" dashboard, a **Databricks** job lands events as Delta for the lakehouse, and **Event Hubs Capture** archives everything to ADLS as Avro for later reprocessing. On Black Friday, **auto-inflate** scales throughput units up automatically to absorb the traffic spike, then scales back down — no manual intervention, no dropped events.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Partitions: the scaling and ordering lever
 
@@ -120,8 +117,6 @@ Event Hubs is for *streams of data*; Service Bus is for *messages/commands*; Eve
 Event Hubs exposes a **Kafka-compatible endpoint** (protocol 1.0+), so Kafka producers/consumers, Kafka Connect, and frameworks like Spark's Kafka source work against Event Hubs by only changing the bootstrap servers and auth. This lets teams get **managed Kafka semantics** without running Kafka — a common reason to pick Event Hubs over self-hosted Kafka on Azure.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Capture is the cheapest path to a replayable Bronze layer
 

@@ -30,9 +30,6 @@ The two are not competitors — a **data fabric provides the technology** (unifi
 **Microsoft Fabric** (the Azure product, launched 2023) is Microsoft's unified analytics platform — OneLake, Synapse-derived engines, Data Factory, Power BI, all under one SaaS umbrella. It genuinely embodies data-fabric *principles* (a unifying metadata/storage layer — OneLake — connecting many analytical engines), but the product name is a specific Microsoft branding choice, not a claim that using it automatically means you've implemented "the" data fabric architecture pattern described above. Don't conflate "we use Microsoft Fabric" with "we have a data fabric architecture" in an interview or a design document — one is a product, the other is a pattern.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The full architecture comparison
 
@@ -67,8 +64,6 @@ Ask these in order:
 These aren't mutually exclusive — a large enterprise commonly runs a lakehouse as the storage technology, organized under a data mesh ownership model, with a data-fabric-style catalog and virtualization layer stitching in the handful of legacy systems that can't be migrated yet. The five patterns answer five different questions, not one question five different ways.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The vendor hype problem, honestly
 

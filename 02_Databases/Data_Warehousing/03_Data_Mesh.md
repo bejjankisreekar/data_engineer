@@ -33,9 +33,6 @@ A large e-commerce company used to have one central data engineering team respon
 Microsoft Fabric's **domains** feature and Microsoft Purview's federated governance capabilities are explicitly built to support a data mesh operating model on Azure — letting different business units own their own Fabric workspaces/lakehouses while a central catalog still provides organization-wide discovery and policy enforcement.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The four principles of data mesh
 
@@ -77,8 +74,6 @@ Domain: Orders       Domain: Inventory     Domain: Marketing
 This is the single most important distinction to hold onto: **data mesh is not a replacement for a warehouse, lake, or lakehouse** — those are technology choices about *how* data is stored and queried. Data mesh is a decision about *who owns and is accountable for* data. In practice, each domain in a mesh commonly runs its own lakehouse internally — the technology and the organizational model operate on different axes and combine freely.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## When data mesh is the right call — and when it's overkill
 

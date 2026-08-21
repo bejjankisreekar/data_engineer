@@ -97,9 +97,6 @@ Historically Power BI either **imported** data (fast but a copy that goes stale)
 A mid-size insurer wants analytics without a platform team. In **Fabric**, a **Data Factory** pipeline ingests policy and claims data into a **Lakehouse** in OneLake (Delta). Data engineers transform it with **Spark notebooks** into clean silver/gold tables; a **Warehouse** item exposes those same Delta tables to SQL developers who build marts with T-SQL. Analysts build **Power BI** reports in **Direct Lake** mode — reading the gold Delta straight from OneLake, always current, no import refresh. A **Real-Time Intelligence** eventstream feeds a live claims-volume dashboard. A **shortcut** surfaces a partner's data sitting in ADLS without copying it. It's all one SaaS product, one OneLake copy of the data, and one capacity bill — with zero infrastructure to manage.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## "One copy" is the real architectural shift
 
@@ -118,8 +115,6 @@ Fabric's engines are the **evolution** of Synapse's: Fabric Warehouse ≈ a re-a
 Everything in Fabric draws from a shared **capacity** measured in Capacity Units. This simplifies billing but introduces **smoothing/bursting** and noisy-neighbour dynamics — a heavy Spark job and interactive Power BI queries compete for the same capacity. Capacity sizing and monitoring (the Fabric Capacity Metrics app) become the cost/performance discipline, replacing per-service DWU/DBU/SU tuning.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Fabric's bet: SaaS simplicity for the Microsoft-centric org
 

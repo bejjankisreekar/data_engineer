@@ -100,9 +100,6 @@ Azure SQL Database and Azure Synapse Analytics both support standard DCL and TCL
 A bank's transfer feature wraps the "subtract from Account A, add to Account B" pair of updates inside a single transaction. If a network failure interrupts the process after the first update but before `COMMIT`, the entire transaction rolls back automatically, and the money never appears to vanish. Separately, the bank's DCL rules ensure a customer-facing app can `INSERT` new transactions but can never `DROP` the Account table itself.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## DCL done properly: roles, least privilege, and layers
 
@@ -152,8 +149,6 @@ END CATCH;
 The cardinal sins: user interaction inside an open transaction, network calls inside a transaction, and the **forgotten open transaction** — one uncommitted session can block a table (and hold the [transaction log](02_SQL_Database.md)) for hours. Monitoring open long transactions is standard ops hygiene.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Deadlocks — anatomy and the standard defenses
 

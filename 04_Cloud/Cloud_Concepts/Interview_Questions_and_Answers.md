@@ -5,7 +5,7 @@
 This folder has two notes covering cloud deployment models and service models — foundational vocabulary for any cloud-based data engineering role. Questions mix THEORY (definitions, comparisons) with PRACTICAL/SCENARIO questions (classifying real services, designing a hybrid architecture, justifying a cost decision). Every answer explains why it's correct, not just what the answer is.
 
 - **[Frequently Asked]** — core concepts almost every interview touches: public/private/hybrid, IaaS/PaaS/SaaS with real examples, the shared responsibility model.
-- **[Senior/Experienced]** — deeper Pro-level material: landing zones, FinOps, network posture (private endpoints), TCO comparisons, the lock-in gradient.
+- **[Senior/Experienced]** — the deeper material: landing zones, FinOps, network posture (private endpoints), TCO comparisons, the lock-in gradient.
 
 ---
 

@@ -74,9 +74,6 @@ Every modern tool (Spark, Databricks, Snowflake, Azure Data Lake) exists to fix 
 | Lakehouse | Lake + warehouse duplication | One platform on open formats |
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The architecture wars each era fought
 
@@ -116,8 +113,6 @@ All three give: **ACID commits, schema evolution, time travel, hidden partitioni
 | "ELT beat ETL" | Cheap elastic warehouse compute made "load raw, transform in SQL (dbt)" the default over pre-transforming in tools |
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Reading the timeline as a repeating cycle
 

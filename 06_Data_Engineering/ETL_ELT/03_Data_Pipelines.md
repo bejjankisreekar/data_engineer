@@ -43,9 +43,6 @@ A ride-sharing company's pricing pipeline: every completed ride (source: an even
 [Azure Data Factory](02_Azure_Data_Factory.md) and Databricks Workflows are the two most common pipeline-orchestration tools on Azure; dbt handles the transformation layer specifically inside a warehouse/lakehouse. See [Azure Data Factory](02_Azure_Data_Factory.md) for the Azure-specific building blocks (pipelines, activities, datasets, linked services, triggers).
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Pipeline design patterns
 
@@ -62,7 +59,7 @@ extract_customers ┘                       └─▶ load_to_search_index
 
 ## Idempotency — the property every pipeline needs
 
-A pipeline step is **idempotent** if running it twice produces the same correct result as running it once — critical because orchestrators retry failed steps, and a half-completed run followed by a blind retry must never duplicate data. The concrete patterns (MERGE by key, scoped atomic overwrite, staging-plus-swap) are covered in depth in [ETL vs ELT](01_ETL_vs_ELT.md#part-3--pro-level-what-10-year-engineers-know) and [Delta Lake MERGE](../../03_Programming/PySpark/12_Delta_Lake_with_PySpark.md) — every pipeline, batch or streaming, needs one of these patterns at its write step.
+A pipeline step is **idempotent** if running it twice produces the same correct result as running it once — critical because orchestrators retry failed steps, and a half-completed run followed by a blind retry must never duplicate data. The concrete patterns (MERGE by key, scoped atomic overwrite, staging-plus-swap) are covered in depth in [ETL vs ELT](01_ETL_vs_ELT.md#incremental-loading--the-part-that-separates-toys-from-production) and [Delta Lake MERGE](../../03_Programming/PySpark/12_Delta_Lake_with_PySpark.md) — every pipeline, batch or streaming, needs one of these patterns at its write step.
 
 ## Orchestration tools, at a glance
 
@@ -82,8 +79,6 @@ A pipeline step is **idempotent** if running it twice produces the same correct 
 
 ---
 
-# Part 3 — Pro Level (what 10+ year engineers know)
-
 ## Observability: the difference between "ran" and "worked"
 
 A pipeline showing green/succeeded is not the same as a pipeline that did the right thing — a run that copied zero rows, or silently skipped a downstream step due to a dependency condition, still reports success. Production-grade pipelines instrument three things beyond the run status itself:
@@ -101,7 +96,7 @@ A pipeline showing green/succeeded is not the same as a pipeline that did the ri
 
 ## Pipeline-as-code and CI/CD
 
-Mature teams treat pipeline definitions the same as application code: version-controlled, code-reviewed, and promoted through dev → test → prod via CI/CD rather than edited by hand in a portal. See [Azure Data Factory's CI/CD section](02_Azure_Data_Factory.md#part-3--pro-level-what-10-year-engineers-know) for the concrete Azure pattern (git-integrated workspace, ARM/Bicep deployment, environment-parameterized linked services) — the same discipline applies whether the orchestrator is ADF, Airflow, or Databricks Workflows.
+Mature teams treat pipeline definitions the same as application code: version-controlled, code-reviewed, and promoted through dev → test → prod via CI/CD rather than edited by hand in a portal. See [Azure Data Factory's CI/CD section](02_Azure_Data_Factory.md#adf-in-production-cicd-and-environments) for the concrete Azure pattern (git-integrated workspace, ARM/Bicep deployment, environment-parameterized linked services) — the same discipline applies whether the orchestrator is ADF, Airflow, or Databricks Workflows.
 
 ## Field-tested gotchas
 

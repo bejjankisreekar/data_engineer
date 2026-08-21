@@ -9,10 +9,10 @@ This file pairs with the six notes in this folder and drills the material the wa
 
 Every question explains *why* an interviewer asks it, and every answer explains *why* it's correct — the reasoning is often what's actually being evaluated.
 
-Two difficulty tags are used, roughly matching the Basics/Advanced/Pro structure of the source notes:
+Two difficulty tags are used, roughly matching how deep into a source note the material sits:
 
 - **[Frequently Asked]** — core concepts almost every data engineering interview touches: OLTP vs OLAP, scale up vs scale out, the master-slave pattern, why Hadoop lost popularity, the big data evolution story.
-- **[Senior/Experienced]** — deeper, Pro-level questions: MVCC/isolation levels, CAP theorem, split-brain and fencing, HDFS internals, Lambda vs Kappa. Expect these once you claim 3+ years of experience.
+- **[Senior/Experienced]** — the deeper questions: MVCC/isolation levels, CAP theorem, split-brain and fencing, HDFS internals, Lambda vs Kappa. Expect these once you claim 3+ years of experience.
 
 Untagged questions sit in between — solid mid-level material everyone should be able to answer.
 
@@ -214,7 +214,7 @@ Untagged questions sit in between — solid mid-level material everyone should b
 
 #### Q38. Delta Lake, Iceberg, and Hudi all solve the same problem — what is it, and how do they differ? **[Senior/Experienced]**
 *Why interviewers ask this:* Tests currency with the modern "table format war," a frequent topic in 2024+ data engineering interviews.
-**Answer:** Plain Parquet files sitting in a lake have no ACID transactions, no schema enforcement, and no time travel — just files. Delta Lake (from Databricks), Apache Iceberg (from Netflix), and Apache Hudi (from Uber) each add a transactional metadata layer on top of Parquet to fix this — Delta via a JSON/Parquet checkpoint log (`_delta_log`), Iceberg via snapshot manifests (aimed at multi-engine neutrality across Trino/Flink/Snowflake), and Hudi via a timeline of file groups (aimed at streaming, upsert-heavy ingestion). All three deliver ACID commits, schema evolution, time travel, and data skipping. The pro-level point: which specific format wins matters less than the fact the industry standardized on *open formats on object storage* — vendor lock-in moved up the stack into catalogs and engines instead. This is correct because it doesn't just list three names — it explains what problem they share and their distinct sweet spots, plus the higher-level trend (open formats) that the format choice sits inside.
+**Answer:** Plain Parquet files sitting in a lake have no ACID transactions, no schema enforcement, and no time travel — just files. Delta Lake (from Databricks), Apache Iceberg (from Netflix), and Apache Hudi (from Uber) each add a transactional metadata layer on top of Parquet to fix this — Delta via a JSON/Parquet checkpoint log (`_delta_log`), Iceberg via snapshot manifests (aimed at multi-engine neutrality across Trino/Flink/Snowflake), and Hudi via a timeline of file groups (aimed at streaming, upsert-heavy ingestion). All three deliver ACID commits, schema evolution, time travel, and data skipping. The deeper point: which specific format wins matters less than the fact the industry standardized on *open formats on object storage* — vendor lock-in moved up the stack into catalogs and engines instead. This is correct because it doesn't just list three names — it explains what problem they share and their distinct sweet spots, plus the higher-level trend (open formats) that the format choice sits inside.
 
 #### Q39. How do you decide whether a team actually needs a new piece of big-data technology, versus adopting it because it's trendy? **[Senior/Experienced]**
 *Why interviewers ask this:* A judgment/architecture-review question aimed squarely at senior candidates — tests decision-making framework, not tool trivia.

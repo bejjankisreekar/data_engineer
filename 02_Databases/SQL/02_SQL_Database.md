@@ -143,9 +143,6 @@ Each purchase immediately updates inventory.
 This is a perfect use case for SQL Database.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## What actually happens when you run a query
 
@@ -177,8 +174,6 @@ Two internals worth knowing by name:
 | **Elastic pools** | Many small databases sharing one resource pool (SaaS multi-tenant pattern) |
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The data engineer's contract with OLTP databases
 

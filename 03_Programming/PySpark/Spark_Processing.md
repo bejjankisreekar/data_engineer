@@ -115,9 +115,6 @@ Execution: **1 job → 2 stages** (split at the groupBy shuffle) **→ one task 
 - *Difference between `repartition` and `coalesce`?* repartition shuffles to any number of partitions; coalesce only merges down, avoiding a shuffle.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Join strategies — the biggest performance decision Spark makes
 
@@ -179,8 +176,6 @@ You still set an upper bound (`spark.sql.shuffle.partitions`) — AQE only merge
 - Delta maintenance: `OPTIMIZE` (compact small files) + `ZORDER BY (high_cardinality_col)` (co-locate for data skipping), `VACUUM` (purge old versions).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## A real tuning session, in order
 

@@ -5,7 +5,7 @@
 This file mixes THEORY questions (why row vs. columnar, when to use which format, how schema evolution works) with PRACTICAL questions (PySpark read/write code, debugging a broken load, choosing a format for a scenario). Every question states what it's testing; every answer explains why it's correct, not just what the answer is.
 
 - **[Frequently Asked]** — the comparisons that come up in nearly every data engineering interview: row vs. columnar, CSV vs. Parquet, why Parquet is the default, what predicate pushdown means.
-- **[Senior/Experienced]** — Pro-level material: file internals (row groups, stripes), schema registries, the small-files problem, table formats.
+- **[Senior/Experienced]** — the deeper material: file internals (row groups, stripes), schema registries, the small-files problem, table formats.
 
 ---
 

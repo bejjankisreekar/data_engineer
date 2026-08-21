@@ -67,9 +67,6 @@ Azure SQL Database and Azure Synapse Analytics both support indexes, and Synapse
 An airline's booking system runs thousands of lookups per second for `WHERE FlightNumber = ...`. An index on `FlightNumber` turns each of those lookups from "scan every booking ever made" into "jump almost directly to the matching rows" — the difference between a booking confirmation appearing instantly versus taking several seconds under heavy load.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Clustered vs nonclustered — the fundamental split
 
@@ -103,8 +100,6 @@ The single most effective targeted fix for a hot query — at the cost of a wide
 Rowstore B-trees answer "find these few rows fast"; **columnstore indexes** (Synapse default, SQL Server option) store data [column-wise, compressed, batch-processed](../../01_Foundations/Fundamentals/02_OLAP_Storage.md) — built for "scan a billion rows, aggregate three columns." The two coexist: clustered columnstore for the big fact table + a few B-tree indexes for point lookups on it. In the lakehouse the same role is played by [Parquet](../../05_Storage_and_Formats/File_Formats/05_Parquet.md) + statistics + Z-ordering — "indexing" became file layout ([Spark_Processing.md](../../03_Programming/PySpark/Spark_Processing.md)).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Selectivity & statistics — why the optimizer ignores your index
 

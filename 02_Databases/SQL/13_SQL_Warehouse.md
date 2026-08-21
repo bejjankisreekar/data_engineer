@@ -155,9 +155,6 @@ Warehouse
 - Insurance claims
 
 ---
----
-
-# Part 2 — Advanced
 
 > Deep foundations for this note live in [02_OLAP_Storage.md](../../01_Foundations/Fundamentals/02_OLAP_Storage.md) (columnar internals, star schema mechanics, SCDs). This part focuses on the warehouse as a *system you design and load*.
 
@@ -207,8 +204,6 @@ An MPP warehouse spreads each table across many compute nodes ([distributed comp
 The performance killer is **data movement**: joining two large tables hash-distributed on *different* keys forces a network re-shuffle per query (the same shuffle economics as [Spark](../../03_Programming/PySpark/Spark_Processing.md)). Fact hashed on `order_key` + replicated dimensions = star joins with near-zero movement.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Warehouse vs lakehouse — the 2026 decision, honestly
 

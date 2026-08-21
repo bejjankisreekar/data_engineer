@@ -113,9 +113,6 @@ On-prem Hadoop clusters are fading, but the ideas live on everywhere:
 Understanding Hadoop is understanding *why* modern tools look the way they do — see [06_Big_Data_Evolution_Timeline.md](06_Big_Data_Evolution_Timeline.md).
 
 ---
----
-
-# Part 2 — Advanced
 
 ## HDFS internals worth knowing
 
@@ -161,8 +158,6 @@ InputSplit → Map → [combiner] → partition → sort/spill → SHUFFLE → m
 - Every arrow above that touches disk is the latency Spark later removed.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Why on-prem Hadoop actually declined (the honest postmortem)
 

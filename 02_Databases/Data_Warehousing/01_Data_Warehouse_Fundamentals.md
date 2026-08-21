@@ -62,9 +62,6 @@ A hospital network's data warehouse integrates patient records from five hospita
 **Azure Synapse Analytics** and **Microsoft Fabric Warehouse** are Microsoft's modern data warehouse products — both are SQL-based, MPP (massively parallel processing) engines built for exactly this subject-oriented, integrated, historical workload. See [SQL Warehouse](../SQL/13_SQL_Warehouse.md) for MPP distribution details (HASH/ROUND_ROBIN/REPLICATE).
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Warehouse architecture tiers
 
@@ -95,8 +92,6 @@ Inmon's approach is called the **Corporate Information Factory (CIF)** — a ful
 In practice, few organizations follow either methodology purely: teams often build Kimball-style star schemas (for speed and BI-friendliness) while still maintaining Inmon-style discipline around a single integrated staging/ODS layer (for consistency) — getting the fast time-to-value of dimensional modeling without the "spreadmart" drift that pure independent marts risk (see [Data Mart](02_Data_Mart.md) for that failure mode in detail).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The cloud didn't change the theory — it changed the storage engine
 

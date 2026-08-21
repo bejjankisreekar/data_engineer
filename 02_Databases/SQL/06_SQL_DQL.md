@@ -130,9 +130,6 @@ ORDER BY Salary DESC;
 A store manager wants to know: "Which products priced over 500, in the Electronics category, are we running low on?" That entire business question translates directly into one `SELECT` statement with a `WHERE` clause combining several conditions, sorted by remaining stock — no other SQL command category is needed just to answer a question.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Sargability — writing WHERE clauses indexes can use
 
@@ -191,8 +188,6 @@ SELECT Name FROM Former_Employees;
 `EXCEPT` is an underrated data-quality tool: `SELECT key FROM source EXCEPT SELECT key FROM target` = "what didn't load?"
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Window functions — the biggest DQL power-up
 

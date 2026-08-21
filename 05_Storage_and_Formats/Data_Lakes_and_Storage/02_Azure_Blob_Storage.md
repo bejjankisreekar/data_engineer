@@ -61,9 +61,6 @@ Blob Storage is the foundation many other Azure data services are built on top o
 An insurance company scans and uploads every paper claim form as a PDF into Blob Storage. Recent claims (still being processed) sit in the Hot tier for quick access. Once a claim is settled and closed, it's moved to the Archive tier, since regulations require it to be kept for years but it's very unlikely anyone will need to open it again soon.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Redundancy options — how many copies, and where
 
@@ -96,8 +93,6 @@ Ranked from best to last-resort:
 Plus network posture: private endpoints + default-deny firewall on any account holding real data ([cloud network posture](../../04_Cloud/Cloud_Concepts/01_Public_Private_Hybrid_Cloud.md)).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Lifecycle management — the tiering you automate, not remember
 

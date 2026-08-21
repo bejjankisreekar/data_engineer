@@ -144,7 +144,7 @@ The replacement is exactly the UC stack above: **External Location** for governe
 
 ---
 
-## Pro-level gotchas
+## Field-tested gotchas
 
 - **`dfs` vs `blob` endpoint** — ABFSS must target `…dfs.core.windows.net`. Hitting `blob.core.windows.net` fails or silently loses HNS behavior.
 - **Access mode matters** — Unity Catalog features (Volumes, credential enforcement) require a **UC-enabled cluster/SQL warehouse**. Legacy "No Isolation" clusters bypass UC — a governance hole.

@@ -107,9 +107,6 @@ How a table's rows are assigned to the 60 distributions:
 A bank's reporting warehouse lives in a Synapse **dedicated SQL pool**. The 2-billion-row `fact_transactions` table is **hash-distributed on `account_id`**, and the `dim_account` table (a few hundred MB) is **replicated** to every node — so the daily "spend by account segment" join runs with almost no data movement. Staging tables from the nightly load are **round-robin** distributed (fast, even loads) and then transformed into the distributed fact table with **CTAS**. Analysts who occasionally want to poke at raw upstream files don't touch the pool at all — they run **serverless** queries straight over the Parquet in ADLS, paying only for the terabytes scanned. The dedicated pool is **paused from 8 pm to 6 am**, cutting its bill by ~40% with no impact on business-hours reporting.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Table design in a dedicated pool
 
@@ -131,8 +128,6 @@ Dedicated pools control concurrency via **resource classes / workload groups** �
 Serverless shines as a **logical/virtual warehouse**: define external tables or views over lake files ([medallion](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) gold Parquet/Delta), and BI tools query those views with T-SQL — no data copied into a warehouse. It's a low-cost way to serve SQL over the lakehouse when full dedicated-pool performance isn't needed. File layout (partitioning, Parquet, not-too-many-small-files) directly controls both speed and cost, since you pay per byte scanned.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Distribution design is where MPP warehouses live or die
 

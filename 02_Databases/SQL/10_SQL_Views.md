@@ -70,9 +70,6 @@ Views are commonly used in Azure SQL Database and Azure Synapse Analytics to giv
 A hospital's IT team creates a view called `ActivePatients` that joins the Patients table with the Admissions table and filters out discharged patients. Doctors and nurses querying `ActivePatients` never need to know or write that underlying join and filter logic themselves — and if the hospital's definition of "active" ever changes, updating the one view definition fixes every report built on top of it at once.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## How views execute: inlining
 
@@ -121,8 +118,6 @@ GRANT SELECT ON hr.EmployeeDirectory TO analyst_role;
 Modern engines add **row-level security** (policy functions filtering per user) and **dynamic data masking** — but the humble column-hiding view remains the most portable access-control tool in SQL.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Views as the API of the warehouse
 

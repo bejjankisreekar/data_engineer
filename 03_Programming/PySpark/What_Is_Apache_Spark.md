@@ -92,9 +92,6 @@ Warehouse / Delta tables / ML models / Dashboards
 For the history of how we got here, see [06_Big_Data_Evolution_Timeline.md](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md).
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The three APIs: RDD → DataFrame → Dataset
 
@@ -142,8 +139,6 @@ agg = stream.groupBy(window("timestamp", "5 minutes"), "region").count()
 Micro-batches by default (~100ms+ latency), **checkpointing** for failure recovery, **watermarks** to bound late-data state. One mental model, batch and streaming — the reason Lambda architecture died ([evolution timeline](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Version awareness (what changed and why it matters)
 

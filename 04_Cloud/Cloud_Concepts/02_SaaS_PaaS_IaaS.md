@@ -79,9 +79,6 @@ A typical Azure data platform is **almost entirely PaaS** — that's the sweet s
 - **SaaS** — "**S**imply use the software"
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The shared responsibility model (the security version of the stack)
 
@@ -124,8 +121,6 @@ In a PaaS world there are no servers to firewall; **identity** does the isolatin
 - Spiky, event-shaped glue → **serverless**.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Total cost of ownership: the hidden column in the table
 

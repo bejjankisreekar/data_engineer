@@ -69,9 +69,6 @@ That's exactly the problem Avro solves for data. Systems that produce a constant
 Avro is optimized for **writing whole records quickly and evolving schema over time** (streaming). Parquet is optimized for **reading specific columns quickly across huge datasets** (analytics). See [06_File_Format_Comparison.md](06_File_Format_Comparison.md) for the full picture.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The schema, concretely
 
@@ -119,8 +116,6 @@ Compatibility is checked between writer schema and reader schema:
 Registry modes: `BACKWARD` (new readers read old data — the common default; lets consumers upgrade first), `FORWARD` (old readers read new data), `FULL` (both). The team decision "which mode, per topic" *is* your streaming data contract.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Where Avro sits in a modern Azure stream
 

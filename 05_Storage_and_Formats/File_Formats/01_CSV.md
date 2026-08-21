@@ -63,9 +63,6 @@ All can read CSV files.
 CSV is usually where a data journey *starts* (a raw export from an old system) rather than where it stays. See [File Format Comparison](06_File_Format_Comparison.md) for how CSV compares to [JSON](02_JSON.md), [Avro](03_Avro.md), [ORC](04_ORC.md), and [Parquet](05_Parquet.md), and when it's worth converting away from it.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The dialect problem: "CSV" is not one format
 
@@ -106,8 +103,6 @@ Plain CSV compresses ~80–90% with gzip — but a `.csv.gz` file is **not split
 - Convert to [Parquet](05_Parquet.md) at the first pipeline hop — the real answer.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Operating a CSV ingestion boundary (the checklist)
 

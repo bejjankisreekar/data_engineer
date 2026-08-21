@@ -82,9 +82,6 @@ spark.sql("UPDATE sales SET amount = 0 WHERE amount IS NULL")
 A retailer lands raw orders into a data lake every hour. Before Delta, a late-arriving correction ("cancel order #55") meant rewriting an entire day's Parquet partition by hand, and analysts sometimes queried the table *while* it was being rewritten and got duplicate or missing rows. After moving to Delta Lake, the correction is a one-line `MERGE`, the write is atomic (analysts never see a half-state), and when finance later asks "what did yesterday's numbers look like *before* the correction?", the team answers with a single time-travel query instead of restoring a backup.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## How the transaction log actually works
 
@@ -160,8 +157,6 @@ ALTER TABLE sales SET TBLPROPERTIES (
 Delta, Iceberg, and Hudi solve the *same* problem (the "open table format"); Delta dominates the Databricks/Azure world, so it's the one to know here.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The maintenance jobs nobody warns you about
 

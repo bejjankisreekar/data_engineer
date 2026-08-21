@@ -89,9 +89,6 @@ Aggregate functions and `GROUP BY` are the backbone of nearly every report built
 A retail chain's monthly report — "total revenue and number of transactions per store" — is a single query: `SUM(Amount)` and `COUNT(*)`, grouped by `StoreID`, with a `HAVING COUNT(*) > 100` added to exclude any newly opened store that hasn't yet processed enough transactions to be meaningfully compared to the rest.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## NULLs change aggregate answers
 
@@ -142,8 +139,6 @@ GROUP BY ROLLUP (Region, StoreID);
 `COUNT(DISTINCT user_id)` must track every unique value — memory-hungry and shuffle-heavy at scale, and most engines allow only limited mixing of different DISTINCT columns in one query. At billions of rows, pros switch to **`APPROX_COUNT_DISTINCT`** (HyperLogLog, ~2% error) for dashboards, keeping exact counts for reconciliation ([OLAP approximation](../../01_Foundations/Fundamentals/02_OLAP_Storage.md)).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## GROUP BY vs window functions — collapse or annotate?
 

@@ -107,9 +107,6 @@ This is [scale-out](../../01_Foundations/Fundamentals/03_Distributed_Computing.m
 | DAG | The dependency graph of stages Spark builds from your code |
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Deploy modes: where does the driver live?
 
@@ -159,8 +156,6 @@ For a node with 16 cores / 64 GB (leave 1 core + ~1 GB for the OS/daemons):
 **Dynamic allocation** grows/shrinks executor count with the task backlog — the basis of Databricks autoscaling. The catch: a departing executor holds **shuffle files** other stages still need. Solutions: an external/remote shuffle service, or decommissioning that migrates shuffle blocks first. This single issue is why "just autoscale everything" occasionally re-runs whole stages ("FetchFailed" → stage retry).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The Spark UI — where every real investigation starts
 

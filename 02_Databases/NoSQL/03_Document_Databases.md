@@ -79,9 +79,6 @@ Rule of thumb: **"data that is queried together should be stored together."** Em
 A retailer's product catalog lives in **MongoDB/Cosmos DB** because products are wildly inconsistent: a T-shirt has size and color; a laptop has RAM, CPU, and ports; a book has an author and ISBN. In a relational database you'd fight this with sparse columns or an ugly key-value attributes table. As documents, each product simply carries the fields it needs. The app reads a product page with **one document fetch** — title, specs, images, and reviews summary all in one object.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Collections, documents, and the (soft) schema
 
@@ -100,8 +97,6 @@ A write to a **single document is atomic** — updating a customer and pushing a
 Document databases can do more than fetch-by-id. MongoDB's **aggregation pipeline** chains stages (`$match` → `$group` → `$sort` → `$project`) much like SQL's `WHERE`/`GROUP BY`/`SELECT`, letting you compute analytics inside the database. It's powerful, but heavy analytical crunching is usually better pushed to a lakehouse/warehouse — the document DB stays the fast operational serving layer.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The unbounded array anti-pattern
 

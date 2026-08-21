@@ -7,7 +7,7 @@ Two separate questions, often confused:
 
 ---
 
-## Part 1 — Why Spark?
+## Why Spark?
 
 Context: by ~2012 everyone ran [Hadoop](../01_Foundations/Fundamentals/05_Hadoop_Architecture.md), and everyone had the same complaints.
 
@@ -36,7 +36,7 @@ Spark kept the good parts of Hadoop thinking — [scale-out on clusters](../01_F
 
 ---
 
-## Part 2 — Why Databricks?
+## Why Databricks?
 
 Spark is free. So why pay?
 
@@ -74,9 +74,6 @@ Spark is free. So why pay?
 | Made by | Apache community | Company founded by Spark's creators |
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The numbers behind "10–100× faster" (so you can defend the claim)
 
@@ -111,8 +108,6 @@ Plain Parquet-on-a-lake fails in specific, painful ways; Delta's `_delta_log` (a
 This is the "lakehouse" in one table: warehouse guarantees, lake economics ([evolution timeline](../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Databricks vs the field — the real decision matrix
 

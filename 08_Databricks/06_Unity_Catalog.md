@@ -82,9 +82,6 @@ Permissions use familiar SQL: `GRANT SELECT ON TABLE prod.sales.orders TO group_
 A bank runs a dev and a prod Databricks workspace and must prove to auditors exactly who can see customer PII. With Unity Catalog: PII columns in `prod.customers.accounts` are **masked** for the analyst group and visible only to a compliance group; **row filters** restrict each regional team to its own region's rows; **column-level lineage** shows auditors that the `risk_score` in a Gold table derives from specific Silver columns; and every query is **logged**. When a new analyst joins, adding them to the right **Entra ID group** grants exactly the right access across both workspaces — no per-workspace fiddling, one governed model.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Managed vs external tables under UC
 
@@ -110,8 +107,6 @@ As jobs run, UC records which tables/columns feed which — table *and* column l
 An open protocol to share live Delta tables with other orgs/tools **without copying** — the recipient reads your data directly (even from non-Databricks engines). It turns data sharing from "export a copy and hope it's current" into "grant read on a live table."
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## UC is what makes "one copy, many engines" governable
 

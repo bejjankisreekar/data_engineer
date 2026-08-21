@@ -77,9 +77,6 @@ A retail chain collects sales data from 500 stores nightly.
 - Under **ELT**, all 500 stores' raw data is loaded into the warehouse first, and a set of scheduled queries inside the warehouse itself does the cleaning — keeping the original raw records around in case a mistake in the cleaning logic needs to be corrected later.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The medallion architecture — ELT with named quality gates
 
@@ -114,8 +111,6 @@ Then apply changes with **MERGE at the target** ([upserts](../../02_Databases/SQ
 A production pipeline is a **DAG of dependencies** with per-node retry policy, timeout, and alerting; runs are parameterized by *logical date* (backfills = re-running old dates — only safe because steps are [idempotent](../../02_Databases/SQL/05_SQL_DML.md)); state ("what loaded through when") lives in a control table, not in someone's memory. Tools: [ADF](02_Azure_Data_Factory.md), Databricks Workflows, Airflow — same concepts, different skins. The transformation layer inside the warehouse increasingly belongs to **dbt**: SQL models in git, tests, docs, lineage — ELT's "T" industrialized.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Data quality as pipeline code, not hope
 

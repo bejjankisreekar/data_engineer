@@ -78,9 +78,6 @@ If you need flexible querying, this is the wrong family; if you need to ingest a
 A smart-building platform ingests readings from **500,000 sensors every few seconds** into **Cassandra**, partitioned by `sensor_id` and clustered by timestamp. Writes are trivial (append to the right partition on the right node), and the operations dashboard reads "last 24 hours for sensor X" as a single fast range scan. For monthly cross-sensor analytics ("average temperature per floor per building"), the data is streamed out to a **Delta lakehouse** — because *that* query pattern (aggregate across all partitions) is exactly what Cassandra is bad at and Spark is good at.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Why writes are so cheap: LSM trees
 
@@ -99,8 +96,6 @@ Because storage is append-only and immutable, a **delete** doesn't remove data �
 Cassandra lets you choose consistency **per operation** via a replication factor and consistency level (e.g., `ONE`, `QUORUM`, `ALL`). Write to `QUORUM` and read from `QUORUM` and you get strong-enough consistency (reads see the latest write); use `ONE` for max speed and accept staleness. This dial is a direct, practical expression of the [CAP theorem](06_CAP_Theorem_and_Consistency.md) — you trade consistency against availability and latency query by query.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Partition sizing — the make-or-break decision
 

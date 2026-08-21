@@ -5,7 +5,7 @@
 This folder has only two notes, so this file goes deep rather than wide — theory questions on ETL/ELT trade-offs and Data Factory concepts, mixed with practical design/scenario questions ("design a pipeline for 500 tables," "your nightly job failed at 60%, what does the table look like"). Every question states what it's testing; every answer explains why it's correct.
 
 - **[Frequently Asked]** — core concepts nearly every data engineering interview touches: ETL vs. ELT, ADF's building blocks, Copy Activity vs. Mapping Data Flow, incremental loading, medallion architecture.
-- **[Senior/Experienced]** — deeper Pro-level material: metadata-driven pipelines, CI/CD for ADF, idempotent watermarks, data quality as pipeline code, EtLT for compliance.
+- **[Senior/Experienced]** — the deeper material: metadata-driven pipelines, CI/CD for ADF, idempotent watermarks, data quality as pipeline code, EtLT for compliance.
 
 ---
 

@@ -87,9 +87,6 @@ Users → Application → OLTP Database (live transactions)
 OLTP systems are usually the **source** of a data engineer's pipelines: the business runs on them, and we copy their data out for analytics — see [01_Data_Lake_vs_Warehouse_vs_Database.md](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md).
 
 ---
----
-
-# Part 2 — Advanced
 
 ## How OLTP databases are fast: the B-tree index
 
@@ -138,8 +135,6 @@ OLTP schemas are normalized to avoid duplicate facts:
 Result: updates touch one place; no risk of two rows disagreeing about a customer's address. The price: reads need joins — which is exactly why [OLAP](02_OLAP_Storage.md) denormalizes.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Scaling OLTP when one box isn't enough
 

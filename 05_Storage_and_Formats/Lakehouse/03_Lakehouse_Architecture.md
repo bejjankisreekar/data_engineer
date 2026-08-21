@@ -87,9 +87,6 @@ A logistics company used to run a data lake (for GPS pings, scanned documents, a
 They moved to a Databricks lakehouse: raw pings and documents land in **Bronze**, a streaming job cleans and joins them into **Silver**, and **Gold** holds the star-schema tables Power BI reads directly via the SQL endpoint. Data scientists train delivery-time models on the *same* Silver tables the dashboards trust. One copy, no copy-pipeline, no reconciliation meeting — and dashboards update within minutes instead of a day.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Where the lakehouse sits in the big-data timeline
 
@@ -118,8 +115,6 @@ Pointing BI at Silver "just for now" quietly breaks the Gold contract and puts d
 Because a Delta table is both a stream sink and a stream source, the *same* medallion pipeline runs in batch or streaming with little change — Bronze can be a streaming ingest, Silver a streaming transform, Gold a micro-batch aggregate ([Structured Streaming](../../03_Programming/PySpark/13_Structured_Streaming.md)). This "one pipeline, two speeds" is a defining lakehouse advantage over the old batch-only warehouse.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Lakehouse doesn't delete warehouse discipline
 

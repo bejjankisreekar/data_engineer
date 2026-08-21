@@ -85,9 +85,6 @@ Modern data platforms are overwhelmingly **public cloud**: ADLS, [Databricks](..
 Next: *how much of the stack you rent* — [02_SaaS_PaaS_IaaS.md](02_SaaS_PaaS_IaaS.md).
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Inside a public cloud: regions, zones, and what "3 nines" means
 
@@ -126,8 +123,6 @@ Consequences: replicate compute *to* the data, keep chatty services in one regio
 - The subtler issue is **jurisdiction** (e.g. CLOUD Act debates) — which is why some governments and banks keep a private/sovereign layer even when technical objections are solved.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Landing zones — how enterprises actually adopt public cloud
 

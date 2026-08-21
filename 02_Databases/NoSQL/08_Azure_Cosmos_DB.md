@@ -85,9 +85,6 @@ Cosmos DB exposes **five consistency levels** (from [06](06_CAP_Theorem_and_Cons
 A retailer runs its product catalog and shopping app on **Cosmos DB (NoSQL API)**, partitioned by `categoryId`, replicated to three regions so shoppers worldwide get local low latency. They set **Session** consistency (users always see their own cart edits), **autoscale RU/s** to ride the daily traffic curve without overpaying at night, and design screens as **single-partition point reads** to keep RU cost low. For analytics, they enable **Azure Synapse Link** so the data team queries a separate analytical copy with Spark/SQL — **without touching the transactional RUs** the live app depends on.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Global distribution & multi-region writes
 
@@ -111,8 +108,6 @@ Three throughput/billing modes:
 Choosing the wrong mode is a common source of surprise bills — steady heavy load on serverless, or spiky load on high fixed provisioned capacity.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Separating transactional and analytical workloads (HTAP)
 

@@ -57,9 +57,6 @@ Azure SQL Database and Azure Synapse Analytics both use T-SQL data types (`INT`,
 A hospital's patient records table stores `DateOfBirth` as a `DATE`, not text, specifically so the database can calculate a patient's current age automatically and correctly sort patients by birthday — something that would require constant manual correction if birthdates were just free-form text typed in however each staff member preferred.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Precision, scale, and the money question
 
@@ -97,8 +94,6 @@ Across 10 billion fact rows, INT vs BIGINT on one column = 40 GB difference — 
 - The professional convention: **store UTC everywhere, convert at the display edge.** Mirror it in Spark (`spark.sql.session.timeZone`) — mismatched session timezones between the extract job and the load job shift every timestamp by hours, and nobody notices until a "daily" report splits days at 05:30.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Implicit conversion — the silent performance killer
 

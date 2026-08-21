@@ -103,9 +103,6 @@ This means a new upstream field doesn't crash the pipeline *or* vanish unnoticed
 A retailer's point-of-sale systems drop a JSON file per store per hour into ADLS — tens of thousands of small files a day, growing forever. Their first pipeline listed the whole directory each run and got slower every week until the hourly job overran its window. Switching to Auto Loader in **file-notification mode**, ingestion reacts to each blob-created event, so run time is proportional to *new* files, not the total. When stores started sending an extra `loyalty_id` field, **schema evolution** added the column automatically and older records simply show null — no pipeline crash, no lost data, no 3 a.m. page.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Checkpoints are the source of truth
 
@@ -126,8 +123,6 @@ The `_rescued_data` column captures any incoming field that doesn't fit the curr
 - **Auto Loader** — the scalable, low-latency, schema-evolving choice for high-volume continuous ingestion.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Ingestion latency vs cost is a dial, not a default
 

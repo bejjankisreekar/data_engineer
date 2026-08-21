@@ -115,9 +115,6 @@ The Azure streaming stack:
 A ride-hailing app needs surge pricing that reacts within seconds to demand. Every ride request and driver location becomes an **event** streamed into **Event Hubs**. A **Stream Analytics** job aggregates requests per neighbourhood in a **tumbling 1-minute window**, using **event time** so a request delayed by a flaky mobile connection still counts in the right minute (a **watermark** tolerates ~30 seconds of lateness before closing the window). When demand outstrips nearby drivers, it emits a surge multiplier to the pricing service and a live ops dashboard — all within seconds of the requests happening, something a nightly batch job could never do.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Lambda vs Kappa architecture
 
@@ -140,8 +137,6 @@ When events arrive faster than consumers can process, systems need **backpressur
 Order is guaranteed only **within a partition**, and only if a stable **partition key** routes related events together (e.g. all events for one `device_id` to the same partition). Across partitions there is no global order. Choosing the partition key is therefore a correctness decision, not just a scaling one — the wrong key scatters an entity's events across partitions and destroys per-entity ordering.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## "Real-time" is a requirement to interrogate, not accept
 

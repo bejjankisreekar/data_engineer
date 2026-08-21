@@ -12,7 +12,7 @@ Every question explains *what it's testing*, and every answer explains *why it's
 Two difficulty tags are used:
 
 - **[Frequently Asked]** — the true SQL interview classics, asked at nearly every level: WHERE vs HAVING, types of joins, Nth highest salary, DELETE vs TRUNCATE vs DROP, primary vs foreign key, window functions, ACID.
-- **[Senior/Experienced]** — deeper Pro-level material: execution plans, isolation levels/MVCC, index internals, sargability, star vs snowflake, SCD Type 2, deadlocks.
+- **[Senior/Experienced]** — the deeper material: execution plans, isolation levels/MVCC, index internals, sargability, star vs snowflake, SCD Type 2, deadlocks.
 
 Untagged questions are solid mid-level material.
 

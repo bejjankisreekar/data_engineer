@@ -10,18 +10,18 @@ This repository is a personal learning log for Azure Data Engineering, written a
 
 ## How to read these notes
 
-Each `.md` file follows the same shape, in **three levels of depth** — read as far as your current level needs, and come back for the rest later:
+Each `.md` file is **one continuous read** that takes a topic from first principles all the way to what an experienced engineer knows about it. There are no separate beginner/advanced/pro tracks to come back for later — the note simply keeps going, and every file covers its topic completely:
 
-**Part 1 — Basics** (top of every file)
 1. **What is it?** — a plain-language definition, usually with a real-world comparison.
 2. **Example** — a small, concrete example (a table, a file, a query).
 3. **Advantages / Disadvantages** — when it's a good fit and when it isn't.
 4. **Azure Usage** — where this concept shows up in Azure specifically.
 5. **Real World Example** — a short story tying it back to a business scenario.
+6. **Under the hood** — internals, the patterns used in real projects, and worked examples (execution plans, join strategies, schema evolution rules, and so on).
+7. **Design trade-offs and production reality** — the decisions experienced engineers weigh, war stories, and field-tested gotchas.
+8. **Interview-grade Q&A** — at the end of every file.
 
-**Part 2 — Advanced** — how it works under the hood: internals, the patterns used in real projects, and worked examples (execution plans, join strategies, schema evolution rules, and so on).
-
-**Part 3 — Pro Level** — what experienced engineers carry: design trade-offs, production war stories, field-tested gotchas, and **interview-grade Q&A** at the end of every file.
+Stop wherever you need to and pick the file back up later — nothing is held back for a later tier.
 
 ---
 

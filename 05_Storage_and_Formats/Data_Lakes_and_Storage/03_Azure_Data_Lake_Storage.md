@@ -61,9 +61,6 @@ Analogy: Bronze is the delivery truck's cargo dumped at the loading dock. Silver
 A telecom company collects call-detail records from millions of phone calls every day. Raw records land in ADLS's Bronze folder exactly as the network equipment produced them. A nightly pipeline cleans obviously broken records (Silver), then aggregates call volume and duration by region and hour (Gold). Analysts and dashboards only ever query the Gold layer — they never need to touch the messy raw data directly.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Why the hierarchical namespace actually matters (not just "nicer folders")
 
@@ -98,8 +95,6 @@ abfss://gold@lake.../    domain/mart/                                       (agg
 Conventions that pay off: separate *containers* per zone (clean ACL + lifecycle boundaries); bronze keeps source-native formats, silver onward is **Delta only**; partition folders use `key=value` (Hive-style) so engines prune ([partitioning](../../03_Programming/PySpark/Spark_Processing.md)); nothing writes to a zone it doesn't own.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The lake is a filesystem; the lakehouse is a database on it
 

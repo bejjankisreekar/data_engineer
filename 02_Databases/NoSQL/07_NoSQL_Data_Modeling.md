@@ -85,9 +85,6 @@ In **Cosmos DB**, modeling *is* choosing the **partition key** plus the embed/re
 An order-history screen must load instantly. The team **embeds** line items and a **snapshot** of the customer name and each product's name/price *as they were at purchase time* directly in the order document — so rendering the page is one read, and it correctly shows historical prices even after the catalog changes. The full mutable product catalog stays in its own collection (referenced by ID) because it's large and shared. This is denormalization, snapshotting, and embed-vs-reference all working together — the everyday craft of NoSQL modeling.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Named schema-design patterns
 
@@ -118,8 +115,6 @@ The decision always comes back to **size, growth, and how the data is read** —
 Denormalization makes reads cheap but **writes expensive and risky**: change a product's name and you may need to update it in thousands of order documents (or accept that old orders keep the old name — often correct!). You must consciously decide, per duplicated field: *is this a historical snapshot (leave it) or a live mirror (must propagate)?* Live mirrors need a fan-out update process, frequently driven by a [change feed](09_NoSQL_in_Data_Engineering.md). Forgetting this produces silent data drift.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Model for the read/write ratio and the money
 

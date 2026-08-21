@@ -65,9 +65,6 @@ BASE trades "always perfectly consistent" for "always available and horizontally
 A global shopping site runs its **cart on an AP store** (Cassandra/DynamoDB): during a network blip a user must *never* see "service unavailable," so the system stays available and reconciles cart replicas afterward — worst case, a re-added item. But **checkout and payment** run on a **CP / ACID** path: if the system can't be *sure* an item is in stock and the card charged exactly once, it must **refuse** rather than risk double-charging or overselling. Same company, two different CAP choices, chosen by what failure is more costly.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## PACELC — the theorem CAP left out
 
@@ -91,8 +88,6 @@ Leaderless systems tune consistency with three numbers: **N** replicas, **W** no
 Where replication *copies* data, **sharding splits** it — each shard holds a slice of the dataset on a different node, so the system scales beyond one machine's capacity. The split is by a **partition/shard key**, and (as in every prior chapter) a bad key creates **hot shards**. Real systems combine both: shard for scale, replicate each shard for durability/availability.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## "CA" systems don't really exist (in distributed reality)
 

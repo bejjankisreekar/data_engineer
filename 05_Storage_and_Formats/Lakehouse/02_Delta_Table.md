@@ -96,9 +96,6 @@ This is the single most-tested distinction about Delta tables:
 A subscription business keeps a `customers` Delta table as its silver-layer source of truth. Every night, a job receives a feed of new signups *and* profile edits mixed together. Instead of figuring out which rows are new versus changed, one `MERGE` handles both: matched rows update, unmatched rows insert — atomically, so the dashboards reading the table at midnight never catch it mid-update. When a bad feed once doubled a day's rows, the on-call engineer ran `RESTORE TABLE customers VERSION AS OF <yesterday>` and the table was clean again in seconds — no backup restore, no downtime.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The MERGE pattern (upserts & SCD)
 
@@ -122,7 +119,7 @@ DESCRIBE HISTORY sales;                  -- every operation, version, timestamp
 
 - **`OPTIMIZE`** fixes the small-file problem (streaming/frequent MERGE creates many tiny files that slow scans).
 - **`ZORDER`** (or modern **liquid clustering**) skips more files when you filter on the clustered column.
-- **`VACUUM`** reclaims storage — but see the retention gotcha in [Delta Lake, Part 3](01_Delta_Lake.md).
+- **`VACUUM`** reclaims storage — but see the retention gotcha in [Delta Lake](01_Delta_Lake.md).
 
 ## Change Data Feed (CDF)
 
@@ -144,8 +141,6 @@ Partitioning splits the table into subfolders by a column (`PARTITIONED BY (orde
 - Modern advice: prefer **liquid clustering** over manual partitioning for most tables — it adapts and avoids the over-partitioning trap.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Managed vs external is a governance decision, not a syntax detail
 

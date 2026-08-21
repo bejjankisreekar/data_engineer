@@ -82,9 +82,6 @@ ASA aggregates the infinite stream using [window functions](01_Streaming_Fundame
 A smart-building system streams temperature and occupancy from thousands of sensors into **IoT Hub**. A **Stream Analytics** job reads the stream `TIMESTAMP BY reading_time`, joins it against **reference data** (a Blob file mapping each sensor to a room and floor), and uses a **tumbling 5-minute window** to compute average temperature per floor. When a floor's average exceeds a threshold, it writes an alert to **Service Bus** (triggering HVAC adjustment) *and* streams the live averages to a **Power BI** dashboard for facilities staff — the entire pipeline is ~15 lines of SQL and zero managed infrastructure. When a batch of sensor readings arrives late from a flaky gateway, the configured 30-second late-arrival policy still counts them in the correct window.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Reference data joins — enriching the stream
 
@@ -108,8 +105,6 @@ These directly set the latency-vs-completeness trade-off. Too tight → correct-
 Throughput scales with **SUs**, but ASA parallelizes best when the query is **partition-aligned** — the input partition key flows through `PARTITION BY` so each partition is processed independently ("embarrassingly parallel"). A query that forces a cross-partition shuffle (e.g. aggregating across all partitions) limits parallelism. Aligning the query to input partitions is the main ASA performance lever.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Stream Analytics vs Structured Streaming vs Flink — pick by complexity
 

@@ -34,8 +34,10 @@ NoSQL is the family of databases built for **scale, flexible schemas, and shapes
 ## How each note is structured
 1. **What is it?** — plain definition + real-world analogy.
 2. **Example** — a concrete document/command/diagram.
-3. **Advanced** — the rules and trade-offs used in real projects.
-4. **Pro / Interview** — design decisions, gotchas, and interview-grade Q&A.
+3. **How it works in practice** — the rules and trade-offs used in real projects.
+4. **Design decisions, gotchas, and interview-grade Q&A** — what experienced engineers carry.
+
+Each note runs straight through all four in one pass — there is no separate "advanced" file to graduate to.
 
 ---
 

@@ -78,9 +78,6 @@ Synapse Link: near-real-time analytics on Cosmos DB / SQL without ETL
 A retailer runs its enterprise BI on a Synapse **dedicated SQL pool** — a star-schema warehouse feeding hundreds of Power BI reports. Raw data lands in ADLS via **Synapse Pipelines**; a **Spark pool** cleans and conforms it; the modeled gold tables load into the dedicated pool for fast, high-concurrency reporting. Meanwhile, a data analyst who just wants to peek at last week's raw log files runs **serverless SQL pool** queries directly over the Parquet in the lake — no pool to provision, billed only for the terabytes scanned. All of it lives in one Synapse workspace with one set of permissions, and the dedicated pool is **paused overnight** to save cost.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Dedicated vs serverless — the fork that matters most
 
@@ -103,8 +100,6 @@ Synapse Pipelines are the **same engine as Azure Data Factory**, embedded in the
 Synapse Link creates an automatically-synced **analytical copy** of operational data (Cosmos DB, Azure SQL, Dataverse) so you can run analytics on near-real-time data without building extraction pipelines or hammering the transactional store — Microsoft's HTAP (Hybrid Transactional/Analytical Processing) play.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The honest 2025+ positioning: Synapse is legacy-forward, not future-forward
 

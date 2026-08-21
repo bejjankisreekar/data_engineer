@@ -75,9 +75,6 @@ Everything a data engineer touches at scale — HDFS, Spark, Kafka, Snowflake, A
 ```
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The cost hierarchy every distributed design obeys
 
@@ -124,8 +121,6 @@ During a network **P**artition, a system must choose between **C**onsistency (ev
 Cloud object stores (S3, [ADLS](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md)) are now **strongly consistent** for reads-after-write — a real change from early S3 that used to break pipelines.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Delivery semantics — the "exactly-once" question
 

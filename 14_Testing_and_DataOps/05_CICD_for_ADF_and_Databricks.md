@@ -25,7 +25,7 @@ The two things that change per environment: **connections/linked services** (whi
 
 ---
 
-## Part 1 — Azure Data Factory CI/CD
+## Azure Data Factory CI/CD
 
 ADF is JSON under the hood (pipelines, datasets, linked services, triggers). Two ways to ship it:
 
@@ -55,7 +55,7 @@ Validate and export the ARM template **in CI from the repo** (via the `@microsof
 
 ---
 
-## Part 2 — Databricks CI/CD with Asset Bundles
+## Databricks CI/CD with Asset Bundles
 
 **Databricks Asset Bundles (DABs)** are the modern, first-party way to package notebooks/jobs/DLT pipelines/cluster config **as code** and deploy them per environment. A bundle is a `databricks.yml` describing resources + **targets** (dev/prod).
 

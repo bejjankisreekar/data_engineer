@@ -100,9 +100,6 @@ A task can be a notebook, a Python script/wheel, a JAR, a SQL query, a DLT pipel
 An analyst prototypes a churn report in a notebook — SQL cells to explore, Python cells to shape the data — tweaking cells until the numbers look right. Once validated, the team moves it into a **Repo**, refactors the logic into tested functions on a feature branch, and opens a PR. After merge, a **Job** runs it nightly on a job cluster: ingest → transform → write the Gold table, with a 2× retry and a Teams alert on failure. Key Vault holds the source database password, read via `dbutils.secrets` — so the credential is never in the notebook. The prototype became a governed production pipeline without leaving Databricks.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Notebook-scoped vs cluster libraries
 
@@ -132,8 +129,6 @@ This is how one notebook serves dev/prod and daily/backfill runs — parameteriz
 The production loop: develop on a branch in a Repo → PR with automated tests (extract logic into a Python library and run `pytest`) → merge → a CI/CD pipeline (Azure DevOps/GitHub Actions) deploys to the prod workspace and updates the Job definition (often via **Databricks Asset Bundles**, the modern deploy format). See [Production Best Practices & CI/CD](../07_DevOps/Git_GitHub/09_Production_Best_Practices_and_CICD.md).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Notebooks are for developing; libraries are for testing
 

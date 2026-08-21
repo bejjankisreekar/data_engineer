@@ -83,9 +83,6 @@ Configuration knobs you'll actually touch:
 A team's nightly ETL ran on the same all-purpose cluster they used for development — left running 24/7 "so it's ready in the morning." The cluster cost as much idle as it did working. Two changes fixed it: the nightly pipeline moved to a **job cluster** (created at 2 a.m., destroyed by 2:40 a.m.), and the dev cluster got a **20-minute auto-termination**. Monthly compute spend dropped by more than half with zero change to the actual pipeline logic — and the pipeline even ran faster on a right-sized, isolated job cluster.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Right-sizing: memory vs compute vs storage optimized
 
@@ -108,8 +105,6 @@ Photon is a native (C++) vectorized execution engine that replaces parts of the 
 **Databricks SQL warehouses** are compute tuned for BI/SQL: high concurrency, fast startup (serverless), and result caching, feeding dashboards and tools like Power BI. Use a SQL warehouse for the *serving* layer and all-purpose/job clusters for *engineering* — pointing Power BI at a general-purpose cluster is the wrong tool.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Reading the Spark UI is the real tuning skill
 

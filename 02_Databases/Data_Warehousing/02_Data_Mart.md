@@ -40,9 +40,6 @@ A retail company's central data warehouse holds every fact about every store, pr
 Data marts are typically implemented as a dedicated schema or database within Azure Synapse Analytics/Microsoft Fabric, or as a curated set of gold-layer Delta tables and views scoped to one domain in Databricks/Fabric — either way, the same underlying pattern: a governed, department-scoped slice of the larger warehouse/lakehouse.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Three ways to build a data mart
 
@@ -61,8 +58,6 @@ Data marts are typically implemented as a dedicated schema or database within Az
 Each mart is typically its own [star schema](../SQL/13_SQL_Warehouse.md) — a fact table (e.g. `Fact_Sales`) surrounded by the dimensions relevant to that subject area. The dimensional-bus discipline matters here specifically: if the Sales mart's `Dim_Date` and the Finance mart's `Dim_Date` are two separately built tables rather than the same **conformed dimension**, a report trying to compare sales trends against financial close dates will silently misalign.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Data mart sprawl — the "spreadmart" problem
 

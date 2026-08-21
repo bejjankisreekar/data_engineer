@@ -94,9 +94,6 @@ Subqueries run the same way in Azure SQL Database, Synapse Analytics, and Databr
 A university wants a list of students who scored above the *average* score in their *own* course — not the average across the entire university. A correlated subquery recalculates the relevant average freshly for each student's specific course before comparing.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## CTEs — subqueries you can read
 
@@ -151,8 +148,6 @@ CROSS APPLY (SELECT TOP 3 OrderID, Amount
 ```
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The NOT IN + NULL trap (worth memorizing verbatim)
 

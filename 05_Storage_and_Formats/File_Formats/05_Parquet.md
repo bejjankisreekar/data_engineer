@@ -108,9 +108,6 @@ Machine Learning
 Most Azure Data Engineering projects store data in Parquet format.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Inside a Parquet file
 
@@ -145,8 +142,6 @@ How a query uses this: read footer → **column pruning** (only requested column
 - **Types**: write proper DECIMAL/timestamp logical types, not strings — "numbers as strings in Parquet" wastes the format ([type mapping tax](../../02_Databases/SQL/03_SQL_Data_Types.md)).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Parquet is the storage layer of everything now
 

@@ -111,9 +111,6 @@ ADF often *triggers* Databricks notebooks/jobs; Databricks does the heavy Spark 
 A media company's data scientists were training recommendation models on sampled CSV extracts on their laptops, while a separate BI team ran nightly SQL on a warehouse fed by a fragile copy pipeline — two teams, two copies, constant drift. Moving to Azure Databricks, both teams work on the *same* Delta tables in ADLS: engineers build Bronze→Silver→Gold with Spark, analysts query Gold through Databricks SQL, and data scientists train models on Silver with MLflow tracking — one copy of data, autoscaling clusters that switch off overnight, and Unity Catalog deciding who can see what.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Databricks Runtime (DBR)
 
@@ -136,8 +133,6 @@ Pinning a DBR version matters for reproducibility — a job that "worked last ye
 Everything you learned in [PySpark](../03_Programming/PySpark/00_PySpark_Learning_Path.md) works here unchanged — Databricks *is* Spark. What Databricks adds on top: the managed cluster lifecycle, Photon, Delta optimizations (liquid clustering, deletion vectors), Unity Catalog, DLT, Auto Loader, Databricks SQL, and MLflow. You can lift a plain PySpark job into Databricks with near-zero code change.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The control-plane/data-plane split is your security story
 

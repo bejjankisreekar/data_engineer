@@ -12,7 +12,7 @@ spark = SparkSession.builder.getOrCreate()   # on Databricks, `spark` already ex
 
 ---
 
-# Part 1 — Reading data
+# Reading data
 
 ## How to read data from CSV
 
@@ -168,7 +168,7 @@ df.withColumn("_source_file", F.input_file_name())            # track where each
 
 ---
 
-# Part 2 — Writing data
+# Writing data
 
 ## How to write a DataFrame out
 
@@ -196,7 +196,7 @@ df.coalesce(1).write.mode("overwrite").csv("/out")           # single file (smal
 
 ---
 
-# Part 3 — Transformations
+# Transformations
 
 > Transformations are **lazy** — they build a plan and run nothing until an **action** (`show`, `count`, `write`, `collect`) triggers the job. So you chain them freely and Spark optimizes the whole chain at the end.
 

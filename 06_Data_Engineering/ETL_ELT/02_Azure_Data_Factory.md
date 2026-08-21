@@ -72,9 +72,6 @@ Data Factory typically sits at the center of an Azure data platform, connecting:
 A logistics company has package-tracking data sitting in an old on-premises database that only their internal warehouse staff can query. Every night, a Data Factory pipeline copies that day's tracking data into Azure Data Lake Storage, triggers a Databricks job to calculate on-time delivery rates, and loads the result into Synapse — so that by the time the operations team arrives in the morning, a Power BI dashboard already shows yesterday's performance, without anyone manually running a single query.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Integration Runtimes — where ADF's work physically happens
 
@@ -116,8 +113,6 @@ Datasets and linked services take parameters too (one "any SQL table" dataset, o
 Copy Activity: unbeatable for movement (parallelized, resumable, ~100 connectors). **Mapping Data Flows**: visual Spark — fine for simple joins/derivations, but complex logic in a GUI becomes untestable spaghetti. The widely-used enterprise pattern: **ADF for extract/orchestrate/load, Databricks notebooks (or dbt) for transform** — code where logic lives, boxes where plumbing lives ([why Databricks](../../08_Databricks/02_Why_Spark_Why_Databricks.md)).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## ADF in production: CI/CD and environments
 

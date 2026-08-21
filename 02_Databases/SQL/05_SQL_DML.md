@@ -91,9 +91,6 @@ Azure SQL Database, Synapse Analytics, and Databricks (via Spark SQL) all suppor
 An e-commerce site runs an `INSERT` every time a customer places an order, an `UPDATE` every time an order's status changes from "Processing" to "Shipped," and a `DELETE` when a customer cancels an order before it ships — three DML commands covering the entire lifecycle of a single order.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## MERGE — the upsert, the data engineer's daily verb
 
@@ -149,8 +146,6 @@ A million single INSERTs = a million round-trips + a million log records. Bulk p
 Rule of thumb: row-by-row is for applications; **set-based and bulk** is for pipelines — a 100× speed difference is normal.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Idempotent DML — the property that saves your weekend
 

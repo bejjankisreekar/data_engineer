@@ -64,9 +64,6 @@ Azure SQL Database, Azure Synapse Analytics, and Azure Databricks (via Spark SQL
 A bank's customer service system runs entirely on SQL behind the scenes: DDL created the Customer and Account tables when the system was built years ago. DML runs every time a customer's balance changes. DQL runs every time a teller looks up an account. DCL ensures a teller can view balances but not, say, delete audit logs. TCL ensures that a transfer between two accounts either fully completes or doesn't happen at all — never leaving money "in transit" and lost.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## SQL is declarative — and that changes everything
 
@@ -102,8 +99,6 @@ This single fact explains the classic confusions:
 Pro habit: write ANSI-standard SQL by default; isolate dialect-specific syntax so migrations (and copy-pasting between systems) stay cheap.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## SQL injection — the one security lesson everyone must know
 

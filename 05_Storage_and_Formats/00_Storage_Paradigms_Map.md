@@ -79,7 +79,7 @@ The content is spread across folders because you *learn* databases before lakeho
 
 ## Which deep-dive should I read?
 
-- **"I mix up lake / warehouse / database"** → [Data Lake vs Warehouse vs Database](Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) *(covers the lakehouse too, in Part 2)*
+- **"I mix up lake / warehouse / database"** → [Data Lake vs Warehouse vs Database](Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) *(covers the lakehouse too)*
 - **"I mix up Delta Lake / Delta Table / Lakehouse"** → [Delta Lake vs Delta Table vs Lakehouse](Lakehouse/00_Delta_Lake_vs_Delta_Table_vs_Lakehouse.md)
 - **"How is a warehouse actually built?"** → [Data Warehouse Fundamentals](../02_Databases/Data_Warehousing/01_Data_Warehouse_Fundamentals.md)
 - **"How do I organize a lakehouse?"** → [Medallion Architecture (Bronze→Silver→Gold)](Lakehouse/04_Medallion_Architecture.md)

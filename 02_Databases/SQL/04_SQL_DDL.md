@@ -116,9 +116,6 @@ Azure SQL Database and Azure Synapse Analytics both run standard T-SQL DDL. In a
 When a company first sets up its HR system, a database administrator runs `CREATE TABLE` statements to build the Employee, Department, and Payroll tables, with constraints ensuring every employee has a name and a valid, non-negative salary. Years later, when the company starts tracking emergency contacts, an `ALTER TABLE` adds a new column — without disturbing a single existing employee record.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## ALTER is not free — what happens under the hood
 
@@ -161,8 +158,6 @@ ALTER TABLE sales.orders SET TBLPROPERTIES ('delta.enableChangeDataFeed'='true')
 Differences that matter: constraints are limited (Delta supports `NOT NULL` and `CHECK`; **no enforced foreign keys** — integrity is your pipeline's job), and `CREATE OR REPLACE TABLE` is the idiomatic atomic rebuild.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Schema changes as code: migrations
 

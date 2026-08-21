@@ -49,9 +49,6 @@ Nobody picks one format for an entire company — the format changes as the data
 A retail company's website logs every click as JSON (flexible, easy for developers to produce). Those click events stream through Kafka as Avro (efficient for high-volume writes). Once a day, a pipeline converts a day's worth of Avro files into a single Parquet file in the data lake, because analysts querying "average time on page last month" only need two or three columns out of dozens — and Parquet lets them read just those columns instead of the whole log.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## The numbers behind the recommendations
 
@@ -83,8 +80,6 @@ Note what's *not* a criterion: loyalty. The same dataset legitimately changes fo
 This folder compares *file* formats; production lakes wrap the columnar ones in a **table format** — Delta Lake / Iceberg / Hudi — adding the transaction log, ACID commits, schema enforcement, and time travel that raw folders of files lack ([why that matters](../../08_Databricks/02_Why_Spark_Why_Databricks.md), [format war](../../01_Foundations/Fundamentals/06_Big_Data_Evolution_Timeline.md)). Interview one-liner: *"Parquet is how bytes are laid out; Delta is how a set of Parquet files behaves like a database table."*
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Cost framing — formats are money
 

@@ -9,10 +9,10 @@ This file pairs with the three notes in this folder and drills the material the 
 
 Every question also explains *why* an interviewer asks it, not just what to answer — the reasoning behind a question is often what the interviewer is actually listening for.
 
-Two difficulty tags are used, roughly matching the Basics/Advanced/Pro structure of the source notes:
+Two difficulty tags are used, roughly matching how deep into a source note the material sits:
 
 - **[Frequently Asked]** — core concepts almost every data engineering interview touches: Blob vs ADLS, hierarchical namespace, access tiers, medallion architecture, lake vs warehouse vs database.
-- **[Senior/Experienced]** — deeper, Pro-level questions: redundancy and RPO/RTO trade-offs, RBAC + ACL layering, lifecycle traps, the lakehouse pattern, migration realities. Expect these once you claim 3+ years of experience.
+- **[Senior/Experienced]** — the deeper questions: redundancy and RPO/RTO trade-offs, RBAC + ACL layering, lifecycle traps, the lakehouse pattern, migration realities. Expect these once you claim 3+ years of experience.
 
 Untagged questions sit in between — solid mid-level material everyone should be able to answer.
 
@@ -82,7 +82,7 @@ Untagged questions sit in between — solid mid-level material everyone should b
 **Answer:** The tiers trade storage cost against access cost and latency: **Hot** is for frequently accessed data (cheapest to read, most expensive to store — "papers on your desk"); **Cool** is for data accessed every few weeks or months (cheaper to store, costs more per read — "papers in a nearby drawer"); **Archive** is for data rarely accessed but kept for compliance or history (cheapest to store, slow and costly to retrieve — "boxes in long-term storage"). A real example: an insurance company keeps active claims in Hot while they're being processed, then moves settled claims to Archive once regulations require years of retention but nobody expects to reopen them. The decision comes down to modeling *actual* access patterns before picking a tier, since a "cost-saving" archive that's scanned monthly ends up costing more than Hot due to per-GB read and rehydration charges. This is correct because tiering is fundamentally a bet on future access frequency, and getting that bet wrong inverts the expected savings.
 
 #### Q12. Walk through LRS vs ZRS vs GRS vs RA-GRS — how do you choose the right redundancy option for a workload? **[Senior/Experienced]**
-*Why interviewers ask this:* A staple Pro-level question — checks whether you can reason about blast radius and cost together instead of defaulting to "always pick the most redundant option."
+*Why interviewers ask this:* A staple senior-level question — checks whether you can reason about blast radius and cost together instead of defaulting to "always pick the most redundant option."
 **Answer:**
 
 | Option | Copies | Survives | Rough cost |
@@ -168,7 +168,7 @@ Set **default ACLs** on each domain directory (e.g. `finance/`) before any data 
 **Answer:** Plain Blob Storage has no real directory object — `folder/file` is just a naming convention within a flat container, so renaming a folder means copying every individual blob under the new name and deleting the old ones (N operations for N files), with no atomicity guarantee if it's interrupted partway. ADLS Gen2's hierarchical namespace makes directories real, addressable objects, so a rename or move is a single atomic metadata operation regardless of how many files sit underneath. This directly enables Spark's atomic commit protocol, which writes to a temporary directory and renames it into place on success — a pattern that's fast and crash-safe on ADLS but would be neither on flat blob storage. This is correct because it's the same underlying HNS mechanism (real directory objects, atomic metadata ops) driving both the folder-rename behavior and the reliability of analytics engines' commit protocols — they're not two separate facts.
 
 #### Q25. What's the difference between a data lake being "just a filesystem" and a lakehouse being "a database on it"? **[Senior/Experienced]**
-*Why interviewers ask this:* A Pro-level conceptual question that checks whether the candidate can articulate *why* raw ADLS alone isn't sufficient for production analytics — a common gap even among people who use lakes daily.
+*Why interviewers ask this:* A senior-level conceptual question that checks whether the candidate can articulate *why* raw ADLS alone isn't sufficient for production analytics — a common gap even among people who use lakes daily.
 **Answer:** Storage itself doesn't know about tables — raw ADLS gives you folders of files with no transactions, no schema enforcement, and no discovery mechanism. Everything hard about operating a lake traces back to that one fact. The stack that fixes it: a table format like Delta adds a transaction log giving table semantics (ACID, schema enforcement, time travel — see [Why Spark? Why Databricks?](../../08_Databricks/02_Why_Spark_Why_Databricks.md)); a catalog (e.g. Unity Catalog) adds names, permissions, and lineage; and zone layering (bronze/silver/gold) adds quality contracts between stages. A "data swamp" is precisely a lake run without those three things. When someone proposes "just drop files in the lake," the senior response is to ask: which table, which contract, which owner? This is correct because it reframes the lakehouse not as a new product but as the minimum set of guarantees that turns a raw filesystem into something safe to build production analytics on.
 
 #### Q26. How do you handle a GDPR "right to erasure" request against an append-only bronze layer? **[Senior/Experienced]**

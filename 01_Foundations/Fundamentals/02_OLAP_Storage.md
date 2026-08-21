@@ -97,9 +97,6 @@ OLTP Databases → ETL/ELT → Data Lake → Data Warehouse (OLAP) → BI / Repo
 See [ETL vs ELT](../../06_Data_Engineering/ETL_ELT) and [01_Data_Lake_vs_Warehouse_vs_Database.md](../../05_Storage_and_Formats/Data_Lakes_and_Storage/01_Data_Lake_vs_Warehouse_vs_Database.md) for how data travels from OLTP to OLAP.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Inside a columnar file: how the speed actually happens
 
@@ -130,8 +127,6 @@ row store reads ~all bytes; column store reads 2 columns → ~4% of bytes → di
 OLAP writes are **bulk, append-mostly**: nightly/hourly batch loads, micro-batches from streaming, `MERGE` for upserts. Single-row `UPDATE`s are an anti-pattern — columnar files are immutable, so an update = rewrite of a whole file/micro-partition.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Physical design decisions that make or break performance
 

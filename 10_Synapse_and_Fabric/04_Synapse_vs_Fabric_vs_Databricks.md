@@ -67,9 +67,6 @@ Because all three center on **open Delta**, data can be shared between them with
 A retailer interviewing a data engineer asks: *"We're Microsoft-heavy, Power BI is everywhere, we have a small platform team, but our data scientists need serious ML. What would you build?"* A strong answer: **Fabric as the core** — OneLake for one Delta copy, Data Factory for ingestion, Warehouse for the SQL marts, and **Direct Lake** Power BI for fast, always-fresh dashboards with almost no ops. **But** for the ML workload, add **Databricks** pointing at the *same* Delta data (via shortcuts/OneLake), because Databricks leads on Spark and MLflow. Skip standing up **Synapse** new — it's the platform Fabric replaces. The reasoning (ops constraints + Power BI gravity → Fabric; ML depth → Databricks; open Delta lets them share one copy) is what the interviewer is actually testing.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Why "just use Databricks" is the wrong interview answer
 
@@ -84,8 +81,6 @@ All three read/write **open Delta on object storage**. This is why they interope
 Knowing *where each platform sits in its lifecycle* matters as much as features: Synapse is mature but **legacy-forward** (Microsoft's roadmap points to Fabric); Fabric is **ascending but maturing**; Databricks is **mature and actively leading**. Recommending a new-build on Synapse dedicated pools in 2025+ signals being a version behind. Factor roadmap direction, not just today's feature grid.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Total cost of ownership beats feature checklists
 

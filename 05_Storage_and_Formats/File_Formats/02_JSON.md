@@ -90,9 +90,6 @@ Cosmos DB
 JSON is the standard shape for data moving between web applications and APIs, but it's rarely the format used for long-term analytical storage — see [File Format Comparison](06_File_Format_Comparison.md) for what it's typically converted into ([Parquet](05_Parquet.md), usually) before large-scale analysis.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## JSON vs JSON Lines — the distinction that decides splittability
 
@@ -142,8 +139,6 @@ Sometimes flattening everything is wrong (the payload's long tail changes weekly
 The hybrid pattern pros converge on: **promote the queried-hot fields to typed columns; keep the full payload in a variant/string column** for the unforeseen question ([data types note](../../02_Databases/SQL/03_SQL_Data_Types.md)).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Schema drift — JSON's superpower and your operational problem
 

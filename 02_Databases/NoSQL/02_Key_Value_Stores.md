@@ -70,9 +70,6 @@ If you find yourself wanting to search *inside* values, you've outgrown key-valu
 A news website's homepage is expensive to build (dozens of queries). Instead of rebuilding it per visitor, the app caches the rendered homepage in **Redis** under `page:home:v3` with a 60-second TTL. 99% of visitors get the cached copy in under a millisecond; the database is hit at most once a minute. When the story list changes, the app deletes the key and the next request rebuilds it. This one pattern removes most of the load from the primary database.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## In-memory vs persistent
 
@@ -118,8 +115,6 @@ sequenceDiagram
 The app checks the cache first; on a miss it reads the DB and populates the cache. Simple and dominant — but it introduces **cache invalidation** ("the second hard problem in computer science"): when the DB changes, stale cache entries must be deleted or they serve wrong data.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Partition key design in DynamoDB / Table Storage
 

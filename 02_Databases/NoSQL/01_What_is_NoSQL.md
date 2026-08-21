@@ -90,9 +90,6 @@ Azure's NoSQL flagship is **Azure Cosmos DB** — a globally distributed, multi-
 An e-commerce site is *polyglot*: **PostgreSQL** holds orders and payments (needs ACID and joins for finance), **MongoDB/Cosmos DB** holds the product catalog (each product a flexible JSON doc with varying attributes), **Redis** holds each shopper's cart and session (millisecond key lookups), **Elasticsearch** powers search, and a **graph database** powers "customers who bought this also bought." No single store is "best" — each family is chosen for its access pattern.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Schema-on-write vs schema-on-read
 
@@ -111,8 +108,6 @@ Because NoSQL usually can't join, you **duplicate data on purpose** so each read
 NoSQL scales by **partitioning (sharding)**: rows are split across nodes by a **partition key**, and each node owns a slice. Pick the key well and load spreads evenly across the cluster; pick it badly and one node gets hammered (a **hot partition**) while others idle. This single decision — *what is my partition key?* — dominates NoSQL performance and is covered in [06](06_CAP_Theorem_and_Consistency.md) and [08](08_Azure_Cosmos_DB.md).
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## The four families exist because of different physics
 

@@ -91,9 +91,6 @@ The canonical Azure pattern: **Cosmos DB → Change Feed → Azure Functions or 
 A ride-hailing company keeps live trip state in **Cosmos DB** (fast writes from millions of phones). The data team reads the **Change Feed** into **Databricks Structured Streaming**, lands raw trip JSON in **Bronze Delta**, flattens driver/rider/location objects into typed **Silver** tables, and builds a **Gold** trip-fact star schema for finance and operations dashboards. Separately, they compute driver-quality features in the lake and push them **back into Cosmos DB** so the dispatch app can read a driver's score in a single millisecond point-read. NoSQL feeds analytics *and* is fed by it.
 
 ---
----
-
-# Part 2 — Advanced
 
 ## Handling schema drift on ingest
 
@@ -117,8 +114,6 @@ Change feeds and streams deliver **at-least-once**, so the same change can arriv
 Pointing Power BI or heavy Spark jobs straight at the live Cosmos DB / MongoDB **steals throughput (RUs) from real users** and can throttle the app ([08](08_Azure_Cosmos_DB.md)). The rule: **replicate to an analytical surface** (Synapse Link analytical store, or Change Feed → Delta) and analyze *there*. Keeping the operational and analytical planes separate is a core architectural principle — and a common interview scenario.
 
 ---
-
-# Part 3 — Pro Level (what 10+ year engineers know)
 
 ## Polyglot pipelines and the "single source of truth" question
 
