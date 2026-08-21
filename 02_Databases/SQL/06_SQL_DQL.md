@@ -1,5 +1,7 @@
 # SQL DQL (Data Query Language)
 
+> **Want to see it run?** [SQL by Example](16_SQL_Input_Output_Examples.md#2-where--filter-rows) shows SELECT, WHERE, DISTINCT, ORDER BY, CASE as exact input tables → exact output tables, with what happened and why.
+
 ## What is DQL?
 
 DQL is the part of SQL used purely to **read** data, without changing anything. It has exactly one command: `SELECT`. Given how often it's used, `SELECT` arguably deserves its own category more than any other keyword in SQL.
@@ -132,6 +134,8 @@ A store manager wants to know: "Which products priced over 500, in the Electroni
 ---
 
 ## Sargability — writing WHERE clauses indexes can use
+
+> The full don't/do table of function patterns that break index seeks is in [SQL Functions Reference](17_SQL_Functions_Reference.md#sargability--the-functions-that-secretly-disable-your-indexes).
 
 A predicate is **sargable** (Search ARGument-able) when the engine can seek an index instead of scanning:
 

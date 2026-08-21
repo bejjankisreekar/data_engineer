@@ -1,5 +1,7 @@
 # SQL DML (Data Manipulation Language)
 
+> **Want to see it run?** [SQL by Example](16_SQL_Input_Output_Examples.md#19-insert--add-rows) shows INSERT, UPDATE, DELETE, MERGE as exact input tables → exact output tables, with what happened and why.
+
 ## What is DML?
 
 DML commands change the **data** stored inside a table's existing structure. Where [DDL](04_SQL_DDL.md) is carpentry (building the drawer), DML is filing — adding, editing, or removing the papers inside a drawer that already exists.

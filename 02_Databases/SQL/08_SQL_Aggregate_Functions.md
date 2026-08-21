@@ -1,5 +1,7 @@
 # SQL Aggregate Functions and Grouping
 
+> **Want to see it run?** [SQL by Example](16_SQL_Input_Output_Examples.md#9-group-by--one-row-out-per-group) shows GROUP BY and HAVING as exact input tables → exact output tables, with what happened and why.
+
 ## What is an aggregate function?
 
 An aggregate function takes many rows and reduces them down to a single summary value — a total, an average, a count. This is how SQL answers "big picture" questions instead of just listing individual rows.
@@ -7,6 +9,8 @@ An aggregate function takes many rows and reduces them down to a single summary 
 Analogy: [06_SQL_DQL.md](06_SQL_DQL.md) is like asking a clerk to hand you a stack of individual invoices matching some criteria. An aggregate function is asking that clerk instead to just tell you the *total* of that stack, without handing you every invoice.
 
 ---
+
+> Aggregates are one family among many — string, date, numeric, NULL-handling, conversion, and JSON functions are all catalogued in [SQL Functions Reference](17_SQL_Functions_Reference.md).
 
 ## The Five Common Aggregate Functions
 

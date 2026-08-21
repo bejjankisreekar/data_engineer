@@ -71,6 +71,8 @@ Topics are grouped into **category folders** so related material lives together:
 - [SQL DML](02_Databases/SQL/05_SQL_DML.md) — changing data: `INSERT`, `UPDATE`, `DELETE`
 - [SQL DQL](02_Databases/SQL/06_SQL_DQL.md) — reading data: `SELECT`, `WHERE`, `ORDER BY`, `LIKE`, `IN`, `BETWEEN`, `NULL`
 - [SQL Keys and Joins](02_Databases/SQL/07_SQL_Keys_and_Joins.md) — how tables relate to each other (primary/foreign keys, joins, normalization)
+- [**SQL by Example — Input Table → Output Table**](02_Databases/SQL/16_SQL_Input_Output_Examples.md) — 25 operations, each shown as exact rows in → exact rows out, with what happened, why, and how (start here if you learn by seeing)
+- [**SQL Functions Reference**](02_Databases/SQL/17_SQL_Functions_Reference.md) — every built-in function by family (string, date, numeric, NULL, conversion, JSON), each with an example, its result, and why you use it
 - [SQL Aggregate Functions](02_Databases/SQL/08_SQL_Aggregate_Functions.md) — `COUNT`, `SUM`, `AVG`, `GROUP BY`, `HAVING`
 - [SQL Window Functions](02_Databases/SQL/14_SQL_Window_Functions.md) — ranking, running totals, `LAG`/`LEAD`, frames, and deduplication (reads best right after aggregates)
 - [SQL Subqueries](02_Databases/SQL/09_SQL_Subqueries.md) — nesting one query inside another

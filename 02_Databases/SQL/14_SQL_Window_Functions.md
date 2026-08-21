@@ -1,5 +1,7 @@
 # SQL Window Functions
 
+> Looking for the full catalogue of non-window functions (string, date, numeric, NULL, conversion)? See [SQL Functions Reference](17_SQL_Functions_Reference.md).
+
 ## Why this file exists
 
 [Aggregate functions](08_SQL_Aggregate_Functions.md) answer "what's the total per region?" — but they **destroy the detail rows** to do it. [Joins](07_SQL_Keys_and_Joins.md) connect tables sideways. Neither can answer the questions data engineers get asked every day:

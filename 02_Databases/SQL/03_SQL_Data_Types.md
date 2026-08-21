@@ -1,5 +1,7 @@
 # SQL Data Types
 
+> **Every conversion function** — `CAST`, `CONVERT`, `TRY_CAST`, `TRY_CONVERT`, `PARSE` — with examples and the ingestion pattern that quarantines bad rows instead of failing the batch: [SQL Functions Reference](17_SQL_Functions_Reference.md#5-conversion-functions).
+
 ## Why data types matter
 
 Every column in a table must be given a **data type** when it's created — a rule about what kind of value it's allowed to hold. This is what stops someone from typing "banana" into a Salary column, or a date into a Name column.

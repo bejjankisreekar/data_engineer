@@ -61,6 +61,8 @@ The Azure toolset for that: **ADLS, Data Factory, Databricks, Synapse/Fabric, Ev
 - ✅ [What is SQL](02_Databases/SQL/01_What_is_SQL.md) → [Database](02_Databases/SQL/02_SQL_Database.md) → [Data Types](02_Databases/SQL/03_SQL_Data_Types.md)
 - ✅ [DDL](02_Databases/SQL/04_SQL_DDL.md) · [DML](02_Databases/SQL/05_SQL_DML.md) · [DQL](02_Databases/SQL/06_SQL_DQL.md)
 - ✅ [Keys & Joins](02_Databases/SQL/07_SQL_Keys_and_Joins.md) — **master this**
+- ✅ [**SQL by Example (input → output tables)**](02_Databases/SQL/16_SQL_Input_Output_Examples.md) — every operation, worked
+- ✅ [**Functions Reference**](02_Databases/SQL/17_SQL_Functions_Reference.md) — all built-in functions + sargability
 - ✅ [Aggregates](02_Databases/SQL/08_SQL_Aggregate_Functions.md) · [Window Functions](02_Databases/SQL/14_SQL_Window_Functions.md) · [Subqueries](02_Databases/SQL/09_SQL_Subqueries.md) · [Views](02_Databases/SQL/10_SQL_Views.md) · [Indexes](02_Databases/SQL/11_SQL_Indexes.md)
 - ✅ [DCL & TCL](02_Databases/SQL/12_SQL_DCL_TCL.md) · [Stored Procedures & Programmability](02_Databases/SQL/15_SQL_Stored_Procedures_and_Programmability.md) · [SQL Warehouse](02_Databases/SQL/13_SQL_Warehouse.md)
 - ✅ [SQL Q&A](02_Databases/SQL/Interview_Questions_and_Answers.md) · [Practical Query Questions](02_Databases/SQL/Practical_SQL_Query_Interview_Questions.md)
