@@ -72,8 +72,10 @@ Topics are grouped into **category folders** so related material lives together:
 - [SQL DQL](02_Databases/SQL/06_SQL_DQL.md) — reading data: `SELECT`, `WHERE`, `ORDER BY`, `LIKE`, `IN`, `BETWEEN`, `NULL`
 - [SQL Keys and Joins](02_Databases/SQL/07_SQL_Keys_and_Joins.md) — how tables relate to each other (primary/foreign keys, joins, normalization)
 - [SQL Aggregate Functions](02_Databases/SQL/08_SQL_Aggregate_Functions.md) — `COUNT`, `SUM`, `AVG`, `GROUP BY`, `HAVING`
+- [SQL Window Functions](02_Databases/SQL/14_SQL_Window_Functions.md) — ranking, running totals, `LAG`/`LEAD`, frames, and deduplication (reads best right after aggregates)
 - [SQL Subqueries](02_Databases/SQL/09_SQL_Subqueries.md) — nesting one query inside another
 - [SQL Views](02_Databases/SQL/10_SQL_Views.md) — saving a query as a reusable, table-like name
+- [SQL Stored Procedures and Programmability](02_Databases/SQL/15_SQL_Stored_Procedures_and_Programmability.md) — procedures, functions, triggers, temp tables, cursors, dynamic SQL
 - [SQL Indexes](02_Databases/SQL/11_SQL_Indexes.md) — speeding up lookups without changing a query
 - [SQL DCL and TCL](02_Databases/SQL/12_SQL_DCL_TCL.md) — controlling permissions (`GRANT`/`REVOKE`) and transactions (`COMMIT`/`ROLLBACK`/`SAVEPOINT`)
 - [SQL Warehouse](02_Databases/SQL/13_SQL_Warehouse.md) — what a data warehouse is and how it differs from a database

@@ -139,6 +139,22 @@ Pro reflex before any ALTER on a large table: *is this metadata-only or a rewrit
 - **Identity/sequences** — `IDENTITY(1,1)` / `CREATE SEQUENCE`: auto-numbering with the gaps-are-normal caveat.
 - **Schemas as namespaces** — `sales.Orders` vs `hr.Employee`: permission boundaries and name organization ([DCL](12_SQL_DCL_TCL.md)).
 
+## DDL also creates saved code
+
+`CREATE` isn't only for tables. The same DDL verb defines the database's **programmable objects** — stored procedures, functions, and triggers:
+
+```sql
+CREATE PROCEDURE sales.usp_LoadDailySales @LoadDate DATE AS BEGIN ... END;
+CREATE FUNCTION  dbo.fn_FiscalYear (@d DATE) RETURNS INT AS BEGIN ... END;
+CREATE TRIGGER   trg_Orders_Audit ON sales.Orders AFTER UPDATE AS BEGIN ... END;
+```
+
+They follow the same `CREATE` / `ALTER` / `DROP` lifecycle as a table, and they live in the same catalog — so they need the same version control and deployment discipline.
+
+> **Full treatment:** [Stored Procedures and Programmability](15_SQL_Stored_Procedures_and_Programmability.md) — procedures, the three kinds of function and their performance cliff, triggers, temp tables vs table variables, cursors, and dynamic SQL.
+
+---
+
 ## DDL in the lakehouse dialect
 
 The same category exists in Spark SQL/Databricks, with new powers:

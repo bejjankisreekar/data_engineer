@@ -148,6 +148,26 @@ In Databricks this pattern is first-class: gold-layer **views in Unity Catalog**
 
 The dbt world blurs this deliberately: every model is *written* as a SELECT, and a config flag decides view vs table vs incremental — the decision above, made declarative.
 
+## Views vs the rest of the programmable family
+
+A view is the simplest saved object in the database, and the question "should this be a view?" is really a question about the alternatives:
+
+| Need | Reach for |
+|---|---|
+| A saved query, reused by name across many queries | **View** |
+| A saved query that takes an **argument** | **Inline table-valued function** — a parameterized view |
+| Logic that **changes data**, or runs multiple steps | **[Stored procedure](15_SQL_Stored_Procedures_and_Programmability.md)** |
+| A single computed value used inside `SELECT`/`WHERE` | **Scalar function** — sparingly; it runs per row |
+| An intermediate result used several times **in one query** | **`#temp` table** (has statistics, can be indexed) |
+| Readability inside one query, used once | **CTE** |
+| Something that must happen on every write, whoever writes | **Trigger** |
+
+The two most common mistakes: reaching for a view when the query needs a parameter (that's an inline TVF), and reaching for a view when the same result is scanned repeatedly inside one procedure (that's a temp table — a view is re-evaluated on every reference).
+
+> Views also can't be made "updatable" across multiple tables on their own — that requires an `INSTEAD OF` trigger, covered in [Programmability](15_SQL_Stored_Procedures_and_Programmability.md#4-triggers--code-that-runs-whether-you-asked-or-not).
+
+---
+
 ## Field-tested gotchas
 
 - A view referencing a dropped/renamed column fails at **query time**, not deploy time — dependency-check before dropping anything (`sys.dm_sql_referencing_entities`, Unity Catalog lineage).

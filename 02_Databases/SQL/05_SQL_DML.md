@@ -179,7 +179,7 @@ Many systems never physically DELETE: an `is_deleted BIT + deleted_at` flag pres
 ## Field-tested gotchas
 
 - `UPDATE` with a join that matches multiple source rows picks one **nondeterministically** (T-SQL) or errors (Postgres) — dedupe the source first.
-- Triggers fire on your DML — an innocent bulk UPDATE can cascade into row-by-row trigger logic 100× slower than the statement itself.
+- [Triggers](15_SQL_Stored_Procedures_and_Programmability.md#4-triggers--code-that-runs-whether-you-asked-or-not) fire on your DML — an innocent bulk UPDATE can cascade into row-by-row trigger logic 100× slower than the statement itself.
 - `@@ROWCOUNT`/`ROW_COUNT()` is the cheapest data-quality check there is: log "rows affected" on every pipeline DML and alert when today ≠ yesterday's order of magnitude.
 - On Delta, many small MERGEs = many small files + version bloat: batch micro-changes, then `OPTIMIZE` ([Spark_Processing.md](../../03_Programming/PySpark/Spark_Processing.md)).
 

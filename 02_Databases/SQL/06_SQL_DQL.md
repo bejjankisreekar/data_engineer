@@ -191,6 +191,8 @@ SELECT Name FROM Former_Employees;
 
 ## Window functions — the biggest DQL power-up
 
+> **Full treatment:** [SQL Window Functions](14_SQL_Window_Functions.md) — every function, frames, the patterns, and the traps. This is the short version.
+
 Aggregates that *don't collapse rows*: every row keeps its identity and gains a computed value over a defined "window" of related rows.
 
 ```sql
@@ -209,6 +211,8 @@ The patterns you'll use weekly:
 - **Gaps & islands, sessionization** — `LAG` + conditional flags + running sums.
 
 `ROW_NUMBER` vs `RANK` vs `DENSE_RANK`: on ties → unique 1,2,3 / 1,1,3 / 1,1,2. Warehouse dialects add `QUALIFY` (filter on window results directly — Databricks/Snowflake) — use it where available.
+
+Two defaults that catch everyone, both explained in full in [Window Functions](14_SQL_Window_Functions.md): adding `ORDER BY` to an aggregate window silently turns a partition **total** into a **running** total, and the default frame is `RANGE` (tied rows share a value) rather than `ROWS`.
 
 ## Reading an execution plan (the 20% that answers 80%)
 

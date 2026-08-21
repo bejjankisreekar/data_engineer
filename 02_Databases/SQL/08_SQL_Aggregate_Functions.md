@@ -142,7 +142,7 @@ GROUP BY ROLLUP (Region, StoreID);
 
 ## GROUP BY vs window functions — collapse or annotate?
 
-The decision every analyst makes daily: `GROUP BY` **collapses** rows into one per group; a window function **annotates** each row with its group's value ([full window coverage](06_SQL_DQL.md)):
+The decision every analyst makes daily: `GROUP BY` **collapses** rows into one per group; a window function **annotates** each row with its group's value ([full window coverage](14_SQL_Window_Functions.md)):
 
 ```sql
 -- "each employee's salary AND their department average, side by side"

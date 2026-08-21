@@ -531,7 +531,7 @@ LEFT JOIN Employee m ON m.EmpID = e.ManagerID;   -- LEFT, so the CEO isn't dropp
 | Raj | Meera |
 | Anita | Meera |
 
-**Use it when:** the relationship is between rows of the *same* entity — employee→manager, product→parent category, page→referring page. Also for **row-to-row comparison**: joining a table to itself on `t2.date = t1.date - 1` to compute day-over-day change (though a window function like `LAG` is usually cheaper and clearer for that).
+**Use it when:** the relationship is between rows of the *same* entity — employee→manager, product→parent category, page→referring page. Also for **row-to-row comparison**: joining a table to itself on `t2.date = t1.date - 1` to compute day-over-day change (though a [window function](14_SQL_Window_Functions.md) like `LAG` is usually cheaper and clearer for that).
 
 > Use `LEFT` for hierarchies unless you deliberately want to drop the root — swap it for `INNER` above and Meera vanishes, silently losing the top of every tree.
 
@@ -695,7 +695,7 @@ One row per customer — Meera is **not** duplicated, because the subquery retur
 
 **Use it when:**
 
-- **Top-N per group** — the most recent order per customer, the three highest-scoring attempts per student. (A `ROW_NUMBER()` window function does the same job; LATERAL often wins when N is small and the inner side is well indexed, because it can stop early.)
+- **Top-N per group** — the most recent order per customer, the three highest-scoring attempts per student. (A [`ROW_NUMBER()` window function](14_SQL_Window_Functions.md) does the same job; LATERAL often wins when N is small and the inner side is well indexed, because it can stop early.)
 - **Calling a table-valued function per row**, or expanding a JSON/array column into rows alongside its parent (`CROSS JOIN LATERAL jsonb_array_elements(...)`, `CROSS APPLY OPENJSON(...)`).
 
 ---

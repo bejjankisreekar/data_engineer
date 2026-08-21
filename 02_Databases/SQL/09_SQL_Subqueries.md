@@ -201,6 +201,20 @@ In Spark SQL / Synapse, every subquery is a plan subtree — the concerns shift 
 
 ---
 
+## Why CTEs and window functions travel together
+
+The most common reason to write a CTE is to make a [window function](14_SQL_Window_Functions.md) filterable. Windows are computed *after* `WHERE`, so `WHERE rn = 1` is a syntax error in the same query that defines `rn` — you compute it in a CTE, then filter the CTE. Every deduplication and top-N-per-group query you write will have this shape.
+
+```sql
+WITH ranked AS (
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY CustomerID ORDER BY updated_at DESC) AS rn
+    FROM Staging_Customers
+)
+SELECT * FROM ranked WHERE rn = 1;    -- keep the latest row per customer
+```
+
+---
+
 ## Further Learning — Docs & Videos
 
 **Documentation**

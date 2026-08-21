@@ -100,6 +100,78 @@ This 15-line script uses: functions, arguments, `try/except`, files, strings, co
 
 ---
 
+## Type hints — making pipeline code reviewable
+
+Python doesn't enforce types at runtime, but **annotating them is standard practice in production data code**. They're documentation the editor can check.
+
+```python
+from datetime import date
+from typing import Optional
+
+def load_sales(path: str, run_date: date, limit: Optional[int] = None) -> pd.DataFrame:
+    df = pd.read_csv(path)
+    df = df[df["sale_date"] == run_date]
+    return df.head(limit) if limit else df
+```
+
+Read the signature and you already know what to pass and what comes back — no need to read the body or run it.
+
+**Why it matters in a pipeline:** transformation functions get chained, and a function that quietly returns `None` on one branch (a missing `return`) produces an error thousands of lines away in the traceback. Type hints let your editor and a checker like **mypy** catch that before the job runs on a cluster.
+
+```bash
+pip install mypy && mypy pipeline.py     # static check, no execution
+```
+
+Notation worth knowing:
+
+| Hint | Means |
+|---|---|
+| `list[str]`, `dict[str, int]` | Built-in generics (Python 3.9+) |
+| `Optional[int]` / `int \| None` | An int **or** None — the second form is 3.10+ |
+| `-> None` | Returns nothing (a side-effecting function) |
+| `Any` | Escape hatch — turns checking off for that value |
+
+> Hints are **not enforced at runtime**. `def f(x: int)` will happily accept a string and fail later. They are for humans and tooling, not validation — for real runtime validation reach for **Pydantic**, which is what data-contract tooling uses.
+
+## Dataclasses — structured records without boilerplate
+
+Pipelines constantly pass around small bundles of related values — a job config, a table spec, a run result. A dict works but has no structure (`cfg["taget_table"]` is a typo that fails at 3am, not at import). A `@dataclass` gives you a real type for free:
+
+```python
+from dataclasses import dataclass, field
+from datetime import date
+
+@dataclass
+class LoadSpec:
+    source_path: str
+    target_table: str
+    run_date: date
+    partition_cols: list[str] = field(default_factory=list)   # never use [] as a default
+    overwrite: bool = False
+
+spec = LoadSpec(
+    source_path="abfss://raw@lake.dfs.core.windows.net/sales/",
+    target_table="silver.sales",
+    run_date=date(2026, 8, 21),
+    partition_cols=["region"],
+)
+
+print(spec.target_table)     # silver.sales
+print(spec)                  # LoadSpec(source_path='abfss://...', target_table='silver.sales', ...)
+```
+
+The decorator writes `__init__`, `__repr__`, and `__eq__` for you. What you gain over a dict:
+
+- **Typos fail loudly** — `spec.taget_table` raises `AttributeError` immediately; `cfg["taget_table"]` raises `KeyError` only when that line finally runs.
+- **A readable `repr` for free** — printing a dataclass in a log line shows every field and its value, which is exactly what you want when debugging a failed run.
+- **Defaults and required fields are explicit** in the definition, so the config's shape is self-documenting.
+
+> `field(default_factory=list)` rather than `= []`: a mutable default is created **once** and shared by every instance — the most common Python bug of all, and a dataclass raises an error if you try it.
+
+Use `@dataclass(frozen=True)` to make instances immutable (and hashable), which is a good default for config objects that should never be modified after construction.
+
+---
+
 ## Where to go next
 
 - **Module 07 — PySpark:** the distributed version of everything here. Your Python fluency lets you focus on *big-data concepts* (partitions, shuffles, lazy evaluation) instead of syntax.

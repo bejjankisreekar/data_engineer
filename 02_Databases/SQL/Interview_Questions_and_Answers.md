@@ -113,7 +113,7 @@ This is correct because `MERGE` does insert-or-update by key in a single atomic 
 
 ## 3. Querying Data
 
-*(full notes: [06_SQL_DQL.md](06_SQL_DQL.md), [07_SQL_Keys_and_Joins.md](07_SQL_Keys_and_Joins.md), [08_SQL_Aggregate_Functions.md](08_SQL_Aggregate_Functions.md))*
+*(full notes: [06_SQL_DQL.md](06_SQL_DQL.md), [07_SQL_Keys_and_Joins.md](07_SQL_Keys_and_Joins.md), [08_SQL_Aggregate_Functions.md](08_SQL_Aggregate_Functions.md), [14_SQL_Window_Functions.md](14_SQL_Window_Functions.md))*
 
 #### Q13. What is the difference between `WHERE` and `HAVING`? **[Frequently Asked]**
 *Why interviewers ask this:* The single most common point of confusion for SQL learners, and therefore one of the most reliably asked questions of all.
@@ -276,7 +276,7 @@ Composite index column order matters: equality predicates go first (`CustomerID`
 
 ## 5. Control
 
-*(full notes: [12_SQL_DCL_TCL.md](12_SQL_DCL_TCL.md))*
+*(full notes: [12_SQL_DCL_TCL.md](12_SQL_DCL_TCL.md), [15_SQL_Stored_Procedures_and_Programmability.md](15_SQL_Stored_Procedures_and_Programmability.md))*
 
 #### Q32. What is the difference between DCL and TCL? **[Frequently Asked]**
 *Why interviewers ask this:* Checks that the candidate knows all five SQL command categories, not just DDL/DML/DQL.
