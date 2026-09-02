@@ -4,7 +4,53 @@
 
 This module teaches the **platform** — clusters, notebooks, jobs, governance, and the managed features (Unity Catalog, DLT, Auto Loader) that turn raw Spark into a production data platform.
 
-> **Note on the two Databricks tracks in this repo:** this `08_Databricks/` folder is the **learning path** — concepts first, in the house 3-part style. The separate [Databricks Data Engineer Associate](../Certifications/Databricks_Data_Engineer_Associate/00_Study_Guide_Overview.md) folder is **exam prep** for the certification. Read this to *understand*; read that to *pass the test*.
+> **Note on the two Databricks tracks in this repo:** this `08_Databricks/` folder is the **learning path** — concepts first, each note a single continuous read from the basics through to production practice. The separate [Databricks Data Engineer Associate](../Certifications/Databricks_Data_Engineer_Associate/00_Study_Guide_Overview.md) folder is **exam prep** for the certification. Read this to *understand*; read that to *pass the test*.
+
+---
+
+## The platform at a glance
+
+Databricks has a lot of surface area, and the fastest way to stop feeling lost is to see how the pieces stack. Four layers, and every note in this module sits in one of them:
+
+```mermaid
+flowchart TB
+    subgraph GOV["🔐 Governance — who may see what · note 06"]
+      UC["Unity Catalog<br/>catalog · schema · table · volume<br/>grants · lineage · audit"]
+    end
+    subgraph CODE["📝 Code & orchestration · notes 04 · 05 · 08"]
+      NB["Notebooks + Git Repos"]
+      WF["Workflows (Jobs)<br/>task DAG · schedule · retry"]
+      DLT["Delta Live Tables<br/>declarative pipelines"]
+    end
+    subgraph COMPUTE["⚙️ Compute — what runs it · note 03"]
+      AC["All-purpose cluster<br/>(humans, dev)"]
+      JC["Job cluster<br/>(scheduled runs)"]
+      SW["SQL warehouse<br/>(BI, dashboards)"]
+    end
+    subgraph DATA["💾 Data — where it lives · notes 07 · 09"]
+      AL["Auto Loader<br/>incremental ingest"]
+      DL[("Delta tables<br/>on ADLS Gen2")]
+    end
+    NB --> AC
+    WF --> JC
+    DLT --> JC
+    AC --> DL
+    JC --> DL
+    SW --> DL
+    AL --> DL
+    UC -. governs .-> DL
+    UC -. governs .-> SW
+```
+
+Read it as a sentence: **you write code (notebooks/DLT), a scheduler (Workflows) runs it on compute (clusters), which reads and writes Delta tables on your storage, and Unity Catalog decides who is allowed to do any of it.** Note 01 explains the split that sits underneath all four layers — Databricks runs the *brains* (control plane) while the *muscle and your data* stay in your Azure subscription (data plane).
+
+The three ideas that make everything else click, if you only remember three:
+
+| Idea | Why it matters | Note |
+|---|---|---|
+| **Control plane vs data plane** | Answers "does Databricks hold our data?" (no) and every security review | [01](01_What_is_Databricks.md) |
+| **Job clusters vs all-purpose clusters** | The single biggest cost lever on the platform | [03](03_Clusters_and_Compute.md) |
+| **The three-level namespace** `catalog.schema.table` | How governance and dev/prod separation actually work | [06](06_Unity_Catalog.md) |
 
 ---
 

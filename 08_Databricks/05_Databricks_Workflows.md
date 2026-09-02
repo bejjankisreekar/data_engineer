@@ -32,6 +32,155 @@ flowchart LR
 
 ---
 
+## Task types — a job is not only notebooks
+
+A task is any of these, and mixing them in one DAG is normal:
+
+| Task type | What it runs | Typical use |
+|---|---|---|
+| **Notebook** | A workspace or Git notebook | The default for transformation steps |
+| **Python script / wheel** | A `.py` file or a packaged wheel | **Production code that has unit tests** — the grown-up alternative to notebooks |
+| **JAR / Spark Submit** | Compiled Scala/Java | Legacy or JVM-native workloads |
+| **SQL** | A query, dashboard refresh, alert, or `.sql` file | Gold-layer transforms and refreshing what BI reads |
+| **dbt** | A dbt project against a SQL warehouse | Teams whose modelling layer is [dbt](../13_dbt/01_What_is_dbt.md) |
+| **DLT pipeline** | Starts a Delta Live Tables pipeline | The declarative part of a wider DAG |
+| **Run job** | Another job | Composing large pipelines from reusable ones |
+| **If/else · For each** | Branching and fan-out over a list | Conditional paths; looping the same task over many tables |
+
+---
+
+## Passing values: parameters in, task values across
+
+**Job parameters** are declared once and referenced by every task, which is how one job definition serves dev and prod:
+
+```
+{{job.parameters.env}}        →  dev | prod
+{{job.parameters.run_date}}   →  2026-09-02
+{{job.id}} · {{job.run_id}} · {{task.run_id}}   →  built-in dynamic values
+```
+
+Inside a notebook they arrive as widgets:
+
+```python
+dbutils.widgets.text("env", "dev")
+dbutils.widgets.text("run_date", "")
+env      = dbutils.widgets.get("env")
+run_date = dbutils.widgets.get("run_date")
+
+df.write.saveAsTable(f"{env}.silver.orders")     # one notebook, both environments
+```
+
+**Task values** pass small results *between* tasks — a row count, a computed watermark, a partition to process. They are for control flow, not data:
+
+```python
+# upstream task
+dbutils.jobs.taskValues.set(key="rows_loaded", value=count)
+
+# downstream task
+rows = dbutils.jobs.taskValues.get(taskKey="bronze", key="rows_loaded", debugValue=0)
+```
+
+---
+
+## Dependencies and conditional execution
+
+By default a task waits for **all** its upstream tasks to succeed. The `Run if` condition changes that, and it is how you build cleanup and alerting branches:
+
+| `Run if` | Runs when |
+|---|---|
+| `ALL_SUCCESS` (default) | Every dependency succeeded |
+| `AT_LEAST_ONE_SUCCESS` | Any dependency succeeded |
+| `NONE_FAILED` | Nothing failed (skipped is acceptable) |
+| `ALL_DONE` | Everything finished, success or not — the **cleanup / notify** branch |
+| `AT_LEAST_ONE_FAILED` / `ALL_FAILED` | Failure paths — quarantine reports, incident tickets |
+
+```mermaid
+flowchart LR
+    B[bronze] --> S[silver]
+    S --> G[gold]
+    G --> P[refresh dashboard]
+    S -. "run_if: AT_LEAST_ONE_FAILED" .-> Q[write failure report]
+    P -. "run_if: ALL_DONE" .-> N[notify + log run metrics]
+```
+
+---
+
+## Triggers — four ways a job starts
+
+| Trigger | Fires when | Use for |
+|---|---|---|
+| **Scheduled (cron)** | A cron expression in a named timezone | Nightly and hourly batch |
+| **File arrival** | New files land in an external location | Event-driven ingestion without a separate watcher |
+| **Table update** | An upstream Delta table changes | Chaining pipelines by data, not by clock |
+| **Continuous** | Keeps one run always active, restarting it | Streaming pipelines |
+
+Plus manual runs and the REST API — which is how [ADF](../06_Data_Engineering/ETL_ELT/02_Azure_Data_Factory.md) or an external orchestrator kicks off a Databricks job.
+
+> **Set the timezone deliberately.** A cron in UTC on a business schedule drifts by an hour twice a year when daylight saving changes, and the resulting "the 6 a.m. report was late" tickets are entirely self-inflicted.
+
+---
+
+## Making a job survive the night
+
+Reliability is configuration, not heroics. The settings that matter:
+
+- **Retries with backoff** per task — but only retry what is *idempotent*. Retrying a non-idempotent append duplicates data; this is exactly why the [medallion hops use `MERGE`](../05_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md).
+- **Timeouts** on every task, so a hung Spark stage fails loudly at 90 minutes instead of burning compute until someone notices at 9 a.m.
+- **Max concurrent runs = 1** for most batch jobs, so a slow run and its successor never process the same window twice.
+- **Notifications** on failure *and* on **duration threshold** — a job that normally takes 20 minutes and is still running at 90 is a problem well before it fails.
+- **Repair run** — re-runs only the failed tasks and their descendants, reusing the successful upstream output. On a 30-task DAG that fails at task 27, this is the difference between a 4-minute fix and a 3-hour rerun.
+- **Serverless jobs compute** — no cluster to size or wait for; usually the better default for short tasks, while long ETL often stays cheaper on a classic job cluster.
+
+---
+
+## Jobs as code: Databricks Asset Bundles
+
+Clicking jobs together in the UI does not survive contact with a second environment. **Databricks Asset Bundles (DABs)** define jobs, pipelines, and clusters as YAML in the repo, deployed per target:
+
+```yaml
+bundle:
+  name: sales-pipeline
+
+resources:
+  jobs:
+    medallion_nightly:
+      name: "medallion-nightly-${bundle.target}"
+      job_clusters:
+        - job_cluster_key: main
+          new_cluster:
+            spark_version: "15.4.x-scala2.12"
+            node_type_id: "Standard_DS4_v2"
+            autoscale: { min_workers: 2, max_workers: 8 }
+      tasks:
+        - task_key: bronze
+          job_cluster_key: main
+          notebook_task: { notebook_path: ./src/bronze.py }
+        - task_key: silver
+          depends_on: [{ task_key: bronze }]
+          job_cluster_key: main
+          notebook_task: { notebook_path: ./src/silver.py }
+      schedule:
+        quartz_cron_expression: "0 0 2 * * ?"
+        timezone_id: "Europe/London"
+      email_notifications:
+        on_failure: ["data-oncall@example.com"]
+
+targets:
+  dev:
+    default: true
+  prod:
+    resources:
+      jobs:
+        medallion_nightly:
+          job_clusters:
+            - job_cluster_key: main
+              new_cluster: { autoscale: { min_workers: 4, max_workers: 16 } }
+```
+
+`databricks bundle deploy -t prod` then makes the environments differ only where you said they should. See [CI/CD for ADF and Databricks](../14_Testing_and_DataOps/05_CICD_for_ADF_and_Databricks.md).
+
+---
+
 ## Why use Workflows over ADF (and vice versa)
 
 | Use Databricks Workflows when… | Use ADF when… |
@@ -101,6 +250,11 @@ Production teams don't click-build jobs — they define them as **JSON/YAML** an
 - *What is "repair run"?* Re-running only the failed tasks of a job instead of the entire DAG.
 - *When DLT vs Workflows?* DLT for declarative, quality-gated, auto-managed table pipelines; Workflows for orchestrating arbitrary task types.
 - *How do you deploy jobs across environments?* As code via CLI/REST/Terraform/Asset Bundles through CI/CD, not manual UI clicks.
+- *How do you pass values between tasks?* Job/task **parameters** in (read as notebook widgets), and **task values** (`dbutils.jobs.taskValues`) between tasks for small control-flow values like a row count or watermark — never for data.
+- *How do you run a task only when something failed?* The `Run if` condition — `ALL_DONE` for cleanup/notify branches, `AT_LEAST_ONE_FAILED` for failure paths, instead of the default `ALL_SUCCESS`.
+- *What triggers can start a job?* Cron schedule (in a named timezone), file arrival, table update, continuous, manual, and the REST API — the last being how ADF or an external orchestrator invokes Databricks.
+- *Which reliability settings would you always set?* Per-task retries (only where the task is idempotent), timeouts, max concurrent runs = 1 for batch, and notifications on failure *and* on a duration threshold.
+- *What are Databricks Asset Bundles?* YAML definitions of jobs, pipelines, and clusters in the repo, deployed per environment target — so dev and prod differ only where you declare they do.
 
 ---
 

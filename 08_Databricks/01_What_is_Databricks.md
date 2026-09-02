@@ -33,28 +33,82 @@ Databricks collapsed all of that: one platform, one copy of data (the lakehouse)
 
 This is the single most important thing to understand about Databricks — and a guaranteed interview question.
 
-```
-┌──────────────────────────────────────────────┐
-│  CONTROL PLANE  (managed by Databricks)        │
-│  • Web UI / workspace                          │
-│  • Notebooks & job definitions (metadata)      │
-│  • Cluster manager, job scheduler              │
-│  • Unity Catalog metadata                      │
-└───────────────────┬──────────────────────────┘
-                    │ commands / orchestration
-                    ▼
-┌──────────────────────────────────────────────┐
-│  DATA PLANE  (in YOUR Azure subscription)      │
-│  • The actual cluster VMs (compute)            │
-│  • Your data in ADLS / your storage            │
-│  • Your VNet                                   │
-└──────────────────────────────────────────────┘
+```mermaid
+flowchart TB
+    subgraph CP["☁️ CONTROL PLANE — Databricks' own cloud account"]
+      direction LR
+      UI["Workspace web UI"]
+      META["Notebook source · job definitions<br/>cluster configs · query history"]
+      SCHED["Cluster manager<br/>job scheduler"]
+      UCM["Unity Catalog<br/><b>metadata</b>: names, grants, lineage"]
+    end
+    subgraph DP["🏢 DATA PLANE — YOUR Azure subscription + VNet"]
+      direction LR
+      DRV["Driver VM"] --- W1["Worker"] --- W2["Worker"]
+      ADLS[("ADLS Gen2<br/><b>your data</b>, as Delta files")]
+    end
+    SCHED -->|"launch / terminate, send commands"| DRV
+    UCM -->|"short-lived credential + allowed paths"| DRV
+    DRV <-->|"reads and writes the actual bytes"| ADLS
+    W1 <--> ADLS
+    W2 <--> ADLS
 ```
 
 - **Control plane** — the *brains*, run in Databricks' own cloud account: the web app, notebook source, job configs, cluster orchestration, catalog metadata.
 - **Data plane** (a.k.a. compute plane) — the *muscle*, run in **your** Azure subscription: the cluster VMs that do the work and your data in your storage.
 
 **Why it matters:** your data and compute stay in *your* account and network — Databricks orchestrates but doesn't hold your data. This is the answer to "is my data secure?" and "where does the processing happen?"
+
+**What actually crosses the boundary?** Commands and metadata, never your table data. The control plane tells a VM in your subscription "run this code"; that VM reads and writes ADLS directly. The nuance worth knowing for a security review: notebook *source code*, job definitions, and query history **are** stored in the control plane, and query **results** are cached there so the UI can display them — which is why regulated customers also configure **customer-managed keys** for that control-plane content.
+
+### Account vs workspace — the two levels of administration
+
+Newcomers assume the workspace is all there is. There are two levels, and the boundary between them is exactly where Unity Catalog lives.
+
+| | **Account** | **Workspace** |
+|---|---|---|
+| Scope | The whole Databricks organization | One environment (dev, prod, a business unit) |
+| Managed in | The **account console** | The workspace UI |
+| Holds | **Unity Catalog metastores**, account-level users/groups/service principals (synced from [Entra ID](../06_Data_Engineering/Data_Governance/03_Microsoft_Entra_ID.md)), billable-usage logs | Notebooks, clusters, jobs, DBFS root, workspace-local ACLs |
+| Admin role | Account admin | Workspace admin |
+
+The practical consequence: **identity and governance are account-level; compute and code are workspace-level.** That is precisely why Unity Catalog can enforce one permission model across dev and prod workspaces, and why the pre-UC Hive metastore — which was workspace-local — could not.
+
+```mermaid
+flowchart TB
+    ACC["Databricks account<br/>users · groups · service principals (synced from Entra ID)"]
+    MS[("Unity Catalog metastore<br/>one per region")]
+    ACC --> MS
+    MS --> WS1["Workspace: dev"]
+    MS --> WS2["Workspace: prod"]
+    WS1 --> C1["clusters · notebooks · jobs"]
+    WS2 --> C2["clusters · notebooks · jobs"]
+```
+
+### Classic vs serverless compute — where the VMs actually live
+
+Since serverless arrived, "the data plane is in your subscription" needs one qualification, and interviewers increasingly ask for it.
+
+| | **Classic compute** | **Serverless compute** |
+|---|---|---|
+| VMs run in | **Your** Azure subscription and VNet | **Databricks'** account, isolated per customer |
+| Startup | Minutes (seconds from a pool) | Seconds |
+| You choose | VM type, worker count, DBR version | Nothing — Databricks sizes it |
+| Network control | Full: VNet injection, Private Link, NSGs | Limited: serverless network policies / connectivity configs |
+| Billed as | DBUs **+** your Azure VM cost | One higher DBU rate, VMs included |
+| Best for | Long ETL, custom libraries, strict network isolation | SQL warehouses, short/bursty jobs, notebooks, DLT |
+
+Neither is simply better. Classic gives control and cheaper long-running compute; serverless removes cluster management entirely and wins wherever startup latency dominates — which is most BI and most short jobs.
+
+### The product surfaces (what the left-hand nav is for)
+
+One platform, three front doors, all reading the **same** Delta tables through the **same** Unity Catalog:
+
+- **Data Engineering** — notebooks, Workflows, DLT, Auto Loader. Where pipelines are built.
+- **Databricks SQL** — SQL editor, dashboards, alerts, and SQL warehouses. Where analysts and BI tools land.
+- **Machine Learning** — MLflow tracking, the model registry (now in Unity Catalog), feature engineering, model serving.
+
+That shared substrate is the whole lakehouse argument: no export step between the engineer's table, the analyst's dashboard, and the scientist's training set.
 
 ---
 
@@ -63,11 +117,11 @@ This is the single most important thing to understand about Databricks — and a
 | Piece | What it is |
 |---|---|
 | **Workspace** | Your Databricks environment — the UI, folders, notebooks, users |
-| **Cluster / compute** | The Spark VMs that run your code — see [02](03_Clusters_and_Compute.md) |
-| **Notebook** | Interactive multi-language document (Python/SQL/Scala/R) — see [03](04_Notebooks_Repos_and_Jobs.md) |
-| **Job / Workflow** | A scheduled, orchestrated pipeline — see [03](04_Notebooks_Repos_and_Jobs.md) |
+| **Cluster / compute** | The Spark VMs that run your code — see [03](03_Clusters_and_Compute.md) |
+| **Notebook** | Interactive multi-language document (Python/SQL/Scala/R) — see [04](04_Notebooks_Repos_and_Jobs.md) |
+| **Job / Workflow** | A scheduled, orchestrated pipeline — see [05](05_Databricks_Workflows.md) |
 | **Delta Lake** | The default table format — see [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) |
-| **Unity Catalog** | Central governance & metadata — see [04](06_Unity_Catalog.md) |
+| **Unity Catalog** | Central governance & metadata — see [06](06_Unity_Catalog.md) |
 | **DBFS / mounts** | A file-path abstraction over your cloud storage |
 | **Runtime (DBR)** | The pre-packaged Spark + libraries version your cluster runs |
 
@@ -118,9 +172,11 @@ A cluster doesn't run "Spark" in the abstract — it runs a specific **Databrick
 
 - **Standard DBR** — general purpose.
 - **DBR ML** — adds ML libraries (TensorFlow, PyTorch, MLflow).
-- **Photon** — the C++ vectorized engine for SQL/DataFrame speed.
+- **Photon** — the C++ vectorized engine for SQL/DataFrame speed, toggled per cluster.
 
-Pinning a DBR version matters for reproducibility — a job that "worked last year" can break if it silently moves to a newer runtime with different library versions.
+**Reading a version string** like `15.4 LTS`: the number is the *Databricks* release, not the Spark version — each DBR pins a specific Spark, Delta, Python, and Java. **LTS** releases carry long-term support (roughly three years); non-LTS releases are supported for months. The rule follows directly: **pin an LTS version for anything scheduled**, and keep latest-and-greatest for experiments.
+
+Upgrading is a real task, not a formality: read the release notes for the Spark and Python version jumps, run the job on the new DBR in dev, and compare both the results *and* the runtime before promoting. A job that "worked last year" breaks most often because it silently moved to a newer runtime with different library versions.
 
 ## Workspace objects & the file layers
 
@@ -161,12 +217,16 @@ In a real org you don't let everyone spin up any cluster — **cluster policies*
 - *Databricks vs plain Spark?* Databricks *is* Spark plus managed clusters, Photon, Delta optimizations, Unity Catalog, DLT, Auto Loader, SQL, and MLflow — you get Spark without running the infrastructure.
 - *Where does your data actually live?* In your own cloud storage (ADLS) in the data plane; Databricks orchestrates but doesn't store your data.
 - *Biggest cost trap?* Idle all-purpose clusters and using interactive clusters for scheduled jobs instead of job clusters.
+- *Account vs workspace?* The account holds identity (synced from Entra ID) and Unity Catalog metastores; a workspace holds clusters, notebooks, and jobs. Governance is account-level, which is how one permission model spans dev and prod.
+- *Does the control plane hold anything of ours?* Notebook source, job definitions, query history, and cached query results — but never your table data, which stays in your storage. Regulated customers add customer-managed keys for that control-plane content.
+- *Classic vs serverless compute?* Classic runs VMs in your subscription and VNet (full network control, cheaper for long jobs); serverless runs them in Databricks' account, starts in seconds, and bills one higher DBU rate with the VM included — better for SQL, short jobs, and bursty work.
+- *What does `15.4 LTS` mean?* The Databricks release (not the Spark version) with long-term support. Pin an LTS for production; "latest" silently upgrades libraries underneath you.
 
 ---
 
 ## Related Notes
 
-- **Next:** [Clusters & Compute](03_Clusters_and_Compute.md)
+- **Next:** [Why Spark? Why Databricks?](02_Why_Spark_Why_Databricks.md) → [Clusters & Compute](03_Clusters_and_Compute.md)
 - **Foundations:** [Why Spark? Why Databricks?](../08_Databricks/02_Why_Spark_Why_Databricks.md) · [Spark Architecture](../03_Programming/PySpark/Spark_Architecture.md)
 - **Storage:** [Lakehouse Architecture](../05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) · [Delta Lake](../05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md)
 - **Cert:** [Databricks Associate — Lakehouse Platform](../Certifications/Databricks_Data_Engineer_Associate/01_Lakehouse_Platform_Fundamentals.md)

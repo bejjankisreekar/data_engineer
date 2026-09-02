@@ -8,7 +8,7 @@
 
 ---
 
-## Level 1 — Running PySpark (pick one)
+## Running PySpark (pick one)
 
 ### Option A: Local machine (learning)
 
@@ -44,7 +44,7 @@ How standalone scripts reach a cluster — covered properly in [file 14](14_Perf
 
 ---
 
-## Level 2 — Understanding the SparkSession
+## Understanding the SparkSession
 
 The `SparkSession` is your **handle to the whole engine**: it holds the connection to the cluster, the configuration, and the catalog of tables.
 
@@ -86,7 +86,7 @@ That laziness is the single most important behavior to internalize: **transforma
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **SparkSession vs SparkContext**: `SparkContext` (`spark.sparkContext`) is the older, lower-level entry point (RDDs); `SparkSession` wraps it plus SQL/catalog. New code touches SparkContext almost never.
 - **Spark Connect** (Spark 3.4+/Databricks serverless): your Python process becomes a thin client speaking gRPC to a remote driver — same API, but `sparkContext` and some RDD APIs are unavailable. If a notebook errors on `sparkContext`, you're probably on serverless.

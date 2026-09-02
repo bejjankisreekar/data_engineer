@@ -6,7 +6,7 @@ Same concepts as [SQL aggregation](../../02_Databases/SQL/08_SQL_Aggregate_Funct
 
 ---
 
-## Level 1 — The basics
+## The basics
 
 ```python
 # Whole-table aggregates
@@ -46,7 +46,7 @@ Nulls are ignored by aggregates exactly as in SQL — `F.count("col")` vs `F.cou
 
 ---
 
-## Level 2 — Pivot, rollup, cube
+## Pivot, rollup, cube
 
 ```python
 # PIVOT — rows → columns
@@ -74,7 +74,7 @@ Same semantics as [SQL ROLLUP/CUBE](../../02_Databases/SQL/08_SQL_Aggregate_Func
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **Cost driver = number of distinct groups**, not table size: `groupBy("region")` (12 groups) is trivial at any scale; `groupBy("customer_id")` (500M groups) is a monster that may spill ([hash agg spills](../../02_Databases/SQL/08_SQL_Aggregate_Functions.md)). Design metrics tables around group cardinality.
 - **countDistinct at scale**: exact distinct forces expensive shuffles and limits query shapes; `approx_count_distinct` for dashboards, exact only for reconciliation ([OLAP approximation](../../01_Foundations/Fundamentals/02_OLAP_Storage.md)).

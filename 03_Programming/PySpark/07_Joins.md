@@ -13,7 +13,7 @@ dept = spark.createDataFrame([("IT","Technology"),("HR","People"),("FIN","Financ
 
 ---
 
-## Level 1 — Syntax and join types
+## Syntax and join types
 
 ```python
 # Same-named key: pass the name (or list) — result has ONE dept_code column ✅
@@ -43,7 +43,7 @@ Semi/anti never duplicate rows (no fan-out possible) and carry no right-side col
 
 ---
 
-## Level 2 — The two classic PySpark join pains
+## The two classic PySpark join pains
 
 ### 1. Duplicate columns after expression joins
 
@@ -77,7 +77,7 @@ A left join that *grows* the left side means the right side wasn't unique on the
 
 ---
 
-## Level 3 — Pro corner: how joins execute
+## Pro corner: how joins execute
 
 ### Broadcast vs shuffle (the performance decision)
 

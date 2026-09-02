@@ -36,7 +36,7 @@ Topics are grouped into **category folders** so related material lives together:
 | **03_Programming** | Python · PySpark |
 | **04_Cloud** | Cloud Concepts (deployment & service models) |
 | **05_Storage_and_Formats** | Storage Paradigms Map · File Formats · Data Lakes & Storage · Lakehouse (Delta Lake, Delta Table, Lakehouse, Medallion) |
-| **06_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security · Data Quality |
+| **06_Data_Engineering** | ETL / ELT · Data Integration · Data Governance & Security (incl. Microsoft Entra ID) · Data Quality |
 | **07_DevOps** | Git & GitHub (version control, branching, remotes, CI/CD, troubleshooting) — Docker · Kubernetes · Terraform · ARM covered in Job Interviews |
 | **08_Databricks** | Platform · Why Spark · Clusters · Notebooks/Jobs · Workflows · Unity Catalog · ABFSS/Volumes · DLT · Auto Loader · Cost |
 | **09_Streaming** | Streaming fundamentals · Event Hubs · Kafka · Stream Analytics |
@@ -134,7 +134,7 @@ Topics are grouped into **category folders** so related material lives together:
 - [01 — Delta Lake](05_Storage_and_Formats/Lakehouse/01_Delta_Lake.md) — the open storage layer that adds ACID, updates/deletes, and time travel to Parquet via a transaction log
 - [02 — Delta Table](05_Storage_and_Formats/Lakehouse/02_Delta_Table.md) — the table itself: managed vs external, MERGE/upsert, OPTIMIZE, VACUUM, Change Data Feed
 - [03 — Lakehouse Architecture](05_Storage_and_Formats/Lakehouse/03_Lakehouse_Architecture.md) — one copy of data for BI + ML, the two-copy problem it kills, and the three pillars
-- [04 — Medallion Architecture](05_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md) — the **Bronze → Silver → Gold** layering in depth: per-layer rules, transformation code, batch/streaming, anti-patterns
+- [04 — Medallion Architecture](05_Storage_and_Formats/Lakehouse/04_Medallion_Architecture.md) — the **Bronze → Silver → Gold** layering in depth: per-layer rules, naming & catalog layout, incremental loading, idempotency & replay, schema evolution, per-layer optimization, quality gates, platform mapping, anti-patterns
 - **[Interview Questions & Answers](05_Storage_and_Formats/Lakehouse/Interview_Questions_and_Answers.md)** — 25 Q&A across Delta Lake, Delta tables, and the lakehouse
 
 ### 06_Data_Engineering › ETL / ELT — moving and transforming data
@@ -153,7 +153,8 @@ Topics are grouped into **category folders** so related material lives together:
 ### 06_Data_Engineering › Data Governance & Security — trust, access, lineage, compliance
 - [01 — Data Governance & Security](06_Data_Engineering/Data_Governance/01_Data_Governance_and_Security.md) — governance pillars, RBAC/ACL, MSI/Key Vault, Purview, Unity Catalog, lineage, GDPR
 - [02 — Network Security & Private Connectivity](06_Data_Engineering/Data_Governance/02_Network_Security_and_Private_Connectivity.md) — private endpoints/Private Link, ADF Managed VNet, Databricks VNet injection & Secure Cluster Connectivity, Private DNS
-- **[Interview Questions & Answers](06_Data_Engineering/Data_Governance/Interview_Questions_and_Answers.md)** — 15 Q&A on governance & security
+- [03 — Microsoft Entra ID](06_Data_Engineering/Data_Governance/03_Microsoft_Entra_ID.md) — the identity layer under everything: tenants, service principals vs managed identities, tokens, control-plane vs data-plane RBAC, ACL evaluation order, Conditional Access & PIM
+- **[Interview Questions & Answers](06_Data_Engineering/Data_Governance/Interview_Questions_and_Answers.md)** — 20 Q&A on governance, security & identity
 
 ### 06_Data_Engineering › Data Quality — delivering data people can trust
 - [01 — Data Quality & Validation](06_Data_Engineering/Data_Quality/01_Data_Quality_Fundamentals.md) — quality dimensions, shift-left, quarantine, DLT expectations, Great Expectations, observability
@@ -226,17 +227,17 @@ Topics are grouped into **category folders** so related material lives together:
 - **[Interview Questions & Answers](07_DevOps/Git_GitHub/Interview_Questions_and_Answers.md)** — 46 Q&A from the core workflow to rebase vs revert, branching strategies, CI/CD, notebooks in Git, and "you broke production" scenarios
 
 ### 08_Databricks — the managed lakehouse platform (where modern Azure DE happens)
-- [00 — Learning Path](08_Databricks/00_Databricks_Learning_Path.md) — the map of the module, prerequisites, and how it differs from the cert track
-- [01 — What is Databricks?](08_Databricks/01_What_is_Databricks.md) — the platform, **control plane vs data plane**, workspace, runtime, why it exists
+- [00 — Learning Path](08_Databricks/00_Databricks_Learning_Path.md) — **the platform at a glance**: how governance, code, compute, and data stack up, plus prerequisites and how this differs from the cert track
+- [01 — What is Databricks?](08_Databricks/01_What_is_Databricks.md) — the platform, **control plane vs data plane**, account vs workspace, classic vs serverless compute, DBR versions & LTS
 - [02 — Why Spark? Why Databricks?](08_Databricks/02_Why_Spark_Why_Databricks.md) — why Spark replaced MapReduce, and what Databricks adds on top
-- [03 — Clusters & Compute](08_Databricks/03_Clusters_and_Compute.md) — all-purpose vs job clusters, pools, autoscaling, Photon, SQL warehouses, DBUs & cost
+- [03 — Clusters & Compute](08_Databricks/03_Clusters_and_Compute.md) — all-purpose vs job clusters, **access modes**, a sizing method (task slots, Spark UI), DBU + VM cost math, cluster policies, pools, spot, Photon
 - [04 — Notebooks, Repos & Jobs](08_Databricks/04_Notebooks_Repos_and_Jobs.md) — notebooks, `dbutils`, widgets, Git Repos, secrets
-- [05 — Databricks Workflows](08_Databricks/05_Databricks_Workflows.md) — Jobs, task graphs, job clusters, scheduling, DLT pipelines
-- [06 — Unity Catalog](08_Databricks/06_Unity_Catalog.md) — governance: the three-level namespace, access control, masking/row filters, lineage
+- [05 — Databricks Workflows](08_Databricks/05_Databricks_Workflows.md) — Jobs, task types, parameters & task values, `Run if` conditions, triggers, retries/timeouts/repair runs, Asset Bundles
+- [06 — Unity Catalog](08_Databricks/06_Unity_Catalog.md) — governance: the three-level namespace, **the `USE CATALOG` → `USE SCHEMA` → `SELECT` privilege chain**, ownership, masking/row-filter SQL, setup order, system tables, federation
 - [07 — Storage Access: ABFSS & Volumes](08_Databricks/07_Storage_Access_ABFSS_and_Volumes.md) — `abfss://` paths, Unity Catalog **Volumes**, External Locations & Storage Credentials, DBFS, legacy mounts
 - [08 — Delta Live Tables (DLT)](08_Databricks/08_Delta_Live_Tables.md) — declarative pipelines, quality expectations, streaming tables vs materialized views, CDC
 - [09 — Auto Loader & Ingestion](08_Databricks/09_Auto_Loader_and_Ingestion.md) — incremental file ingestion, schema evolution, file notification, `COPY INTO`
-- [10 — Databricks & Spark Cost Optimization](08_Databricks/10_Databricks_Cost_Optimization.md) — DBUs, cluster sizing, autoscaling, spot, Photon, job vs all-purpose
+- [10 — Databricks & Spark Cost Optimization](08_Databricks/10_Databricks_Cost_Optimization.md) — where the bill comes from, DBU rates by SKU, finding spend in `system.billing.usage`, cluster sizing, autoscaling, spot, Photon
 - **[Interview Questions & Answers](08_Databricks/Interview_Questions_and_Answers.md)** — 30 Q&A across the whole module
 
 ### 09_Streaming — processing data in real time (Event Hubs, Kafka, Stream Analytics)

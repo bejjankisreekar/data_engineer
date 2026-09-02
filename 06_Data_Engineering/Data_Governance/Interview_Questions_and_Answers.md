@@ -50,12 +50,33 @@ At rest = TDE (default, server can decrypt); in transit = TLS; **Always Encrypte
 **Q15. 🔥 "Auditor asks: prove least-privilege access and trace a PII column's origin."**
 Show RBAC/UC grants to groups (least privilege), Purview **classification** of the PII column, and Purview/UC **lineage** tracing source → Gold; plus audit logs in Log Analytics.
 
+## Identity (Microsoft Entra ID)
+
+**Q16. 🔥 Managed identity vs service principal?**
+A managed identity **is** a service principal whose credentials Azure creates and rotates for you — available only to Azure resources, with no secret you ever handle. A plain service principal needs a client secret or certificate you manage yourself, which is what you use from outside Azure (GitHub Actions, on-prem jobs). Prefer **managed identity** whenever the caller is an Azure resource.
+
+**Q17. 🔥 I'm Owner on the storage account but get `403 AuthorizationPermissionMismatch` reading a file. Why?**
+Owner/Contributor are **control-plane** roles — they let you manage the account, not read blobs with your own identity. Data access needs a **data-plane** role such as `Storage Blob Data Reader`/`Contributor`. This is the single most common ADLS access mistake.
+
+**Q18. ⭐ System-assigned vs user-assigned managed identity?**
+System-assigned is created and destroyed with one resource (redeploy it and every role assignment must be redone). User-assigned is a standalone Azure resource shared by many services and surviving redeployment — the right choice for CI/CD-deployed resources and fleets.
+
+**Q19. ⭐ How do you authenticate CI/CD to Azure without storing a secret?**
+**Workload identity federation** — GitHub Actions/GitLab/Kubernetes present their own OIDC token, which Entra exchanges for an access token via a federated credential on the app registration. No secret exists to leak, expire, or rotate.
+
+**Q20. 💡 What are Conditional Access and PIM, and how can they break a pipeline?**
+Conditional Access evaluates signals (user, app, device, location, risk) at sign-in and can require MFA or block. PIM gives just-in-time, time-boxed, approval-gated activation of privileged roles instead of standing admin. The classic failure is a tenant-wide "require MFA" policy that catches an unattended service principal — service principals can't do MFA, so the pipeline dies. Scope CA to users; govern workload identities with Entra Workload ID policies.
+
+Full treatment: **[Microsoft Entra ID](03_Microsoft_Entra_ID.md)**.
+
 ## Common interview mistakes
 - Account keys/SAS instead of Managed Identity.
 - Secrets in code/notebooks.
 - Public network access (no private endpoints).
 - Per-user grants instead of groups.
 - Confusing RBAC (identity permissions) with Azure Policy (resource compliance).
+- Assuming Contributor grants data access — control-plane roles don't read blobs.
+- Long-lived client secrets with no rotation plan, where a managed identity would do.
 
 ## Related Topics
-[Data Quality](../Data_Quality/01_Data_Quality_Fundamentals.md) · [ADLS Gen2 security](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) · [Databricks Unity Catalog](../../Certifications/Databricks_Data_Engineer_Associate/10_Data_Governance_Unity_Catalog.md)
+[Microsoft Entra ID](03_Microsoft_Entra_ID.md) · [Network Security](02_Network_Security_and_Private_Connectivity.md) · [Data Quality](../Data_Quality/01_Data_Quality_Fundamentals.md) · [ADLS Gen2 security](../../05_Storage_and_Formats/Data_Lakes_and_Storage/03_Azure_Data_Lake_Storage.md) · [Databricks Unity Catalog](../../Certifications/Databricks_Data_Engineer_Associate/10_Data_Governance_Unity_Catalog.md)

@@ -22,7 +22,7 @@
 ---
 
 ## Security: authentication vs authorization
-- **Authentication (authN)** = proving *who you are* (Microsoft Entra ID, Managed Identity, service principals).
+- **Authentication (authN)** = proving *who you are* (Microsoft Entra ID, Managed Identity, service principals) — the identity layer in full: [Microsoft Entra ID](03_Microsoft_Entra_ID.md).
 - **Authorization (authZ)** = what you're *allowed to do* (RBAC roles, ACLs, GRANTs).
 - **authN happens first, then authZ.**
 

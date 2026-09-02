@@ -6,7 +6,7 @@ This file covers Git's "rewrite history" commands — genuinely powerful, genuin
 
 ---
 
-## Level 1 — `git rebase`: replaying commits onto a new base
+## `git rebase`: replaying commits onto a new base
 
 **Rebase** takes the commits unique to your branch and **replays them one by one on top of a different starting point** — producing a straight, linear history instead of a merge commit with two parent lines.
 
@@ -34,7 +34,7 @@ feature:       D---E              feature:    D---E---/           feature:      
 
 ---
 
-## Level 1 — `git cherry-pick`: taking one specific commit
+## `git cherry-pick`: taking one specific commit
 
 **Cherry-pick** applies the changes from **one specific commit** on another branch onto your current branch — without merging or rebasing the whole branch, just that one commit.
 
@@ -63,7 +63,7 @@ A new commit (`4d5e6f7`, different hash) is created on `main` with the *same cha
 
 ---
 
-## Level 2 — `git reset`: moving your branch pointer backward
+## `git reset`: moving your branch pointer backward
 
 **Reset** moves your current branch's pointer to a different commit — with three modes controlling what happens to your working directory and staging area along the way.
 
@@ -97,11 +97,11 @@ Moves back to `b2c3d4e` and **discards the changes entirely** — working direct
 | `--mixed` (default) | Yes | Cleared | Unchanged (edits still there, just unstaged) |
 | `--hard` | Yes | Cleared | **Reset — uncommitted changes are lost** |
 
-> **Never run `git reset --hard` without being certain** — there's no undo dialog. (There *is* a real recovery path via `reflog` — see Level 3.)
+> **Never run `git reset --hard` without being certain** — there's no undo dialog. (There *is* a real recovery path via `reflog` — see the Pro corner below.)
 
 ---
 
-## Level 2 — `git revert`: undoing a commit *without* rewriting history
+## `git revert`: undoing a commit *without* rewriting history
 
 **Revert** creates a **new commit** that applies the exact opposite of a previous commit's changes — the history stays fully intact, nothing is deleted or rewritten, it just adds "undo this" as a new, visible step.
 
@@ -133,7 +133,7 @@ b2c3d4e Good commit
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### Golden Rule: never rewrite published (pushed, shared) history
 

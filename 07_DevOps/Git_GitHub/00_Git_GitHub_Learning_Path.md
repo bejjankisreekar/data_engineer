@@ -4,7 +4,7 @@ This folder teaches **Git and GitHub from zero to production-ready** — every c
 
 ## Why this folder exists
 
-Git isn't optional — it's the one tool every engineer touches regardless of language, cloud, or role. This series treats it with the same rigor as the [PySpark series](../../03_Programming/PySpark/00_PySpark_Learning_Path.md): runnable commands, a Level 1/2/3 depth structure, and a Checkpoint at the end of every file so you can confirm you actually absorbed it before moving on.
+Git isn't optional — it's the one tool every engineer touches regardless of language, cloud, or role. This series treats it with the same rigor as the [PySpark series](../../03_Programming/PySpark/00_PySpark_Learning_Path.md): runnable commands, one continuous read per file that goes from the basics all the way to the internals, and a Checkpoint at the end of every file so you can confirm you actually absorbed it before moving on.
 
 ## Git vs GitHub — the one-sentence distinction, up front
 
@@ -29,9 +29,9 @@ Git isn't optional — it's the one tool every engineer touches regardless of la
 
 Same shape as the PySpark series:
 
-- **Level 1** — the basics, with a command and its real terminal output.
-- **Level 2** — the patterns you'll actually use day to day.
-- **Level 3 — Pro corner** — internals, gotchas, and the judgment calls a senior engineer makes.
+- **The commands themselves** — each one introduced with a real example and its actual terminal output.
+- **The day-to-day patterns** — how the command is really used on a working team, not just its syntax.
+- **Pro corner** — internals, gotchas, and the judgment calls a senior engineer makes.
 - **Checkpoint** — a few questions to confirm you're ready for the next file.
 
 ## Prerequisites

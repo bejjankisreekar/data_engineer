@@ -19,7 +19,7 @@ order.printSchema()
 
 ---
 
-## Level 1 — Navigating nesting
+## Navigating nesting
 
 ```python
 # Structs: dot paths
@@ -56,7 +56,7 @@ F.create_map(F.lit("k"), F.col("v"))
 
 ---
 
-## Level 2 — JSON in columns (the Kafka/Event Hubs reality)
+## JSON in columns (the Kafka/Event Hubs reality)
 
 Streams deliver JSON as **strings**; you parse them in-flight:
 
@@ -94,7 +94,7 @@ Maps are for *unpredictable* key sets; if keys are known and stable, structs are
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### Higher-order functions — loops over arrays without exploding
 

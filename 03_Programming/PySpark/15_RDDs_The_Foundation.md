@@ -6,7 +6,7 @@ Every file so far used the **DataFrame API** — and deliberately so; it's what 
 
 ---
 
-## Level 1 — What is an RDD?
+## What is an RDD?
 
 An **RDD** is Spark's most basic data structure: an **immutable, distributed collection of objects**, split into partitions across the cluster, that Spark can recompute if a piece is lost.
 
@@ -42,7 +42,7 @@ rdd3 = df.rdd                                                  # from an existin
 
 ---
 
-## Level 1 — Transformations (build the plan)
+## Transformations (build the plan)
 
 ```python
 nums = spark.sparkContext.parallelize([1, 2, 3, 4, 5, 6])
@@ -81,7 +81,7 @@ This exact three-line shape is literally what [MapReduce](../../01_Foundations/F
 
 ---
 
-## Level 1 — Actions (run the plan)
+## Actions (run the plan)
 
 ```python
 nums = spark.sparkContext.parallelize([5, 3, 8, 1, 9])
@@ -100,7 +100,7 @@ Nothing above runs until called — exactly the [lazy evaluation](Spark_Processi
 
 ---
 
-## Level 2 — Pair RDDs: key-value operations
+## Pair RDDs: key-value operations
 
 When RDD elements are `(key, value)` tuples, a whole extra set of operations unlocks — this is where RDDs feel most like a distributed dictionary:
 
@@ -136,7 +136,7 @@ This is the exact same **map-side pre-aggregation** that makes DataFrame `groupB
 
 ---
 
-## Level 2 — Persistence: cache and persist
+## Persistence: cache and persist
 
 ```python
 big = spark.sparkContext.textFile("huge_file.txt").map(parse_line)
@@ -156,7 +156,7 @@ Identical concept to DataFrame `.cache()` ([Spark_Processing.md](Spark_Processin
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### How "resilient" actually works: lineage
 

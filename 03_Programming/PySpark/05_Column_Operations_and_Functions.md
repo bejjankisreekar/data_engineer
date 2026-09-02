@@ -10,7 +10,7 @@ from pyspark.sql import functions as F
 
 ---
 
-## Level 1 — The everyday toolkit
+## The everyday toolkit
 
 ### Strings
 
@@ -60,7 +60,7 @@ Conditions evaluate top-down, first match wins; missing `otherwise` → null for
 
 ---
 
-## Level 2 — Null handling, properly
+## Null handling, properly
 
 Nulls follow SQL's [three-valued logic](../../02_Databases/SQL/01_What_is_SQL.md) — every comparison with null is neither true nor false:
 
@@ -93,7 +93,7 @@ Same engine, same plan — use whichever reads clearer; `expr` is also the escap
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **Sargability applies here too**: `F.year(F.col("d")) == 2026` defeats partition pruning/pushdown; `F.col("d").between("2026-01-01", "2026-12-31")` doesn't ([same rule as SQL](../../02_Databases/SQL/06_SQL_DQL.md)).
 - **Chained `when` beats nested Python if-logic in a UDF by 10–100×** — before writing any custom function, spend five minutes in the [functions docs](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/functions.html); `F` almost certainly has it (`months_between`, `sequence`, `format_number`, `sha2`, `xxhash64`…).

@@ -6,7 +6,7 @@ A schema is the DataFrame's contract: column names, types, and nullability. In p
 
 ---
 
-## Level 1 — Types and how to see them
+## Types and how to see them
 
 ```python
 emp.printSchema()
@@ -31,7 +31,7 @@ The types you'll use constantly (from `pyspark.sql.types`):
 | `TimestampType()` | date+time (session-timezone-aware) | DATETIME2 |
 | `ArrayType`, `MapType`, `StructType` | nested — [file 09](09_Complex_Types_and_JSON.md) | — |
 
-## Level 1 — Casting
+## Casting
 
 ```python
 emp2 = (emp
@@ -40,11 +40,11 @@ emp2 = (emp
   .withColumn("id", F.col("id").cast("int")))
 ```
 
-`cast` accepts type objects or SQL strings (`"int"`, `"decimal(10,2)"`) — the string form is the common idiom. **A failed cast produces `null`, not an error** — that silence is important (see Level 3).
+`cast` accepts type objects or SQL strings (`"int"`, `"decimal(10,2)"`) — the string form is the common idiom. **A failed cast produces `null`, not an error** — that silence is important (see the Pro corner below).
 
 ---
 
-## Level 2 — Defining schemas explicitly
+## Defining schemas explicitly
 
 ### The StructType way (programmatic)
 
@@ -83,7 +83,7 @@ Without a schema, Spark infers from the Python objects — fine for tests, never
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### Nullability is documentation, not enforcement
 

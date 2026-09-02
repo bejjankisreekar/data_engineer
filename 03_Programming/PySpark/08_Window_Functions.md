@@ -11,7 +11,7 @@ from pyspark.sql.window import Window
 
 ---
 
-## Level 1 — The pattern
+## The pattern
 
 Every window use has the same three parts:
 
@@ -58,7 +58,7 @@ emp.withColumn("dept_avg", F.avg("salary").over(w_dept))
 
 ---
 
-## Level 2 — Frames: running totals and moving averages
+## Frames: running totals and moving averages
 
 When a window has `orderBy`, aggregates default to *"start of partition up to current row"* — that's what makes running totals work:
 
@@ -92,7 +92,7 @@ Note the **tiebreaker column** in orderBy — without it, two rows with the same
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **`partitionBy` is mandatory in spirit**: a window without it pulls the *entire dataset into one task* — the silent single-node bottleneck ([gotcha](../../02_Databases/SQL/06_SQL_DQL.md)). If you truly need a global order (global row numbers), question the requirement first; `monotonically_increasing_id()` gives unique-but-not-sequential ids without the collapse.
 - **Windows are shuffles**: each distinct `partitionBy` spec = one shuffle by those keys. Multiple window columns *sharing the same window spec* reuse one shuffle — define `w` once and reuse it; five different specs = five shuffles.

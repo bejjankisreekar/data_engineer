@@ -6,7 +6,7 @@ Delta Lake = [Parquet files](../../05_Storage_and_Formats/File_Formats/05_Parque
 
 ---
 
-## Level 1 — Delta as a better table
+## Delta as a better table
 
 ```python
 # Write / read — just a format
@@ -42,7 +42,7 @@ Every write = a new version in the log. `DESCRIBE HISTORY`'s `operationMetrics` 
 
 ---
 
-## Level 2 — MERGE: the daily-driver operation
+## MERGE: the daily-driver operation
 
 The [upsert](../../02_Databases/SQL/05_SQL_DML.md), Delta-style — the single most-run statement in lakehouse pipelines:
 
@@ -85,7 +85,7 @@ spark.sql("VACUUM silver.sales")                            # purge unreferenced
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### How the log actually works (interview classic)
 

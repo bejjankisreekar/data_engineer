@@ -6,7 +6,7 @@ Everything in files 01–04 is *Git* — it works identically whether your remot
 
 ---
 
-## Level 1 — Creating a repository on GitHub
+## Creating a repository on GitHub
 
 On github.com: **New repository** → name it → choose Public or Private → optionally initialize with a README, `.gitignore` template, and license → **Create repository**.
 
@@ -18,11 +18,11 @@ git branch -M main
 git push -u origin main
 ```
 
-## Level 1 — The README
+## The README
 
 `README.md` is the one file every repository should have — GitHub automatically renders it on the repository's home page. At minimum: what the project is, how to install/run it, and how to contribute. This entire course you're reading is itself just a folder of README-style Markdown files rendered by a Git host.
 
-## Level 1 — Issues: tracking work and bugs
+## Issues: tracking work and bugs
 
 An **Issue** is a tracked unit of work — a bug report, a feature request, a task — with a title, description, labels (`bug`, `enhancement`, `good first issue`), an assignee, and a comment thread. Issues are how teams (and open-source projects) track *what needs doing*, separately from the code itself.
 
@@ -43,7 +43,7 @@ Referencing an issue number in a commit message (`Fixes #42`) and later merging 
 
 ---
 
-## Level 2 — Pull Requests: the heart of GitHub collaboration
+## Pull Requests: the heart of GitHub collaboration
 
 A **Pull Request (PR)** is a formal request to merge changes from one branch (or a fork) into another, with a dedicated space for **discussion, code review, and automated checks** before anything actually merges. This is the mechanism that makes `main` safe to trust — nothing reaches it without review.
 
@@ -73,7 +73,7 @@ From there:
 
 Most teams standardize on **Squash and merge** for feature branches — it means `main`'s history is one clean, readable commit per PR, no matter how many "fix typo" / "actually fix it" commits happened along the way during review.
 
-## Level 2 — Forking: contributing to a repo you don't own
+## Forking: contributing to a repo you don't own
 
 A **fork** is your own full copy of someone else's repository, under your own GitHub account — used when you don't have write access to the original.
 
@@ -95,7 +95,7 @@ This is exactly how essentially all open-source contribution works — you never
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **Draft Pull Requests** — mark a PR as a draft while work is still in progress; it signals "not ready for review yet" and, depending on repo settings, can skip triggering full CI until marked ready — useful for pushing WIP work for visibility without asking anyone to review it yet.
 - **`CODEOWNERS` file** — a special file (`.github/CODEOWNERS`) that automatically requests review from specific people or teams whenever a PR touches specific paths (e.g. anyone touching `/infra/` must get a platform-team approval). Covered fully in [file 08](08_Branching_Strategies_and_Collaboration.md).

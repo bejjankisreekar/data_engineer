@@ -6,7 +6,7 @@ This file consolidates the tuning knowledge scattered through the series into on
 
 ---
 
-## Level 1 — The performance workflow (in order, always)
+## The performance workflow (in order, always)
 
 ```
 1. MEASURE   Spark UI → which stage dominates? skew? spill? shuffle sizes?
@@ -30,7 +30,7 @@ Jumping to step 5 ("just use a bigger cluster") without steps 1–2 is the defin
 
 ---
 
-## Level 2 — Writing PySpark like software (because it is)
+## Writing PySpark like software (because it is)
 
 ### Structure jobs as testable functions
 
@@ -72,7 +72,7 @@ Catalog/schema/paths come from job parameters or config (`dev` vs `prod` — [na
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### The incident playbook (what actually breaks in production)
 

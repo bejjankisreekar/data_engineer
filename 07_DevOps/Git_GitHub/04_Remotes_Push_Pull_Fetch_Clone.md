@@ -6,7 +6,7 @@ Everything so far has been 100% local — no internet involved. This file connec
 
 ---
 
-## Level 1 — What is a remote?
+## What is a remote?
 
 A **remote** is just a named URL pointing at another copy of the repository. The conventional name for your primary remote is `origin` — it's a convention, not a keyword; you could name it anything.
 
@@ -34,7 +34,7 @@ origin  https://github.com/asha-verma/bakery-orders.git (push)
 
 ---
 
-## Level 1 — `git push`: sending your commits up
+## `git push`: sending your commits up
 
 ```bash
 git push -u origin main
@@ -57,7 +57,7 @@ git push
 
 ---
 
-## Level 1 — `git pull`: bringing remote changes down
+## `git pull`: bringing remote changes down
 
 ```bash
 git pull
@@ -67,7 +67,7 @@ git pull
 
 ---
 
-## Level 2 — `git fetch`: the safer way to check for updates
+## `git fetch`: the safer way to check for updates
 
 ```bash
 git fetch origin
@@ -85,7 +85,7 @@ git merge origin/main                  # now merge it in, once you've reviewed i
 
 ---
 
-## Level 2 — Tracking branches, explained properly
+## Tracking branches, explained properly
 
 A **tracking branch** is a local branch that's linked to a specific remote branch, so `git push`/`git pull` know their target without you specifying it every time.
 
@@ -103,7 +103,7 @@ git branch -vv
 git push -u origin feature-order-totals
 ```
 
-## Level 2 — `git clone` options worth knowing
+## `git clone` options worth knowing
 
 ```bash
 git clone --branch develop https://github.com/org/repo.git   # clone starting on a specific branch
@@ -112,7 +112,7 @@ git clone --depth 1 https://github.com/org/repo.git          # shallow clone —
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### Authentication: SSH vs. HTTPS
 

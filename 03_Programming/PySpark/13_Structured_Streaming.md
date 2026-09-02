@@ -6,7 +6,7 @@ Structured Streaming's core idea: **a stream is an unbounded table**, and your e
 
 ---
 
-## Level 1 — A first stream
+## A first stream
 
 ```python
 # Source: files landing in a folder (Auto Loader on Databricks)
@@ -38,7 +38,7 @@ Three new concepts and that's genuinely most of it:
 |---|---|
 | **Checkpoint** | The stream's memory: which input has been processed, plus any state. One folder **per query**, never shared, never deleted casually — delete it and the stream starts over (or duplicates). |
 | **Output mode** | `append` (new rows only — the normal one), `complete` (rewrite full aggregate result), `update` (changed rows) |
-| **Trigger** | The heartbeat — see Level 2 |
+| **Trigger** | The heartbeat — see *Triggers, aggregations, and watermarks* below |
 
 ### Kafka / Event Hubs source
 
@@ -54,7 +54,7 @@ orders = raw.select(F.from_json(F.col("value").cast("string"), schema).alias("d"
 
 ---
 
-## Level 2 — Triggers, aggregations, and watermarks
+## Triggers, aggregations, and watermarks
 
 ### Triggers — how often the stream fires
 
@@ -98,7 +98,7 @@ def upsert(batch_df, batch_id):
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **Exactly-once, spelled out**: replayable source (Kafka offsets / file lists) + checkpoint (what's been read) + transactional sink (Delta) = end-to-end exactly-once *for the default single-sink path*. Every deviation (foreachBatch to two places, non-transactional sinks) drops you to at-least-once — design [idempotent](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md) anyway.
 - **Checkpoints are married to the query's logic**: changing the aggregation/schema/key of a stateful query makes the old checkpoint unusable (or wrong). Plan "how do we evolve this stream" *before* production: usually new checkpoint + backfill, or foreachBatch with versioned logic.

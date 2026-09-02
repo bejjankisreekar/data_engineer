@@ -62,7 +62,7 @@ emp = spark.createDataFrame(
 
 ---
 
-## Level 1 — Inspecting a DataFrame
+## Inspecting a DataFrame
 
 ```python
 emp.show()                 # print first 20 rows (action)
@@ -74,7 +74,7 @@ emp.describe("salary").show()   # count/mean/stddev/min/max
 display(emp)               # Databricks-only: rich interactive table
 ```
 
-## Level 1 — The core verbs
+## The core verbs
 
 ```python
 # SELECT — choose/rename columns
@@ -117,7 +117,7 @@ The parentheses-around-the-chain style is the idiom — readable, diffable, no `
 
 ---
 
-## Level 2 — The details that separate working code from lucky code
+## The details that separate working code from lucky code
 
 ### Three ways to reference a column — and when each breaks
 
@@ -157,7 +157,7 @@ emp.withColumns({"annual": F.col("salary")*12, "tax": F.col("salary")*0.1})   # 
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **`count()` is not free** — it triggers a full job. Don't sprinkle counts through production code as progress prints; compute once into a variable if needed, or rely on write metrics ([observability](14_Performance_and_Best_Practices.md)).
 - **Immutability enables the optimizer**: because each step returns a new logical plan, Catalyst can rewrite the whole chain ([how](What_Is_Apache_Spark.md)). Your 8 chained calls usually compile into 1–2 physical stages — chains are *not* 8 passes over the data.

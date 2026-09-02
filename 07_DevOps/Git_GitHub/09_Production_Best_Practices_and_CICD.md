@@ -6,7 +6,7 @@ Everything up to here is "how Git works." This file is "how a production enginee
 
 ---
 
-## Level 1 — Conventional Commits: a commit message standard
+## Conventional Commits: a commit message standard
 
 ```
 <type>(<optional scope>): <short description>
@@ -37,7 +37,7 @@ This isn't just style — a `fix:` or `feat:` prefix is machine-readable, and to
 
 ---
 
-## Level 1 — Git hooks: automation triggered by Git events
+## Git hooks: automation triggered by Git events
 
 A **hook** is a script Git runs automatically at a specific point in the workflow — stored in `.git/hooks/`, or managed more reliably across a team via a tool like **Husky** or **pre-commit**.
 
@@ -60,7 +60,7 @@ Since `.git/hooks/` itself isn't version-controlled or shared automatically, rea
 
 ---
 
-## Level 2 — GitHub Actions: CI/CD basics
+## GitHub Actions: CI/CD basics
 
 **GitHub Actions** runs automated workflows in response to repository events (a push, a PR, a schedule) — defined as YAML files in `.github/workflows/`.
 
@@ -102,7 +102,7 @@ jobs:
 
 ---
 
-## Level 2 — Handling secrets: the rule that matters most
+## Handling secrets: the rule that matters most
 
 **Never commit secrets** — API keys, passwords, connection strings, private keys — to a Git repository, even a private one, even "just for a moment before I remove it." Once committed, a secret exists **permanently in history**, recoverable via `git log -p` or `git show` by anyone with repo access, even after you delete it in a later commit.
 
@@ -113,7 +113,7 @@ jobs:
 gitleaks protect --staged
 ```
 
-## Level 2 — Large files: Git LFS
+## Large files: Git LFS
 
 Git is fundamentally bad at storing large binary files (videos, datasets, model weights) — every version of a large file bloats the repository forever, since Git stores full snapshots. **Git LFS (Large File Storage)** replaces large files in the repo with small text pointers, storing the actual content in separate LFS storage:
 
@@ -127,7 +127,7 @@ git commit -m "Add training dataset via LFS"
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### Signed commits — proving a commit really came from you
 

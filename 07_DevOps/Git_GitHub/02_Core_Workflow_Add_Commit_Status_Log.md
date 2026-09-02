@@ -6,7 +6,7 @@ This is the loop you'll run dozens of times a day: **edit → check status → s
 
 ---
 
-## Level 1 — `git status`: what's changed?
+## `git status`: what's changed?
 
 ```bash
 # inside bakery-orders/
@@ -30,7 +30,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 ---
 
-## Level 1 — `git add`: staging changes
+## `git add`: staging changes
 
 ```bash
 git add orders.txt
@@ -55,7 +55,7 @@ git add -A                    # stage everything changed in the WHOLE repo, incl
 
 ---
 
-## Level 1 — `git commit`: making it permanent
+## `git commit`: making it permanent
 
 ```bash
 git commit -m "Add first order for chocolate cake"
@@ -73,7 +73,7 @@ That `a1b2c3d` is the start of the commit's **SHA hash** — a unique fingerprin
 
 ---
 
-## Level 1 — `git log`: viewing history
+## `git log`: viewing history
 
 ```bash
 git log
@@ -96,7 +96,7 @@ git log -3                  # only the 3 most recent commits
 
 ---
 
-## Level 2 — `git diff`: seeing exactly what changed
+## `git diff`: seeing exactly what changed
 
 ```bash
 echo "Vanilla Cupcake - Order #102" >> orders.txt
@@ -118,7 +118,7 @@ git add orders.txt
 git diff --staged        # staged changes: staging area vs last commit (what WILL be committed)
 ```
 
-## Level 2 — `.gitignore`: telling Git what to never track
+## `.gitignore`: telling Git what to never track
 
 Every project generates files that should never be committed — logs, build output, secrets, dependency folders, IDE settings.
 
@@ -144,7 +144,7 @@ echo "secrets.env" >> .gitignore
 git commit -m "Stop tracking secrets.env"
 ```
 
-## Level 2 — Writing good commit messages
+## Writing good commit messages
 
 ```
 Short summary line, 50 chars or less, imperative mood
@@ -160,7 +160,7 @@ Fixes #42
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **Commit small and often.** A commit should represent one logical change — "add login validation," not "add login validation, fix typo in README, and refactor the database module." Small commits are easier to review, easier to revert individually, and make `git log` an actually useful project history instead of noise.
 - **`git add -p` (patch mode)** lets you stage *parts* of a file's changes interactively, hunk by hunk — essential when you've made two unrelated edits in the same file and want them in two separate, clean commits instead of one messy one.

@@ -37,7 +37,7 @@ This distributed nature is the single most important fact about Git's design: wh
 
 ---
 
-## Level 1 — Installing and configuring Git
+## Installing and configuring Git
 
 ### Install
 
@@ -74,7 +74,7 @@ git config --list
 
 ---
 
-## Level 1 — Your first repository
+## Your first repository
 
 ```bash
 mkdir bakery-orders
@@ -90,7 +90,7 @@ Initialized empty Git repository in /home/asha/bakery-orders/.git/
 
 ---
 
-## Level 2 — Core terminology, defined precisely
+## Core terminology, defined precisely
 
 These four words are used constantly from here on — get them exactly right now:
 
@@ -110,7 +110,7 @@ This three-stage flow — edit, stage, commit — is the single most important m
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **`.git` is the entire product.** Nothing about Git lives anywhere else — no external database, no hidden server state for a local repo. This is *why* distributed version control works: copying the `.git` folder (which is exactly what `git clone` does) copies the complete project history.
 - **Git tracks content, not files by name.** Internally, Git stores objects (blobs, trees, commits) addressed by a SHA-1/SHA-256 hash of their *content* — if you rename a file but its content is unchanged, Git recognizes it as the same underlying object. This is why `git mv` is really just a convenience wrapper — a plain filesystem rename followed by `git add` achieves the identical result.

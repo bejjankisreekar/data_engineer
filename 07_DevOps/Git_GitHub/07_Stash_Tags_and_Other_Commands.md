@@ -6,7 +6,7 @@ The commands you'll reach for less often than `add`/`commit`/`branch` — but th
 
 ---
 
-## Level 1 — `git stash`: shelving unfinished work
+## `git stash`: shelving unfinished work
 
 You're mid-edit on `feature-order-totals`, uncommitted and not ready to commit — and suddenly need to switch branches to fix an urgent bug on `main`. Git won't let you switch cleanly with conflicting uncommitted changes in the way. **Stash** temporarily shelves your changes so your working directory is clean again.
 
@@ -50,7 +50,7 @@ git stash clear                   # delete ALL stashes
 
 ---
 
-## Level 1 — `git tag`: marking specific points in history
+## `git tag`: marking specific points in history
 
 A **tag** is a permanent, named pointer to a specific commit — used almost universally for marking **releases** (`v1.0.0`, `v2.1.3`).
 
@@ -69,7 +69,7 @@ Unlike a branch, a tag doesn't move — it's meant to permanently mark "this exa
 
 ---
 
-## Level 2 — `git blame`: who changed this line, and when?
+## `git blame`: who changed this line, and when?
 
 ```bash
 git blame totals.py
@@ -81,7 +81,7 @@ git blame totals.py
 
 Every line is annotated with the commit, author, and date that last changed it — the standard first step when debugging "why is this line here / who do I ask about this logic."
 
-## Level 2 — `git bisect`: binary-searching for the commit that broke something
+## `git bisect`: binary-searching for the commit that broke something
 
 When a bug appeared somewhere in the last 200 commits and you don't know exactly where, `bisect` finds it via binary search instead of manual guessing:
 
@@ -117,7 +117,7 @@ Seven steps to search 100 commits, versus checking them one by one — this is g
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **`git stash` is a stack** — multiple stashes pile up (`stash@{0}` is most recent), and it's easy to forget one exists. `git stash list` regularly, and treat a growing stash list as a signal you're context-switching too much without committing — a WIP commit on a branch (`git commit -m "WIP"`, amended or squashed away later) is often a more visible, safer alternative to a long-lived stash.
 - **Semantic Versioning (SemVer)** is the convention almost every tag naming scheme follows: `vMAJOR.MINOR.PATCH` — MAJOR increments on breaking changes, MINOR on backward-compatible new features, PATCH on backward-compatible bug fixes. `v2.1.3` → `v2.2.0` (new feature) → `v2.2.1` (bug fix) → `v3.0.0` (breaking change). Covered further in [file 09](09_Production_Best_Practices_and_CICD.md).

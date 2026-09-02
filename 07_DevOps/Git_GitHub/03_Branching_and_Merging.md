@@ -12,7 +12,7 @@ Technically, a branch is nothing more than a **movable pointer to a commit**. Th
 
 ---
 
-## Level 1 — Creating and switching branches
+## Creating and switching branches
 
 ```bash
 git branch feature-order-totals      # create a new branch (doesn't switch to it)
@@ -50,7 +50,7 @@ Notice `main` didn't move — it still points at the original commit. Your new c
 
 ---
 
-## Level 1 — Merging: bringing branches back together
+## Merging: bringing branches back together
 
 ```bash
 git switch main
@@ -68,7 +68,7 @@ That was a **fast-forward merge**: since `main` hadn't changed at all since the 
 
 ---
 
-## Level 2 — The other kind of merge: three-way merges
+## The other kind of merge: three-way merges
 
 If `main` *has* moved since your branch diverged (someone else committed to `main` while you were working), Git can't just fast-forward — it must combine both histories:
 
@@ -107,7 +107,7 @@ git log --oneline --graph --all
 
 ---
 
-## Level 2 — Merge conflicts: when Git can't decide for you
+## Merge conflicts: when Git can't decide for you
 
 A conflict happens when **the same lines** of the same file were changed differently on both branches — Git has no way to know which change you actually want, so it stops and asks you.
 
@@ -186,7 +186,7 @@ git merge --abort
 
 ---
 
-## Level 2 — Deleting a branch
+## Deleting a branch
 
 ```bash
 git branch -d feature-order-totals    # safe delete — refuses if unmerged commits would be lost
@@ -195,7 +195,7 @@ git branch -D feature-order-totals    # force delete — deletes regardless, use
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **Multiple files can conflict, and one file can have multiple conflict blocks.** `git status` lists every file still marked as "both modified" — resolve and `git add` each one before committing.
 - **Merge tools**: instead of hand-editing conflict markers, `git mergetool` launches a configured visual diff/merge tool (VS Code, Beyond Compare, KDiff3) that shows both versions side by side — far easier for large or numerous conflicts.

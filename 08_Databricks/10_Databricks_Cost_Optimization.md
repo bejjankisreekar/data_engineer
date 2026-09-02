@@ -8,6 +8,63 @@ A Databricks bill has **two stacked layers**:
 
 So **cost ≈ (VM price + DBU rate) × cluster size × runtime**. Every optimization below shrinks one of those factors. This builds on [Clusters & Compute](../08_Databricks/03_Clusters_and_Compute.md).
 
+```mermaid
+flowchart TB
+    subgraph BILL["Your monthly Databricks spend"]
+      direction TB
+      A["<b>Azure VM hours</b><br/>paid to Microsoft<br/>= VM price × #VMs × hours alive"]
+      B["<b>DBU hours</b><br/>paid to Databricks<br/>= DBUs/hour × hours alive × rate for the SKU"]
+    end
+    C["<b>hours alive</b> ← cluster type + auto-termination"] --> A
+    C --> B
+    D["<b>#VMs / DBUs per hour</b> ← VM size + worker count"] --> A
+    D --> B
+    E["<b>rate</b> ← all-purpose vs jobs vs SQL vs DLT, Photon on/off"] --> B
+```
+
+Read the diagram and the priority order falls out: **"hours alive" feeds both halves of the bill**, so cluster type and auto-termination beat every other lever. Tuning VM sizes matters second; arguing about DBU rates matters last.
+
+### The DBU rate depends on *what* the compute is doing
+
+The same VMs cost different amounts per DBU depending on the workload SKU. The exact prices vary by region and change — check the Azure Databricks pricing page — but the **ordering is stable and is what you need to reason with**:
+
+| SKU | Relative DBU rate | What it's for |
+|---|---|---|
+| **Jobs compute** | Lowest | Scheduled jobs on job clusters |
+| **DLT** (core → advanced) | Low to mid | Delta Live Tables pipelines |
+| **SQL warehouse** (classic → serverless) | Mid to high | BI and ad-hoc SQL |
+| **All-purpose compute** | **Highest** | Interactive notebooks |
+| **Photon** | Multiplier on top of the above | Faster, so often cheaper *in total* — benchmark it |
+
+The gap between jobs compute and all-purpose compute is the whole reason "just run it on the dev cluster" is an expensive habit: identical VMs, several times the DBU rate, and no auto-termination.
+
+---
+
+## Find the spend before you optimize it
+
+Guessing which pipeline is expensive wastes more money than it saves. Databricks exposes usage as a **queryable system table**, so attribution is a SQL question:
+
+```sql
+-- Top 10 spenders last month, by the tag a cluster policy enforced
+SELECT custom_tags.cost_center,
+       sku_name,
+       ROUND(SUM(usage_quantity), 1) AS dbus
+FROM   system.billing.usage
+WHERE  usage_date >= date_trunc('MONTH', current_date() - INTERVAL 1 MONTH)
+GROUP  BY 1, 2
+ORDER  BY dbus DESC
+LIMIT  10;
+```
+
+This only works if clusters are **tagged**, which is why a [cluster policy](03_Clusters_and_Compute.md) with a mandatory `cost_center` tag is a cost control, not just a governance one. Pair it with Azure Cost Management for the VM half of the bill.
+
+**The diagnosis order that actually finds money:**
+
+1. **Sort by DBUs, not by job name.** The expensive job is rarely the one people complain about.
+2. **Split the total into hours-alive vs size.** A cheap cluster running 24/7 usually beats an expensive one running 20 minutes.
+3. **Check the SKU.** Anything scheduled that shows up as all-purpose compute is a free win.
+4. **Only then open the Spark UI** and tune the job itself.
+
 ---
 
 ## Lever 1 — Use the right cluster type
@@ -95,6 +152,9 @@ Every performance optimization in [file 04](../15_Cost_and_Performance/03_Perfor
 - *Does Photon always save money?* No — it has a higher DBU rate; it saves money when it speeds the job up more than proportionally. Benchmark it.
 - *How does performance tuning relate to cost?* Directly — less data scanned and less shuffle means shorter runtime, which means lower compute cost. Same problem.
 - *How do you right-size a cluster?* Match to data/job size and inspect the Spark UI — idle executors mean too big; heavy spill/GC means too small.
+- *Which lever matters most, and why?* Anything that reduces **hours alive** — cluster type and auto-termination — because that factor multiplies *both* the VM bill and the DBU bill. VM sizing is second; rates are last.
+- *How do you find out what's actually expensive?* Query `system.billing.usage`, grouped by the `cost_center` tag and SKU. It only works if a cluster policy makes tagging mandatory.
+- *Why does the same cluster cost different amounts?* The DBU rate follows the workload SKU: jobs compute is the cheapest, all-purpose the most expensive, with DLT and SQL warehouses in between — identical VMs, different rate.
 
 ---
 

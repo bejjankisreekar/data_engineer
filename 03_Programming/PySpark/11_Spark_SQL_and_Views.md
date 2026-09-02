@@ -6,7 +6,7 @@ Everything in this series has a SQL spelling. `spark.sql("...")` and the DataFra
 
 ---
 
-## Level 1 — Bridging the two worlds
+## Bridging the two worlds
 
 ```python
 # DataFrame → SQL: register a temporary view
@@ -28,7 +28,7 @@ result.filter(F.col("avg_salary") > 60000).show()
 - `createOrReplaceGlobalTempView("x")` — visible across sessions on the cluster as `global_temp.x` (rarely needed).
 - Parameterized queries (Spark 3.4+): `spark.sql("SELECT * FROM emp WHERE dept = :d", args={"d": "IT"})` — prefer over f-strings ([injection](../../02_Databases/SQL/01_What_is_SQL.md), even in notebooks).
 
-## Level 1 — Tables vs views vs files
+## Tables vs views vs files
 
 ```python
 spark.sql("SELECT * FROM samples.tpch.orders")     # catalog table (persistent, governed)
@@ -47,7 +47,7 @@ Production data belongs in **catalog tables** — names, permissions ([UC grants
 
 ---
 
-## Level 2 — Working style: when SQL, when DataFrames
+## Working style: when SQL, when DataFrames
 
 The pragmatic split most teams converge on:
 
@@ -75,7 +75,7 @@ spark.sql("SHOW PARTITIONS silver.sales")
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **Three-level namespace** on Databricks: `catalog.schema.table` (Unity Catalog). Set defaults per session (`USE CATALOG dev; USE SCHEMA silver;`) and write code that takes catalog/schema as **parameters** — the same job must run against dev and prod namespaces unchanged ([environments](14_Performance_and_Best_Practices.md)).
 - **Temp views are lazy plans, not materialized results**: referencing one five times re-runs its plan five times (same as [CTEs](../../02_Databases/SQL/09_SQL_Subqueries.md)). If an expensive intermediate is reused, `.cache()` the DataFrame or write a staging table — the view alone saves nothing.

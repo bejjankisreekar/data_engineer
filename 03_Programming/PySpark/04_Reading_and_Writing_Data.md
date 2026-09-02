@@ -6,7 +6,7 @@ Spark computes; storage stores ([the division](What_Is_Apache_Spark.md)). This f
 
 ---
 
-## Level 1 — Reading
+## Reading
 
 ```python
 # General shape:  spark.read .format(...) .option(...) .schema(...) .load(path)
@@ -36,7 +36,7 @@ Paths can be a file, a **folder** (reads every file inside), or a glob (`"path/2
 
 The full CSV/JSON defense checklist lives in [01_CSV.md](../../05_Storage_and_Formats/File_Formats/01_CSV.md) / [02_JSON.md](../../05_Storage_and_Formats/File_Formats/02_JSON.md).
 
-## Level 1 — Writing
+## Writing
 
 ```python
 (df.write
@@ -53,7 +53,7 @@ Note: Spark writes a *folder* of part-files, never one file — that's the [para
 
 ---
 
-## Level 2 — The patterns production code uses
+## The patterns production code uses
 
 ### Partitioned writes (pruning for readers)
 
@@ -105,7 +105,7 @@ Processes only *new* files, tracks state, handles schema evolution — the produ
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 - **Plain `overwrite` to a path is not atomic** for readers on non-Delta formats — a reader mid-crash sees half a folder. Delta makes overwrite transactional; that alone justifies it as your default format ([12](12_Delta_Lake_with_PySpark.md)).
 - **Scoped overwrite** beats full overwrite for daily loads: `.option("replaceWhere", "date = '2026-07-19'")` (Delta) rewrites one partition atomically and is naturally [idempotent](../../06_Data_Engineering/ETL_ELT/01_ETL_vs_ELT.md).

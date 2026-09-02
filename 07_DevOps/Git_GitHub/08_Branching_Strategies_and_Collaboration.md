@@ -6,13 +6,13 @@ Everything so far has been commands. This file is about **how real teams organiz
 
 ---
 
-## Level 1 — Why teams need a branching strategy at all
+## Why teams need a branching strategy at all
 
 Without an agreed convention, a team ends up with branches named inconsistently, nobody sure which branch is "safe to build from," and features half-merged into `main` at random points. A **branching strategy** is a team-wide agreement on: what branches exist, what each one means, and exactly how code moves between them.
 
 ---
 
-## Level 1 — Three common strategies
+## Three common strategies
 
 ### 1. GitHub Flow — the simplest, most common for continuous deployment
 
@@ -58,7 +58,7 @@ Rules: branches, if used at all, live for hours, not days — merged back consta
 
 ---
 
-## Level 2 — Protected branches
+## Protected branches
 
 GitHub lets repository admins configure **branch protection rules** on `main` (or any branch) — enforced by the platform, not just team agreement:
 
@@ -70,7 +70,7 @@ GitHub lets repository admins configure **branch protection rules** on `main` (o
 
 This is how the "Golden Rule" from [file 06](06_Rebase_Cherry_Pick_Reset_Revert.md#golden-rule-never-rewrite-published-pushed-shared-history) gets enforced automatically rather than relying purely on everyone remembering it.
 
-## Level 2 — Code review, done well
+## Code review, done well
 
 A Pull Request is only as useful as the review it gets. Practical habits that make review effective rather than a rubber stamp:
 
@@ -79,7 +79,7 @@ A Pull Request is only as useful as the review it gets. Practical habits that ma
 - **Review the diff, not the whole file** — focus comments on what actually changed; flag pre-existing issues separately rather than scope-creeping the review.
 - **Distinguish blocking comments from suggestions** — "this will break in production" vs. "consider renaming this" are very different levels of urgency; say which one you mean.
 
-## Level 2 — `CODEOWNERS`: automatic review routing
+## `CODEOWNERS`: automatic review routing
 
 ```
 # .github/CODEOWNERS
@@ -92,7 +92,7 @@ Any Pull Request touching a matched path automatically requests review from the 
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### Choosing a strategy for a real team
 

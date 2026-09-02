@@ -6,7 +6,7 @@ A **UDF (User-Defined Function)** runs your Python inside Spark's engine. It's t
 
 ---
 
-## Level 1 — Plain Python UDFs
+## Plain Python UDFs
 
 ```python
 from pyspark.sql import functions as F
@@ -36,7 +36,7 @@ For every row: serialize the value → ship to a **Python worker process** outsi
 
 ---
 
-## Level 2 — Pandas UDFs (the fast kind)
+## Pandas UDFs (the fast kind)
 
 **Pandas UDFs (vectorized UDFs)** move data in **Arrow batches**: your function receives whole `pandas.Series`, not single values — typically 5–20× faster than row UDFs, and the only sane choice when you need pandas/scipy/sklearn logic:
 
@@ -76,7 +76,7 @@ df.mapInPandas(predict, schema=out_schema)
 
 ---
 
-## Level 3 — Pro corner
+## Pro corner
 
 ### The decision ladder (recite in interviews)
 
